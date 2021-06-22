@@ -1,0 +1,92 @@
+.container {
+  width: 60%;
+  height: 18.5rem;
+  border-radius: 40px;
+
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  margin: 1em;
+  background-color: #263238;
+}
+
+.title {
+  font-size: 1.2em;
+  color: aliceblue;
+  border-radius: 20px;
+  padding-left: 2rem;
+
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  height: 3rem;
+  line-height: 3rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+
+  height: 35px;
+  margin: 7px;
+  margin-right: 40px;
+  border-radius: 20px;
+  background-color: #66dbff;
+}
+
+/* ------------------------------------ */
+.tableContainer {
+  width: 100%;
+  height: 200px;
+  background-color: aliceblue;
+
+  overflow-y: scroll;
+  border-radius: 5px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.tableContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.table {
+  width: 95%;
+  height: 200px;
+
+  margin: auto;
+}
+
+.tr {
+  color: black;
+  height: 40px;
+}
+
+.th {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  position: sticky;
+}
+.numtd {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  width: 10px;
+  text-align: center;
+}
+.td {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  width: 40px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,78 @@
+@value myBlack, myBlue0, myBlue1, myBlue2, myBlue3 from '../../common/common_css/common.css';
+
+.wholeContainer {
+  display: flex;
+  flex-direction: column;
+}
+.contentContainer {
+  display: flex;
+}
+/* --------------------------------- */
+.body {
+  width: 100%;
+  display: flex;
+  margin-left: 0.5em;
+  border-radius: 5px;
+}
+.leftBody {
+  background-color: myBlue0;
+  margin-right: 0.5em;
+
+  border-radius: 5px;
+  min-width: 30rem;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+.rightBody {
+  min-width: 75rem;
+  display: flex;
+  flex-direction: column;
+
+  background-color: myBlue0;
+  border-radius: 5px;
+  margin-right: 0.5em;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
+/* --------------------------------------- */
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5em;
+  margin-top: 2.5em;
+  font-family: "Noto Sans", sans-serif;
+  color: myBlue0;
+  border-radius: 20px;
+  background-color: myBlack;
+  height: 4em;
+}
+.title {
+  font-size: 1.2em;
+  margin-left: 2em;
+}
+.projectNumber {
+  margin-left: 1em;
+  background-color: myBlue1;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1.1em;
+  color: myBlack;
+}
+/* ---------------------------------------------------------- */
+
+.calender {
+  height: 55vh;
+  border-radius: 40px;
+  margin: 1.5em 1.5em 1em 1.5em;
+  background-color: myBlue2;
+}
+.dataList {
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+}

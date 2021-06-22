@@ -1,0 +1,60 @@
+.containerCalendar {
+  width: 90%;
+  height: 400px;
+  margin: 0px auto;
+  overflow-y: scroll;
+  border-radius: 20px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.containerCalendar::-webkit-scrollbar {
+  display: none;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin: 1.2rem auto -1em auto;
+}
+
+.button {
+  font-size: 1.5em;
+  background-color: aliceblue;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+
+  border: none;
+}
+.button:hover {
+  opacity: 0.8;
+}
+
+.month {
+  width: 60px;
+  text-align: center;
+  /* border: 1px solid black; */
+  font-size: 1.5em;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  margin: 0 2rem;
+}
+
+.commuteButton {
+  width: 7em;
+  height: 2.5em;
+  font-weight: bold;
+  font-family: "Noto Sans", sans-serif;
+  color: #263238;
+  background-color: aliceblue;
+  border-radius: 20px;
+  border: none;
+  position: relative;
+  left: 980px;
+  bottom: 20px;
+}
+.commuteButton:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,43 @@
+/* @value myBlack, myGray, myBlue0, myBlue1, myBlue2, myBlue3,myBlue4, myWhite from '../common_css/common.css'; */
+
+.container {
+  margin-top: 3rem;
+}
+
+.boardText {
+  color: myBlack;
+  font-weight: bold;
+  font-family: "Noto Sans", sans-serif;
+}
+.accordion {
+  margin: auto;
+  width: 10rem;
+}
+
+.navToggle {
+  background-color: #66dbff;
+  cursor: pointer;
+}
+
+.navBody {
+  background-color: aliceblue;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #263238;
+}
+
+.list {
+  width: 100%;
+  height: 2em;
+  line-height: 2em;
+  font-family: "Noto Sans", sans-serif;
+  padding-left: 1em;
+  /* border: 1px solid black; */
+}
+ul {
+  margin: 0;
+  padding: 0em;
+}

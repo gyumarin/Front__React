@@ -1,0 +1,11 @@
+/* color */
+@value myBlack: #263238;
+@value myGray: #9597af;
+@value myBlue0: aliceblue;
+@value myBlue1: #66dbff;
+@value myBlue2: #00aaef;
+@value myBlue3: #007bbc;
+@value myWhite: white;
+
+/* size */
+@value myBorderRadius : 5px;
