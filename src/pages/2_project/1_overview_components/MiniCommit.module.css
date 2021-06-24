@@ -1,18 +1,19 @@
 .container {
-  width: 40%;
-  height: 18.5rem;
-  border-radius: 40px;
+  width: 93.5%;
+  height: 15rem;
+  border-radius: 10px;
 
-  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
-  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  /* -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44); */
   margin: 1em;
-  background-color: #263238;
+  margin-bottom: 4em;
+  background-color: #00aaef;
 }
 .title {
   font-size: 1.2em;
   color: aliceblue;
   border-radius: 20px;
-  padding-left: 2rem;
+  padding-left: 1rem;
 
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
@@ -22,7 +23,8 @@
 .notices {
   height: 200px;
   /* border: 1px solid black; */
-
+  overflow: hidden;
+  text-overflow: ellipsis;
   overflow-y: scroll;
 
   -ms-overflow-style: none; /* IE and Edge */
@@ -36,19 +38,24 @@
 .notice {
   width: 100%;
   background-color: aliceblue;
-  height: 40px;
+
+  height: 60px;
   box-sizing: border-box;
   cursor: pointer;
-}
-.notice:hover {
-  background-color: #00aaef;
-}
 
-.noticeContent {
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   font-family: "Noto Sans", sans-serif;
-
+  /* font-weight: bold; */
+  overflow: unset;
   color: #263238;
+}
+.notice:hover {
+  background-color: #a4e7fc;
+  color: #263238;
+}
+.detail1 {
+  font-weight: bolder;
+}
+.detail2 {
+  font-size: 0.5em;
 }

@@ -1,0 +1,15 @@
+@value myBlack, myBlue0, myBlue1, myBlue2, myBlue3 from '../../common/common_css/common.css';
+
+.wholeContainer {
+  display: flex;
+  flex-direction: column;
+}
+.contentContainer {
+  display: flex;
+}
+/* --------------------------------- */
+.body {
+  width: 100%;
+  margin-left: 0.5em;
+  border-radius: 5px;
+}

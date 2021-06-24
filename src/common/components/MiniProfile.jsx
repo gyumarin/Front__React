@@ -7,7 +7,7 @@ const MiniProfile = (props) => {
     <div className={styles.container}>
       
       <div className={styles.cardContainer}>
-        <img className={styles.image}src="./images/example.jpg" alt="face image" />        
+        <img className={styles.image} src="../images/example.jpg" alt="face image" />        
       </div>
       <h2 className={styles.slogan}>Maxmizing Potetial</h2>
       
