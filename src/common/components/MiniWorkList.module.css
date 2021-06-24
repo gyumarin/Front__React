@@ -36,11 +36,6 @@
   margin-right: 40px;
   border-radius: 20px;
   background-color: #66dbff;
-  border: none;
-}
-.button:hover {
-  background-color: #007bbc;
-  color: aliceblue;
 }
 
 /* ------------------------------------ */

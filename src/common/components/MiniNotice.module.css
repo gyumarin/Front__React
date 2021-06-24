@@ -22,7 +22,6 @@
 .notices {
   height: 200px;
   /* border: 1px solid black; */
-
   overflow-y: scroll;
 
   -ms-overflow-style: none; /* IE and Edge */

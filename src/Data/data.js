@@ -30,14 +30,6 @@ const mockData = {
             p_Totalpersent: 110,
             p_success: 66,
         },
-        {
-            p_id: 4,
-            p_title: 'Next class 개발 프로그램',
-            p_date_start: '2021-07-11',
-            p_date_end: '2021-10-11',
-            p_Totalpersent: 110,
-            p_success: 66,
-        },
     ],
 
     notice : [
@@ -265,88 +257,6 @@ const mockData = {
             wl_done: 'true',
             e_id: '0001',
         },
-    ],
-    commits : [
-        {
-            wl_id: 1,
-            p_id: 1,
-            c_man : '강세훈',
-            wl_work_category: '사용자 페이지',
-            wl_work: '메인',
-            wl_work_detail: '진행중인 프로젝트',
-            wl_date_start: '2020-06-16',
-            wl_date_end: '2020-06-16',
-            wl_done: 'true',
-            e_id: '0001',
-            c_comment : '피카츄 라이츄 파이리 꼬부기'
-        },
-        {
-            wl_id: 2,
-            p_id: 2,
-            c_man : '박규민',
-            wl_work_category: '사용자 페이지',
-            wl_work: '메인',
-            wl_work_detail: '진행중인 프로젝트',
-            wl_date_start: '2020-06-16',
-            wl_date_end: '2020-06-16',
-            wl_done: 'true',
-            e_id: '0001',
-            c_comment : '피카츄 라이츄 파이리 꼬부기'
-        },
-        {
-            wl_id: 3,
-            p_id: 3,
-            c_man : '류현태',
-            wl_work_category: '사용자 페이지',
-            wl_work: '메인',
-            wl_work_detail: '진행중인 프로젝트',
-            wl_date_start: '2020-06-16',
-            wl_date_end: '2020-06-16',
-            wl_done: 'true',
-            e_id: '0001',
-            c_comment : '피카츄 라이츄 파이리 꼬부기'
-        },
-        {
-            wl_id: 3,
-            p_id: 3,
-            c_man : '류현태',
-            wl_work_category: '사용자 페이지',
-            wl_work: '메인',
-            wl_work_detail: '진행중인 프로젝트',
-            wl_date_start: '2020-06-16',
-            wl_date_end: '2020-06-16',
-            wl_done: 'true',
-            e_id: '0001',
-            c_comment : '피카츄 라이츄 파이리 꼬부기'
-        },
-        {
-            wl_id: 3,
-            p_id: 3,
-            c_man : '류현태',
-            wl_work_category: '사용자 페이지',
-            wl_work: '메인',
-            wl_work_detail: '진행중인 프로젝트',
-            wl_date_start: '2020-06-16',
-            wl_date_end: '2020-06-16',
-            wl_done: 'true',
-            e_id: '0001',
-            c_comment : '피카츄 라이츄 파이리 꼬부기'
-        },
-        {
-            wl_id: 3,
-            p_id: 3,
-            c_man : '류현태',
-            wl_work_category: '사용자 페이지',
-            wl_work: '메인',
-            wl_work_detail: '진행중인 프로젝트',
-            wl_date_start: '2020-06-16',
-            wl_date_end: '2020-06-16',
-            wl_done: 'true',
-            e_id: '0001',
-            c_comment : '피카츄 라이츄 파이리 꼬부기'
-        },
-       
-        
     ]
 }
 

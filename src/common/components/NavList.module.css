@@ -5,7 +5,7 @@
 }
 
 .boardText {
-  color: #263238;
+  color: myBlack;
   font-weight: bold;
   font-family: "Noto Sans", sans-serif;
 }
@@ -26,11 +26,6 @@
 
 .link {
   text-decoration: none;
-
-  width: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   color: #263238;
 }
 
@@ -41,7 +36,6 @@
   font-family: "Noto Sans", sans-serif;
   padding-left: 1em;
   /* border: 1px solid black; */
-  cursor: pointer;
 }
 ul {
   margin: 0;
