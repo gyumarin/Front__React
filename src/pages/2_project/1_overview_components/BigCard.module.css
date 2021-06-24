@@ -1,0 +1,59 @@
+.card {
+  width: 60rem;
+  height: 35rem;
+  margin: 4rem auto;
+  border-radius: 40px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+
+  display: flex;
+  /* box-sizing: border-box; */
+  border: none;
+  background-color: aliceblue;
+}
+.body {
+  padding: 2rem;
+  width: 60%;
+}
+.title {
+  font-size: 1.5em;
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 0.5em;
+  color: #263238;
+}
+.cardContent {
+  font-size: 1.2rem;
+}
+.text {
+  font-size: 32px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+}
+.date {
+  margin-top: -7px;
+  width: 100%;
+  font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #007bbc;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.peoples {
+  background-color: red;
+}
+
+.detailButton {
+  border-radius: 0px 0px 40px 40px;
+  box-sizing: border-box;
+  background-color: #007bbc;
+  height: 3rem;
+  font-size: 1.2rem;
+  border: none;
+}

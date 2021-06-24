@@ -1,9 +1,11 @@
 import React from 'react';
 import Login from './login_components/Login.jsx'
 
-const LoginPage = (props) =>{
+const LoginPage = ({getLoginToken}) =>{
   return(
-    <><Login/></>
+    <><Login
+      getLoginToken ={getLoginToken}
+    /></>
   );
 }
 

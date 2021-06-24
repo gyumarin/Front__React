@@ -1,0 +1,46 @@
+.container {
+  background-color: #00aaef;
+  border-radius: 5px;
+  display: flex;
+}
+
+.calendar {
+  width: 1600px;
+  padding: 2em;
+  padding-left: 4em;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 71px;
+  margin-left: -35px;
+}
+
+.button1 {
+  width: 70px;
+  height: 150px;
+  border: none;
+  border-radius: 0px 20px 10px 0px;
+  background-color: rgb(247, 247, 141);
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+}
+.button1:hover {
+  background-color: yellow;
+}
+
+.button2 {
+  width: 70px;
+  height: 150px;
+  border: none;
+  border-radius: 0px 20px 10px 0px;
+  background-color: rgb(200, 252, 122);
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+}
+.button2:hover {
+  background-color: greenyellow;
+}
