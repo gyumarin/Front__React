@@ -21,23 +21,9 @@ const mockData = {
             p_date_end: '2021-06-11',
             p_Totalpersent: 110,
             p_success: 66,
-        },
-        {
-            p_id: 3,
-            p_title: 'Next class 개발 프로그램',
-            p_date_start: '2021-07-11',
-            p_date_end: '2021-10-11',
-            p_Totalpersent: 110,
-            p_success: 66,
-        },
-        {
-            p_id: 4,
-            p_title: 'Next class 개발 프로그램',
-            p_date_start: '2021-07-11',
-            p_date_end: '2021-10-11',
-            p_Totalpersent: 110,
-            p_success: 66,
-        },
+        },       
+       
+        
     ],
 
     notice : [

@@ -1,0 +1,126 @@
+.container {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+
+  background-color: aliceblue;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  border-radius: 5px;
+
+  padding-top: 1em;
+  margin-top: 0.7em;
+  height: 100vh;
+}
+
+.title {
+  width: 15rem;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  font-size: 1.5em;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  background-color: #00aaef;
+
+  margin-left: 0.5em;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
+.content {
+  margin-top: 3em;
+  margin-left: 2em;
+  width: 1640px;
+
+  display: flex;
+  flex-direction: column;
+  /* box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44); */
+}
+
+/* ----------------------------------------------------------- */
+.header {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  color: #263238;
+  padding: 0em 2em;
+}
+
+.titleContainer {
+  display: flex;
+  padding: 0.5em;
+  width: 85%;
+}
+
+.titleValue {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.date {
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: 100;
+  margin-left: 0.5em;
+}
+
+.signal {
+  height: 1.55em;
+  width: 3em;
+  background-color: rgb(63, 63, 63);
+  color: aliceblue;
+  margin-right: 0.5em;
+}
+
+.underLine {
+  border-radius: 10px;
+  margin: 0.5em auto;
+  width: 86%;
+  border: 1.2px solid #263238;
+}
+
+/* ---------------------------------------------------------- */
+
+.contentBody {
+  background-color: white;
+  padding: 1em;
+  height: 500px;
+  margin: 0.5rem auto 1em auto;
+  width: 86%;
+}
+
+.underLine2 {
+  margin-left: 9rem;
+  width: 74.2%;
+  border-radius: 10px;
+  border: 1px solid #263238v;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.footer {
+  width: 1400px;
+  display: flex;
+  margin-left: 150px;
+}
+.cell1 {
+  width: 350px;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  background-color: #263238;
+  color: aliceblue;
+  margin-left: -5px;
+}
+.cell {
+  height: 3em;
+  line-height: 3em;
+  width: 350px;
+  text-align: center;
+}

@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './MiniWorkList.module.css';
 import mockData from '../../Data/data.js';
+import {Link} from  'react-router-dom';
+
 const MiniWorkList = (props) => {
     return(
       <div className={styles.container}>
         <div className={styles.header}>
         <div className={styles.title}>업무 리스트</div>
-        <button className={styles.button}>바로가기</button>
+        <Link to="/main/project/workList"><button className={styles.button}>바로가기</button></Link>
         </div>
         <div className={styles.tableContainer}>
           <table className={styles.table}>

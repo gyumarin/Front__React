@@ -1,0 +1,29 @@
+.card {
+  width: 27rem;
+  height: 13rem;
+  margin: 2rem 2rem;
+  border-radius: 40px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+
+  /* box-sizing: border-box; */
+  border: none;
+  background-color: #00aaef;
+}
+.body {
+  width: 60%;
+}
+
+.detailButton {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #00aaef;
+  border: none;
+
+  font-size: 4em;
+
+  margin-left: 2em;
+  margin-top: 0.15em;
+}

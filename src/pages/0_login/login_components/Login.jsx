@@ -26,11 +26,11 @@ const Login = ({getLoginToken}) => {
         }
     }, []);
 
-    useEffect(()=>{
-        axios
-        .get('employee/list')
-        .then((response) => {console.log(response)});        
-    },[])    
+    // useEffect(()=>{
+    //     const data = axios
+    //     .get('employee/dept')
+    //     .then((response) => {console.log( response.data.result)});        
+    // },[])    
 
     const onLogin = (event) => {        
       event.preventDefault();      

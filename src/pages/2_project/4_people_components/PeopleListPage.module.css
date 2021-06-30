@@ -17,3 +17,16 @@
   font-family: "Noto Sans", sans-serif;
   color: #263238;
 }
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 2em;
+  padding-top: 10px;
+  height: 650px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.content::-webkit-scrollbar {
+  display: none;
+}

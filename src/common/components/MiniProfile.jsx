@@ -17,8 +17,8 @@ const MiniProfile = (props) => {
         <hr className={styles.hr}/>
 
         <div className={styles.buttonContainer}>
-          <Link className ={styles.btnMypage}to="/mypage"><i className="fas fa-user"></i> MyPage</Link>        
-          <Link className ={styles.btnMail}to="/mail"><i className="fas fa-envelope"></i> Mail</Link>
+          <Link className ={styles.btnMypage}to="/main/myPage/commute"><i className="fas fa-user"></i> MyPage</Link>        
+          <Link className ={styles.btnMail}to="/main/mail/send/1005"><i className="fas fa-envelope"></i> Mail</Link>
           <button className ={styles.btnLogout}><i className="fas fa-sign-out-alt"></i> Logout</button>
         </div>
         <hr className={styles.hr}/>

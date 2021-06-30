@@ -1,0 +1,62 @@
+.container {
+  background-color: #263238;
+
+  width: 11em;
+  height: 14.5em;
+
+  margin: 0.95em;
+  margin-right: 0.8em;
+  transition: transform 0.1s ease-in;
+
+  border-radius: 10px;
+}
+
+.container:hover {
+  opacity: 0.8;
+  transform: translateY(-10px);
+}
+
+.cardContainer {
+  width: 8rem;
+  height: 8rem;
+  margin-top: 2rem;
+  border-radius: 50%;
+
+  background-color: white;
+  margin: auto;
+  margin-top: 1em;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: myWhite;
+}
+
+.hr {
+  width: 8rem;
+  margin: auto;
+  margin-top: 0.5rem;
+}
+.contentContainer {
+  color: aliceblue;
+  text-align: center;
+  font-size: 0.9em;
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 0.2em;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btnMail {
+  color: rgb(255, 202, 28);
+  font-size: 1rem;
+  text-decoration: none;
+  margin-left: 0.5em;
+  margin-top: 0.3em;
+}

@@ -3,6 +3,7 @@ import MiniWorkList from '../../../common/components/MiniWorkList';
 import ProjectWorkList from './ProjectWorkList';
 import styles from './RightOverView.module.css';
 import Calendar from '../2_workCalendar_components/Calendar';
+import Doughnut2 from './Doughnut2';
 
 const RightOverView = (props) => {
     return(
@@ -15,8 +16,7 @@ const RightOverView = (props) => {
                     </div>
                 </div>
                 <div className={styles.pieChart}>
-                    {/* <div></div>  팀의 전체 퍼센티지 */}
-                    {/* <div></div>  나의 업무 중 수행 퍼센티지*/}
+                    <Doughnut2/>
                 </div>
             </div>
             <div className={styles.down}>

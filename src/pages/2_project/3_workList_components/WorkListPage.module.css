@@ -17,3 +17,15 @@
   font-family: "Noto Sans", sans-serif;
   color: #263238;
 }
+
+.workView {
+  height: 620px;
+  overflow-y: scroll;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.workView::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,50 @@
+.container {
+  background-color: aliceblue;
+  height: 100vh;
+
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  min-width: 1700px;
+}
+.header {
+  padding-top: 2rem;
+  padding-left: 1.5rem;
+  display: flex;
+}
+.title {
+  background-color: #263238;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+
+  text-align: center;
+  width: 20rem;
+  height: 3rem;
+  line-height: 3rem;
+
+  border-radius: 20px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
+.contents {
+  height: 600px;
+  width: 90%;
+  display: flex;
+
+  margin-top: 2em;
+  margin-left: 5em;
+
+  flex-wrap: wrap;
+  overflow-y: scroll;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  border-radius: 10px;
+}
+.contents::-webkit-scrollbar {
+  display: none;
+}

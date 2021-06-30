@@ -45,13 +45,13 @@ const NavList = (props) => {
 
         {/* 3. 게시판 */}
         <Card>
-          <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="2"><span className={styles.boardText}>게시판</span></Accordion.Toggle>
+          <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="2"><Link to="/main/board/notice"><span className={styles.boardText}>게시판</span></Link></Accordion.Toggle>
           <Accordion.Collapse eventKey="2">
             <Card.Body className={styles.navBody}>
                <ul>
-                <li className={styles.list}><Link className={styles.link}to="/">공지사항</Link></li>
-                <li className={styles.list}><Link className={styles.link}to="/">QnA</Link></li>
-                <li className={styles.list}><Link className={styles.link}to="/">조직도</Link></li>
+                <li className={styles.list}><Link className={styles.link}to="/main/board/notice">공지사항</Link></li>
+                <li className={styles.list}><Link className={styles.link}to="/main/board/qna">QnA</Link></li>
+                <li className={styles.list}><Link className={styles.link}to="/main/board/companyTree">조직도</Link></li>
               </ul>
             </Card.Body>
           </Accordion.Collapse>

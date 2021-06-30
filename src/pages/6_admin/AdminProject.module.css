@@ -1,0 +1,56 @@
+.card {
+  width: 27rem;
+  height: 13rem;
+  margin: 2rem 2rem;
+  border-radius: 40px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+
+  /* box-sizing: border-box; */
+  border: none;
+  background-color: aliceblue;
+}
+.body {
+  width: 60%;
+}
+.title {
+  font-size: 1.2em;
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 0.5em;
+  color: #263238;
+}
+.text {
+  font-size: 20px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+}
+.date {
+  margin-top: -15px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #007bbc;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.detailButton {
+  border-radius: 0px 0px 40px 40px;
+  box-sizing: border-box;
+  background-color: #00aaef;
+  border: none;
+  width: 100%;
+}
+
+/* ------------------------------------------------------ */
+.chart {
+  position: relative;
+  left: 255px;
+  top: -125px;
+  width: 150px;
+}

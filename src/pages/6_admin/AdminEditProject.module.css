@@ -1,0 +1,218 @@
+.container {
+  background-color: aliceblue;
+  width: 100%;
+  height: 100vh;
+
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  min-width: 1700px;
+}
+.header {
+  padding-top: 2rem;
+  padding-left: 1.5rem;
+  display: flex;
+}
+.title {
+  background-color: #263238;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+
+  text-align: center;
+  width: 20rem;
+  height: 3rem;
+  line-height: 3rem;
+
+  border-radius: 20px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
+/* ---------------------------------------------------------------- */
+.body {
+  display: flex;
+  padding: 1.5rem;
+}
+
+.left {
+  height: 100vh;
+  width: 28%;
+}
+
+.right {
+  border-left: 2px solid #263238;
+  height: 750px;
+  width: 70%;
+}
+
+.projectName {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #263238;
+  margin-left: 0.8em;
+  margin-bottom: 2px;
+}
+.projectDate {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.9em;
+  color: #00aaef;
+  margin-left: 1em;
+  margin-bottom: 1.5em;
+}
+.teamList {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #263238;
+
+  width: 440px;
+  height: 680px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 1em;
+
+  padding: 1em;
+}
+.workList {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #263238;
+
+  width: 1160px;
+  height: 760px;
+  border-radius: 10px;
+  background-color: white;
+
+  padding: 1em;
+  margin-left: 1.6em;
+}
+
+.button1 {
+  margin-left: 1em;
+  border-radius: 5px;
+  border: none;
+  background-color: #00aaef;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: aliceblue;
+}
+.button2 {
+  margin-left: 0.5em;
+  border: none;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: rgb(248, 68, 68);
+
+  background-color: #66dbff;
+  width: 0px;
+  height: 0px;
+}
+.button1:hover {
+  opacity: 0.8;
+}
+.button2:hover {
+  color: red;
+}
+/* -------------------------------------------------- */
+.peopleList {
+  margin-top: 1em;
+  border-radius: 10px;
+  width: 100%;
+  height: 600px;
+  padding-top: 1em;
+
+  overflow-y: scroll;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  background-color: rgb(216, 216, 216);
+}
+.peopleList::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  width: 90%;
+  height: 60px;
+  line-height: 60px;
+  opacity: 1;
+  background-color: #66dbff;
+
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom: 5px;
+  display: flex;
+}
+.card:hover {
+  opacity: 0.8;
+}
+
+.cardContainer {
+  width: 3rem;
+  height: 3rem;
+  margin-left: 1.5em;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: white;
+}
+.contents {
+  width: 220px;
+  overflow: hidden;
+  display: flex;
+  margin-left: 1.2em;
+  /* border: 1px solid black; */
+  font-size: 0.8em;
+}
+.addTeam {
+  width: 90%;
+  height: 60px;
+  background-color: rgb(124, 124, 124);
+
+  border: none;
+  border-radius: 5px;
+
+  margin: auto;
+  margin-left: 0.9em;
+  text-align: center;
+
+  font-size: 1.5em;
+  color: aliceblue;
+}
+.addTeam:hover {
+  color: #263238;
+  background-color: #00aaef;
+}
+/* -------------------------------------------------- */
+.works {
+  display: flex;
+
+  margin-top: 1em;
+  border-radius: 10px;
+  width: 100%;
+  height: 680px;
+}
+.saveButton {
+  width: 100px;
+  font-size: 1.2em;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  margin-left: 1230px;
+  background-color: #66dbff;
+  border-radius: 120px;
+  border: none;
+}
+.saveButton:hover {
+  color: aliceblue;
+  background-color: #00aaef;
+}

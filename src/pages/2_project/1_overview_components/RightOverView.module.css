@@ -3,7 +3,7 @@
   width: 75rem;
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
@@ -13,12 +13,13 @@
 
 .up {
   display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 .work {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  /* border: 1px solid black; */
+  width: 100%;
 }
 
 .title {
@@ -35,28 +36,33 @@
   font-size: 1.5em;
   background-color: #263238;
   color: aliceblue;
+  width: 350px;
 }
 
 /* ------------------------------------------- */
 .down {
   /* margin-top: 5rem; */
+  width: 60%;
 }
 .calendarContainer {
-  height: 500px;
-  padding: 1em 2em;
-  background-color: #263238;
-  margin: 0 1.5em;
+  height: 870px;
+  padding: 1em 1em;
+  background-color: #00aaef;
   padding-bottom: 1.5em;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .innerContainer {
   margin-top: 10px;
-  height: 450px;
+  height: 840px;
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 .innerContainer::-webkit-scrollbar {
   display: none;
+}
+.pieChart {
+  margin-left: 0.8em;
+  margin-top: 2.5rem;
 }

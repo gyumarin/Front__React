@@ -1,0 +1,137 @@
+.container {
+  width: 1700px;
+  padding: 1em;
+  padding-top: 2em;
+}
+
+.buttons {
+  padding: 0.2em;
+  /* border: 1px solid black; */
+  width: 390px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+.filter {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  color: #263238;
+  margin-right: 0.3em;
+  border-radius: 5px;
+  border: none;
+  width: 80px;
+  background-color: rgb(212, 211, 211);
+}
+.button {
+  margin-left: 0.4em;
+  background-color: rgb(212, 211, 211);
+  border-radius: 5px;
+  border: none;
+
+  font-weight: bold;
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* ------------------------------------------ */
+
+.table {
+  padding: 0.8em;
+  padding-top: 0.2em;
+  width: 100%;
+}
+.header {
+  display: flex;
+}
+.category1 {
+  width: 4%;
+  background-color: #263238;
+  margin-right: 0.2em;
+  height: 2em;
+  line-height: 2em;
+
+  text-align: center;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+}
+.category2 {
+  width: 4%;
+  background-color: #263238;
+  margin-right: 0.2em;
+  height: 2em;
+  line-height: 2em;
+
+  text-align: center;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+}
+.category3 {
+  width: 59%;
+  background-color: #263238;
+  margin-right: 0.2em;
+  height: 2em;
+  line-height: 2em;
+  color: aliceblue;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+}
+.category4 {
+  width: 14%;
+  background-color: #263238;
+  margin-right: 0.2em;
+  height: 2em;
+  line-height: 2em;
+
+  text-align: center;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+}
+.category5 {
+  width: 14%;
+  background-color: #263238;
+  margin-right: 0.2em;
+  height: 2em;
+  line-height: 2em;
+
+  text-align: center;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+}
+.category6 {
+  width: 4%;
+  background-color: #263238;
+  margin-right: 0.2em;
+  height: 2em;
+  line-height: 2em;
+
+  text-align: center;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+}
+.contens {
+  height: 570px;
+  margin-top: 0.5em;
+  border-radius: 5px;
+  padding: 0.3em 0.2em;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
+.deleteButton {
+  width: 80px;
+  height: 40px;
+  font-size: 1em;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  margin-left: 1575px;
+  background-color: #66dbff;
+  border-radius: 20px;
+  border: none;
+}
+.deleteButton:hover {
+  color: aliceblue;
+  background-color: #00aaef;
+}
+.pagination {
+  margin: 0em 45%;
+}

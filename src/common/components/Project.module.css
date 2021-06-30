@@ -5,7 +5,6 @@
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 
-  display: flex;
   /* box-sizing: border-box; */
   border: none;
   background-color: aliceblue;
@@ -44,4 +43,13 @@
   box-sizing: border-box;
   background-color: #00aaef;
   border: none;
+  width: 100%;
+}
+
+/* ------------------------------------------------------ */
+.chart {
+  position: relative;
+  left: 255px;
+  top: -125px;
+  width: 150px;
 }

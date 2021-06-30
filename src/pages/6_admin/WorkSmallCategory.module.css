@@ -1,0 +1,141 @@
+.container {
+  width: 59%;
+  border-radius: 5px;
+  margin: auto;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.title {
+  width: 100%;
+  height: 40px;
+
+  border-radius: 5px;
+
+  background-color: rgb(216, 216, 216);
+  margin: auto;
+  margin-bottom: 0.5em;
+  text-align: center;
+  padding-top: 6px;
+}
+.content {
+  height: 100vh;
+}
+.list {
+  margin-top: 0.2em;
+  padding-top: 0.4em;
+  font-size: 1.2em;
+  width: 100%;
+  height: 45px;
+  background-color: #eb586f;
+  border-radius: 5px;
+  color: #1f2427;
+  cursor: pointer;
+}
+.list:hover {
+  background-color: #f01939;
+}
+.addButton {
+  margin-top: 0.2em;
+  padding-top: 0.2em;
+  font-size: 1.5em;
+  width: 100%;
+  height: 45px;
+  background-color: rgb(124, 124, 124);
+  border-radius: 5px;
+  cursor: pointer;
+  color: aliceblue;
+}
+.addButton:hover {
+  color: aliceblue;
+  background-color: #263238;
+}
+.input {
+  margin-top: 0.3em;
+  padding-top: 0.2em;
+  font-size: 1.2em;
+  text-align: center;
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  border: 1px solid #263238;
+}
+
+/* ---------------------------------------- */
+.formContainer {
+  margin-top: 0.4em;
+  border-radius: 10px;
+  height: 220px;
+  background-color: rgb(155, 153, 153);
+}
+.label {
+  margin-left: 0.1em;
+  margin-right: 0.4em;
+}
+
+.formTitle {
+  padding: 0.5em 0.5em 0.3em 0.5em;
+}
+.formDate {
+  display: flex;
+  padding: 0.5em 0.5em 0.3em 0.5em;
+}
+.formCharge {
+  padding: 0.5em 0.5em 0.3em 0.5em;
+}
+
+.dateContainer {
+  width: 40%;
+}
+.dateContainer1 {
+  width: 40%;
+}
+
+.inputTitle {
+  margin-top: 0.3em;
+  padding-top: 0.2em;
+  /* font-size: 1.2em; */
+  text-align: center;
+  width: 90%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #15303d;
+}
+
+.inputDate {
+  margin-top: 0.3em;
+  padding-top: 0.2em;
+  /* font-size: 1.2em; */
+  text-align: center;
+  width: 74%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #15303d;
+}
+.inputCharge {
+  margin-top: 0.3em;
+  padding-top: 0.2em;
+  /* font-size: 1.2em; */
+  text-align: center;
+  width: 90%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #15303d;
+}
+
+.button {
+  width: 80px;
+  height: 45px;
+  font-family: "Noto Sans", sans-serif;
+  color: #263238;
+  font-weight: bold;
+  border-radius: 20px;
+  background-color: #66dbff;
+  border: none;
+  margin-top: 0.5em;
+  margin-left: 560px;
+}
+.button:hover {
+  background-color: #00aaef;
+  color: aliceblue;
+}

@@ -1,0 +1,70 @@
+.container {
+  position: absolute;
+  z-index: 100;
+  margin-top: -860px;
+  margin-left: 850px;
+
+  height: 600px;
+  background-color: aliceblue;
+  border-radius: 20px;
+
+  padding: 2em;
+  padding-top: 4rem;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
+.title {
+  font-family: "Noto Sans", sans-serif;
+  color: #263238;
+  font-weight: bold;
+  margin-bottom: 2em;
+}
+
+.warn1 {
+  font-size: 0.8em;
+  color: #263238;
+}
+.warn2 {
+  margin-top: -9px;
+  font-size: 0.8em;
+  color: hsla(17, 89%, 46%, 0.74);
+}
+
+/* ---------------------------------------------------------------- */
+.inputs {
+  margin-top: 40px;
+}
+.input {
+  width: 290px;
+  height: 40px;
+  margin-bottom: 2px;
+}
+.button1 {
+  margin-top: 30px;
+  width: 290px;
+  height: 40px;
+  margin-bottom: 2px;
+  border: none;
+  background-color: #66dbff;
+}
+
+.button2 {
+  width: 290px;
+  height: 40px;
+  margin-bottom: 2px;
+  border: none;
+  background-color: rgb(184, 182, 182);
+}
+.button1:hover {
+  opacity: 0.8;
+}
+.button2:hover {
+  opacity: 0.8;
+}
+
+.lock {
+  margin-top: 35px;
+  text-align: center;
+  font-size: 2rem;
+}

@@ -1,0 +1,62 @@
+.container {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  height: 100vh;
+  padding-top: 1em;
+  margin-top: 0.7em;
+  z-index: 100;
+}
+.title {
+  width: 15rem;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  font-size: 1.5em;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  background-color: #00aaef;
+  margin-left: 0.5em;
+
+  border-radius: 20px;
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+.content {
+  width: 1700px;
+}
+
+.header {
+  display: flex;
+  margin-top: 1em;
+  padding: 1em;
+  height: 80px;
+}
+.who {
+  display: flex;
+}
+
+.mailTitle {
+  margin-top: -2em;
+  padding: 0 1em;
+  display: flex;
+}
+
+.contents {
+  padding: 0 1em;
+  margin: 1em;
+  width: 1650px;
+  height: 550px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.sendButton {
+  width: 150px;
+  margin-left: 41%;
+  margin-top: 1em;
+  height: 40px;
+  border-radius: 10px;
+}

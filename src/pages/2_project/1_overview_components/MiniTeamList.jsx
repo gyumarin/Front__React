@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './MiniTeamList.module.css';
+import {Link} from 'react-router-dom';
+
 const array = [
   {
     name : '강세훈',
@@ -39,7 +41,7 @@ const MiniTeamList = (props) => {
                   <div className={styles.position}>{man.position}</div>
                   <div className={man.in?styles.yes:styles.no}></div>
                   <div className={man.out?styles.yes:styles.no}></div>
-                  <button className={styles.buttomMail}><i className="far fa-envelope"></i></button>
+                  <Link to="/main/mail/write"><button className={styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
                 </div>
               );
             })

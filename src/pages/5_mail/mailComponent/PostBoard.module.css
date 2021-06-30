@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+  background-color: #d2f1fa;
+  margin-bottom: 0.2em;
+}
+
+.content1 {
+  width: 4%;
+  margin-right: 0.2em;
+  text-align: center;
+}
+.content2 {
+  width: 4%;
+  margin-right: 0.2em;
+  text-align: center;
+}
+.content3 {
+  width: 59%;
+  margin-right: 0.2em;
+  text-align: center;
+}
+.content4 {
+  width: 14%;
+  margin-right: 0.2em;
+  text-align: center;
+}
+.content5 {
+  width: 14%;
+  margin-right: 0.2em;
+  text-align: center;
+}
+.content6 {
+  width: 4%;
+  margin-right: 0.2em;
+  text-align: center;
+}

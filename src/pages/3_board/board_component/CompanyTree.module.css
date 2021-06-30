@@ -1,0 +1,88 @@
+.container {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+
+  background-color: aliceblue;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  border-radius: 5px;
+
+  padding-top: 1em;
+  margin-top: 0.7em;
+  height: 100vh;
+  width: 1700px;
+}
+.title {
+  width: 15rem;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  font-size: 1.5em;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  background-color: #00aaef;
+
+  margin-left: 0.5em;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+.content {
+  margin-top: 1em;
+  margin-left: 2em;
+  width: 1640px;
+  height: 700px;
+  color: #056599;
+  display: flex;
+}
+
+/* ----------------------------------------------------- */
+
+.tree {
+  width: 25%;
+}
+
+.belongs {
+  border-radius: 10px;
+  width: 100%;
+  background-color: aliceblue;
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
+/* ------------------------------------------------------------ */
+
+.teamTitle {
+  background-color: #263238;
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 400px;
+  height: 1.7em;
+  line-height: 1.7em;
+
+  text-align: left;
+  font-size: 1.2em;
+  border-radius: 5px;
+  color: aliceblue;
+  padding: 0em 1em;
+}
+
+.contents {
+  margin: 1em;
+  margin-left: 1.2rem;
+  border-radius: 10px;
+  width: 1270px;
+  height: 600px;
+  border: 1px solid #263238;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  /* justify-content: center; */
+
+  padding: 1em;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.contents::-webkit-scrollbar {
+  display: none;
+}

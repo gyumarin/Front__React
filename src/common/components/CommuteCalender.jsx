@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 moment.locale('en-GB');
 Calendar.momentLocalizer(moment);
+
 const CommuteCalender = (props) => {
   let count = 0;
 

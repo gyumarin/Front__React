@@ -2,14 +2,14 @@
   background-color: aliceblue;
   height: 100vh;
 
-  border-radius: 20px;
+  border-radius: 5px;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   min-width: 1700px;
 }
 .header {
   padding-top: 2rem;
-  padding-left: 4rem;
+  padding-left: 1.5rem;
   display: flex;
 }
 .title {
@@ -55,13 +55,13 @@
 .carousel {
   margin: auto;
   margin-top: 2rem;
-  background-color: #00aaef;
+  background-color: #90a7b1;
 
   width: 80%;
   height: 700px;
-  min-width: 1600px;
+  min-width: 1650px;
 
-  border-radius: 40px;
+  border-radius: 5px;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
