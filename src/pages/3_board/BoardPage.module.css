@@ -1,7 +1,7 @@
 .container {
   width: 107rem;
-  /* min-width: 107rem; */
-  /* margin-top: -2.5rem; */
+  min-width: 107rem;
+  margin-right: 0.5em;
 }
 
 .header {

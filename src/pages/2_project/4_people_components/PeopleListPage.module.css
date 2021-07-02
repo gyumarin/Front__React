@@ -1,7 +1,6 @@
 .container {
   height: 875px;
   border-radius: 5px;
-  margin-left: 0.5em;
 
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);

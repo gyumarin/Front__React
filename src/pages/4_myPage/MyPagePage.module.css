@@ -1,0 +1,14 @@
+.container {
+  width: 107rem;
+  margin-right: 0.5em;
+}
+.header {
+  margin-bottom: 0.7em;
+}
+.content {
+  width: 107rem;
+}
+
+.forms {
+  border: 1px solid black;
+}

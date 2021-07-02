@@ -9,7 +9,9 @@
   border-radius: 5px;
 
   padding-top: 1em;
-  margin-top: 0.7em;
+  width: 100%;
+  height: 875px;
+  min-height: 875px;
 }
 .title {
   width: 15rem;
@@ -35,8 +37,8 @@
 /* ---------------------------------- */
 
 .forms {
-  width: 1600px;
-  height: 100vh;
+  width: 100%;
+  /* height: 100vh; */
 
   padding-left: 2rem;
 }
@@ -44,9 +46,7 @@
   margin: 0.2em;
 }
 .toggleContainer {
-  position: relative;
-  top: 2px;
-  left: 700px;
+  margin-left: 1550px;
   display: flex;
 }
 .text {

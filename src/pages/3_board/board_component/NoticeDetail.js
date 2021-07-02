@@ -3,9 +3,12 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import styles from './NoticeDetail.module.css';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const NoticeDetail = ({ match }) => {
+    const history = useHistory();
+    const isAdmin = history.location.pathname.split("/")[2] == "admin"? true : false;
+
     const [detail, setDetail] = useState({});
 
     useEffect(() => {
@@ -18,7 +21,6 @@ const NoticeDetail = ({ match }) => {
         );
         await setDetail(result.data.result);        
     };
-    console.log(detail);
 
     return (
         <div className={styles.container}>
@@ -39,9 +41,12 @@ const NoticeDetail = ({ match }) => {
                 <div className={styles.contentBody}>{detail.bn_content}</div>                
             </div>
 
-            <button>
-                <Link to={`/main/admin/board/notice/update/` + match.params.id}>수정</Link>
-            </button>
+            {
+              isAdmin 
+              ? <button><Link to={`/main/admin/board/notice/update/` + match.params.id}>수정</Link></button>
+              : null
+            }
+            
 
             <hr className={styles.underLine2}/>
             <div className={styles.footer}>

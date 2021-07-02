@@ -10,7 +10,8 @@
 
   padding-top: 1em;
   margin-top: 0.7em;
-  height: 100vh;
+  min-width: 107rem;
+  height: 857px;
 }
 
 .title {
@@ -141,6 +142,25 @@
   color: #263238;
 }
 .button:hover {
+  background-color: #00aaef;
+  color: aliceblue;
+}
+
+.button1 {
+  position: relative;
+  left: 1436px;
+  bottom: 5px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+
+  background-color: #66dbff;
+  border-radius: 5px;
+  border: none;
+  width: 120px;
+  padding: 0.4em;
+  color: #263238;
+}
+.button1:hover {
   background-color: #00aaef;
   color: aliceblue;
 }

@@ -10,6 +10,7 @@ import NoticeDetail from './board_component/NoticeDetail';
 import CompanyTree from './board_component/CompanyTree';
 
 import styles from "./BoardPage.module.css";
+import QnaUpdate from './board_component/QnaUpdate';
 
 const BoardPage = (props) => {
     return(
@@ -48,14 +49,18 @@ const BoardPage = (props) => {
                             return <QuestionInsert {...props}></QuestionInsert>;
                         }}
                     ></Route>
+                    <Route
+                        path="/main/board/qna/update/:id"
+                        render={props => {
+                            return <QnaUpdate {...props}></QnaUpdate>;
+                        }}
+                    ></Route>
 
                     {/* 3. 조직도 */}
                     <Route 
                         path="/main/board/CompanyTree">
                         <CompanyTree/>
                     </Route>
-
-
                 </Switch>
             </div>
         </div>

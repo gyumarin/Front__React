@@ -24,12 +24,15 @@ const MyCommuteCalendar = (props) =>{
   const minute = date.getMinutes();  // 분    
 
 
-   useEffect(async ()=>{
-    console.log(commute);
-    await axios.get("/employee/commute/list?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs")
-    .then(res => {
-      console.log(res.data.result);
-      const dataForCalendar = res.data.result.map(data=>{
+  useEffect(()=>{
+    load();
+  },[commute])
+
+  
+
+  const load = async()=>{
+    const result = await axios.get("/employee/commute/list?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs");
+      const dataForCalendar = result.data.result.map(data=>{
         return {
           'title': data.c_end == null ? `출근 ${data.c_start}`: `퇴근 ${data.c_end}`,
           'allDay': true,
@@ -37,33 +40,29 @@ const MyCommuteCalendar = (props) =>{
           'end': new Date(data.c_year, data.c_month-1, data.c_day),
         };
       });
-      return dataForCalendar;
-    })
-    .then(
-      data => {
-        setCommuteData(data);
-      }
-    );
-  },[commute])
+      setCommuteData(dataForCalendar);
+  }
 
 
   // 출퇴근 버튼
-  const onCommute =(event)=>{
+  const onCommute = async (event)=>{
     event.preventDefault();
     const commuteCheck = commute ? window.confirm("퇴근하시겠습니까?") : window.confirm("출근하시겠습니까?");
 
     if(commuteCheck){
       if(commute){      
-      axios.post("/employee/end",{
+      await axios.post("/employee/end",{
         "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs"
       });
-      setCommute(!commute);
+      let f=false;
+      setCommute(f);
       
     }else{
-      axios.post("/employee/start",{
+      await axios.post("/employee/start",{
         "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs"
       });
-      setCommute(!commute);
+      let f=true;
+      setCommute(f);
     }
     }
     else{return;}

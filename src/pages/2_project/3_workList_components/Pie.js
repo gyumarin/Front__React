@@ -66,14 +66,13 @@ const PieChart = ({projectID}) => {
                                     position: "bottom"
                                 },
                             }
-                        }}
-                        
+                        }}                       
                         
                     />
                 </div>
             </div>
             {/*data.datasets이 비어 있지 않으면*/}
-            <div style={{ height:'400px'}}>
+            <div style={{ height:'300px'}}>
                 {data.datasets&&data.datasets[0].data.map((item ,key) => {
                     return (
                         <div style={{margin : '40px 0px 0px 20px'}}>

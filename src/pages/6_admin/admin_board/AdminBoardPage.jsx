@@ -13,13 +13,14 @@ import QnaUpdate from "../../3_board/board_component/QnaUpdate";
 import NoticeUpdate from "../../3_board/board_component/NoticeUpdate";
 
 const AdminBoardPage = (props) => {
-    return(
+    return(        
         <div className={styles.container}>
             {/* Header */}
             <div className={styles.header}> 
                 <AdminBoardTopNavBar/>
-            </div>
-            <div className={styles.content}>
+            </div>        
+
+            <div className={styles.content}>            
                 <Switch>                       
                     {/* 1. 공지사항 */}
                     <Route exact path="/main/admin/board/notice">

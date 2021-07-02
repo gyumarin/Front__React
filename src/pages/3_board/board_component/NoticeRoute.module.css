@@ -9,9 +9,12 @@
   border-radius: 5px;
 
   padding-top: 1em;
-  margin-top: 0.7em;
   height: 875px;
-  width: 100%;
+  width: 107rem;
+  min-width: 107rem;
+
+  margin-top: 0.7em;
+  margin-right: 0.5em;
 }
 .title {
   width: 15rem;
@@ -29,7 +32,4 @@
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
 .content {
-  margin-top: 3em;
-  margin-left: 2em;
-  width: 1640px;
 }

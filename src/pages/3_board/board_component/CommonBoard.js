@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
     const history = useHistory();
-    const isNotice = history.location.pathname.split("/")[4] == "notice" ? true : false;
+    const isNotice = history.location.pathname.split("/")[3] == "notice" ? true : false;
     const isAdmin =  history.location.pathname.split("/")[2] == "admin" ? true : false; 
 
     const onCreateNotice =(event)=>{
@@ -38,6 +38,7 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
                         <tbody>
                             {keys == "bn_id" ? (
                                 <NoticeBoard 
+                                   isAdmin ={isAdmin}
                                    viewList={viewList}
                                 ></NoticeBoard>
                             ) : (
@@ -54,11 +55,13 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
                     <PaginationBasic />                    
                 </div>  
                 {
-                    isNotice 
+                    isAdmin 
                     ? <button className={styles.button} onClick ={onCreateNotice}>공지 등록</button> 
-                    : isAdmin 
+                    : 
+                    isNotice 
                     ? null 
-                    : <button className={styles.button} onClick ={onCreateQna}>QnA 등록</button>}
+                    : <button className={styles.button} onClick ={onCreateQna}>QnA 등록</button>
+                }
             </div>
         );
 };

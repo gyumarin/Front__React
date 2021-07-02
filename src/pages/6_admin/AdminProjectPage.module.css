@@ -1,11 +1,12 @@
 .container {
   background-color: aliceblue;
-  height: 100vh;
+  height: 875px;
 
   border-radius: 5px;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
-  min-width: 1700px;
+  min-width: 107rem;
+  margin-right: 0.5em;
 }
 .header {
   padding-top: 2rem;

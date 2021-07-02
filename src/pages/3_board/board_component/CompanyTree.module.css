@@ -10,8 +10,12 @@
 
   padding-top: 1em;
   margin-top: 0.7em;
-  height: 100vh;
-  width: 1700px;
+  height: 875px;
+
+  width: 107rem;
+  min-width: 107rem;
+
+  margin-right: 0.5em;
 }
 .title {
   width: 15rem;
@@ -30,22 +34,20 @@
 }
 .content {
   margin-top: 1em;
-  margin-left: 2em;
-  width: 1640px;
+  margin-left: 1em;
   height: 700px;
   color: #056599;
   display: flex;
 }
 
 /* ----------------------------------------------------- */
-
 .tree {
-  width: 25%;
+  width: 18.5%;
 }
 
 .belongs {
   border-radius: 10px;
-  width: 100%;
+  width: 80.5%;
   background-color: aliceblue;
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
@@ -71,7 +73,7 @@
   margin: 1em;
   margin-left: 1.2rem;
   border-radius: 10px;
-  width: 1270px;
+  width: 97.5%;
   height: 600px;
   border: 1px solid #263238;
   display: flex;

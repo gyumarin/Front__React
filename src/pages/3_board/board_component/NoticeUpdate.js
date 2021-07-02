@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import styles from './NoticeUpdate.module.css';
 
 const NoticeUpdate = ({ match, history }) => {
     const [inputs, setInputs] = useState({
@@ -43,51 +44,45 @@ const NoticeUpdate = ({ match, history }) => {
     };
 
     return (
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>공지 등록</th>
-                        <th>작성자 : </th>
-                        <th>김민준님</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>제목 : </td>
-                        <td>
-                            <input
-                                type="text"
-                                onChange={onChange}
-                                name="title"
-                                value={title}
-                            ></input>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>내용</td>
-                        <td>
-                            <textarea
-                                name="content"
-                                value={content}
-                                onChange={onChange}
-                            ></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button
-                                onClick={() => {
-                                    onClick();
-                                }}
-                            >
-                                수정
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div className={styles.container}>
+            <div className={styles.title}>공지 수정</div>
+            <div className={styles.content}> 
+
+            <div className={styles.header}> 
+                <div>작성자 :</div>
+                <div>김민준</div>
+            </div> 
+
+
+            <div className={styles.body}>                
+                <div>
+                    <label className={styles.labelTitle} htmlFor="title">제목</label>                                           
+                    <input
+                        id="title"
+                        type="text"
+                        onChange={onChange}
+                        name="title"
+                        value={title}
+                        className={styles.inputTitle}
+                    ></input>                       
+                </div>
+
+                <div className={styles.textareaContainer}>
+                    <label className={styles.labelTitle} htmlFor="content">내용</label>                        
+                    <textarea
+                        className={styles.textarea}
+                        id="content"
+                        name="content"
+                        value={content}
+                        onChange={onChange}
+                    ></textarea>                        
+                </div> 
+
+                <button className = {styles.sendButton} onClick={() => {onClick();}}>수정하기</button>
+                        
+            </div>
         </div>
+    </div>
     );
 };
 

@@ -1,5 +1,5 @@
 .container {
-  width: 1700px;
+  width: 100%;
   padding: 1em;
   padding-top: 2em;
 }
@@ -7,10 +7,11 @@
 .buttons {
   padding: 0.2em;
   /* border: 1px solid black; */
-  width: 390px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   border-radius: 10px;
+  margin-left: 10px;
+  width: 98.6%;
 }
 .filter {
   font-family: "Noto Sans", sans-serif;
@@ -27,7 +28,7 @@
   background-color: rgb(212, 211, 211);
   border-radius: 5px;
   border: none;
-
+  width: 150px;
   font-weight: bold;
   color: #263238;
   font-family: "Noto Sans", sans-serif;

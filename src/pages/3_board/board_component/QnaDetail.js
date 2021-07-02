@@ -40,15 +40,20 @@ const QnaDetail = ({ match }) => {
                         </div> 
                         <div className={styles.date}>{`작성 : ${detail.d_name}  |  작성 일자 : ${detail.bq_date}  |  조회 : ${detail.bq_hits}`}</div>
                     </div>  
-                    <hr className   ={styles.underLine}/>                    
+                    <hr className={styles.underLine}/>                    
                     <div className={styles.contentBody}>{detail.bq_content}</div>                                    
                 </div>
                 {
-                    isAdmin ? <button className={styles.button} onClick={onReply}>답변하기</button> : null
+                    isAdmin 
+                    ? <button className={styles.button} onClick={onReply}>답변하기</button>                     
+                    : null
                 }
-                <button>
-                    <Link to={`/main/admin/board/qna/update/${detail.bq_id}`}>수정하기</Link>
-                </button>
+                {
+                    isAdmin 
+                    ? <button className={styles.button1}><Link to={`/main/admin/board/qna/update/${detail.bq_id}`}>수정하기</Link></button>
+                    : <button className={styles.button1}><Link to={`/main/board/qna/update/${detail.bq_id}`}>수정하기</Link></button>
+                }
+                
 
                 <hr className={styles.underLine2}/>
                 <div className={styles.footer}>                    
