@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const QnaBoard = ({ viewList }) => {
+const QnaBoard = ({ viewList, isAdmin }) => {
     return (
         <>
             {viewList.map((value, key) => {
@@ -13,9 +13,12 @@ const QnaBoard = ({ viewList }) => {
                             <td></td>
                         )}
                         <td>
-                            <Link to={`/main/board/qna/detail/${value.bq_id}`}>
-                                {value.bq_title}
-                            </Link>
+                            {
+                                isAdmin
+                                ? <Link to={`/main/admin/board/qna/detail/${value.bq_id}`}>{value.bq_title}</Link> 
+                                : <Link to={`/main/board/qna/detail/${value.bq_id}`}>{value.bq_title}</Link>
+                            }
+                            
                         </td>
                         <td>{value.e_name}</td>
                         <td>{value.bq_date}</td>

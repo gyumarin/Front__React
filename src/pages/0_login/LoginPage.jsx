@@ -4,7 +4,7 @@ import Login from './login_components/Login.jsx'
 const LoginPage = ({getLoginToken}) =>{
   return(
     <><Login
-      getLoginToken ={getLoginToken}
+      getLoginToken ={()=>getLoginToken()}
     /></>
   );
 }

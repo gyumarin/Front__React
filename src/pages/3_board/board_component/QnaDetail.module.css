@@ -110,17 +110,37 @@
   margin-left: 150px;
 }
 .cell1 {
-  width: 350px;
-  height: 3em;
-  line-height: 3em;
+  width: 200px;
+  height: 2em;
+  line-height: 2em;
   text-align: center;
   background-color: #263238;
   color: aliceblue;
   margin-left: -5px;
 }
 .cell {
-  height: 3em;
-  line-height: 3em;
-  width: 350px;
+  height: 2em;
+  line-height: 2em;
+  width: 500px;
   text-align: center;
+}
+
+/* ---------------------------------------------------- */
+.button {
+  position: relative;
+  left: 1436px;
+  bottom: 580px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+
+  background-color: #66dbff;
+  border-radius: 5px;
+  border: none;
+  width: 120px;
+  padding: 0.4em;
+  color: #263238;
+}
+.button:hover {
+  background-color: #00aaef;
+  color: aliceblue;
 }

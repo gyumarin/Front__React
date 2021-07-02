@@ -15,7 +15,7 @@ const Project = (props) => {
       </Card.Body>
         
       <Card.Body className={styles.chart}>        
-        <DoughnutChart/>
+        <DoughnutChart projectID = {props.id}/>
       </Card.Body>
 
       <Link  to="/main/project/overview"><Button  className = {styles.detailButton} variant="primary">상세보기</Button></Link>

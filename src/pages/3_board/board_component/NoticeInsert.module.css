@@ -1,0 +1,85 @@
+.container {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  height: 100vh;
+  padding-top: 1em;
+  margin-top: 0.7em;
+  z-index: 100;
+}
+.title {
+  width: 15rem;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  font-size: 1.5em;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  background-color: #00aaef;
+  margin-left: 0.5em;
+
+  border-radius: 20px;
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+.content {
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 1650px;
+  height: 730px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  margin-top: 1em;
+  padding: 1em;
+  height: 40px;
+}
+.who {
+  width: 80%;
+}
+.search {
+  width: 20%;
+}
+.label {
+  margin-right: 1em;
+}
+.input1 {
+  width: 1200px;
+}
+
+.select {
+  position: relative;
+  height: 1.85em;
+  top: -0px;
+  left: 48px;
+  width: 239px;
+}
+/* ------------------------------------------------------------- */
+.body {
+  padding: 1em;
+}
+.labelTitle {
+  margin-right: 2em;
+}
+.inputTitle {
+  width: 93.4%;
+}
+
+.textarea {
+  margin-left: 4em;
+  width: 93.5%;
+  height: 500px;
+  margin-top: 1em;
+}
+
+.sendButton {
+  width: 100px;
+  margin-left: 46.5%;
+  height: 40px;
+  border-radius: 10px;
+}

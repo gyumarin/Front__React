@@ -1,5 +1,7 @@
 @value myBlack, myBlue0, myBlue1, myBlue2, myBlue3 from '../../../common/common_css/common.css';
-
+.body {
+  height: 875px;
+}
 .leftBody {
   background-color: myBlue0;
   margin-right: 0.5em;
@@ -9,8 +11,10 @@
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
+
 .rightBody {
-  min-width: 75rem;
+  width: 76.5rem;
+  min-width: 76.5rem;
   display: flex;
   flex-direction: column;
 

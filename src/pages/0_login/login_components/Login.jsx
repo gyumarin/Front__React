@@ -5,15 +5,17 @@ import styles from './Login.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 
-export function login(userID, pwd) {
-  console.log(userID, pwd);
-    return 
-}
-
 const Login = ({getLoginToken}) => {
-    const [empID, setEmpID] = useState('');
-    const [empPWD, setEmpPWD] = useState('');
+
+    useEffect(() => {
+        if(sessionStorage.getItem('token')){
+            history.push('/main/home');
+        }
+      }, [])
+
     const history = useHistory();
+    const [empID, setEmpID] = useState('');
+    const [empPWD, setEmpPWD] = useState('');    
 
     const onChangeID = useCallback((e) => {
         switch (e.target.id) {
@@ -24,19 +26,24 @@ const Login = ({getLoginToken}) => {
                 setEmpPWD(e.target.value);
                 break;
         }
-    }, []);
+    }, []); 
 
-    // useEffect(()=>{
-    //     const data = axios
-    //     .get('employee/dept')
-    //     .then((response) => {console.log( response.data.result)});        
-    // },[])    
-
-    const onLogin = (event) => {        
-      event.preventDefault();      
-      sessionStorage.setItem('token', 'testtoken');
-      getLoginToken(sessionStorage.getItem('token'));   
-      history.push('/main/home');
+    const onLogin = (event) => {
+        event.preventDefault();
+        axios.post('/employee/signin', {
+            e_id: empID,
+            e_password: empPWD,
+        })
+        .then((res) => {
+            if (res.data.code == 500) {
+                alert('ID 또는 비밀번호를 다시 확인해 주세요.');
+            } else {
+                sessionStorage.setItem('token', JSON.stringify(res.data.result));
+                getLoginToken(sessionStorage.getItem('token'))
+                history.push('/main/home');
+                alert('로그인 되었습니다.')
+            }
+        })        
     };
 
     return (

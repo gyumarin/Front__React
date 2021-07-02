@@ -104,7 +104,7 @@ const NoteInsert = ({ history }) => {
 
 
             <div className={styles.body}>
-                <div className>
+                <div >
                     <label className={styles.labelTitle} htmlFor="title">제목</label>                    
                     <input
                         className={styles.inputTitle}
@@ -117,13 +117,12 @@ const NoteInsert = ({ history }) => {
                 
                 <div className={styles.textareaContainer}>
                     <textarea
-                    className={styles.textarea}
+                        className={styles.textarea}
                         type="text"
                         name="content"
                         onChange={onChange}
                     ></textarea>
-                </div>
-               
+                </div>               
             </div>
             <button className={styles.sendButton}   onClick={nInsert}>보내기</button>
         </div>

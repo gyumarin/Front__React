@@ -6,8 +6,12 @@ import { useEffect } from "react";
 import CommonBoard from "./CommonBoard";
 import SearchNotice from "./SearchNotice";
 import styles from './NoticeRoute.module.css';
+import { useHistory } from 'react-router-dom';
 
 const NoticeRoute = () => {
+
+    const history = useHistory();
+    const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
 
     const [list, setList] = useState([]);               //전체리스트
     const [viewList, setViewList] = useState([]);       //해당번호에 보여질 리스트
@@ -104,9 +108,11 @@ const NoticeRoute = () => {
         );
     };
 
+
+
     return (
         <div className={styles.container}>
-            <div className={styles.title}>공지사항</div>
+            <div className={styles.title}>{isAdmin ? "공지사항 관리" : "공지사항"}</div>
             <div className={styles.content}>
                 <SearchNotice
                     setList={setList}

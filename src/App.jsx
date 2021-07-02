@@ -9,12 +9,8 @@ import { useEffect } from 'react';
 function App() {
 
   const [loginToken, setLoginToken] = useState('');
-
-  const getLoginToken =()=>{
-    setLoginToken(sessionStorage.getItem('token'));
-    console.log('로그인 버튼 동작');
-    console.log(loginToken);
-  }  
+  const getLoginToken =()=>{setLoginToken(sessionStorage.getItem('token'));}
+  const removeLoginToken =()=>{setLoginToken('');}
 
   return (
     <div className='body'>
@@ -24,15 +20,18 @@ function App() {
           {/* 0. 로그인 창 */}
           <Route exact path="/">
             <LoginPage 
-              getLoginToken = {getLoginToken}
+              getLoginToken = {()=>getLoginToken()}
             />
           </Route>          
           {/* 1. 홈페이지 창 */}
-          <Route path="/main"><BasicPage/></Route>         
+          <Route path="/main"><BasicPage
+            removeLoginToken = {()=>removeLoginToken()}
+          /></Route>         
         </Switch>
       </BrowserRouter>
     </div>
   );
+  
 }
 
 export default App;

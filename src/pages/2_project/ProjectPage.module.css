@@ -1,9 +1,15 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-width: 1700px;
 
-  border-radius: 40px;
+  width: 107rem;
+  min-width: 107rem;
+  margin-top: -2.5rem;
+}
+
+.header {
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .content {

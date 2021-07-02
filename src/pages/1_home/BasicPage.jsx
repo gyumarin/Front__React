@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './BasicPage.module.css';
 import LeftNavBar from '../../common/components/LeftNavBar.jsx';
 import Title from '../../common/components/Title.jsx';
@@ -12,26 +12,27 @@ import BoardPage from '../3_board/BoardPage';
 import AdminProjectPage from '../6_admin/AdminProjectPage';
 import AdminEditProject from '../6_admin/AdminEditProject';
 import MailPage from '../5_mail/MailPage';
+import AdminBoardPage from '../6_admin/admin_board/AdminBoardPage';
 
 
-const BasicPage = (props) =>{
+const BasicPage = ({removeLoginToken}) =>{
   
-  return(
-  
+  return(  
     <div className={styles.wholeContainer}>
       <Title/>
       <div className={styles.contentContainer}>
-        <LeftNavBar/>
+        <LeftNavBar removeLoginToken={()=>removeLoginToken()}/>
         <div className={styles.body}>
           <Switch>
             <Route path="/main/home"><HomePage/></Route>
             <Route path="/main/projectList"><ProjectListPage/></Route>
-            <Route path="/main/Project"><ProjectPage/></Route>
+            <Route path="/main/Project/:id"><ProjectPage/></Route>
             <Route path="/main/myPage"><MyPagePage/></Route>
             <Route path="/main/board"><BoardPage/></Route>
             <Route path="/main/mail"> <MailPage/></Route>
             <Route path="/main/admin/project"><AdminProjectPage/></Route>
             <Route path="/main/admin/editProject"><AdminEditProject/></Route>
+            <Route path="/main/admin/board"><AdminBoardPage/></Route>
           </Switch>
         </div>
       </div>

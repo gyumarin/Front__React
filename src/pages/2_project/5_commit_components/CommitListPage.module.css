@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  height: 875px;
   border-radius: 5px;
   margin-left: 0.5em;
 
@@ -19,9 +19,9 @@
 }
 
 .workView {
-  height : 620px;
+  height: 620px;
   overflow-y: scroll;
-  
+
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }

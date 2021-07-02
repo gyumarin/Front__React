@@ -1,20 +1,26 @@
-import React from 'react';
-import mockData from '../../Data/data';
+import React,{useEffect, useState} from 'react';
+import axios from 'axios';
+
 import styles from  './ProjectPageList.module.css';
-
 import Coverflow from 'react-coverflow';
-import { StyleRoot } from 'radium';
-
 import BigCard from './1_overview_components/BigCard';
 
 const ProjectListPage = (props) => {
-    const projects = mockData.project;
+
+    const [projectList, setProjectList] = useState([])
+
+    useEffect(() => {
+        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        axios.get(`/project/list?token=${tmp}`).then(res=>{
+            setProjectList(res.data.result)
+        })
+    }, [])
 
     return(
         <div className={styles.container}>
             <div className={styles.header}>
                <div className={styles.title}>진행중인 프로젝트</div>
-               <span className={styles.count}>{projects.length}개</span>
+               <span className={styles.count}>{projectList.length}개</span>
             </div> 
 
 
@@ -37,7 +43,7 @@ const ProjectListPage = (props) => {
                         }}
                     >
                     {
-                        projects.map((project)=>{
+                        projectList.map((project)=>{
                             return( 
                                 <BigCard
                                     id ={project.p_id}

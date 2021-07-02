@@ -3,6 +3,8 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import styles from './NoticeDetail.module.css';
 
+import { Link } from 'react-router-dom';
+
 const NoticeDetail = ({ match }) => {
     const [detail, setDetail] = useState({});
 
@@ -37,6 +39,9 @@ const NoticeDetail = ({ match }) => {
                 <div className={styles.contentBody}>{detail.bn_content}</div>                
             </div>
 
+            <button>
+                <Link to={`/main/admin/board/notice/update/` + match.params.id}>수정</Link>
+            </button>
 
             <hr className={styles.underLine2}/>
             <div className={styles.footer}>

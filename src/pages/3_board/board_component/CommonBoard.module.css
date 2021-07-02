@@ -15,7 +15,26 @@
   height: 90%;
 }
 .pagination {
+  display: flex;
   margin-top: 0.5em;
   position: sticky;
   bottom: 0.5em;
+}
+.button {
+  position: relative;
+  left: 745px;
+  bottom: 50px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+
+  background-color: #66dbff;
+  border-radius: 5px;
+  border: none;
+  width: 120px;
+  padding: 0.4em;
+  color: #263238;
+}
+.button:hover {
+  background-color: #00aaef;
+  color: aliceblue;
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import styles from './NoticeInsert.module.css';
 import axios from "axios";
-import styles from "./QuestionInsert.module.css";
 
-const QuestionInsert = ({ history }) => {
+const NoticeInsert = ({ history }) => {
     const [inputs, setInputs] = useState({
         title: "",
         content: "",
@@ -20,24 +20,24 @@ const QuestionInsert = ({ history }) => {
     };
 
     const ntInsert = async () => {
-        const result = await axios.post("/board/qna/qinsert", {
-            bq_title: inputs.title,
-            bq_content: inputs.content,
+        const result = await axios.post("/board/notice/insert", {
+            bn_title: inputs.title,
+            bn_content: inputs.content,
             token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs",
         });
-        history.push("/main/board/qna");
+        history.push("/main/admin/board/notice");
     };
 
     return (
         <div className={styles.container}>
-            <div className={styles.title}>QnA 등록</div>
-                <div className={styles.content}> 
-
+            <div className={styles.title}>공지사항 등록</div>
+            <div className={styles.content}> 
+            
                 <div className={styles.header}> 
-                    <div>작성자 : 김민준</div>
-                </div>
-                
-
+                    <div>작성자 :</div>
+                    <div>김민준</div>
+                </div> 
+               
                 <div className={styles.body}>
                     <div>
                         <label className={styles.labelTitle} htmlFor="title">제목</label>                                           
@@ -60,13 +60,12 @@ const QuestionInsert = ({ history }) => {
                             value={content}
                             onChange={onChange}
                         ></textarea>                        
-                    </div>     
-
-                    <button  className = {styles.sendButton} onClick={() => {ntInsert();}}>질문 등록</button> 
-                </div>
+                    </div>                   
+                </div>                
+                    <button  className = {styles.sendButton} onClick={() => {ntInsert();}}>등록</button>                        
             </div>
         </div>
     );
 };
 
-export default QuestionInsert;
+export default NoticeInsert;

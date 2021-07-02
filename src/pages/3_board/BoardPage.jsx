@@ -5,16 +5,19 @@ import BoardTopNavBar from './BoardTopNavBar';
 import NoticeRoute from './board_component/NoticeRoute';    
 import QnaRoute from './board_component/QnaRoute';
 import QnaDetail from './board_component/QnaDetail';
+import QuestionInsert from './board_component/QuestionInsert';
 import NoticeDetail from './board_component/NoticeDetail';
 import CompanyTree from './board_component/CompanyTree';
 
+import styles from "./BoardPage.module.css";
+
 const BoardPage = (props) => {
     return(
-        <div>
-            <div>
+        <div  className={styles.container}>
+            <div className={styles.header}>
                <BoardTopNavBar/> 
             </div>
-            <div>
+            <div className={styles.content}>
                 <Switch>
                     {/* 1. 공지사항 */}
                     <Route exact path="/main/board/notice">
@@ -36,6 +39,14 @@ const BoardPage = (props) => {
                      <Route
                         path="/main/board/qna/detail/:id"
                         render={props => { return <QnaDetail {...props}></QnaDetail>;}}
+                    ></Route>
+
+                    {/* 2-2. QnA insert */}
+                    <Route
+                        path="/main/board/qna/insert"
+                        render={props => {
+                            return <QuestionInsert {...props}></QuestionInsert>;
+                        }}
                     ></Route>
 
                     {/* 3. 조직도 */}

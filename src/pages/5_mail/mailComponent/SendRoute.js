@@ -19,6 +19,10 @@ const SendRoute = ({ match }) => {
 
     const [checked, setChecked] = useState([]);
 
+    const [value, setValue] = useState("");
+    const [readView, setReadView] = useState([]);
+    const [nreadView, setNreadView] = useState([]);
+
     const listMax = 3;
 
     useEffect(() => {
@@ -65,6 +69,93 @@ const SendRoute = ({ match }) => {
             checkn.push(false);
             setChecked(checkn);
         });
+
+        setReadView(result.data.result.filter(e => e.n_done == true));
+        setNreadView(result.data.result.filter(e => e.n_done != true));
+    };
+
+    const all = async () => {
+        const result = await axios.get("/note/send/" + match.params.id);
+        await setList(result.data.result);
+        setViewList(result.data.result.slice(0, listMax));
+        let c = parseInt(result.data.result.length / listMax);
+        if (result.data.result.length % listMax != 0) {
+            c++;
+        }
+        if (c < 5) {
+            setLastCount(c);
+        }
+        setCount(c);
+        setActive(1);
+        let checkn = [];
+        result.data.result.slice(0, listMax).forEach(e => {
+            checkn.push(false);
+            setChecked(checkn);
+        });
+        setReadView(result.data.result.filter(e => e.n_done == true));
+        setNreadView(result.data.result.filter(e => e.n_done != true));
+    };
+
+    const read = () => {
+        setList(readView);
+        setViewList(readView.slice(0, listMax));
+        let c = parseInt(readView.length / listMax);
+        if (readView.length % listMax != 0) {
+            c++;
+        }
+        if (c < 5) {
+            setLastCount(c);
+        }
+        setCount(c);
+        setActive(1);
+        let checkn = [];
+        readView.slice(0, listMax).forEach(e => {
+            checkn.push(false);
+            setChecked(checkn);
+        });
+    };
+
+    const nread = () => {
+        setList(nreadView);
+        setViewList(nreadView.slice(0, listMax));
+        let c = parseInt(nreadView.length / listMax);
+        if (nreadView.length % listMax != 0) {
+            c++;
+        }
+        if (c < 5) {
+            setLastCount(c);
+        }
+        setCount(c);
+        setActive(1);
+        let checkn = [];
+        nreadView.slice(0, listMax).forEach(e => {
+            checkn.push(false);
+            setChecked(checkn);
+        });
+    };
+
+    const search = async () => {
+        const result = await axios.get(
+            "/note/send/search?value=" + value + "&e_id=1005"
+        );
+        setList(result.data.result);
+        setViewList(result.data.result.slice(0, listMax));
+        let c = parseInt(result.data.result.length / listMax);
+        if (result.data.result.length % listMax != 0) {
+            c++;
+        }
+        if (c < 5) {
+            setLastCount(c);
+        }
+        setCount(c);
+        setActive(1);
+        let checkn = [];
+        result.data.result.slice(0, listMax).forEach(e => {
+            checkn.push(false);
+            setChecked(checkn);
+        });
+        setReadView(result.data.result.filter(e => e.n_done == true));
+        setNreadView(result.data.result.filter(e => e.n_done != true));
     };
 
     let items = [];
@@ -141,6 +232,12 @@ const SendRoute = ({ match }) => {
                     deleteNote={deleteNote}
                     checked={checked}
                     setChecked={setChecked}
+                    search={search}
+                    value={value}
+                    setValue={setValue}
+                    all={all}
+                    read={read}
+                    nread={nread}
                 ></SendNoteBoard>
             </div>
         </div>

@@ -14,15 +14,32 @@ const PostNoteBoard = ({
     deleteNote,
     checked,
     setChecked,
+    search,
+    value,
+    setValue,
+    all,
+    read,
+    nread,
 }) => {
     if (list != null) {
+        const onChange = e => {
+            setValue(e.target.value);
+        };
         return (
             <div className={styles.container}>   
                 <div className={styles.buttons}>
-                    <button className={styles.filter}>전체</button>
-                    <button className={styles.filter}>읽음</button>
-                    <button className={styles.filter}>안읽음</button>|
+                    <button onClick={all} className={styles.filter}>전체</button>
+                    <button onClick={read} className={styles.filter}>읽음</button>
+                    <button onClick={nread} className={styles.filter}>안읽음</button>|
                     <button className={styles.button}><Link to="/main/mail/write">쪽지 보내기</Link></button>
+                    <input type="text" value={value} onChange={onChange}></input>
+                    <button
+                        onClick={() => {
+                            search();
+                        }}
+                    >
+                        검색
+                    </button>
                 </div>
 
                 <div className={styles.table}>

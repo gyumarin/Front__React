@@ -1,8 +1,19 @@
 import React from 'react';
 import styles from './MiniProfile.module.css';
 import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router';
 
-const MiniProfile = (props) => {
+const MiniProfile = ({removeLoginToken, userInfo}) => {
+  
+  const history = useHistory();
+  const onLogout = () =>{
+    removeLoginToken();
+    sessionStorage.removeItem('token')
+    history.push('/');
+    alert('로그아웃 되었습니다.')
+  }
+
+
   return(
     <div className={styles.container}>
       
@@ -13,13 +24,13 @@ const MiniProfile = (props) => {
       
       {/* 사진 밑으로 */}
       <div className={styles.contentContainer}>
-        <span>이주빈</span> / <span>풀스택</span>
+        <span>{userInfo.e_name}</span> / <span>{userInfo.e_rank}</span>
         <hr className={styles.hr}/>
 
         <div className={styles.buttonContainer}>
           <Link className ={styles.btnMypage}to="/main/myPage/commute"><i className="fas fa-user"></i> MyPage</Link>        
           <Link className ={styles.btnMail}to="/main/mail/send/1005"><i className="fas fa-envelope"></i> Mail</Link>
-          <button className ={styles.btnLogout}><i className="fas fa-sign-out-alt"></i> Logout</button>
+          <button onClick ={onLogout} className ={styles.btnLogout}><i className="fas fa-sign-out-alt"></i> Logout</button>
         </div>
         <hr className={styles.hr}/>
       </div> 

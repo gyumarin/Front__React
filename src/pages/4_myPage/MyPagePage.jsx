@@ -6,7 +6,7 @@ import MyPageCommuteCalendar from './calendar_component/MyPageCommuteCalendar';
 import MyPageTopNavBar from './MyPageTopNavBar';
 import Profile from './profile_component/Profile';
 
-const MyPagePage = (props) => {
+const MyPagePage = ({pageMode}) => {
     return(
         <div className={styles.container}>
             <div className={styles.header}>

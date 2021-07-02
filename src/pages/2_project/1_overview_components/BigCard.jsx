@@ -15,10 +15,10 @@ const BigCard = (props) => {
             <Card.Text className={styles.cardContent}>인원 : 8명</Card.Text>  
             <Card.Text className={styles.cardContent}>프로젝트 내용 : 궁금해 궁금해 궁금해</Card.Text>       
             <div className={styles.chart}>
-                <Doughnut3/>
+                <Doughnut3 projectID = {props.id} />
             </div> 
         </Card.Body>
-        <Link to="/main/project/overview"><Button className = {styles.detailButton} variant="primary">상세보기</Button></Link>
+        <Link to={`/main/project/${props.id}`}><Button className = {styles.detailButton} variant="primary">상세보기</Button></Link>
     </Card>
     );
 };

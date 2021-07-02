@@ -151,18 +151,8 @@ const WorkListPage = (props) => {
                  await setMaincate('김치b')
                  await setMaincate('전체')
             })
-        }
-        
+        }        
     }
-
-    
-
-
-
-
-
-    
-
 
     return(
         
@@ -175,7 +165,7 @@ const WorkListPage = (props) => {
                     <div></div>
                     
                     <div style={{ gridColumn:'2/3', gridRow:'1/4' , height: '100px', 
-                    display:'flex', margin:'11px 7px 0px 7px', padding:'85px 0px 0px 0px'}}>
+                        display:'flex', margin:'11px 7px 0px 7px', padding:'85px 0px 0px 0px'}}>
                     
                         <Card style={{height: '90px', margin: '5px'}}>
                             <Form style={{margin: '3px',padding:'10px 0px 0px 10px', width: '280px'}}>

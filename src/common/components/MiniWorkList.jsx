@@ -1,9 +1,21 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
+import axios from 'axios';
 import styles from './MiniWorkList.module.css';
 import mockData from '../../Data/data.js';
 import {Link} from  'react-router-dom';
 
+
 const MiniWorkList = (props) => {
+  
+  const [workList, setWorkList] = useState([])
+    useEffect(() => {
+        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        axios.get(`/project/work/list/person/all?token=${tmp}`).then(res=>{
+          setWorkList(res.data.result)
+          
+        })
+    }, [])
+
     return(
       <div className={styles.container}>
         <div className={styles.header}>
@@ -24,7 +36,7 @@ const MiniWorkList = (props) => {
 
             <tbody >
               {
-                mockData.work.map((work)=>{
+                workList.map((work)=>{
                   return (<tr className={styles.tr}>
                     <td className={styles.numtd}>{work.wl_id}</td>
                     <td className={styles.td}>{work.wl_work_category}</td>

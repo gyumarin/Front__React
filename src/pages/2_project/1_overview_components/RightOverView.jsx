@@ -22,7 +22,7 @@ const RightOverView = (props) => {
             <div className={styles.down}>
                 <div className={styles.calendarContainer}>
                     <div className={styles.innerContainer}>
-                    <Calendar />
+                        <Calendar />
                     </div>
                 </div>
             </div>

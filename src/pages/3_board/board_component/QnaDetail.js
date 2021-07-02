@@ -2,8 +2,15 @@ import React from "react";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import styles from './QnaDetail.module.css';
+import { useHistory, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const QnaDetail = ({ match }) => {
+    const history = useHistory();
+    const id = useParams().id;
+    
+    const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
+
     const [detail, setDetail] = useState({});
 
     useEffect(() => {
@@ -14,13 +21,18 @@ const QnaDetail = ({ match }) => {
         const result = await axios.get("/board/qna/detail/" + match.params.id);
         await setDetail(result.data.result);
     };
+
+    const onReply =(event)=>{
+        event.preventDefault();
+        history.push(`/main/admin/board/qna/insert/${id}`);
+    }
+    
     return (
         <div className={styles.container}>
             <div className={styles.title}>QnA</div>
             
             <div className={styles.contContainer}>
                 <div className={styles.content}>
-
                     <div className={styles.header}>                      
                         <div className={styles.titleContainer}>
                             <div className={styles.signal}>QnA</div>
@@ -31,6 +43,12 @@ const QnaDetail = ({ match }) => {
                     <hr className   ={styles.underLine}/>                    
                     <div className={styles.contentBody}>{detail.bq_content}</div>                                    
                 </div>
+                {
+                    isAdmin ? <button className={styles.button} onClick={onReply}>답변하기</button> : null
+                }
+                <button>
+                    <Link to={`/main/admin/board/qna/update/${detail.bq_id}`}>수정하기</Link>
+                </button>
 
                 <hr className={styles.underLine2}/>
                 <div className={styles.footer}>                    

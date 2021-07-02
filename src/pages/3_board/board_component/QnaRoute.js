@@ -6,8 +6,13 @@ import { useEffect } from "react";
 import CommonBoard from "./CommonBoard";
 import SearchQna from "./SearchQna";
 import styles from './QnaRoute.module.css';
+import { useHistory } from 'react-router';
 
 const QnaRoute = () => {
+
+    const history = useHistory();
+    const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
+
     const [list, setList] = useState([]);
     const [viewList, setViewList] = useState([]);
     const [active, setActive] = useState(1);
@@ -122,7 +127,7 @@ const QnaRoute = () => {
     };
     return (
         <div className={styles.container}>
-            <div className={styles.title}>QnA</div>
+            <div className={styles.title}>{isAdmin? "QnA 관리" : "QnA"}</div>
             <div className={styles.content}>
                 <SearchQna
                     setList={setList}

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import styles from "./QuestionInsert.module.css";
+import styles from './AnswerInsert.module.css';
 
-const QuestionInsert = ({ history }) => {
+const AnswerInsert = ({ history, match }) => {
     const [inputs, setInputs] = useState({
         title: "",
         content: "",
@@ -20,23 +20,24 @@ const QuestionInsert = ({ history }) => {
     };
 
     const ntInsert = async () => {
-        const result = await axios.post("/board/qna/qinsert", {
+        const result = await axios.post("/board/qna/ainsert", {
             bq_title: inputs.title,
             bq_content: inputs.content,
             token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs",
+            board_qna_bq_id: match.params.id,
         });
-        history.push("/main/board/qna");
+        history.push("/main/admin/board/qna");
     };
 
     return (
         <div className={styles.container}>
-            <div className={styles.title}>QnA 등록</div>
-                <div className={styles.content}> 
+            <div className={styles.title}>QnA 답변</div>
+            <div className={styles.content}> 
 
                 <div className={styles.header}> 
-                    <div>작성자 : 김민준</div>
-                </div>
-                
+                    <div>작성자 :</div>
+                    <div>김민준</div>
+                </div> 
 
                 <div className={styles.body}>
                     <div>
@@ -60,13 +61,13 @@ const QuestionInsert = ({ history }) => {
                             value={content}
                             onChange={onChange}
                         ></textarea>                        
-                    </div>     
+                    </div> 
 
-                    <button  className = {styles.sendButton} onClick={() => {ntInsert();}}>질문 등록</button> 
+                    <button  className = {styles.sendButton} onClick={() => {ntInsert();}}>답변 등록</button> 
                 </div>
             </div>
         </div>
     );
 };
 
-export default QuestionInsert;
+export default AnswerInsert;
