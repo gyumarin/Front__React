@@ -4,14 +4,11 @@ import CommuteCalender from '../../../common/components/CommuteCalender';
 import MiniNotice from '../../../common/components/MiniNotice';
 import MiniWorkList from '../../../common/components/MiniWorkList';
 import Project from '../../../common/components/Project';
-import mockData from '../../../Data/data';
 import styles from './HomePage.module.css';
 
 
 
 const HomePage = (props) => {
-
-    const projects = mockData.project;
 
     const [projectList, setProjectList] = useState([])
     useEffect(() => {
@@ -27,7 +24,7 @@ const HomePage = (props) => {
             <div className={styles.leftBody}>
                 <div className={styles.titleContainer}>
                     <span className={styles.title}>진행중인 프로젝트</span>    
-                    <span className={styles.projectNumber}>{mockData.project.length}</span>  
+                    <span className={styles.projectNumber}>{projectList.length}</span>  
                 </div>
                 
                 <div className={styles.projectContainer}>

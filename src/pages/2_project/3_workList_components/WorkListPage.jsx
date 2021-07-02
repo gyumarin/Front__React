@@ -5,7 +5,7 @@ import Pie from './Pie';
 import Work from './Work';
 import { Form, Button, Card  } from 'react-bootstrap';
 
-const WorkListPage = (props) => {
+const WorkListPage = ({projectID}) => {
     
     const [data, setData] = useState([])
     const [workList, setWorkList] = useState([])
@@ -18,13 +18,19 @@ const WorkListPage = (props) => {
         keyword : '',
         select:'선택',    
     })
-    
+    const [projectInfo, setProjectInfo] = useState([])
 
     useEffect(() => {
-        console.log(workList)
+        console.log(workList);
     }, [workList])
 
     useEffect(() => {
+        axios.get(`/project/detail/${projectID}`).then(res =>{
+            setProjectInfo(res.data.result)
+            // console.log(res.data.result.p_title)
+            
+        });
+
         axios.get(`/project/work/list/team/${5}`).then(res =>{
             setWorkList(res.data.result);
             setWorkView(res.data.result);
@@ -160,7 +166,7 @@ const WorkListPage = (props) => {
             
             <div style={{display: 'grid' ,gridTemplateColumns:'400px 800px 400px', gridTemplateRows: '70px 20px 80px 120px 500px'}}>
                     <div style={{gridRow:'1/2', gridColumn:'1/3'}}>
-                    <h3 className={styles.h3}>SSG 휘트니스 서비스 <font style={{marginLeft : '10px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>업무 리스트</font></h3>
+                    <h3 className={styles.h3}>{projectInfo.p_title}<font style={{marginLeft : '10px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>업무 리스트</font></h3>
                     </div>
                     <div></div>
                     

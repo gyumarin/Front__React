@@ -3,11 +3,12 @@ import LeftOverView from './LeftOverView';
 import RightOverView from './RightOverView';
 import styles from './ProjectOverViewPage.module.css';
 
-const ProjectOverViewPage = (props) => {
+const ProjectOverViewPage = ({projectID}) => {
+
     return(
         <div className={styles.container}>
-            <LeftOverView/>
-            <RightOverView/>
+            <LeftOverView projectID = {projectID}/>
+            <RightOverView projectID = {projectID}/>
         </div>
 
     );

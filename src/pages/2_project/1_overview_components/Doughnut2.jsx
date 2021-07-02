@@ -2,41 +2,48 @@ import axios from 'axios';
 import React, {useState , useEffect} from 'react';
 import {Pie} from 'react-chartjs-2';
 
-const Doughnut2= (props) => {
-  // useEffect(() => {
-  //     axios.get('/employee/dept').then(res =>{
-  //         console.log(res.data.result);
-  //     })
-  // }, [])
+const Doughnut2= ({projectID}) => {
+ 
 
-  const [data, setData] = useState({
-    labels : ['google', 'naver', 'SAP','google', 'naver'],   
-    datasets: [
-      {
-        label: 'My First Dataset',        
-        data: [50, 10, 10,10, 7],
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(54, 162, 235, 0.8)',
-            'rgba(255, 206, 86, 0.8)',
-            'rgba(75, 192, 192, 0.8)',
-            'rgba(153, 102, 255, 0.8)',
-            'rgba(255, 159, 64, 0.8)',          
-        ],
-        borderColor: [
-            'rgba(255, 255, 255, 1)',
-            'rgba(255, 255, 255, 1)',
-            'rgba(255, 255, 255, 1)',
-            'rgba(255, 255, 255, 1)',
-            'rgba(255, 255, 255, 1)',
-            'rgba(255, 255, 255, 1)',
-          
-          ],
-          borderWidth: 1,
-        },
-      ],
-    }
-  )   
+  const [data, setData] = useState({})   
+
+  useEffect(() => {
+        
+    //차트에 들어갈 데이터 호출
+   axios.get(`/project/work/chart/${projectID}`).then(res =>{
+    
+        var sum = 0;
+        res.data.result.map(item =>{
+            sum = sum + item.count
+        });
+        // console.log(sum);
+        const tempData = {
+            //데이터 이름
+            labels: res.data.result.map(item =>item.wl_work_category),
+            datasets: [
+                {
+                  label: 'My First Dataset',
+                  //데이터 값
+                  data: res.data.result.map(item =>item.count),
+                  //분류 데이터 색깔
+                  backgroundColor: res.data.result.map((item, index)=> {
+                    var per = 255/(res.data.result.length-1);
+                    if(index+1 !== res.data.result.length){
+                        return 'rgba('+(index)*per+', '+(index)*per+', 255, 0.5)';
+                    }else{
+                        return 'rgba(183, 183, 183, 0.4)';
+                    }
+                }),
+                
+                  borderWidth: 0.2,          
+                },
+              ],
+              total : sum,
+
+          }
+        setData(tempData)   
+   })
+}, [])
 
   const options = {    
     responsive: true,
@@ -62,4 +69,3 @@ const Doughnut2= (props) => {
 }
 
 export default Doughnut2;
-

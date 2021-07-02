@@ -10,19 +10,28 @@ import WorkListPage from './3_workList_components/WorkListPage';
 import PeopleListPage from './4_people_components/PeopleListPage';
 import CommitListPage from './5_commit_components/CommitListPage';
 import { Route, Switch, useParams, useHistory } from 'react-router-dom';
+import axios from 'axios';
+const ProjectPage = () => {
 
-const ProjectPage = (props) => {
-
+    const [projectInfo, setProjectInfo] = useState([])
     const [param, setParam] = useState(0)
     const history = useHistory();
     const p = useParams();
     
     useEffect(async () => {
         await setParam(p.id);
-        if(param!=0){
+        if(param!=null){
             await history.push(`/main/project/${param}/overview`);
         }
+        await axios.get(`/project/detail/${param}`).then(res =>{
+            setProjectInfo(res.data.result)
+            // console.log(res.data.result.p_title)
+            
+        })
     }, [param])
+
+   
+
     
     return (
         <div className={styles.container}>
@@ -31,11 +40,13 @@ const ProjectPage = (props) => {
             </div>
             <div className={styles.content}>
                 <Switch>
-                    <Route path={`/main/project/${param}/overview`}><ProjectOverViewPage/></Route>
+                    <Route path={`/main/project/${param}/overview`}><ProjectOverViewPage projectID={param}/></Route>
                     <Route path={`/main/project/${param}/calendar`}><WorkCalendarPage/> </Route>
-                    <Route path={`/main/project/${param}/workList`}><WorkListPage/> </Route>
-                    <Route path={`/main/project/${param}/teamList`}><PeopleListPage/> </Route>
-                    <Route path={`/main/project/${param}/commitList`}><CommitListPage/></Route>
+                    <Route path={`/main/project/${param}/workList`}><WorkListPage projectID={param}/> </Route>
+                    <Route path={`/main/project/${param}/teamList`}><PeopleListPage projectID={param}/> </Route>
+                    <Route path={`/main/project/${param}/commitList`}>
+                        <CommitListPage projectID ={param} />
+                    </Route>
                 </Switch>
             </div>
         </div>

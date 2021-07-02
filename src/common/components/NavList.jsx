@@ -27,7 +27,7 @@ const NavList = ({mode}) => {
               <Link to='/main/projectList'>
                 <span className={styles.boardText}>프로젝트</span>
                 </Link></Accordion.Toggle>
-            <Accordion.Collapse eventKey="1">
+            {/* <Accordion.Collapse eventKey="1">
               <Card.Body className={styles.navBody}>
                 <ul>
                   {
@@ -39,7 +39,7 @@ const NavList = ({mode}) => {
                   }                
                 </ul>
               </Card.Body>
-            </Accordion.Collapse>
+            </Accordion.Collapse> */}
           </Card>
 
           {/* 3. 게시판 */}
@@ -65,7 +65,7 @@ const NavList = ({mode}) => {
               <Link to='/main/admin/project'>
                 <span className={styles.boardText}>프로젝트 관리</span>
               </Link></Accordion.Toggle>
-            <Accordion.Collapse eventKey="1">
+            {/* <Accordion.Collapse eventKey="1">
               <Card.Body className={styles.navBody}>
                 <ul>
                   {
@@ -77,7 +77,7 @@ const NavList = ({mode}) => {
                   }                
                 </ul>
               </Card.Body>
-            </Accordion.Collapse>
+            </Accordion.Collapse> */}
           </Card>
 
            {/* 2. 관리자 게시판 관리 */}

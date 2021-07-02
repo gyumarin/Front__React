@@ -10,15 +10,15 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-// const start = new Date();
-// const end = new Date(new Date().setMinutes(start.getMinutes() + 30));
+
 
 
 const calendars : ICalendarInfo[] = [ 
   {
     id: "1",
     name: "My Calendar",
-    color: "#ffffff",
+    color: "#ffffff",  
+
     bgColor: "#9e5fff",
     dragBgColor: "#9e5fff",
     borderColor: "#9e5fff"
