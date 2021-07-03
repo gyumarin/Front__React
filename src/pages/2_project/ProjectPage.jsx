@@ -41,7 +41,7 @@ const ProjectPage = () => {
             <div className={styles.content}>
                 <Switch>
                     <Route path={`/main/project/${param}/overview`}><ProjectOverViewPage projectID={param}/></Route>
-                    <Route path={`/main/project/${param}/calendar`}><WorkCalendarPage/> </Route>
+                    <Route path={`/main/project/${param}/calendar`}><WorkCalendarPage projectID={param}/> </Route>
                     <Route path={`/main/project/${param}/workList`}><WorkListPage projectID={param}/> </Route>
                     <Route path={`/main/project/${param}/teamList`}><PeopleListPage projectID={param}/> </Route>
                     <Route path={`/main/project/${param}/commitList`}>

@@ -24,7 +24,7 @@ const PostRoute = ({ match }) => {
     const [nreadView, setNreadView] = useState([]);
 
     const listMax = 3;
-
+    const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     useEffect(() => {
         getList();
     }, []);
@@ -53,7 +53,8 @@ const PostRoute = ({ match }) => {
     };
 
     const getList = async () => {
-        const result = await axios.get("/note/post/" + match.params.id);
+        
+        const result = await axios.get("/note/post?token=" + tmp);
         await setList(result.data.result);
         setViewList(result.data.result.slice(0, listMax));
         let c = parseInt(result.data.result.length / listMax);
@@ -75,7 +76,7 @@ const PostRoute = ({ match }) => {
 
  /*                 */
  const all = async () => {
-    const result = await axios.get("/note/post/" + match.params.id);
+    const result = await axios.get("/note/post?token=" + tmp);
     await setList(result.data.result);
     setViewList(result.data.result.slice(0, listMax));
     let c = parseInt(result.data.result.length / listMax);
@@ -136,7 +137,8 @@ const nread = () => {
 
 const search = async () => {
     const result = await axios.get(
-        "/note/post/search?value=" + value + "&e_id=1005"
+        
+        "/note/post/search?value=" + value + "&token=" + tmp
     );
     setList(result.data.result);
     setViewList(result.data.result.slice(0, listMax));
@@ -198,7 +200,7 @@ const search = async () => {
 
     const deleteNote = async () => {
         const result = await axios.put("/note/delete", {
-            token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDA1IiwiZXhwIjoxNjI0ODc4NzIwfQ.j71xypHD15AJNibLWqkCTczpjLN_Wjxx4NKJ7U3FRuQ",
+            token: tmp,
             n_id: deleteList,
         });
         let le = list;

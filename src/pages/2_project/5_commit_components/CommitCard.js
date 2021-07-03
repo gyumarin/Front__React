@@ -4,7 +4,7 @@ import { login } from './employee';
 import axios from 'axios';
 
 
-const CommitCard = ({ info, token, useBranch }) => {
+const CommitCard = ({ info, useBranch }) => {
     const [inputText, setInputText] = useState({ text: '', state: false });
     const [toggle, setToggle] = useState(false);
     const [comment, setComment] = useState({ sha: '', text: '', state: false });
@@ -24,14 +24,14 @@ const CommitCard = ({ info, token, useBranch }) => {
         axios.get(`/commit?sha=${info.sha}`).then((res) => {
             try {
                 setComment({ ...comment, sha: info.sha, text: res.data.result.cl_comment, state: true });
-                console.log(res.data.result);
+                
             } catch {
                 setComment({ ...comment, sha: info.sha, text: '', state: false });
-                console.log(res.data.result);
+                
             }
         });
         setToggle(false);
-        console.log('변경 감지됨.');
+        
     }, [useBranch]);
 
     // input box 값.
@@ -56,10 +56,11 @@ const CommitCard = ({ info, token, useBranch }) => {
 
     //등록 버튼
     const onInsert = () => {
+        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         if (comment.state == false) {
             // axios 등록 로직 처리
             axios.post('/commit/insert', {
-                token: token,
+                token: tmp,
                 p_id: 5,
                 cl_comment: inputText.text,
                 sha: info.sha,

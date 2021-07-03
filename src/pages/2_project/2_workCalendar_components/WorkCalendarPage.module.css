@@ -1,20 +1,34 @@
 .container {
-  background-color: #00aaef;
+  height: 875px;
   border-radius: 5px;
-  display: flex;
+
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+.title {
+  padding: 1.5em;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Noto Sans", sans-serif;
+  color: #263238;
 }
 
 .calendar {
-  width: 1600px;
-  padding: 2em;
-  padding-left: 4em;
+  width: 95.5%;
+  display: flex;
+
+  margin-top: -1em;
+  margin-left: 2.5em;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
-  margin-top: 71px;
-  margin-left: -35px;
+  margin-top: 20px;
 }
 
 .button1 {

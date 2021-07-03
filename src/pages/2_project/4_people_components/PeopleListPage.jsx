@@ -1,96 +1,35 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import styles from './PeopleListPage.module.css';
 import TeamCard from './TeamCard';
-const team = [
-  {
-      d_id: 5,
-      d_name: "마케팅팀",
-      d_phone: "874-9764",
-      dept_d_id: "1",
-      e_address: "부산시 부산구 부산동",
-      e_e_phone: "323-5678",
-      e_email: "hgd@gmail.com",
-      e_id: 1001,
-      e_name: "홍길동",
-      e_nickname: "james",
-      e_p_phone: "010-1234-5678",
-      e_password: "1",
-      e_photo: "1",
-      e_rank: "대리",
-      e_commute : true
-  },{
-    d_id: 5,
-    d_name: "마케팅팀",
-    d_phone: "874-9764",
-    dept_d_id: "1",
-    e_address: "부산시 부산구 부산동",
-    e_e_phone: "323-5678",
-    e_email: "hgd@gmail.com",
-    e_id: 1001,
-    e_name: "홍길동",
-    e_nickname: "james",
-    e_p_phone: "010-1234-5678",
-    e_password: "1",
-    e_photo: "1",
-    e_rank: "팀장",
-    e_commute : false
-},{
-  d_id: 5,
-  d_name: "마케팅팀",
-  d_phone: "874-9764",
-  dept_d_id: "1",
-  e_address: "부산시 부산구 부산동",
-  e_e_phone: "323-5678",
-  e_email: "hgd@gmail.com",
-  e_id: 1001,
-  e_name: "홍길동",
-  e_nickname: "james",
-  e_p_phone: "010-1234-5678",
-  e_password: "1",
-  e_photo: "1",
-  e_rank: "대리",
-  e_commute : true
-},{
-  d_id: 5,
-  d_name: "마케팅팀",
-  d_phone: "874-9764",
-  dept_d_id: "1",
-  e_address: "부산시 부산구 부산동",
-  e_e_phone: "323-5678",
-  e_email: "hgd@gmail.com",
-  e_id: 1001,
-  e_name: "홍길동",
-  e_nickname: "james",
-  e_p_phone: "010-1234-5678",
-  e_password: "1",
-  e_photo: "1",
-  e_rank: "대리",
-  e_commute : false
-},{
-  d_id: 5,
-  d_name: "마케팅팀",
-  d_phone: "874-9764",
-  dept_d_id: "1",
-  e_address: "부산시 부산구 부산동",
-  e_e_phone: "323-5678",
-  e_email: "hgd@gmail.com",
-  e_id: 1001,
-  e_name: "홍길동",
-  e_nickname: "james",
-  e_p_phone: "010-1234-5678",
-  e_password: "1",
-  e_photo: "1",
-  e_rank: "대리",
-  e_commute : true
-}
-]
-const PeopleListPage = (props) => {
+import axios from 'axios';
+const PeopleListPage = ({projectID}) => {
+
+  const [empList, setEmpList] = useState([])
+  const [projectInfo, setProjectInfo] = useState([])
+    useEffect(() => {
+        // console.log('projectID', projectID)
+        axios.get(`/project/list/emp/${projectID}`).then(res =>{
+          setEmpList(res.data.result)
+          // console.log(res.data.result)
+            
+        })
+
+        axios.get(`/project/detail/${projectID}`).then(res =>{
+          setProjectInfo(res.data.result)
+          // console.log(res.data.result)
+          
+      })
+    }, [])
+
+    
+    
+  
     return(
       <div className={styles.container}>
-        <h3 className={styles.h3}>SSG 휘트니스 서비스</h3>
+        <h3 className={styles.h3}>{projectInfo.p_title}<font style={{marginLeft : '16px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>프로젝트 참여 리스트</font></h3>                
         <div className={styles.content}>
           {
-            team.map((worker)=>{
+            empList.map((worker)=>{
               return <TeamCard
                 worker = {worker}
               />

@@ -39,7 +39,13 @@ const CommuteCalender = (props) => {
 
     if(commuteCheck){
       setCommute(!commute);
-      setCommuteData([...commuteData, {'title' : `${commute?'퇴근':'출근'} ${hour} : ${minute}`, 'allDay' : true, 'start' : new Date(year, month, datee), 'end': new Date(year, month, datee)}])
+      setCommuteData(
+        [...commuteData, 
+          {'title' : `${commute?'퇴근':'출근'} ${hour} : ${minute}`, 
+          'allDay' : true, 
+          'start' : new Date(year, month, datee), 
+          'end': new Date(year, month, datee)}
+        ])
     }
     else{return;}
   }
@@ -53,7 +59,8 @@ const CommuteCalender = (props) => {
           onClick={onCommute}
         >{commute?'퇴근':'출근'}
         </button>
-        <Calendar className={styles.cal}
+        <Calendar 
+          className={styles.cal}
           events={commuteData}
           step={60}
           view='month'

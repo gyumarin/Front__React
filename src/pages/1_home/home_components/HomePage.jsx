@@ -12,7 +12,7 @@ const HomePage = (props) => {
 
     const [projectList, setProjectList] = useState([])
     useEffect(() => {
-        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         axios.get(`/project/list?token=${tmp}`).then(res=>{
             console.log(res.data.result)
             setProjectList(res.data.result)

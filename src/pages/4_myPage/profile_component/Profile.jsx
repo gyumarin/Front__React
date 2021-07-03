@@ -1,21 +1,52 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Profile.module.css';
 import ToggleButton from 'react-toggle-button'
 import PwdPopup from './PwdPopup';
-
+import axios from 'axios';
 const Profile = (props) => {
-    const ref = useRef("");
-
-    const [self, setSelf] = useState({value : false})   
+    const [self, setSelf] = useState( false)   
     const [popup, setPopup] = useState(false);
+    const [userInfo, setUserInfo] = useState({})
 
-    const name = "박진목";
-
+  useEffect(() => {
+    var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+    if(sessionStorage.getItem('token')){
+      axios.get(`/employee/detail?token=${tmp}`).then(res=>{
+        setUserInfo(res.data.result);
+        console.log(res.data.result);
+      })      
+    }
+  }, [])
+  
     const togglePopup=(event)=> {
         event.preventDefault();
         setPopup(!popup);
       }    
-    console.log(ref.current.value);
+    // console.log(ref.current.value);
+
+    const onUpdateInfo=(event)=>{
+        event.preventDefault();
+        console.log("이제 바꿉니다",userInfo);
+        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        axios.put('employee/detail', {
+            token: tmp,
+            e_p_phone: userInfo.e_p_phone,
+            e_e_phone: userInfo.e_e_phone,
+            e_email: userInfo.e_email,
+            e_address: userInfo.e_address,
+            e_nickname: userInfo.e_nickname,
+        })
+        .then((res) => {console.log(res)});
+        setSelf(false);
+    }
+
+    const onChange = (e) => {
+        const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+        setUserInfo({
+          ...userInfo, // 기존의 input 객체를 복사한 뒤
+          [name]: value // name 키를 가진 값을 value 로 설정
+        });
+      };
 
     return(
         <div className={styles.container}>
@@ -26,39 +57,39 @@ const Profile = (props) => {
             <div className={styles.toggleContainer}>
                 <p className={styles.text}>수정</p>                
                 <ToggleButton 
-                    value={ self.value || false }
+                    value={ self || false }
 
                     onToggle={(value) => {
-                        setSelf({value: !value})
+                        setSelf(!value)
                     }} 
                 />                
             </div>
-            <form className ={styles.table} action="">
+            <form className ={styles.table} onSubmit={onUpdateInfo}>
                 <table>
                     <tr>
                         <td>사원명</td>
-                        <td><input ref={ref} className={styles.form}  type="text" defaultValue={name} disabled/></td>
+                        <td>{userInfo.e_name}</td>
                     </tr>
                     <tr>
                         <td>사원번호</td>
-                        <td><input className={styles.form}  type="text" defaultValue="102022" disabled/></td>
+                        <td>{userInfo.e_id}</td>
                     </tr>
                     <tr>
                         <td>부서</td>
-                        <td><input className={styles.form}  type="text" defaultValue="개발 1팀" disabled/></td>
+                        <td>{userInfo.d_name}</td>
                     </tr>
                     <tr >
                         <td>직책</td>
-                        <td><input className={styles.form}  type="text" defaultValue="사원" disabled/></td>
+                        <td>{userInfo.e_rank} </td>
                     </tr>
                     
                     <tr>
                         <td>비밀번호</td>
                         <td >
                             <button 
-                                className={self.value ? styles.pwdButton : styles.pwdButton2} 
+                                className={self ? styles.pwdButton : styles.pwdButton2} 
                                 onClick={togglePopup} 
-                                disabled={!self.value?"disabled":null}>
+                                disabled={!self?"disabled":null}>
                                     비밀번호 변경
                             </button>     
                         </td>
@@ -66,48 +97,57 @@ const Profile = (props) => {
 
                     <tr>
                         <td >별명</td>
-                        <td><input className={styles.form}  type="text" defaultValue="제임스" disabled={!self.value} /></td>
+                        <td><input className={styles.form}  type="text" value={userInfo.e_nickname}
+                        name="e_nickname" 
+                        disabled={!self} onChange={onChange}/></td>
                     </tr>
                     <tr>
                         <td>이메일</td>
-                        <td><input className={styles.form}  type="email" defaultValue="rbalsd1008@naver.com"disabled={!self.value} /></td>
+                        <td><input className={styles.form}  type="email" value={userInfo.e_email}
+                        name="e_email" 
+                        disabled={!self} onChange={onChange}/></td>
                     </tr>
                     <tr>
                         <td>주소</td>
                         <td>                            
-                            <input className={styles.form}  type="text" defaultValue="부산광역시 해운대구 센텀2로"disabled={!self.value} />                   
+                            <input className={styles.form}  type="text" value={userInfo.e_address}
+                            name="e_address" 
+                            disabled={!self} onChange={onChange}/>                   
                         </td>
                     </tr>
                     <tr>
                         <td>휴대전화</td>
-                        <td><input  className={styles.form} type="text" defaultValue="010-2002-2002" disabled={!self.value} /></td>
+                        <td><input  className={styles.form} type="text" value={userInfo.e_p_phone}
+                        name="e_p_phone" 
+                        disabled={!self} onChange={onChange}/></td>
                     </tr>
                     <tr>
                         <td>내선전화</td>
-                        <td><input  className={styles.form} type="text" defaultValue="2030-2002" disabled={!self.value} /></td>
+                        <td><input  className={styles.form} type="text" value={userInfo.e_e_phone}
+                        name="e_e_phone" 
+                        disabled={!self} onChange={onChange}/></td>
                     </tr>
                     <tr>
                         <td >하고 싶은 말(선택)</td>
                         <td>
-                            <textarea className={styles.form}  name="textbox" id="textbox" cols="50" rows="5"disabled={!self.value} ></textarea>
+                            <textarea className={styles.form}  value={userInfo.e_comment} name="e_comment" 
+                             cols="50" rows="5"disabled={!self} onChange={onChange}></textarea>
                         </td>    
                     </tr>
                 </table>
                 {
-                    self.value ? 
+                    self&& 
                     <div className={styles.buttons}>
-                        <input className={styles.submit}type='submit' value="적용"></input>
-                        <input className={styles.reset}type="reset" value="취소" />
+                        <button className={styles.submit}type='submit' onClick={onUpdateInfo} >적용</button>
+                        <button className={styles.reset}type="reset" onClick={()=>setSelf(false)}>취소</button>
                     </div>
-                    :
-                    null
+                    
                 }
             </form>        
         </div>
         {
-            popup? 
-            <PwdPopup/>
-            : null
+            self&&(
+            popup&&<PwdPopup setSelf={()=>setSelf(false)} setPopup={()=> setPopup(false)}/>)
         }
     </div>
     );

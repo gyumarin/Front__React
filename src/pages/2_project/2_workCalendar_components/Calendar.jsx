@@ -1,169 +1,146 @@
 import React, { useCallback, useRef } from 'react';
 import styles from './Calendar.module.css';
 
-import TUICalendar from "@toast-ui/react-calendar";
-import { ISchedule, ICalendarInfo } from "tui-calendar";
+import MyCalendar from "@toast-ui/react-calendar";
 import "tui-calendar/dist/tui-calendar.css";
 import "tui-date-picker/dist/tui-date-picker.css";
 import "tui-time-picker/dist/tui-time-picker.css";
-import { useState } from 'react';
-import { useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ControlPointSharp } from '@material-ui/icons';
+
+const Calendar  = ({projectID, isTeam}) => { 
+
+    // ----------------------------------------------------------------    
+    const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);   
 
 
+    const [schedules, setSchedules] = useState([]);
+    const [labelColor, setLabelColor] = useState([]);
 
+    const [teamSchedules, setTeamSchedules] = useState([]);
+    const [teamLabelColor, setTeamLabelColor] = useState([]);
+    const colors = [
+      "rgba(255, 82,  111, 0.7)",     // 1. 빨갱이
+      "rgba(255, 110, 243, 0.7)",    // 2. 분홍이
+      "rgba(187, 110, 255, 0.7)",    // 3. 아이유
+      "rgba(114, 110, 255, 0.7)",    // 4. 파랭이
+      "rgba(255, 246, 84,  0.7)",   // 10. 노랭이
+      "rgba(110, 241, 255, 0.7)",  // 6. 구르미
+      "rgba(255, 246, 84,  0.7)",   // 10. 노랭이
+      "rgba(71,  255, 182, 0.7)",   // 7. 초록이
+      "rgba(59,  255, 41,  0.7)",   // 8. 초록이 동생
+      "rgba(199, 255, 94,  0.7)",   // 9. 초록이 둘째 동생
+      "rgba(255, 246, 84,  0.7)",   // 10. 노랭이
+      "rgba(255, 180, 89,  0.7)",   // 11. 당그니
+      "rgba(255, 118, 59,  0.7",    // 12. 주황이
+      
+    ]
+    // Get 개인 프로젝트 업무 데이터  --------------------------------
+    useEffect(()=>{      
+      axios.get(`/project/work/list/person?p_id=${projectID}&token=${tmp}`)
+      .then(res => res.data.result)
+      .then(data =>{
+          const scheduleData = data.map(item=>{
+            return({
+              calendarId: item.wl_id,
+              category: "time",
+              isVisible: true,
+              isPending: false,
+              title: item.wl_work_detail,
+              id: item.wl_id,
+              body: item.wl_work_category + " > " + item.wl_work + " > " + item.wl_work_detail,
+              start : item.wl_date_start,
+              end : item.wl_date_end
+            });
+          });
+          
+          const labelColorData = data.map((item,index)=>{
+            const per = 255/(data.length);
+            // console.log(item)             
+            return({
+              id: item.wl_id,
+              name:item.e_name,
+              color: "rgba(0,0,0,1)",
+              bgColor: `rgba(${per*index},  ${255-per*index*0.8}, 242, 0.7)`,
+              dragBgColor: `rgba(${per*index}, ${255- per*index*0.8}, 242, 0.8)`,
+              borderColor: `rgba(${per*index}, ${255- per*index*0.8}, 242, 0.8)`
+            });
+          });
 
-const calendars : ICalendarInfo[] = [ 
-  {
-    id: "1",
-    name: "My Calendar",
-    color: "#ffffff",  
-
-    bgColor: "#9e5fff",
-    dragBgColor: "#9e5fff",
-    borderColor: "#9e5fff"
-  },
-  {
-    id: "2",
-    name: "Company",
-    color: "#ffffff",
-    bgColor: "#00a9ff",
-    dragBgColor: "#00a9ff",
-    borderColor: "#00a9ff"
-  },
-  
-];
-
-
-const Calendar  = (props) => {
-    const [schedules,setSchedules] : ISchedule[]  = useState([
-      {
-        calendarId: "1",
-        category: "My Calendar",
-        isVisible: true,
-        title: "Study",
-        id: "1",
-        body: "Test",
-        start : "2020-06-01",
-        end : "2020-06-05"
-      },  
-    ]);
-
-    useEffect(()=>{
-      axios.get("/project/list/calendar?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs")
-      .then(res=>{     
-        console.log(res.data.result);    
-        const datas = res.data.result.map(data=>{
-          return {
-            calendarId: "2",
-            category: "time",
-            isVisible: false,
-            title: data.p_title,
-            id:data.p_id,
-            body: `담당자 : ${data.p_manager}`,
-            start : data.p_date_start,
-            end : "2021-06-23"
-          };
-        });
-        return datas;
-      })
-      .then(data=>{
-        setSchedules(data);
+          return [scheduleData,labelColorData];                
         }
       )
+      .then(newSchedule=>{
+          setSchedules(newSchedule[0]);
+          setLabelColor(newSchedule[1]);
+        }
+      );
     },[]);
 
+    // Get 팀 프로젝트 업무 데이터  --------------------------------
+    
+    useEffect(()=>{      
+      axios.get(`/project/work/list/team/${projectID}`)
+      .then(res => res.data.result)
+      .then(data =>{
+          const teamScheduleData = data.map(item=>{
+            return({
+              calendarId: item.e_id,
+              category: "time",
+              isVisible: true,
+              isPending: false,
+              title: item.wl_work_detail,
+              id: item.wl_id,
+              body: item.wl_work_category + " > " + item.wl_work + " > " + item.wl_work_detail,
+              start : item.wl_date_start,
+              end : item.wl_date_end
+            });
+          });
+
+          const teamSet = new Set(data.map(item=>item.e_id));
+          
+          const teamLabelColorData = [...teamSet].map((item,index)=>{                
+            return({
+              id: item,
+              name: data.find(i => i.e_id == item).e_name,
+              color: "rgba(0,0,0,1)",
+              bgColor: colors[index],
+              dragBgColor: colors[index],
+              borderColor: colors[index],
+            });
+          });
+
+          return [teamScheduleData,teamLabelColorData];                
+        }
+      )
+      .then(newSchedule=>{
+          setTeamSchedules(newSchedule[0]);
+          setTeamLabelColor(newSchedule[1]);
+        }
+      );
+    },[]);
+    // ----------------------------------------------------------------
+
+    const [selectedDay, setSelectedDay] = useState();
+    useEffect(() => {
+      console.log(selectedDay);
+    }, [selectedDay]);
+
+    // ----------------------------------------------------------------
 
     const [month, setMonth] =useState(new Date().getMonth()+1);
     const [year, setYear] = useState(new Date().getFullYear());
     let count = new Date().getMonth()+1;
-
-    const cal = useRef(null);
-
-    const onClickSchedule = useCallback((e) => {
-      const { calendarId, id } = e.schedule;
-      const el = cal.current.calendarInst.getElement(id, calendarId);  
-    }, []);
-  
-    // const onBeforeCreateSchedule = useCallback((scheduleData) => {
-    //   console.log(scheduleData);
-  
-    //   const schedule = {
-    //     id: String(Math.random()),
-    //     title: scheduleData.title,
-    //     isAllDay: scheduleData.isAllDay,
-    //     start: scheduleData.start,
-    //     end: scheduleData.end,
-    //     category: scheduleData.isAllDay ? "allday" : "time",
-    //     dueDateClass: "",
-    //     location: scheduleData.location,
-    //     raw: {
-    //       class: scheduleData.raw["class"]
-    //     },
-    //     state: scheduleData.state
-    //   };
-  
-    //   cal.current.calendarInst.createSchedules([schedule]);
-    // }, []);
-  
-    // const onBeforeDeleteSchedule = useCallback((res) => {
-    //   const { id, calendarId } = res.schedule;  
-    //   cal.current.calendarInst.deleteSchedule(id, calendarId);
-    // }, []);
-  
-    // const onBeforeUpdateSchedule = useCallback((e) => {
-    //   const { schedule, changes } = e;
-  
-    //   cal.current.calendarInst.updateSchedule(
-    //     schedule.id,
-    //     schedule.calendarId,
-    //     changes
-    //   );
-    // }, []);
-  
-    function _getFormattedTime(time) {
-      const date = new Date(time);
-      const h = date.getHours();
-      const m = date.getMinutes();
-  
-      return `${h}:${m}`;
-    }
-  
-    function _getTimeTemplate(schedule, isAllDay) {
-      const html = [];
-  
-      if (!isAllDay) {
-        html.push("<strong>" + _getFormattedTime(schedule.start) + "</strong> ");
-      }
-      if (schedule.isPrivate) {
-        html.push('<span class="calendar-font-icon ic-lock-b"></span>');
-        html.push(" Private");
-      } else {
-        if (schedule.isReadOnly) {
-          html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
-        } else if (schedule.recurrenceRule) {
-          html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
-        } else if (schedule.attendees.length) {
-          html.push('<span class="calendar-font-icon ic-user-b"></span>');
-        } else if (schedule.location) {
-          html.push('<span class="calendar-font-icon ic-location-b"></span>');
-        }
-        html.push(" " + schedule.title);
-      }  
-      return html.join("");
-    }
-  
-    const templates = {
-      time: function (schedule) {
-        return _getTimeTemplate(schedule, false);
-      }
-    }; 
+   
+    const calendarRef = useRef(null);    
     
-    // 이전, 이후, 오늘 구현부
+    // 이전, 이후, 오늘 구현부 ----------------------------------------
     const NextButton = useCallback((e) => {
-      if (cal !== null) {
+      if (calendarRef !== null) {
         count = count +1;
-        const calendarInstance = cal.current.getInstance();
+        const calendarInstance = calendarRef.current.getInstance();
         calendarInstance.next();        
         setMonth(month=>setMonth(month==12?1:month+1));
         setYear(year=> setYear(count%12 ==1? year+1 : year));        
@@ -171,9 +148,9 @@ const Calendar  = (props) => {
     }, []);
   
     const PrevButton = useCallback((e) => {
-      if (cal !== null) {
+      if (calendarRef !== null) {
         count = count -1;
-        const calendarInstance = cal.current.getInstance();
+        const calendarInstance = calendarRef.current.getInstance();
         calendarInstance.prev();
         setMonth(month=>setMonth(month==1?12:month-1));  
         setYear(year=> setYear(count%12 ==0? year-1 : year));       
@@ -181,9 +158,9 @@ const Calendar  = (props) => {
     }, []);
   
     const TodayButton = useCallback((e) => {
-      if (cal !== null) {
+      if (calendarRef !== null) {
         count = new Date().getMonth();
-        const calendarInstance = cal.current.getInstance();
+        const calendarInstance = calendarRef.current.getInstance();
         calendarInstance.today();
         setMonth(month=>setMonth(new Date().getMonth()+1));
         setYear(year => setYear(new Date().getFullYear()));        
@@ -192,7 +169,8 @@ const Calendar  = (props) => {
     
     return(
       
-      <div>
+      <div className={styles.container}>
+        
         <div id="menu">
           <span id="menu-navi">
             <button className={styles.button} onClick={TodayButton}>T</button>
@@ -210,19 +188,21 @@ const Calendar  = (props) => {
           <span className={styles.month}> {`${month}월`} </span>
         </div>
         
-        <TUICalendar
-          ref={cal}
-          height="770px"
-          view="month"
-          useCreationPopup={false}
-          useDetailPopup={true}
-          template={templates}
-          calendars={calendars}
-          schedules={schedules}
-          onClickSchedule={onClickSchedule}
-          // onBeforeCreateSchedule={onBeforeCreateSchedule}
-          // onBeforeDeleteSchedule={onBeforeDeleteSchedule}
-          // onBeforeUpdateSchedule={onBeforeUpdateSchedule}
+        <MyCalendar
+          ref={calendarRef}
+          height = "665px"
+          view={"month"}
+          month={{
+            daynames: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"],
+            startDayOfWeek: 0,
+            narrowWeekend: false
+          }}
+          schedules ={isTeam ? teamSchedules : schedules}
+          calendars = {isTeam ? teamLabelColor : labelColor}
+          onBeforeCreateSchedule={e => {setSelectedDay(e);}}
+          useDetailPopup
+          isReadOnly  = "true"
+         
         />
       </div>
     );  
