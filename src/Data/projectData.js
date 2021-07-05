@@ -47,7 +47,8 @@ const projectData = {
         },
     ],
 
-    p_middle_category : [
+    p_middle_category : 
+    [
         {   "c_id" : 1,
             "m_id" : 1,
             "m_name" : "홈페이지 제작",            
@@ -71,7 +72,8 @@ const projectData = {
         },        
     ],
 
-    p_detail : [
+    p_detail : 
+    [
         {   "c_id" : 1,
             "m_id" : 1,
             "d_id" : 1,

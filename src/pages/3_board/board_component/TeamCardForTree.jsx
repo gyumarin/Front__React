@@ -9,9 +9,9 @@ const TeamCardForTree = ({team}) => {
                 <img className={styles.image} src="../../images/example.jpg" alt="face image" />        
             </div>
             <div className={styles.contentContainer}>
-                <span>{team.nickname}</span> / <span>{team.name}</span>
-                <div>{team.team}</div>
-                <div>{team.tel} 
+                <span>{team.e_nickname}</span> / <span>{team.e_name}</span>
+                <div>{team.d_name}</div>
+                <div>{team.e_e_phone} 
                     <Link className ={styles.btnMail}to="/main/mail/write"><i className="fas fa-envelope"></i></Link>
                 </div>
                 

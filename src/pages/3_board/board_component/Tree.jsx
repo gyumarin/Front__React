@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -6,52 +6,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 
 import styles from './Tree.module.css';
-
-
-const data = {
-    id: 'root',
-    name: '더존 비즈온',
-    children: [
-      {
-        id: '1',
-        name: '영업부',
-      },
-      {
-        id: '2',
-        name: '아비부',
-        children: [
-            {
-              id: '5',
-              name: 'A팀',
-            },
-            {
-                id: '6',
-                name: 'B팀',
-            },
-        ]
-      },
-      {
-        id: '3',
-        name: '기술부',
-        children: [
-          {
-            id: '7',
-            name: 'B팀',
-          },
-        ],
-      },
-      {
-        id: '4',
-        name: '꼬마도미부',
-        children: [
-          {
-            id: '8',
-            name: 'B팀',
-          },
-        ],
-      },
-    ],
-  };
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles({
     root: {
@@ -69,38 +25,68 @@ const useStyles = makeStyles({
     },    
   });
 
-const Tree = ({changeTeamView}) => {
-    const classes = useStyles();
+const Tree = ({changeTeamView, setTeamId}) => {
+  const idArr =[];
+  const [deptId, setDeptId] = useState();
+  const [dept,setDept] = useState([]);
 
-    const handleClick = (event)=>{
-      event.preventDefault();
-      changeTeamView(event.target.innerText);
-    } 
+  function setIdArr(){
+    dept.forEach(e => {   
+      e.children.forEach(k=>{
+        idArr.push(k);
+      })   
+      idArr.push(e);
+    });
+    // console.log(idArr);
+  }
+  setIdArr();
 
-    const renderTree = (nodes) => (
-      <div className={styles.tree}>
-        <TreeItem 
-          key={nodes.id} 
-          nodeId={nodes.id} 
-          label={nodes.name}
-          onClick ={handleClick}>            
-            {Array.isArray(nodes.children) ? nodes.children.map((node) => renderTree(node)) : null}
-        </TreeItem>
-      </div>
-    );
-    
-    return(
-      <div>
-        <TreeView
-            className={classes.root}
-            defaultCollapseIcon={<ExpandMoreIcon />}
-            defaultExpanded={['root']}
-            defaultExpandIcon={<ChevronRightIcon />}
-        >
-            {renderTree(data)}
-        </TreeView>       
-      </div>
-    );
+
+  const getDept = async()=>{
+    const result = await axios.get("/employee/dept");
+    setDept(result.data.result);
+  }
+
+  const classes = useStyles();
+  useEffect(()=>{getDept();},[])
+  const data = {
+    id: 'root',
+    name: '더존 비즈온',
+    children: dept,
+  };
+
+  const handleClick = (event)=>{
+    if(event.target.innerText == "더존 비즈온"){return};
+    event.preventDefault();
+    const team_id = idArr.find(i => i.name == event.target.innerText).id;
+    setTeamId(team_id);
+    changeTeamView(event.target.innerText);
+  } 
+
+  const renderTree = (nodes) => (
+    <div className={styles.tree}>
+      <TreeItem 
+        key={nodes.id} 
+        nodeId={nodes.id} 
+        label={nodes.name}
+        onClick ={handleClick}>            
+          {Array.isArray(nodes.children) ? nodes.children.map((node) => renderTree(node)) : null}
+      </TreeItem>
+    </div>
+  );
+  
+  return(
+    <div>
+      <TreeView
+          className={classes.root}
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpanded={['root']}
+          defaultExpandIcon={<ChevronRightIcon />}
+      >
+          {renderTree(data)}
+      </TreeView>       
+    </div>
+  );
 };
 
 export default Tree;

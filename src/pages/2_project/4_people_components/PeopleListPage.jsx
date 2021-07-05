@@ -16,13 +16,9 @@ const PeopleListPage = ({projectID}) => {
 
         axios.get(`/project/detail/${projectID}`).then(res =>{
           setProjectInfo(res.data.result)
-          // console.log(res.data.result)
-          
+          // console.log(res.data.result)       
       })
-    }, [])
-
-    
-    
+    }, [])   
   
     return(
       <div className={styles.container}>

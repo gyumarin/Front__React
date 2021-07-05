@@ -1,13 +1,13 @@
 import React,{useEffect, useState} from 'react';
 import axios from 'axios';
-
+import { StyleRoot } from 'radium';
 import styles from  './ProjectPageList.module.css';
 import Coverflow from 'react-coverflow';
 import BigCard from './1_overview_components/BigCard';
 
-const ProjectListPage = (props) => {
+const ProjectListPage = ({project}) => {
 
-    const [projectList, setProjectList] = useState([])
+    const [projectList, setProjectList] = useState(project);
 
     useEffect(() => {
         const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
@@ -25,7 +25,7 @@ const ProjectListPage = (props) => {
 
 
             <div className={styles.carousel}>
-                {/* <StyleRoot> */}
+                <StyleRoot>
                     <Coverflow                        
                         displayQuantityOfSide={1}
                         navigation
@@ -33,7 +33,7 @@ const ProjectListPage = (props) => {
                         enableHeading
                         media={{
                             '@media (max-width: 900px)': {
-                            width: '500px',
+                            width: '600px',
                             height: '300px'
                             },
                             '@media (min-width: 900px)': {
@@ -60,7 +60,7 @@ const ProjectListPage = (props) => {
                         })
                     } 
                     </Coverflow>
-                {/* </StyleRoot> */}
+                    </StyleRoot>
             </div>
         </div>
     );

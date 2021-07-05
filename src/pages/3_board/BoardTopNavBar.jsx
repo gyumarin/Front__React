@@ -1,13 +1,32 @@
 import React from 'react';
 import styles from './BoardTopNavBar.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 const BoardTopNavBar = (props) => {
+
+    const history = useHistory();
+    
+    const goNotice =(event)=>{
+        event.preventDefault();
+        history.push(`/main/board/notice`);
+    }
+    const goQna =(event)=>{
+        event.preventDefault();
+        history.push(`/main/board/qna`);
+    }
+    const goCompanyTree =(event)=>{
+        event.preventDefault();
+        history.push(`/main/board/companyTree`);
+    }
+   
+
+
+
     return(
         <ul className={styles.container}> 
-            <NavLink to="/main/board/notice"> <li className={styles.button}>공지사항</li></NavLink>
-            <NavLink to="/main/board/qna"> <li className={styles.button}>QnA</li></NavLink>            
-            <NavLink to="/main/board/companyTree"> <li className={styles.button}>조직도</li></NavLink>            
+             <li onClick={goNotice} className={styles.button}>공지사항</li>
+             <li onClick={goQna} className={styles.button}>QnA</li>
+             <li onClick={goCompanyTree} className={styles.button}>조직도</li>
         </ul>
     );
 };  

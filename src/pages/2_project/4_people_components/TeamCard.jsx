@@ -11,7 +11,7 @@ const TeamCard = ({worker}) => {
                 </div>
                 <p className={styles.nickName}>{worker.e_nickname}
                     <span className={styles.rank}>({worker.e_rank})</span>
-                    <Link to="/main/mail"><button className={styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
+                    <Link to="/main/mail/write"><button className={styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
                 </p>
             </div>
             <div className={styles.right}>                

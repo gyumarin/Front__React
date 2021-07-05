@@ -8,7 +8,7 @@ import styles from './HomePage.module.css';
 
 
 
-const HomePage = (props) => {
+const HomePage = ({setProject}) => {
 
     const [projectList, setProjectList] = useState([])
     useEffect(() => {
@@ -16,6 +16,8 @@ const HomePage = (props) => {
         axios.get(`/project/list?token=${tmp}`).then(res=>{
             console.log(res.data.result)
             setProjectList(res.data.result)
+            setProject(res.data.result)
+            
         })
     }, []);
 
@@ -45,7 +47,7 @@ const HomePage = (props) => {
             <div className={styles.rightBody}>
                 <div className={styles.calender}>
                     <div>
-                    <CommuteCalender/>
+                        <CommuteCalender/>
                     </div>
                 </div>
 

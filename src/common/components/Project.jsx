@@ -18,7 +18,7 @@ const Project = (props) => {
         <DoughnutChart projectID = {props.id}/>
       </Card.Body>
 
-      <Link  to="/main/project/overview"><Button  className = {styles.detailButton} variant="primary">상세보기</Button></Link>
+      <Link  to={`/main/project/${props.id}`}><Button  className = {styles.detailButton} variant="primary">상세보기</Button></Link>
     </Card>
   );
 };

@@ -22,14 +22,15 @@ const PwdPopup = ( {setSelf, setPopup} ) => {
     //     console.log(pwdInfo)
     // }, [pwdInfo])
 
-    const onChangePwd = (event)=>{
+    const onChangePwd = async (event)=>{
         event.preventDefault();
         console.log('이제 바꿉니다.',pwdInfo)
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
 
-        var result = axios.put('employee/detail/pwd', {
+        var result = await axios.put('/employee/detail/pwd', {
             token: tmp,
-            e_password: pwdInfo.newPwd,
+            nowPassword : pwdInfo.nowPwd,
+            newPassword: pwdInfo.newPwd,
             //비밀번호 변경로직
             //현재 비밀번호 정보랑 새 비밀번호 정보를 둘다 보내서 
             //현재 비밀번호 입력한 값과 실제 비밀번호를 대조하고 맞으면 변경 해야한다.
@@ -37,7 +38,7 @@ const PwdPopup = ( {setSelf, setPopup} ) => {
         })
         
         // if(result.data.code==200){          //<-제대로 요청이오면 이거롤 변경해야한다.
-        if(pwdInfo.nowPwd=='yes'){
+        if(result.data.result != 0){
             alert('비밀번호를 성공적으로 변경하였습니다.');
             setSelf();
             setPopup();

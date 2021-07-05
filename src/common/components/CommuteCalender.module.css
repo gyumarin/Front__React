@@ -1,6 +1,6 @@
 .container {
   padding-top: 1.9rem;
-  border-radius: 40px;
+  border-radius: 20px;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
@@ -18,7 +18,7 @@
 }
 .button {
   position: relative;
-  left: 1030px;
+  left: 1065px;
   top: 5px;
   width: 90px;
   height: 35px;

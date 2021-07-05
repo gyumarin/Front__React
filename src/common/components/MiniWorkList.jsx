@@ -6,35 +6,33 @@ import {Link} from  'react-router-dom';
 
 
 const MiniWorkList = (props) => {
-  
   const [workList, setWorkList] = useState([])
     useEffect(() => {
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/work/list/person/all?token=${tmp}`).then(res=>{
-          setWorkList(res.data.result)
-          
+        axios.get(`/project/work/list/person/all?token=${tmp}`).then(res=>{   
+          console.log(res.data.result);                 
+          setWorkList(res.data.result)          
         })
     }, [])
 
     return(
       <div className={styles.container}>
         <div className={styles.header}>
-        <div className={styles.title}>업무 리스트</div>
-        <Link to="/main/project/workList"><button className={styles.button}>바로가기</button></Link>
+        <div className={styles.title}>업무 리스트</div>        
         </div>
         <div className={styles.tableContainer}>
           <table className={styles.table}>
             <thead>
-              <tr className={styles.tr}>
+              {/* <tr className={styles.tr}>
                 <th className={styles.th}></th>
                 <th className={styles.th}>카테고리</th>
                 <th className={styles.th}>작업</th>
                 <th className={styles.th}>작업 상세</th>
                 <th className={styles.th}>남은 일수</th>
-              </tr>
+              </tr> */}
             </thead>
 
-            <tbody >
+            <tbody>
               {
                 workList.map((work)=>{
                   return (<tr className={styles.tr}>
@@ -42,7 +40,12 @@ const MiniWorkList = (props) => {
                     <td className={styles.td}>{work.wl_work_category}</td>
                     <td className={styles.td}>{work.wl_work}</td>
                     <td className={styles.td}>{work.wl_work_detail}</td>
-                    <td className={styles.td}>{work.wl_date_end}</td>                    
+                    <td className={styles.td}> {work.wl_date_end}</td>                    
+                    <td className={styles.td}>
+                      <Link to={`/main/project/${work.p_id}/workList`}>
+                        <button className={styles.button}><i className="fas fa-sign-in-alt"></i></button>
+                      </Link>
+                    </td>  
                   </tr>);  
                 })
               }

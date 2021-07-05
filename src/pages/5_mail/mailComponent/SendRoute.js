@@ -5,9 +5,14 @@ import { useEffect } from "react";
 import SendNoteBoard from "./SendNoteBoard";
 import { Pagination } from "react-bootstrap";
 import styles from "./SendRoute.module.css";
+import { useParams } from 'react-router-dom';
 
 //받은쪽지함
-const SendRoute = ({ match }) => {
+const SendRoute = ({ match, setId }) => {
+    const param = useParams();
+    // console.log(parseInt(param.id));
+    useEffect(()=>{setId(parseInt(param.id))},[]);
+
     const [list, setList] = useState([]); //전체리스트
     const [viewList, setViewList] = useState([]); //해당번호에 보여질 리스트
     const [active, setActive] = useState(1); // 현재번호

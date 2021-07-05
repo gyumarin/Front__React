@@ -41,6 +41,7 @@
 .title {
   font-size: 1.2em;
   margin-left: 2em;
+  font-weight: bold;
 }
 .projectNumber {
   margin-left: 1em;
@@ -56,13 +57,13 @@
 /* ---------------------------------------------------------- */
 
 .calender {
-  height: 55vh;
-  border-radius: 40px;
-  margin: 1.5em 1.5em 1em 1.5em;
+  height: 58vh;
+  border-radius: 20px;
+  margin: 1.5em 1.5em 0.5em 1.5em;
   background-color: myBlue2;
 }
 .dataList {
-  height: 35vh;
+  height: 28vh;
   display: flex;
   justify-content: center;
 }

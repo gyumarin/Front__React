@@ -38,10 +38,9 @@
   background-color: aliceblue;
   height: 40px;
   box-sizing: border-box;
-  cursor: pointer;
 }
 .notice:hover {
-  background-color: #00aaef;
+  background-color: #adecff;
 }
 
 .noticeContent {

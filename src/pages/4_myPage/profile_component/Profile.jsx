@@ -28,13 +28,14 @@ const Profile = (props) => {
         event.preventDefault();
         console.log("이제 바꿉니다",userInfo);
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.put('employee/detail', {
+        axios.put('/employee/detail', {
             token: tmp,
             e_p_phone: userInfo.e_p_phone,
             e_e_phone: userInfo.e_e_phone,
             e_email: userInfo.e_email,
             e_address: userInfo.e_address,
             e_nickname: userInfo.e_nickname,
+            e_comment : userInfo.e_comment,
         })
         .then((res) => {console.log(res)});
         setSelf(false);

@@ -1,15 +1,41 @@
 import React from 'react';
 import styles from './ProjectTopNavBar.module.css';
-import {NavLink } from 'react-router-dom';
+import {NavLink, useHistory } from 'react-router-dom';
 
 const ProjectTopNavBar = ({projectID}) => {
+
+    const history = useHistory();
+    
+    const goOverview =(event)=>{
+        event.preventDefault();
+        history.push(`/main/project/${projectID}`);
+    }
+    const goCalendar =(event)=>{
+        event.preventDefault();
+        history.push(`/main/project/${projectID}/calendar`);
+    }
+    const goWorkList =(event)=>{
+        event.preventDefault();
+        history.push(`/main/project/${projectID}/workList`);
+    }
+    const goTeamList =(event)=>{
+        event.preventDefault();
+        history.push(`/main/project/${projectID}/teamList`);
+    }
+    const goCommitList =(event)=>{
+        event.preventDefault();
+        history.push(`/main/project/${projectID}/commitList`);
+    }
+
+
+
     return(
         <ul className={styles.container}> 
-            <NavLink to={`/main/project/${projectID}/overview`}> <li className={styles.button}>현황</li></NavLink>
-            <NavLink to={`/main/project/${projectID}/calendar`}> <li className={styles.button}>캘린더</li></NavLink>
-            <NavLink to={`/main/project/${projectID}/workList`}> <li className={styles.button}>업무</li></NavLink>
-            <NavLink to={`/main/project/${projectID}/teamList`}> <li className={styles.button}>인원</li></NavLink>
-            <NavLink to={`/main/project/${projectID}/commitList`}> <li className={styles.button}>커밋</li></NavLink>
+            <li onClick={goOverview} className={styles.button}>현황</li>
+            <li onClick={goCalendar} className={styles.button}>캘린더</li>
+            <li onClick={goWorkList} className={styles.button}>업무</li>
+            <li onClick={goTeamList} className={styles.button}>인원</li>
+            <li onClick={goCommitList} className={styles.button}>커밋</li>
         </ul>
     );
 };

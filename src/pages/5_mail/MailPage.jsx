@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './MailPage.module.css';
-import { Switch, Route, } from 'react-router-dom';
+import { Switch, Route, useParams, } from 'react-router-dom';
 
 import MailTopNavBar from './MailTopNavBar';
 import PostRoute from './mailComponent/PostRoute';
@@ -9,10 +9,13 @@ import NoteInsert from './mailComponent/NoteInsert';
 import NoteDetail from './mailComponent/NoteDetail';
 
 const MailPage = (props) => {
+
+    const [id, setId] =useState();    
+    
     return(
         <div className={styles.container}>
             <div className={styles.header}>
-                <MailTopNavBar/>
+                <MailTopNavBar id = {id}/>
             </div>
             <div className={styles.content}>
                 <Switch> 
@@ -23,7 +26,7 @@ const MailPage = (props) => {
                     <Route
                         path="/main/mail/send/:id"
                         render={props => {
-                            return <SendRoute {...props}></SendRoute>;
+                            return <SendRoute {...props} setId={setId}></SendRoute>;
                         }}
                     ></Route>
                     <Route

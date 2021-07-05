@@ -21,7 +21,7 @@ const ProjectPage = () => {
     useEffect(async () => {
         await setParam(p.id);
         if(param!=null){
-            await history.push(`/main/project/${param}/overview`);
+            // await history.push(`/main/project/${param}`);
         }
         await axios.get(`/project/detail/${param}`).then(res =>{
             setProjectInfo(res.data.result)
@@ -40,7 +40,7 @@ const ProjectPage = () => {
             </div>
             <div className={styles.content}>
                 <Switch>
-                    <Route path={`/main/project/${param}/overview`}><ProjectOverViewPage projectID={param}/></Route>
+                    <Route exact path={`/main/project/${param}`}><ProjectOverViewPage projectID={param}/> </Route>
                     <Route path={`/main/project/${param}/calendar`}><WorkCalendarPage projectID={param}/> </Route>
                     <Route path={`/main/project/${param}/workList`}><WorkListPage projectID={param}/> </Route>
                     <Route path={`/main/project/${param}/teamList`}><PeopleListPage projectID={param}/> </Route>

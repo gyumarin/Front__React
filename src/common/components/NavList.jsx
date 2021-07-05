@@ -1,12 +1,51 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './NavList.module.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Accordion, Card} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import mockData from '../../Data/data';
+import {Link, useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 const NavList = ({mode}) => {  
+  const history = useHistory();
+
+  // for User ---------------------------------------------------------
+  const goHome =(event)=>{
+    event.preventDefault();
+    history.push("/main/home");
+  }
+  const goProject =(event)=>{
+    event.preventDefault();
+    history.push("/main/projectList");
+  }
+  const goNotice =(event)=>{
+    event.preventDefault();
+    history.push("/main/board/notice");
+  }
+  const goQna =(event)=>{
+    event.preventDefault();
+    history.push("/main/board/qna");
+  }
+  const goCompanyTree =(event)=>{
+    event.preventDefault();
+    history.push("/main/board/companyTree");
+  }
+  // for Admin ---------------------------------------------------------
+  const goAdminProject =(event)=>{
+    event.preventDefault();
+    history.push("/main/admin/project");
+  }
+  
+  const goAdminNotice =(event)=>{
+    event.preventDefault();
+    history.push("/main/admin/board/notice");
+  }
+  const goAdminQna =(event)=>{
+    event.preventDefault();
+    history.push("/main/admin/board/qna");
+  }
+
  
+
   return(
     <div className={styles.container}>
       {
@@ -15,18 +54,15 @@ const NavList = ({mode}) => {
           {/* 1. 홈 버튼 */}
           <Card className={styles.card}>          
             <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="0">
-              <Link to='/main/home'>
-                <span className={styles.boardText}>홈</span>
-              </Link>
+              <div className={styles.boardText} onClick={goHome}>홈</div>
             </Accordion.Toggle>
           </Card>
 
           {/* 2. 프로젝트 */}
           <Card>
             <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="1">
-              <Link to='/main/projectList'>
-                <span className={styles.boardText}>프로젝트</span>
-                </Link></Accordion.Toggle>
+              <div className={styles.boardText} onClick={goProject}>프로젝트</div>
+            </Accordion.Toggle>
             {/* <Accordion.Collapse eventKey="1">
               <Card.Body className={styles.navBody}>
                 <ul>
@@ -44,13 +80,13 @@ const NavList = ({mode}) => {
 
           {/* 3. 게시판 */}
           <Card>
-            <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="2"><Link to="/main/board/notice"><span className={styles.boardText}>게시판</span></Link></Accordion.Toggle>
+            <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="2"><span className={styles.boardText}>게시판</span></Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
               <Card.Body className={styles.navBody}>
-                <ul>
-                  <li className={styles.list}><Link className={styles.link}to="/main/board/notice">공지사항</Link></li>
-                  <li className={styles.list}><Link className={styles.link}to="/main/board/qna">QnA</Link></li>
-                  <li className={styles.list}><Link className={styles.link}to="/main/board/companyTree">조직도</Link></li>
+                <ul className={styles.ul}>
+                  <li className={styles.list} onClick={goNotice} >공지사항</li>
+                  <li className={styles.list} onClick={goQna} >QnA</li>
+                  <li className={styles.list} onClick={goCompanyTree} >조직도</li>
                 </ul>
               </Card.Body>
             </Accordion.Collapse>
@@ -62,9 +98,8 @@ const NavList = ({mode}) => {
           {/* 1. 관리자 프로젝트 관리 */}
           <Card>
             <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="1">
-              <Link to='/main/admin/project'>
-                <span className={styles.boardText}>프로젝트 관리</span>
-              </Link></Accordion.Toggle>
+              <div onClick = {goAdminProject} className={styles.boardText}>프로젝트 관리</div>
+            </Accordion.Toggle>
             {/* <Accordion.Collapse eventKey="1">
               <Card.Body className={styles.navBody}>
                 <ul>
@@ -82,12 +117,12 @@ const NavList = ({mode}) => {
 
            {/* 2. 관리자 게시판 관리 */}
            <Card>
-            <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="2"><Link to="/main/admin/board/notice"><span className={styles.boardText}>게시판 관리</span></Link></Accordion.Toggle>
+            <Accordion.Toggle className={styles.navToggle} as={Card.Header} eventKey="2"><span className={styles.boardText}>게시판 관리</span></Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
               <Card.Body className={styles.navBody}>
-                <ul>
-                  <li className={styles.list}><Link className={styles.link}to="/main/admin/board/notice">공지사항 관리</Link></li>
-                  <li className={styles.list}><Link className={styles.link}to="/main/admin/board/qna">QnA 관리</Link></li>
+                <ul className={styles.ul}>
+                  <li onClick={goAdminNotice} className={styles.list}>공지사항 관리</li>
+                  <li onClick={goAdminQna} className={styles.list}>QnA 관리</li>
                 </ul>
               </Card.Body>
             </Accordion.Collapse>

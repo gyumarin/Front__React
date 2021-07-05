@@ -1,13 +1,29 @@
 import React from 'react';
 import styles from './MailTopNavBar.module.css';
-import {NavLink } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 
-const MailTopNavBar = (props) => {
+const MailTopNavBar = ({id}) => {
+    
+    const history = useHistory();
+    
+    const goGetMail =(event)=>{
+        event.preventDefault();
+        history.push(`/main/mail/send/${id}`);
+    }
+    const goSendMail =(event)=>{
+        event.preventDefault();
+        history.push(`/main/mail/post/${id}`);
+    }
+    const goMailWrite =(event)=>{
+        event.preventDefault();
+        history.push(`/main/mail/write`);
+    }   
+
     return(
         <ul className={styles.container}> 
-            <NavLink to="/main/mail/send/1005"> <li className={styles.button}>받은쪽지</li></NavLink>            
-            <NavLink to="/main/mail/post/1005"> <li className={styles.button}>보낸쪽지</li></NavLink>   
-            <NavLink to="/main/mail/write"> <li className={styles.button}>쪽지쓰기</li></NavLink>                     
+            <li className={styles.button} onClick={goGetMail}>받은쪽지</li>
+            <li className={styles.button} onClick={goSendMail}>보낸쪽지</li>
+            <li className={styles.button} onClick={goMailWrite}>쪽지쓰기</li>
         </ul>
     );
 };
