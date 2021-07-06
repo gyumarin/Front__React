@@ -17,6 +17,16 @@
   color: #263238;
 }
 
+.listContainer {
+  margin-left: 2.7em;
+  width: 95%;
+  padding: 1em;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+
+  border-radius: 10px;
+  background-color: #88e3ff;
+}
 .workView {
   height: 620px;
   overflow-y: scroll;
@@ -27,4 +37,8 @@
 /* Hide scrollbar for Chrome, Safari and Opera */
 .workView::-webkit-scrollbar {
   display: none;
+}
+
+.commitListCard {
+  border-left: 1px solid black;
 }

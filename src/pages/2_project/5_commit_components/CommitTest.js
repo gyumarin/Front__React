@@ -101,26 +101,43 @@ const CommitTest = () => {
     return (
 
         
-        <div style={{  display:'grid' ,gridTemplateColumns:'330px 1235px', gridTemplateRows:' 150px 580px'}}>
+        <div style={{  display:'grid' ,gridTemplateColumns:'330px 1235px', gridTemplateRows:' 140px 580px'}}>
 
              {/* 마스터 버튼*/}
-             <Card style={{ margin: '10px', padding: '20px' }}>
-             <font style={{marginLeft : '80px', marginBottom:'-5px' ,fontSize:'18px',}}>마스터 브런치</font>
-             <Button  style={{ margin: '15px 5px 5px 35px', width:'200px' }} onClick={() => masterBrench()}>
-                <p style={{marginBottom: '0px'  }}>master</p>
-            </Button>
+             <Card style={{ margin: '10px', padding: '20px', borderRadius:"10px", backgroundColor:"aliceblue" }}>
+                <font style={{marginLeft : '80px', marginBottom:'-5px' ,fontSize:'18px', fontWeight : 'bold',  color : "#263238"}}>마스터 브런치</font>
+                <Button  style={{ margin: '15px 5px 5px 35px', width:'200px', backgroundColor:"#00aaef", border :'none',fontWeight:'bold', fontSize:'1.2em', borderRadius:"10px" }} onClick={() => masterBrench()}>
+                    <p style={{marginBottom: '0px'  }}>master</p>
+                </Button>
             </Card>
             {/* 브런치 목록 버튼*/}
 
-            <Card style={{  margin: '10px', padding: '20px',  gridColumn:'1/2', gridRow:'2/3', }}>
-            <font style={{ marginBottom:'-5px' ,fontSize:'18px',}}>브런치 목록 
-            <font style={{marginLeft : '150px', marginBottom:'-5px' ,fontSize:'18px',color:'rgba(1, 1, 255, 0.3)'}}><b>{branchs.length-1}</b></font>
-            </font>
-            
+            <Card style={{ 
+                margin: '10px', 
+                padding: '20px',  
+                gridColumn:'1/2', 
+                gridRow:'2/3',
+                borderRadius:"10px", 
+                backgroundColor:"aliceblue"  
+            }}>
+                <font style={{ marginBottom:'-5px' ,fontSize:'18px',  fontWeight : 'bold',  color : "#263238", marginBottom:"1em"}}>브런치 목록 
+                    <font style={{
+                        marginLeft : '150px', 
+                        marginBottom:'-5px' ,
+                        fontSize:'18px',
+                        color:'#007bbc',
+                        width: "50px",
+                        height : "50px"
+                    }}
+                    >
+                        <b>{branchs.length-1}</b>
+                    </font>
+                </font>
+                
                 {branchs.map((item, key) => {
                     if (item.name !== 'master') {
                         return (
-                            <Button style={{ margin: '15px 5px 5px 0px' ,textAlign:'left'}} value={item.name} key={key} onClick={() => chooseBrench(item.name)}>
+                            <Button style={{ margin: '15px 5px 5px 0px' ,textAlign:'left', backgroundColor : "#00aaef", border : "none", borderRadius : "15px", height  : "50px"}} value={item.name} key={key} onClick={() => chooseBrench(item.name)}>
                                 <p style={{marginBottom: '0px'  }}>{item.name}</p>
                                 { 
                                     // (item.name.split("/")).map(item =>{
@@ -132,9 +149,8 @@ const CommitTest = () => {
                     }
                 })}
             </Card>
-            
-            <Card  style={{ gridColumn:'2/3', gridRow:'1/3', padding : '30px', margin: '10px'}}>
-                <h5>Commit List<font style={{marginLeft : '16px' ,fontSize:'13px', color : 'rgba(1, 1, 1, 0.3)'}}><b>{useBranch}</b></font></h5>
+            <Card style={{ gridColumn:'2/3', gridRow:'1/3', padding : '30px', margin: '10px', borderLeft : '20px solid  #007bbc', borderRadius : "20px"}} >
+                <h5 style={{fontWeight:"bold"}}>Commit List<font style={{marginLeft : '16px' ,fontSize:'13px', color : 'rgba(1, 1, 1, 0.3)'}}><b>{useBranch}</b></font></h5>
                 
                <div className={styles.workView} style={{marginTop:'20px',paddingTop:"20px"}}>
                 {toggle === true

@@ -3,12 +3,12 @@ import { useState } from 'react';
 import styles from './WorkMiddleCategory.module.css';
 
 
-const WorkMiddleCategory = ({project,midCategoryId,setProject,setBigCategoryId,setSmallCategoryId, smallCategoryId}) => {
+const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmallCategoryId, smallCategoryId}) => {
     // state
     const [onInput, setOnInput] =useState(false);
     const newMiddleCategory=useRef("");
 
-    const midCategoryData = project.p_middle_category.filter(item=>{
+    const midCategoryData = wlm.filter(item=>{
             return item.c_id == midCategoryId;
         }            
     );
@@ -28,16 +28,15 @@ const WorkMiddleCategory = ({project,midCategoryId,setProject,setBigCategoryId,s
 
     const onCreateNewMiddleCategory =(event)=>{
         event.preventDefault();
-        const copied = {...project};
+        const copied = [...wlm];
         const newCategory = {
             "c_id" : midCategoryId,
             "m_id" : new Date().getTime(),
-            "m_name" : newMiddleCategory.current.value 
-              
+            "m_name" : newMiddleCategory.current.value               
         }      
 
-        copied.p_middle_category.push(newCategory);        
-        setProject(copied);
+        copied.push(newCategory);        
+        setWlm(copied);
         event.target.querySelector('input').value = "";
         setOnInput(false);
     }
@@ -52,7 +51,8 @@ const WorkMiddleCategory = ({project,midCategoryId,setProject,setBigCategoryId,s
           {                                    
               midCategoryData.map(item=>{
                   return(
-                      <div className={smallCategoryId == item.m_id? styles.selectedList : styles.list} id ={item.m_id} onClick={openDetailCategory}>{item.m_name}</div>
+                      <div className={smallCategoryId == item.s_id? styles.selectedList : styles.list} 
+                      id ={item.m_id} onClick={openDetailCategory}>{item.m_name}</div>
                   );
               })
           }

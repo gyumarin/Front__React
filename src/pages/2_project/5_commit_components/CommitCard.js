@@ -84,8 +84,8 @@ const CommitCard = ({ info, useBranch }) => {
     };
 
     return (
-        <div style={{ margin: '0px 0px 0px 30px' }}>
-            <div style={{ display: 'flex', alignItems: 'center'}}>
+        <div style={{ margin: '0px 0px 0px 30px'}}>
+            <div style={{ display: 'flex', alignItems: 'center', backgroundColor:"#eef1f5", borderRadius:"20px", marginBottom:"1em"}}>
                 <div style={{ display: 'grid', width: '500px', }}>
                     <Card.Body>
                         
@@ -113,7 +113,7 @@ const CommitCard = ({ info, useBranch }) => {
                                     onChange={onChange}
                                 />
                             </Form.Group>
-                            <Button style={{ width: '80px', height: '40px',  padding:'8px 0px 10px 0px', margin: '-20px 0px 0px 20px' }} variant="primary" onClick={onInsert}>
+                            <Button style={{ width: '80px', height: '37px',  padding:'8px 0px 10px 0px', margin: '-16px 0px 0px 0px' }} variant="primary" onClick={onInsert}>
                                 {comment.state ? '수정' : '등록'}
                             </Button>   
                         </Form>
@@ -123,7 +123,7 @@ const CommitCard = ({ info, useBranch }) => {
                    
                     
                 </div>
-                {!toggle &&<div  style={{ margin: '10px 0px 20px -20px', width: '400px' }}>{ comment.text}</div>}
+                {!toggle &&<div  style={{ margin: '10px 0px 20px -20px' }}>{ comment.text}</div>}
             </div>
              
         </div>

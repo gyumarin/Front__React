@@ -8,13 +8,11 @@ import "tui-time-picker/dist/tui-time-picker.css";
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ControlPointSharp } from '@material-ui/icons';
 
 const Calendar  = ({projectID, isTeam}) => { 
 
     // ----------------------------------------------------------------    
     const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);   
-
 
     const [schedules, setSchedules] = useState([]);
     const [labelColor, setLabelColor] = useState([]);
@@ -22,12 +20,12 @@ const Calendar  = ({projectID, isTeam}) => {
     const [teamSchedules, setTeamSchedules] = useState([]);
     const [teamLabelColor, setTeamLabelColor] = useState([]);
     const colors = [
-      "rgba(255, 82,  111, 0.7)",     // 1. 빨갱이
-      "rgba(255, 110, 243, 0.7)",    // 2. 분홍이
-      "rgba(187, 110, 255, 0.7)",    // 3. 아이유
-      "rgba(114, 110, 255, 0.7)",    // 4. 파랭이
+      "rgba(255, 82,  111, 0.7)",   // 1. 빨갱이
+      "rgba(255, 110, 243, 0.7)",   // 2. 분홍이
+      "rgba(187, 110, 255, 0.7)",   // 3. 아이유
+      "rgba(114, 110, 255, 0.7)",   // 4. 파랭이
       "rgba(255, 246, 84,  0.7)",   // 10. 노랭이
-      "rgba(110, 241, 255, 0.7)",  // 6. 구르미
+      "rgba(110, 241, 255, 0.7)",   // 6. 구르미
       "rgba(255, 246, 84,  0.7)",   // 10. 노랭이
       "rgba(71,  255, 182, 0.7)",   // 7. 초록이
       "rgba(59,  255, 41,  0.7)",   // 8. 초록이 동생

@@ -5,6 +5,7 @@ import styles from './RightOverView.module.css';
 import Calendar from '../2_workCalendar_components/Calendar';
 import Doughnut2 from './Doughnut2';
 import axios from 'axios';
+import MiniCalendar from '../2_workCalendar_components/MiniCalendar';
 
 const RightOverView = ({projectID}) => {
     const [userInfo, setUserInfo] = useState({})
@@ -32,10 +33,11 @@ const RightOverView = ({projectID}) => {
                     <Doughnut2 projectID={projectID}/>
                 </div>
             </div>
+
             <div className={styles.down}>
                 <div className={styles.calendarContainer}>
                     <div className={styles.innerContainer}>
-                    <Calendar />
+                        <MiniCalendar projectID={projectID}/>
                     </div>
                 </div>
             </div>

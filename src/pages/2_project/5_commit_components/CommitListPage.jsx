@@ -18,12 +18,11 @@ const CommitListPage = ({projectID}) => {
         <div className={styles.container} >
             
             <div style={{marginBottom:'-35px'}}>
-            <h3 className={styles.h3}>{projectInfo.p_title}<font style={{marginLeft : '16px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>커밋 리스트</font></h3>                
+                <h3 className={styles.h3}>{projectInfo.p_title}<font style={{marginLeft : '16px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>커밋 리스트</font></h3>                
             </div>
+
             <div className={styles.listContainer} style={{paddingLeft: '40px'}}>
-            <CommitTest />
-           
-           
+                <CommitTest />
             </div>
         </div> 
     );

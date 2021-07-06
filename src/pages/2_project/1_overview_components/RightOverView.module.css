@@ -44,10 +44,12 @@
 .down {
   margin: 0.8em 1em;
   width: 58.7%;
+  height: 850px;
 }
 .calendarContainer {
-  height: 850px;
+  height: 840px;
   padding: 1em 1em;
+  margin-bottom: 1em;
   background-color: #00aaef;
   padding-bottom: 1.5em;
   border-radius: 5px;
@@ -55,7 +57,7 @@
 
 .innerContainer {
   margin-top: 10px;
-  height: 840px;
+  height: 100%;
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

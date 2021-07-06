@@ -1,71 +1,58 @@
-import React from 'react';
-import AdminProject from './AdminProject';
+import React from "react";
+import AdminProject from "./AdminProject";
 import styles from "./AdminProjectPage.module.css";
-import mockData from '../../Data/data';
-import AdminAddProject from './AdminAddProject';
+import mockData from "../../Data/data";
+import AdminAddProject from "./AdminAddProject";
 
-import { useState } from 'react';
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
+const AdminProjectPage = props => {
+    const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
 
-const AdminProjectPage = (props) => {
+    useEffect(() => {
+        getProject();
+    }, []);
 
-    const [projects,setProjects] = useState([{
-        p_id: 1,
-        p_title: '부산 정보 산업진흥원 홈페이지 개발',
-        p_date_start: '2021-03-11',
-        p_date_end: '2021-08-11',
-        p_Totalpersent: 100,
-        p_success: 28,
-    },
-    {
-        p_id: 2,
-        p_title: '부산 정보 산업진흥원 홈페이지 개발',
-        p_date_start: '2021-03-11',
-        p_date_end: '2021-08-11',
-        p_Totalpersent: 100,
-        p_success: 28,
-    },
-    {
-        p_id: 3,
-        p_title: '부산 정보 산업진흥원 홈페이지 개발',
-        p_date_start: '2021-03-11',
-        p_date_end: '2021-08-11',
-        p_Totalpersent: 100,
-        p_success: 28,
-    },]);
+    const getProject = async () => {
+        const result = await axios.get("/project/list?token=" + tmp);
+        setProjects(result.data.result);
+    };
 
-    const createProject =(project)=>{
+    const [projects, setProjects] = useState([]);
+
+    const createProject = project => {
         const copy = [...projects];
         copy.push(project);
         setProjects(projects => copy);
-    }
-    return(
+    };
+    return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.title}>프로젝트 관리</div>
-            </div> 
+            </div>
 
             <div className={styles.contents}>
-                <AdminAddProject 
-                    projects = {projects}
+                <AdminAddProject
+                    projects={projects}
                     createProject={createProject}
                 />
-                {
-                    projects.map((proj)=>{
-                        return <AdminProject
-                        id ={proj.p_id}
-                        key = {proj.p_id}
-                        title = {proj.p_title}
-                        start = {proj.p_date_start}
-                        end = {proj.p_date_end}
-                        total = {proj.p_Totalpersent}
-                        success = {proj.p_success}
+                {projects.map(proj => {
+                    return (
+                        <AdminProject
+                            id={proj.p_id}
+                            key={proj.p_id}
+                            title={proj.p_title}
+                            start={proj.p_date_start}
+                            end={proj.p_date_end}
+                            total={proj.p_Totalpersent}
+                            success={proj.p_success}
                         />
-                    })
-                }
-            </div>            
+                    );
+                })}
+            </div>
         </div>
-
     );
 };
 

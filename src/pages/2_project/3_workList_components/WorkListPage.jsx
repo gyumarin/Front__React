@@ -160,169 +160,188 @@ const WorkListPage = ({projectID}) => {
         }        
     }
 
-    return(
-        
+    return(        
         <div className={styles.container}>
             
-            <div style={{display: 'grid' ,gridTemplateColumns:'400px 800px 400px', gridTemplateRows: '70px 20px 80px 120px 500px'}}>
-                    <div style={{gridRow:'1/2', gridColumn:'1/3'}}>
-                    <h3 className={styles.h3}>{projectInfo.p_title}<font style={{marginLeft : '10px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>업무 리스트</font></h3>
-                    </div>
-                    <div></div>
+            <div style={{display: 'grid',
+                         gridTemplateColumns:'200px 800px 400px', 
+                         gridTemplateRows: '70px 20px 120px 120px 500px'}
+            }>
+                <div style={{gridRow:'1/2', gridColumn:'1/3'}}>
+                    <h3 className={styles.h3}>{projectInfo.p_title}
+                        <font style={{marginLeft : '10px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>업무 리스트</font>
+                    </h3>
+                </div>
+                <div></div>
                     
-                    <div style={{ gridColumn:'2/3', gridRow:'1/4' , height: '100px', 
-                        display:'flex', margin:'11px 7px 0px 7px', padding:'85px 0px 0px 0px'}}>
-                    
-                        <Card style={{height: '90px', margin: '5px'}}>
-                            <Form style={{margin: '3px',padding:'10px 0px 0px 10px', width: '280px'}}>
-                                <p>수행 여부</p>
-                                <Form.Check 
-                                            inline
-                                            checked={workSuccess==0}
-                                            label= "전체"
-                                            type="radio"
-                                            onChange={()=> onSuccessBox(0)}
-                                            name="group"
-                                            
-                                        />
-                                        <Form.Check
-                                            inline
-                                            checked={workSuccess==1}
-                                            label= "완료"
-                                            type="radio"
-                                            onChange={()=> onSuccessBox(1)}
-                                            name="group"
-                                            
-                                        />
-                                        <Form.Check
-                                            inline
-                                            checked={workSuccess==2}
-                                            label= "미완료"
-                                            type="radio"
-                                            onChange={()=> onSuccessBox(2)}
-                                            name="group"
-                                            
-                                            
-                                        />
-                            </Form>
-                        </Card>
-
-                        <Card style={{ backgroundColor: 'white', width:'500px' ,height: '90px',display: 'grid',
-                        gridTemplateColumns:'90px 100px 200px 70px', margin: '5px',padding:'10px 0px 0px 0px'}}>
-                                <p style={{padding:'0px 5px 0px 15px'}}>검색 조회</p>
-                                <div style={{padding:'30px 5px 0px 0px'}}>
-
-                                    <select style={{height : '35px', width:'100px', padding:'0px 5px 0px 5px'}}
-                                        value={search.select}
-                                        onChange={onSelect}
-                                    >
-                                        <option>선택</option>
-                                        <option value="e_name" >업무 담당자</option>
-                                        <option value="wl_work_detail" >세부 업무</option>
-                                       
-                                    </select>  
-                                </div>   
-                            
-                            <Form style={{gridColumn:'3/4' ,padding:'30px 5px 0px 5px' }}>
-                                <Form.Group controlId="formBasicEmail">
-                                    <Form.Control style={{ height: '35px'}}type="text" onChange={onKeyword} value={search.keyword} placeholder="검색어"  />
-                                </Form.Group>
-                            </Form>
-                            <div style={{padding:'30px 5px 0px 0px'}}>
-                                <Button style={{height: '35px', width: '70px', gridColumn:'4/5' }}variant="primary" type="submit" onClick={onSearch}>
-                                        검색
-                                </Button>
-                            </div>
-                        </Card>
-
-                    </div>
-                    <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '150px', margin : '45px 5px 5px 35px', padding:'20px'}}>
-                    
-                        <Form style={{ }}>    
-                            <p>업무 대분류</p>
+                <div style={{ gridColumn:'2/3', gridRow:'1/4' , height: '100px', 
+                    display:'flex', margin:'11px 7px 0px 7px', padding:'85px 0px 0px 0px'}}>
+                
+                    {/* 1. 수행 여부 */}
+                    <Card style={{height: '90px', margin: '5px'}} className={styles.card1}>
+                        <Form style={{margin: '3px',padding:'10px 0px 0px 10px', width: '280px'}}>
+                            <p style={{fontWeight :"bold"}}>수행 여부</p>
+                            <Form.Check 
+                                inline
+                                checked={workSuccess==0}
+                                label= "전체"
+                                type="radio"
+                                onChange={()=> onSuccessBox(0)}
+                                name="group"
+                                
+                            />
                             <Form.Check
-                                    inline
-                                    checked={maincate=="전체"}
-                                    label= "전체"
-                                    type="radio"
-                                    onChange={()=> onRadioBox("전체")}
-                                    name="big"
-                                    style={{paddingBottom:'10px'}}
-                                    
-                                />
-                            {data.map((item, index)=>{
-                                if(index!==data.length-1){
-                                    return (<Form.Check
-                                        inline
-                                        checked={maincate==item.wl_work_category}
-                                        label= {item.wl_work_category}
-                                        type="radio"
-                                        onChange={()=>onRadioBox(item.wl_work_category)}
-                                        name="big"
-                                    
-                                    />)
-                                }
-                            })}
-                        
+                                inline
+                                checked={workSuccess==1}
+                                label= "완료"
+                                type="radio"
+                                onChange={()=> onSuccessBox(1)}
+                                name="group"
+                                
+                            />
+                            <Form.Check
+                                inline
+                                checked={workSuccess==2}
+                                label= "미완료"
+                                type="radio"
+                                onChange={()=> onSuccessBox(2)}
+                                name="group"
+                                
+                                
+                            />
                         </Form>
                     </Card>
-                    <div></div>
-                    <Card style={{gridColumn:'3/4', gridRow:'2/6', padding:'40px 0px 0px 20px', margin : '30px 5px 5px 5px', height :'710px'}}> 
-                        <Pie projectID={5} />
-                    </Card>
+
+                    {/* 검색 조회 */}
+                    <Card style={{ 
+                        backgroundColor: 'white', 
+                        width:'500px',
+                        height: '90px',
+                        display: 'grid',
+                        gridTemplateColumns:'90px 100px 200px 70px', 
+                        margin: '5px',
+                        padding:'10px 0px 0px 0px'}
+                    }>
+                        <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold"}}>검색 조회</p>
+                        <div style={{padding:'30px 5px 0px 0px'}}>
+
+                            <select 
+                                style={{
+                                    height : '35px', 
+                                    width:'100px', 
+                                    padding:'0px 5px 0px 5px'
+                                }}
+                                value={search.select}
+                                onChange={onSelect}
+                            >
+                                <option>선택</option>
+                                <option value="e_name" >업무 담당자</option>
+                                <option value="wl_work_detail" >세부 업무</option>
+                                
+                            </select>  
+                        </div>   
                     
-                 
-                    <Card style={{ padding : '0px', gridColumn:'2/3', gridRow:'4/6', margin : '30px 10px 10px 10px', height :'610px'}}>
-                        <p style={{margin:'13px 0px 10px 20px'}}>업무 리스트</p>
-                        <div className={styles.workView} >
-                        {
-                            workView[0]&&workView.map((item, index) =>{
-                                if(workSuccess==0){return <Work data={item} key={index}/>}
-                                else if(workSuccess==1){if(item.wl_done)return <Work data={item} key={index}/>}
-                                else if(workSuccess==2){if(item.wl_done==false)return <Work data={item} key={index}/>}
-                               
-                            })
-                        }
-                        </div>
-                                           
-                    </Card>
-                    
-                    <Card style={{margin : '10px 5px 5px 35px', height: '510px'}}>
-                        <Form style={{ margin: '10px',padding:'10px',  }}>
-                            <p>업무 목록</p>
-                            <div><Form.Check
+                    <Form style={{gridColumn:'3/4' ,padding:'30px 5px 0px 5px' }}>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control style={{ height: '35px'}}type="text" onChange={onKeyword} value={search.keyword} placeholder="검색어"  />
+                        </Form.Group>
+                    </Form>
+                    <div style={{padding:'30px 5px 0px 0px'}}>
+                        <Button style={{height: '35px', width: '70px', gridColumn:'4/5' }}variant="primary" type="submit" onClick={onSearch}>
+                                검색
+                        </Button>
+                    </div>
+                </Card>
+
+                </div>
+
+
+                
+                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '195px', margin : '45px 5px 5px 35px', padding:'20px'}}>
+                
+                    <Form style={{ }}>    
+                        <p>업무 대분류</p>
+                        <Form.Check
                                 inline
-                                onChange={()=>onCheckBox("전체")}
-                                checked={midCateAll}
-                                label="전체"
+                                checked={maincate=="전체"}
+                                label= "전체"
+                                type="radio"
+                                onChange={()=> onRadioBox("전체")}
+                                name="big"
+                                style={{paddingBottom:'10px'}}
+                                
+                            />
+                        {data.map((item, index)=>{
+                            if(index!==data.length-1){
+                                return (<Form.Check
+                                    inline
+                                    checked={maincate==item.wl_work_category}
+                                    label= {item.wl_work_category}
+                                    type="radio"
+                                    onChange={()=>onRadioBox(item.wl_work_category)}
+                                    name="big"
+                                
+                                />)
+                            }
+                        })}
+                    
+                    </Form>
+                </Card>
+                <div></div>
+
+
+                <Card style={{gridColumn:'3/4', gridRow:'2/6', padding:'40px 0px 0px 20px', margin : '30px 5px 5px 5px', height :'710px'}}> 
+                    <Pie projectID={5} />
+                </Card>
+                
+                
+                <Card style={{ padding : '0px', gridColumn:'2/3', gridRow:'4/6', margin : '4px 10px 10px 10px', height :'610px'}}>
+                    <p style={{margin:'13px 0px 10px 20px'}}>업무 리스트</p>
+                    <div className={styles.workView} >
+                    {
+                        workView[0]&&workView.map((item, index) =>{
+                            if(workSuccess==0){return <Work data={item} key={index}/>}
+                            else if(workSuccess==1){if(item.wl_done)return <Work data={item} key={index}/>}
+                            else if(workSuccess==2){if(item.wl_done==false)return <Work data={item} key={index}/>}
+                            
+                        })
+                    }
+                    </div>
+                                        
+                </Card>
+                
+                {/* 업무목록 */}
+                <Card style={{margin : '10px 5px 5px 35px', height: '510px'}}>
+                    <Form style={{ margin: '10px',padding:'10px',  }}>
+                        <p>업무 목록</p>
+                        <div><Form.Check
+                            inline
+                            onChange={()=>onCheckBox("전체")}
+                            checked={midCateAll}
+                            label="전체"
+                            name="group2"
+                            type="checkbox"
+                            id={`inline-checkbox-1`}
+                        /></div>
+                        {
+                            midCateList[0]&&midCateList.map(item=>{
+                            return (
+                                <div>
+                                <Form.Check
+                                inline
+                                onChange={()=>onCheckBox(item)}
+                                checked={item.toggle}
+                                label={item.mid}
                                 name="group2"
                                 type="checkbox"
                                 id={`inline-checkbox-1`}
                             /></div>
-                            {
-                                midCateList[0]&&midCateList.map(item=>{
-                                return (
-                                    <div>
-                                    <Form.Check
-                                    inline
-                                    onChange={()=>onCheckBox(item)}
-                                    checked={item.toggle}
-                                    label={item.mid}
-                                    name="group2"
-                                    type="checkbox"
-                                    id={`inline-checkbox-1`}
-                                /></div>
-                                )
-                                })        
-                            }
-                        </Form>
-                    </Card>
-                    
-                   
-                                     
-                      
-            </div>
-            
+                            )
+                            })        
+                        }
+                    </Form>
+                </Card>
+            </div>            
         </div> 
         
     );

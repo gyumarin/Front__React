@@ -13,7 +13,7 @@ Calendar.momentLocalizer(moment);
 const CommuteCalender = (props) => {
   const [commute, setCommute] = useState(false);
   const [commuteData, setCommuteData] =useState([]);  
-
+  const [noButton, setnoButton] = useState(true);
   const date = new Date();
   const year = date.getFullYear(); // 년 
   const month = date.getMonth();   // 월 * ++1
@@ -26,11 +26,21 @@ const CommuteCalender = (props) => {
     load();
   },[commute])  
 
+  useEffect(()=>{
+    console.log("commuteData",commuteData)
+  },[commuteData]) 
+
   const load = async()=>{
     const result = await axios.get("/employee/commute/list?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs");
     console.log(result.data.result);
     setCommute(result.data.result[result.data.result.length-1].c_end == null ? true : false);
 
+    var test = result.data.result.filter(item =>item.c_year==year&&item.c_month==month+1&&datee==item.c_day)
+    if(test.length>=2){
+      console.log("test 2개이상 있어요!",test)
+      setnoButton(false);
+    }
+    
     const dataForCalendar = result.data.result.map(data=>{      
       return {
         'title': data.c_end == null ? `출근 ${data.c_start}`: `퇴근 ${data.c_end}`,
@@ -69,11 +79,10 @@ const CommuteCalender = (props) => {
   return(
     <div className={styles.container}>
      <div className={styles.calendar} style={{ height: 480 }} >
-        <button 
-          className={styles.button}
-          onClick={onCommute}
-        >{commute?'퇴근':'출근'}
-        </button>
+        {noButton?
+        (<button className={styles.button}onClick={onCommute}>{commute?'퇴근':'출근'}</button>)
+        :
+        <div className={styles.button1}></div>}
         <Calendar 
           className={styles.cal}
           events={commuteData}

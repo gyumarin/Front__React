@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './WorkBigCategory.module.css';
 
 
-const WorkBigCategory = ({project, setProject, setBigCategoryId, setMidCategoryId, renewalDetails, bigCategoryId, midCategoryId}) => {   
+const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renewalDetails, bigCategoryId, midCategoryId}) => {   
     // state
     const [onInput, setOnInput] = useState(false);
     const newBigCategory = useRef("");
@@ -23,28 +23,29 @@ const WorkBigCategory = ({project, setProject, setBigCategoryId, setMidCategoryI
     }
     const onCreateNewBigCategory=(event)=>{
         event.preventDefault();
-        const copied = {...project};
+        const copied = [...wlb];
         const newCategory = {
             "c_id" : new Date().getTime(),
             "c_name" : newBigCategory.current.value     
         }        
-        copied.p_big_category.push(newCategory);        
-        setProject(copied);
+    
+        copied.push(newCategory);        
+        setWlb(copied);
         event.target.querySelector('input').value = "";
         setOnInput(false);
     }
 
     // ------------------------------------------------------------------------------------ 
-
+    
     return(
         <div className={styles.container}>
             <div className={styles.title}>Category</div>
             <div className={styles.content}>
                 {
-                    project.p_big_category.map(c =>{
+                    wlb.map(c =>{
                         return(
                             <div 
-                                className={midCategoryId == c.c_id? bigCategoryId == c.c_id ? styles.doubleSelectdCard : styles.selectedCard : styles.card} 
+                                className={midCategoryId == c.m_id? bigCategoryId == c.c_id ? styles.doubleSelectdCard : styles.selectedCard : styles.card} 
                                 id ={c.c_id} 
                                 onClick={openMiddleCategory}
                             >{c.c_name}

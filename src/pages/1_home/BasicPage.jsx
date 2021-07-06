@@ -39,7 +39,16 @@ const BasicPage = ({removeLoginToken}) =>{
             <Route path="/main/board"><BoardPage/></Route>
             <Route path="/main/mail"> <MailPage/></Route>
             <Route path="/main/admin/project"><AdminProjectPage/></Route>
-            <Route path="/main/admin/editProject"><AdminEditProject/></Route>
+            <Route
+                path="/main/admin/editProject/:id"
+                render={props => {
+                    return (
+                        <AdminEditProject
+                            {...props}
+                        ></AdminEditProject>
+                    );
+                }}
+            ></Route>
             <Route path="/main/admin/board"><AdminBoardPage/></Route>
           </Switch>
         </div>

@@ -1,10 +1,10 @@
 import { even } from 'check-types';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import styles from './WorkSmallCategory.module.css';
 
-const WorkSmallCategory = ({project, setProject, smallCategoryId}) => {
-
+const WorkSmallCategory = ({wld, setWld, smallCategoryId}) => {
+    
     // state
     const [onInput, setOnInput] = useState(false);
     const newDetail = useRef("");
@@ -13,17 +13,18 @@ const WorkSmallCategory = ({project, setProject, smallCategoryId}) => {
     const charges = useRef("");
 
     // method
-    const smallCategoryData = project.p_detail.filter(item=>{
+    const smallCategoryData = wld.filter(item=>{
         return item.m_id == smallCategoryId;
         }            
     );
+    
     const onChangeInputForm =(event)=>{
         event.preventDefault();
         setOnInput(true);
     }
     const onCreateNewDetails=(event)=>{
         event.preventDefault();
-        const copied = {...project};
+        const copied = [...wld];
         const newDetailData = {
             "m_id" : smallCategoryId,
             "d_id" : new Date().getTime(),
@@ -32,15 +33,15 @@ const WorkSmallCategory = ({project, setProject, smallCategoryId}) => {
             "d_end" : EndTime.current.value,
             "d_charge"  : charges.current.value
         }      
-        copied.p_detail.push(newDetailData);        
-        setProject(copied);
+        copied.push(newDetailData);        
+        setWld(copied);
         event.target.querySelector('input').value = "";
         setOnInput(false);
     }
 
     const detailsSubmit = (event)=>{
         event.preventDefault();
-        const copied = {...project};
+        const copied = [...wld];
         const newDetailData = {
             "m_id" : smallCategoryId,
             "d_id" : new Date().getTime(),
@@ -49,8 +50,8 @@ const WorkSmallCategory = ({project, setProject, smallCategoryId}) => {
             "d_end" : EndTime.current.value == "" ? "마감일 없음" : EndTime.current.value,
             "d_charge"  : charges.current.value == "" ? "담당자 없음" : charges.current.value
         }      
-        copied.p_detail.push(newDetailData);        
-        setProject(copied);
+        copied.push(newDetailData);        
+        setWld(copied);
         setOnInput(false);
     }
 // ---------------------------------------------------------------------
