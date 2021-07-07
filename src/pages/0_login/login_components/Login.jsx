@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
+import logo from '../../../images/douzone_logo.png';
 
 const Login = ({getLoginToken}) => {
 
@@ -49,7 +50,7 @@ const Login = ({getLoginToken}) => {
     return (
         <div className={styles.container}>
             <style type="text/css">{`.btn-primary {width: 100%;}`}</style>
-            <img className={styles.logo} src="./images/douzone_logo.png" alt="DOUZONE LOGO" />
+            <img className={styles.logo} src={logo} alt="DOUZONE LOGO" />
             <Form className={styles.form}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>ID</Form.Label>

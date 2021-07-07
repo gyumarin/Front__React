@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Title.module.css';
-
+import logo from '../../images/douzone_logo.png';
 const Title = (props) => {
   const history = useHistory();  
 
@@ -11,7 +11,7 @@ const Title = (props) => {
   }
 
   return(
-        <img src="../images/douzone_logo.png" alt="DOUZONE LOGO" className={styles.logo} onClick={goHome}></img>
+        <img src={logo} alt="DOUZONE LOGO" className={styles.logo} onClick={goHome}></img>
   );
 };
 export default Title;
