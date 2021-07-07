@@ -6,6 +6,7 @@ import axios from "axios";
 const CalendarPopUp = props => {
     const startRef = useRef("");
     const endRef = useRef("");
+    const gitUrlRef = useRef("");
 
     const handleClick = event => {
         event.preventDefault();
@@ -14,7 +15,7 @@ const CalendarPopUp = props => {
 
     const createProject = event => {
         event.preventDefault();
-        props.editDate(startRef.current.value, endRef.current.value);
+        props.editDetail(startRef.current.value, endRef.current.value, gitUrlRef.current.value);
         props.setCpopup(false);
         dateUpdate(startRef.current.value, endRef.current.value, props.p_id);
     };
@@ -59,13 +60,25 @@ const CalendarPopUp = props => {
                     />
                 </div>
 
+                <label 
+                    className={styles.label}
+                    htmlFor="gitUrl">
+                    깃 저장소 명
+                </label>
+                <input 
+                    ref={gitUrlRef}
+                    className={styles.input}
+                    type="text" 
+                    placeholder="Git Repository" 
+                    id ="gitUrl"
+                />
+
                 <input
                     className={styles.button1}
                     type="button"
                     value="저장"
                     onClick={createProject}
                 />
-                <input className={styles.button2} type="reset" value="취소" />
             </form>
         </div>
     );

@@ -9,6 +9,7 @@ const CreateProjectPopUp = props => {
     const nameRef = useRef("");
     const startRef = useRef("");
     const endRef = useRef("");
+    const gitRepoRef = useRef("");
 
     const handleClick = event => {
         event.preventDefault();
@@ -24,15 +25,16 @@ const CreateProjectPopUp = props => {
             p_title: nameRef.current.value,
             p_date_start: startRef.current.value,
             p_date_end: endRef.current.value,
+            p_giturl : gitRepoRef.current.value,
             token: tmp,
         });
 
-        event.preventDefault();
         const project = {
             p_id: result.data.result,
             p_title: nameRef.current.value,
             p_date_start: startRef.current.value,
             p_date_end: endRef.current.value,
+            p_giturl : gitRepoRef.current.value,
         };
         // console.log(project);
         props.createProject(project);
@@ -57,8 +59,17 @@ const CreateProjectPopUp = props => {
                     className={styles.input}
                     type="text"
                     id="input"
-                    placeholder="프로젝트 명"
+                    placeholder="Project Title"
                     autoFocus
+                />
+
+                <label className={styles.label} htmlFor="gitRepo">깃 저장소 명</label>
+                <input 
+                    ref ={gitRepoRef}
+                    className={styles.input} 
+                    type="text" 
+                    id="gitRepo" 
+                    placeholder="Git Repository"
                 />
 
                 <label className={styles.label} htmlFor="input">
@@ -89,7 +100,6 @@ const CreateProjectPopUp = props => {
                     value="저장"
                     onClick={createProject}
                 />
-                <input className={styles.button2} type="reset" value="취소" />
             </form>
         </div>
     );

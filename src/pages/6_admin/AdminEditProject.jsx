@@ -40,6 +40,7 @@ const AdminEditProject = props => {
         setPeopleList(result2.data.result);
 
         const result3 = await axios("/project/detail/" + props.match.params.id);
+        console.log(result3.data.result);
         setProjectDetail(result3.data.result);
     };
 
@@ -71,8 +72,8 @@ const AdminEditProject = props => {
     };
 
     // 3-2. edit Date
-    const editDate = (start, end) => {
-        const copy = { ...projectDetail, p_date_start: start, p_date_end: end };
+    const editDetail = (start, end, gitUrl) => {
+        const copy = { ...projectDetail, p_date_start: start, p_date_end: end, p_giturl : gitUrl };
         setProjectDetail(projectDetail => copy);
     };
 
@@ -130,8 +131,9 @@ const AdminEditProject = props => {
                         {projectDetail.p_title}
                     </p>
                     <div className={styles.projectDate}>
-                        프로젝트 기간 : {projectDetail.p_date_start} ~{" "}
-                        {projectDetail.p_date_end}
+                        
+                        프로젝트 기간 : {projectDetail.p_date_start} ~ {projectDetail.p_date_end}<br/>
+                        Git Reposotiry : {projectDetail.p_giturl} 
                         <button
                             className={styles.button1}
                             onClick={onCalendarPopup}
@@ -141,7 +143,7 @@ const AdminEditProject = props => {
                         {calendarPopup ? (
                             <CalendarPopUp
                                 setCpopup={setCalendarPopup}
-                                editDate={editDate}
+                                editDetail={editDetail}
                                 p_id={projectDetail.p_id}
                             />
                         ) : null}

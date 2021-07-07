@@ -5,6 +5,7 @@ import { useState } from 'react';
 import TeamCardForTree from './TeamCardForTree';
 import { useEffect } from 'react';
 import axios from 'axios';
+import tree from '../../../images/tree.png'
 
 const CompanyTree = (props) => {
     const [nowTeam, setNowTeam] = useState([]);
@@ -17,7 +18,10 @@ const CompanyTree = (props) => {
 
     useEffect(()=>{
         axios.get("/employee/list").then(res => {
-            if(teamId == 1 | teamId ==2 | teamId ==3 | teamId ==4){
+            if(teamId == null){
+                setNowTeam(null);
+            }
+            else if(teamId == 1 | teamId ==2 | teamId ==3 | teamId ==4){
                 setNowTeam(nowTeam => res.data.result.filter(i => {
                     return i.dept_d_id == teamId;
                 }));
@@ -46,8 +50,10 @@ const CompanyTree = (props) => {
                 <div className  ={styles.belongs}>
                    <div className ={styles.teamTitle}>{team}</div>
                    <div className={styles.contents}>
-                   {
-                       nowTeam.map((team)=>{
+                   {/* <img src={tree} alt="company_employ_tree" />  */}
+                   {   nowTeam == null ? 
+                        <img src={tree} alt="company_employ_tree" />       
+                        : nowTeam.map((team)=>{
                         return(
                           <TeamCardForTree
                             team = {team}
