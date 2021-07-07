@@ -9,8 +9,7 @@ const DoughnutChart = ({projectID}) => {
   useEffect(() => {
         
     //차트에 들어갈 데이터 호출
-   axios.get(`/project/work/chart/${projectID}`).then(res =>{
-    
+   axios.get(`/project/work/chart/${projectID}`).then(res =>{    
         var sum = 0;
         res.data.result.map(item =>{
             sum = sum + item.count

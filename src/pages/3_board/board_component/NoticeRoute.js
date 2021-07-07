@@ -32,7 +32,7 @@ const NoticeRoute = () => {
         hits: "조회수",
     };
 
-    const listMax = 10;
+    const listMax = 12;
     
 // --------------------------------------------------------------------------------
     useEffect(() => {
@@ -123,7 +123,7 @@ const NoticeRoute = () => {
                     setFirstCount={setFirstCount}
                     setLastCount={setLastCount}
                 ></SearchNotice>
-
+                <p style = {{marginLeft:"2.5em", marginBottom : "-0.5em"}}>총 게시글 <span style ={{color : "#00aaef" }}>{list.length}</span>건</p>
                 <CommonBoard
                     viewList={viewList}
                     list={list}

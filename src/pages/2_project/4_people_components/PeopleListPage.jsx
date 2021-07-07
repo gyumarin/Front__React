@@ -7,16 +7,13 @@ const PeopleListPage = ({projectID}) => {
   const [empList, setEmpList] = useState([])
   const [projectInfo, setProjectInfo] = useState([])
     useEffect(() => {
-        // console.log('projectID', projectID)
         axios.get(`/project/list/emp/${projectID}`).then(res =>{
-          setEmpList(res.data.result)
-          // console.log(res.data.result)
-            
+          console.log(res.data.result)
+          setEmpList(res.data.result)            
         })
 
         axios.get(`/project/detail/${projectID}`).then(res =>{
           setProjectInfo(res.data.result)
-          // console.log(res.data.result)       
       })
     }, [])   
   

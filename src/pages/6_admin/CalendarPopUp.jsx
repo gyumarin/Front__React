@@ -42,13 +42,15 @@ const CalendarPopUp = props => {
                     프로젝트 일정
                 </label>
                 <div>
-                    <input
+                     <input
                         ref={startRef}
                         className={styles.date}
-                        type="date"
+                        type="text"
                         id="input"
                         placeholder="시작일"
                         autoFocus
+                        defaultValue={props.projectDetail.p_date_start}
+                        readOnly
                     />
                     <input
                         ref={endRef}

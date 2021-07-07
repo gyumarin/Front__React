@@ -30,7 +30,7 @@ const QnaRoute = () => {
         hits: "조회수",
     };
 
-    const listMax = 10;
+    const listMax = 12;
 
     useEffect(() => {
         getList();
@@ -138,7 +138,7 @@ const QnaRoute = () => {
                     setFirstCount={setFirstCount}
                     setLastCount={setLastCount}
                 ></SearchQna>
-                
+                 <div style = {{marginLeft:"2.5em", marginBottom : "-0.5em", width:"5px", height:"25px"    }}></div>
                 <CommonBoard
                     viewList={viewList}
                     list={list}

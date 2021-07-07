@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Title.module.css';
 import logo from '../../images/douzone_logo.png';
-const Title = (props) => {
-  const history = useHistory();  
+import axios  from 'axios';
+import { useState } from 'react';
 
+
+const Title = ({onAdmin}) => {
+  const history = useHistory();  
+   
+ 
   const goHome =(event)=>{
     event.preventDefault();
-    history.push("/main/home");
+    if(onAdmin){
+      history.push("/main/admin/project");
+    }
+    else{
+      history.push("/main/home");   
+    }
+      
   }
 
   return(

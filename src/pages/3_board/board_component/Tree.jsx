@@ -16,7 +16,7 @@ const useStyles = makeStyles({
         borderRadius: 10,
         boxShadow: ' 6px 7px 22px 0px rgba(0, 0, 0, 0.44)',
         color: '#263238',
-        width: '300px',
+        width: '265px',
         height: '697.5px',
         fontSize:'20px',
         padding: '1em',
@@ -56,11 +56,17 @@ const Tree = ({changeTeamView, setTeamId}) => {
   };
 
   const handleClick = (event)=>{
-    if(event.target.innerText == "더존 비즈온"){return};
-    event.preventDefault();
-    const team_id = idArr.find(i => i.name == event.target.innerText).id;
-    setTeamId(team_id);
-    changeTeamView(event.target.innerText);
+    if(event.target.innerText == "더존 비즈온"){
+      setTeamId("douzone");
+      changeTeamView("사내 전체 조직도");
+    }
+    else{
+      event.preventDefault();
+      const team_id = idArr.find(i => i.name == event.target.innerText).id;
+      setTeamId(team_id);
+      changeTeamView(event.target.innerText);
+    }
+   
   } 
 
   const renderTree = (nodes) => (

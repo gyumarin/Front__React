@@ -18,7 +18,7 @@ const AdminProject = props => {
             </Card.Body>
 
             <Card.Body className={styles.chart}>
-                <DoughnutChart />
+                <DoughnutChart  projectID = {props.id}/>
             </Card.Body>
 
             <Link
@@ -26,7 +26,6 @@ const AdminProject = props => {
                 to={`/main/admin/editProject/${props.id}`}
             >
                 <Button className={styles.detailButton} variant="primary">
-                    {" "}
                     프로젝트 관리
                 </Button>
             </Link>

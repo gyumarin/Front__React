@@ -11,16 +11,16 @@ import styles from './HomePage.module.css';
 const HomePage = ({setProject}) => {
 
     const [projectList, setProjectList] = useState([])
+
     useEffect(() => {
         const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/list?token=${tmp}`).then(res=>{
+         axios.get(`/project/list?token=${tmp}`).then(res=>{
             console.log(res.data.result)
             setProjectList(res.data.result)
-            setProject(res.data.result)
-            
-        })
+            setProject(res.data.result)  
+        }) ;           
     }, []);
-
+    
     return(
         <div className={styles.body}>
             <div className={styles.leftBody}>
@@ -52,7 +52,9 @@ const HomePage = ({setProject}) => {
                 </div>
 
                 <div className={styles.dataList}>
-                    <MiniNotice/>
+                    <MiniNotice
+                        key = "1"
+                    />
                     <MiniWorkList/>
                 </div>
             </div>

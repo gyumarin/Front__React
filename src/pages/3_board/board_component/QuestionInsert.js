@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./QuestionInsert.module.css";
 
@@ -8,7 +8,7 @@ const QuestionInsert = ({ history }) => {
         title: "",
         content: "",
     });
-
+    const [empName, setEmpName] = useState('');
     const { title, content } = inputs;
 
     const onChange = e => {
@@ -28,13 +28,18 @@ const QuestionInsert = ({ history }) => {
         history.push("/main/board/qna");
     };
 
+    useEffect(() => {
+        axios.get(`/employee/detail?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`).then((res) => {setEmpName(res.data.result.e_name)} )
+    }, [])
+
+    
     return (
         <div className={styles.container}>
             <div className={styles.title}>QnA 등록</div>
                 <div className={styles.content}> 
 
                 <div className={styles.header}> 
-                    <div>작성자 : 김민준</div>
+                     <div>작성자 : {empName}</div>
                 </div>
                 
 

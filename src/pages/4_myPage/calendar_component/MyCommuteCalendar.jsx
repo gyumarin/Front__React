@@ -12,10 +12,9 @@ moment.locale('en-GB');
 Calendar.momentLocalizer(moment);  
 
 const MyCommuteCalendar = (props) =>{
-
   const [commute, setCommute] = useState(false);
   const [commuteData, setCommuteData] =useState([]);  
-
+  const [noButton, setnoButton] = useState(true);
   const date = new Date();
   const year = date.getFullYear(); // 년 
   const month = date.getMonth();   // 월 * ++1
@@ -29,11 +28,23 @@ const MyCommuteCalendar = (props) =>{
     load();
   },[commute])  
 
-  const load = async()=>{
-    const result = await axios.get("/employee/commute/list?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs");
-    console.log(result.data.result);
-    setCommute(result.data.result[result.data.result.length-1].c_end == null ? true : false);
+  useEffect(()=>{
+    console.log("commuteData",commuteData)
+  },[commuteData]) 
 
+  
+  const load = async()=>{
+    const result = await axios.get(`/employee/commute/list?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`);
+    console.log(result.data.result);
+    if(result.data.result.length!=0){
+    setCommute(result.data.result[result.data.result.length-1].c_end == null ? (result.data.result[result.data.result.length-1].c_day == datee ? true : false) : false);
+
+    var test = result.data.result.filter(item =>item.c_year==year&&item.c_month==month+1&&datee==item.c_day)
+    if(test.length>=2){
+      console.log("test 2개이상 있어요!",test)
+      setnoButton(false);
+    }
+    
     const dataForCalendar = result.data.result.map(data=>{      
       return {
         'title': data.c_end == null ? `출근 ${data.c_start}`: `퇴근 ${data.c_end}`,
@@ -43,6 +54,7 @@ const MyCommuteCalendar = (props) =>{
       };
     });
     setCommuteData(dataForCalendar);
+    }
   }
 
   // 출퇴근 버튼
@@ -53,13 +65,13 @@ const MyCommuteCalendar = (props) =>{
     if(commuteCheck){
         if(commute){      
         await axios.post("/employee/end",{
-          "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs"
+          "token":sessionStorage.getItem('token').slice(0, -1).substr(1)
         });
         let f=false;
         setCommute(f);      
       }else{
         await axios.post("/employee/start",{
-          "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAxIiwiZXhwIjoxNjI0NjAxNzUxfQ.2AA-87y9DEyjJo94Z91IrsuD_06_VAgVqczvkzBdnHs"
+          "token":sessionStorage.getItem('token').slice(0, -1).substr(1)
         });
         let f=true;
         setCommute(f);
@@ -71,11 +83,10 @@ const MyCommuteCalendar = (props) =>{
   return(
     <div className={styles.container}>
         <div className={styles.calendar} style={{ height: 730 }} >
-            <button 
-                className={styles.button}
-                onClick={onCommute}
-              >{commute?'퇴근':'출근'}
-            </button>
+            {noButton?
+            (<button className={styles.button}onClick={onCommute}>{commute?'퇴근':'출근'}</button>)
+            :
+            <div className={styles.button1}></div>}
             <Calendar 
               className={styles.cal}
               events={commuteData}

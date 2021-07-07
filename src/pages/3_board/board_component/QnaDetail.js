@@ -10,10 +10,15 @@ const QnaDetail = ({ match }) => {
     const id = useParams().id;
     
     const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
-
+    const [empID, setEmpID] = useState('')
     const [detail, setDetail] = useState({});
 
     useEffect(() => {
+        axios.get(`/employee/detail?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`)
+        .then((res) => 
+         {setEmpID(res.data.result.e_id)
+        } )
+
         getDetail();
     }, []);
 
@@ -51,7 +56,7 @@ const QnaDetail = ({ match }) => {
                 {
                     isAdmin 
                     ? <button className={styles.button1}><Link to={`/main/admin/board/qna/update/${detail.bq_id}`}>수정하기</Link></button>
-                    : <button className={styles.button1}><Link to={`/main/board/qna/update/${detail.bq_id}`}>수정하기</Link></button>
+                    : (empID==detail.e_id&&<button className={styles.button1}><Link to={`/main/board/qna/update/${detail.bq_id}`}>수정하기</Link></button>)
                 }
                 
 

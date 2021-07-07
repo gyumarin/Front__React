@@ -25,8 +25,8 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
         return (
             <div className ={styles.container}>
                 <div className={styles.table}>
-                    <Table striped bordered hover>
-                        <thead>
+                    <Table >
+                        {/* <thead>
                             <tr>
                                 <th>{th.num}</th>
                                 <th>{th.title}</th>
@@ -34,7 +34,7 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
                                 <th>{th.date}</th>
                                 <th>{th.hits}</th>
                             </tr>
-                        </thead>
+                        </thead> */}
                         <tbody>
                             {keys == "bn_id" ? (
                                 <NoticeBoard 

@@ -39,6 +39,48 @@
   transform: translateY(-5px);
 }
 
+/* Boos ------------------------------------- */
+.noBossContainer {
+  width: 520px;
+  height: 300px;
+  background-color: #168cbb;
+  margin: 0.5em;
+  border-radius: 20px;
+  padding: 1em;
+
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  transition: transform 0.1s ease-in;
+
+  display: flex;
+  border-top: 15px solid rgb(252, 89, 89);
+  box-sizing: border-box;
+}
+
+.Bosscontainer {
+  width: 520px;
+  height: 300px;
+  background-color: #048dc4;
+  margin: 0.5em;
+  border-radius: 20px;
+  padding: 1em;
+
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  transition: transform 0.1s ease-in;
+
+  display: flex;
+  border-top: 15px solid rgb(110, 189, 86);
+  box-sizing: border-box;
+}
+.noBossContainer:hover {
+  transform: translateY(-5px);
+}
+.Bosscontainer:hover {
+  /* opacity: 0.8; */
+  transform: translateY(-5px);
+}
+
 /* -- LEFT ---------------------------------------------------- */
 .left {
   display: flex;
@@ -47,7 +89,18 @@
   justify-content: center;
   width: 80%;
   height: 100%;
+  color: #263238;
   /* border: 1px solid black; */
+}
+
+.bossLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 100%;
+  color: aliceblue;
 }
 
 .imageContainer {
@@ -69,7 +122,7 @@
 .nickName {
   margin-top: 0.5em;
   font-size: 1.5em;
-  color: #263238;
+
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
 }
@@ -88,17 +141,37 @@
   color: rgb(161, 124, 0);
   background-color: #b4ecfd;
 }
+.buttomBossMail {
+  margin-left: 10px;
+  /* margin-right: 10px; */
+  border: none;
+  width: 30px;
+  font-size: 0.8em;
+  color: rgb(219, 219, 54);
+  background-color: #048dc4;
+}
 
 /* -- Right ------------------------------------------------------ */
 .right {
   width: 100%;
   height: 80%;
-  /* border: 1px solid black; */
+  color: #263238;
 
   margin: auto;
   margin-right: 1em;
   padding-left: 10px;
 }
+
+.bossRight {
+  width: 100%;
+  height: 80%;
+  color: aliceblue;
+
+  margin: auto;
+  margin-right: 1em;
+  padding-left: 10px;
+}
+
 .oneTalk {
   /* border: 1px solid black; */
   height: 40%;
@@ -107,7 +180,6 @@
 
   font-size: 0.9em;
   font-family: "Noto Sans", sans-serif;
-  color: #263238;
   padding: 0.5em;
 }
 .table {
@@ -115,7 +187,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-family: "Noto Sans", sans-serif;
-  color: #263238;
 }
 
 .tr {

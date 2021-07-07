@@ -18,10 +18,7 @@ const CompanyTree = (props) => {
 
     useEffect(()=>{
         axios.get("/employee/list").then(res => {
-            if(teamId == null){
-                setNowTeam(null);
-            }
-            else if(teamId == 1 | teamId ==2 | teamId ==3 | teamId ==4){
+            if(teamId == 1 | teamId ==2 | teamId ==3 | teamId ==4){
                 setNowTeam(nowTeam => res.data.result.filter(i => {
                     return i.dept_d_id == teamId;
                 }));
@@ -49,15 +46,17 @@ const CompanyTree = (props) => {
                 </div>
                 <div className  ={styles.belongs}>
                    <div className ={styles.teamTitle}>{team}</div>
-                   <div className={styles.contents}>
-                   {/* <img src={tree} alt="company_employ_tree" />  */}
-                   {   nowTeam == null ? 
-                        <img src={tree} alt="company_employ_tree" />       
-                        : nowTeam.map((team)=>{
+                   <div className={styles.contents}>                   
+                    {  
+                    teamId == "douzone" ?
+                    <div>
+                        <img className ={styles.wholeTree} src={tree} alt="company team tree" />
+                    </div>
+                    : nowTeam.map((team)=>{
                         return(
-                          <TeamCardForTree
+                        <TeamCardForTree
                             team = {team}
-                          />
+                        />
                         )
                     })
                    }

@@ -19,9 +19,8 @@ const AdminAddProject = (props) => {
                 <Button className = {styles.detailButton} variant="primary" onClick={onPopUP}>
                  <i className="fas fa-plus"></i>
                 </Button>
-            </Card.Body>            
-            
-      </Card> 
+            </Card.Body>    
+         </Card> 
         {
             popup ? 
             <CreateProjectPopUp

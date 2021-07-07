@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./QnaBoard.module.css";
 
 const QnaBoard = ({ viewList, isAdmin }) => {
     return (
         <>
             {viewList.map((value, key) => {
                 return (
-                    <tr key={key}>
+                    <tr key={key} className={styles.tr}>
                         {value.board_qna_bq_id == 0 ? (
                             <td>{value.bq_id}</td>
                         ) : (

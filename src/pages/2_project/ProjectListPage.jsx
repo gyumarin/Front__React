@@ -25,6 +25,8 @@ const ProjectListPage = ({project}) => {
 
 
             <div className={styles.carousel}>
+            {
+                projectList[0]&&                
                 <StyleRoot>
                     <Coverflow                        
                         displayQuantityOfSide={1}
@@ -60,7 +62,8 @@ const ProjectListPage = ({project}) => {
                         })
                     } 
                     </Coverflow>
-                    </StyleRoot>
+                </StyleRoot>
+            }
             </div>
         </div>
     );

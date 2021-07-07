@@ -1,32 +1,41 @@
-import React, { useState } from 'react';
-import styles from './MailPage.module.css';
-import { Switch, Route, useParams, } from 'react-router-dom';
+import React, { useState } from "react";
+import styles from "./MailPage.module.css";
+import { Switch, Route, useParams } from "react-router-dom";
 
-import MailTopNavBar from './MailTopNavBar';
-import PostRoute from './mailComponent/PostRoute';
-import SendRoute from './mailComponent/SendRoute';
-import NoteInsert from './mailComponent/NoteInsert';
-import NoteDetail from './mailComponent/NoteDetail';
+import MailTopNavBar from "./MailTopNavBar";
+import PostRoute from "./mailComponent/PostRoute";
+import SendRoute from "./mailComponent/SendRoute";
+import NoteInsert from "./mailComponent/NoteInsert";
+import NoteDetail from "./mailComponent/NoteDetail";
 
-const MailPage = (props) => {
+const MailPage = props => {
+    const [id, setId] = useState();
 
-    const [id, setId] =useState();    
-    
-    return(
+    return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <MailTopNavBar id = {id}/>
+                <MailTopNavBar id={id} />
             </div>
             <div className={styles.content}>
-                <Switch> 
-                    <Route 
-                        path="/main/mail/post/:id" 
-                        render={props => {return <PostRoute {...props}></PostRoute>;}}>
-                    </Route>
+                <Switch>
                     <Route
-                        path="/main/mail/send/:id"
+                        path="/main/mail/post"
                         render={props => {
-                            return <SendRoute {...props} setId={setId}></SendRoute>;
+                            return <PostRoute {...props}></PostRoute>;
+                        }}
+                    ></Route>
+                    <Route
+                        path="/main/mail/send"
+                        render={props => {
+                            return (
+                                <SendRoute {...props} setId={setId}></SendRoute>
+                            );
+                        }}
+                    ></Route>
+                    <Route
+                        path="/main/mail/write/:id"
+                        render={props => {
+                            return <NoteInsert {...props}></NoteInsert>;
                         }}
                     ></Route>
                     <Route
@@ -45,9 +54,6 @@ const MailPage = (props) => {
             </div>
         </div>
     );
-};      
+};
 
-export default MailPage;     
-                    
-
-                    
+export default MailPage;

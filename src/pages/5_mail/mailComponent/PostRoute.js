@@ -18,13 +18,15 @@ const PostRoute = ({ match }) => {
     const [deleteList, setDeleteList] = useState([]);
 
     const [checked, setChecked] = useState([]);
-    const [value, setValue] = useState("");
 
+    const [value, setValue] = useState("");
     const [readView, setReadView] = useState([]);
     const [nreadView, setNreadView] = useState([]);
 
+    const [slist, setSlist] = useState([]);
+
     const listMax = 3;
-    const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+    const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
     useEffect(() => {
         getList();
     }, []);
@@ -53,115 +55,71 @@ const PostRoute = ({ match }) => {
     };
 
     const getList = async () => {
-        
         const result = await axios.get("/note/post?token=" + tmp);
-        await setList(result.data.result);
-        setViewList(result.data.result.slice(0, listMax));
-        let c = parseInt(result.data.result.length / listMax);
-        if (result.data.result.length % listMax != 0) {
+        setSlist(result.data.result);
+        setting(result.data.result);
+        setReadView(result.data.result.filter(e => e.n_done == true));
+        setNreadView(result.data.result.filter(e => e.n_done != true));
+    };
+
+    /*                 */
+    const all = () => {
+        getList();
+    };
+
+    const read = () => {
+        setting(readView);
+    };
+
+    const nread = () => {
+        setting(nreadView);
+    };
+
+    const search = async () => {
+        const result = await axios.get(
+            "/note/post/search?value=" + value + "&token=" + tmp
+        );
+        setSlist(result.data.result);
+        setting(result.data.result);
+        setReadView(result.data.result.filter(e => e.n_done == true));
+        setNreadView(result.data.result.filter(e => e.n_done != true));
+    };
+
+    const deleteNote = async () => {
+        const result = await axios.put("/note/delete", {
+            token: tmp,
+            n_id: deleteList,
+        });
+        let le = slist;
+
+        deleteList.forEach(element => {
+            le = le.filter(e => e.n_id != element);
+        });
+        setting(le);
+        setReadView(le.filter(e => e.n_done == true));
+        setNreadView(le.filter(e => e.n_done != true));
+    };
+
+    const setting = result => {
+        setList(result);
+        setViewList(result.slice(0, listMax));
+        let c = parseInt(result.length / listMax);
+        if (result.length % listMax != 0) {
             c++;
         }
         if (c < 5) {
             setLastCount(c);
         }
         setCount(c);
+        setActive(1);
         let checkn = [];
-        result.data.result.slice(0, listMax).forEach(e => {
+        result.slice(0, listMax).forEach(e => {
             checkn.push(false);
             setChecked(checkn);
         });
-        setReadView(result.data.result.filter(e => e.n_done == true));
-        setNreadView(result.data.result.filter(e => e.n_done != true));
     };
 
- /*                 */
- const all = async () => {
-    const result = await axios.get("/note/post?token=" + tmp);
-    await setList(result.data.result);
-    setViewList(result.data.result.slice(0, listMax));
-    let c = parseInt(result.data.result.length / listMax);
-    if (result.data.result.length % listMax != 0) {
-        c++;
-    }
-    if (c < 5) {
-        setLastCount(c);
-    }
-    setCount(c);
-    setActive(1);
-    let checkn = [];
-    result.data.result.slice(0, listMax).forEach(e => {
-        checkn.push(false);
-        setChecked(checkn);
-    });
-    setReadView(result.data.result.filter(e => e.n_done == true));
-    setNreadView(result.data.result.filter(e => e.n_done != true));
-};
-
-const read = () => {
-    setList(readView);
-    setViewList(readView.slice(0, listMax));
-    let c = parseInt(readView.length / listMax);
-    if (readView.length % listMax != 0) {
-        c++;
-    }
-    if (c < 5) {
-        setLastCount(c);
-    }
-    setCount(c);
-    setActive(1);
-    let checkn = [];
-    readView.slice(0, listMax).forEach(e => {
-        checkn.push(false);
-        setChecked(checkn);
-    });
-};
-
-const nread = () => {
-    setList(nreadView);
-    setViewList(nreadView.slice(0, listMax));
-    let c = parseInt(nreadView.length / listMax);
-    if (nreadView.length % listMax != 0) {
-        c++;
-    }
-    if (c < 5) {
-        setLastCount(c);
-    }
-    setCount(c);
-    setActive(1);
-    let checkn = [];
-    nreadView.slice(0, listMax).forEach(e => {
-        checkn.push(false);
-        setChecked(checkn);
-    });
-};
-
-const search = async () => {
-    const result = await axios.get(
-        
-        "/note/post/search?value=" + value + "&token=" + tmp
-    );
-    setList(result.data.result);
-    setViewList(result.data.result.slice(0, listMax));
-    let c = parseInt(result.data.result.length / listMax);
-    if (result.data.result.length % listMax != 0) {
-        c++;
-    }
-    if (c < 5) {
-        setLastCount(c);
-    }
-    setCount(c);
-    setActive(1);
-    let checkn = [];
-    result.data.result.slice(0, listMax).forEach(e => {
-        checkn.push(false);
-        setChecked(checkn);
-    });
-    setReadView(result.data.result.filter(e => e.n_done == true));
-    setNreadView(result.data.result.filter(e => e.n_done != true));
-};
-
-/*                 */
-
+    /*                 */
 
     let items = [];
     for (let number = firstCount; number <= lastCount; number++) {
@@ -198,36 +156,10 @@ const search = async () => {
         );
     };
 
-    const deleteNote = async () => {
-        const result = await axios.put("/note/delete", {
-            token: tmp,
-            n_id: deleteList,
-        });
-        let le = list;
-        deleteList.forEach(element => {
-            le = le.filter(e => e.n_id != element);
-        });
-        setList(le);
-        setViewList(le.slice(0, listMax));
-        let c = parseInt(le.length / listMax);
-        if (le.length % listMax != 0) {
-            c++;
-        }
-        if (c < 5) {
-            setLastCount(c);
-        }
-        setCount(c);
-        let checkn = [];
-        le.slice(0, listMax).forEach(e => {
-            checkn.push(false);
-            setChecked(checkn);
-        });
-    };
-
     return (
         <div className={styles.container}>
             <div className={styles.title}>보낸 쪽지</div>
-            <div className={styles.content}>     
+            <div className={styles.content}>
                 <PostNoteBoard
                     viewList={viewList}
                     list={list}
@@ -246,7 +178,6 @@ const search = async () => {
                 ></PostNoteBoard>
             </div>
         </div>
-
     );
 };
 

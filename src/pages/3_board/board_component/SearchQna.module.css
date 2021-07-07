@@ -1,5 +1,5 @@
 .container {
-  margin-left: 79.2rem;
+  margin-left: 80rem;
   margin-bottom: 1em;
 }
 
@@ -7,21 +7,24 @@
   height: 2.2em;
   width: 7em;
   font-family: "Noto Sans", sans-serif;
+  font-size: 0.9em;
   color: #263238;
 }
 
 .input {
   height: 2.2em;
+  font-size: 0.9em;
   width: 15em;
 }
 .button {
   height: 2.2em;
   width: 4em;
-  margin-left: 0.3em;
+  margin-left: 0.1em;
   background-color: #263238;
   color: aliceblue;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
+  font-size: 0.9em;
 }
 
 .button:hover {

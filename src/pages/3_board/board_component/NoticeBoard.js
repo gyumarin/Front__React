@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styles from "./NoticeBoard.module.css";
 
 const NoticeBoard = ({ isAdmin , viewList }) => {
     
@@ -9,18 +10,18 @@ const NoticeBoard = ({ isAdmin , viewList }) => {
         <>
             {viewList.map((value, key) => {
                 return (
-                    <tr key={key}>
-                        <td>{value.bn_id}</td>
-                        <td>
+                    <tr key={key} className={styles.tr}>
+                        <td className={styles.td}>{value.bn_id}</td>
+                        <td className={styles.td}>
                             {
                                 isAdmin 
                                 ? <Link to={`/main/admin/board/notice/detail/${value.bn_id}`}>{value.bn_title}</Link>
                                 : <Link to={`/main/board/notice/detail/${value.bn_id}`}>{value.bn_title}</Link>
                             }                            
                         </td>
-                        <td>{value.e_name}</td>
-                        <td>{value.bn_date}</td>
-                        <td>{value.bn_hits}</td>
+                        <td className={styles.td}>{value.e_name}</td>
+                        <td className={styles.td}>{value.bn_date}</td>
+                        <td className={styles.td}>{value.bn_hits}</td>
                     </tr>
                 );
             })}

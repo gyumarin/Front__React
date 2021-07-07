@@ -97,7 +97,7 @@ const Profile = (props) => {
                     </tr>
 
                     <tr>
-                        <td >별명</td>
+                        <td >Git 계정명</td>
                         <td><input className={styles.form}  type="text" value={userInfo.e_nickname}
                         name="e_nickname" 
                         disabled={!self} onChange={onChange}/></td>

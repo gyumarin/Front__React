@@ -55,7 +55,7 @@ const PwdPopup = ( {setSelf, setPopup} ) => {
 
 
     return(
-        <div className={styles.container} style={{paddingTop:'400px'}}>
+        <div className={styles.container} >
            <h5 className={styles.title}>비밀번호 변경</h5>             
            <p className={styles.warn1}>안전한 비밀번호로 내 정보를 보호하세요</p>
            <p className={styles.warn2}>- 다른 아이디/사이트에서 사용한 적 없는 비밀번호</p>

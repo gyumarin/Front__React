@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 
 const TeamCard = ({worker}) => {
     return(
-        <div className={!worker.e_commute? styles.noContainer : styles.container}>
-            <div className={styles.left}>
+        <div className={worker.p_manager == worker.e_id ? (!worker.e_commute? styles.noBossContainer : styles.Bosscontainer) : (!worker.e_commute? styles.noContainer : styles.container) }>
+            
+            <div className={worker.p_manager == worker.e_id ?  styles.bossLeft : styles.left}>
                 <div className={styles.imageContainer}>
                     <img className ={styles.photo} src="../../images/example.jpg" alt="face" />
                 </div>
                 <p className={styles.nickName}>{worker.e_nickname}
                     <span className={styles.rank}>({worker.e_rank})</span>
-                    <Link to="/main/mail/write"><button className={styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
+                    <Link to="/main/mail/write"><button className={worker.p_manager == worker.e_id ? styles.buttomBossMail : styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
                 </p>
             </div>
-            <div className={styles.right}>                
+
+            <div className={ worker.p_manager == worker.e_id ? styles.bossRight : styles.right}>                
                 <div className={styles.oneTalk}>
-                    만나서 반갑습니더
+                    {worker.e_comment}
                 </div>
                 <hr />
                 <table className={styles.table}>

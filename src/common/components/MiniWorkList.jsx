@@ -17,21 +17,12 @@ const MiniWorkList = (props) => {
     return(
       <div className={styles.container}>
         <div className={styles.header}>
-        <div className={styles.title}>Week WorkList</div>        
+          <div className={styles.title}>Week WorkList</div>        
         </div>
+
+       
         <div className={styles.tableContainer}>
           <table className={styles.table}>
-            <thead>
-              <tr className={styles.tr}>
-                <th className={styles.th}>프로젝트 명</th>
-                {/* <th className={styles.th}>카테고리</th> */}
-                <th className={styles.th}>업무</th>
-                <th className={styles.th}>상세 업무</th>
-                <th className={styles.th}>남은 일수</th>
-                <th className={styles.th}></th>
-              </tr>
-            </thead>
-
             <tbody>
               {
                 workList.map((work)=>{

@@ -10,9 +10,9 @@ const MiniNotice = (props) => {
   const history = useHistory(); 
   const [noticeList, setNoticeList] = useState([])
   useEffect(() => {
-      const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-      axios.get('/board/notice/list').then(res=>{
-        setNoticeList(res.data.result)        
+      // const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+      axios.get('/board/notice/limit').then(res=>{
+        setNoticeList(res.data.result);        
       })
   }, []);
 

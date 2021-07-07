@@ -32,3 +32,15 @@
   background-color: #007bbc;
   color: aliceblue;
 }
+
+.button1 {
+  position: relative;
+  left: 1535px;
+  width: 130px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: aliceblue;
+
+  margin-bottom: 0.6em;
+}

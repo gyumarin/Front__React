@@ -5,13 +5,15 @@ import { useEffect } from "react";
 import SendNoteBoard from "./SendNoteBoard";
 import { Pagination } from "react-bootstrap";
 import styles from "./SendRoute.module.css";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 //받은쪽지함
 const SendRoute = ({ match, setId }) => {
     const param = useParams();
     // console.log(parseInt(param.id));
-    useEffect(()=>{setId(parseInt(param.id))},[]);
+    useEffect(() => {
+        setId(parseInt(param.id));
+    }, []);
 
     const [list, setList] = useState([]); //전체리스트
     const [viewList, setViewList] = useState([]); //해당번호에 보여질 리스트
@@ -28,8 +30,10 @@ const SendRoute = ({ match, setId }) => {
     const [readView, setReadView] = useState([]);
     const [nreadView, setNreadView] = useState([]);
 
+    const [slist, setSlist] = useState([]);
+
     const listMax = 3;
-    const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+    const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
 
     useEffect(() => {
         getList();
@@ -60,94 +64,55 @@ const SendRoute = ({ match, setId }) => {
 
     const getList = async () => {
         const result = await axios.get("/note/send?token=" + tmp);
-        await setList(result.data.result);
-        setViewList(result.data.result.slice(0, listMax));
-        let c = parseInt(result.data.result.length / listMax);
-        if (result.data.result.length % listMax != 0) {
-            c++;
-        }
-        if (c < 5) {
-            setLastCount(c);
-        }
-        setCount(c);
-        let checkn = [];
-        result.data.result.slice(0, listMax).forEach(e => {
-            checkn.push(false);
-            setChecked(checkn);
-        });
-
+        setSlist(result.data.result);
+        setting(result.data.result);
         setReadView(result.data.result.filter(e => e.n_done == true));
         setNreadView(result.data.result.filter(e => e.n_done != true));
     };
 
     const all = async () => {
-        const result = await axios.get("/note/send?token=" + tmp);
-        await setList(result.data.result);
-        setViewList(result.data.result.slice(0, listMax));
-        let c = parseInt(result.data.result.length / listMax);
-        if (result.data.result.length % listMax != 0) {
-            c++;
-        }
-        if (c < 5) {
-            setLastCount(c);
-        }
-        setCount(c);
-        setActive(1);
-        let checkn = [];
-        result.data.result.slice(0, listMax).forEach(e => {
-            checkn.push(false);
-            setChecked(checkn);
-        });
-        setReadView(result.data.result.filter(e => e.n_done == true));
-        setNreadView(result.data.result.filter(e => e.n_done != true));
+        getList();
     };
 
     const read = () => {
-        setList(readView);
-        setViewList(readView.slice(0, listMax));
-        let c = parseInt(readView.length / listMax);
-        if (readView.length % listMax != 0) {
-            c++;
-        }
-        if (c < 5) {
-            setLastCount(c);
-        }
-        setCount(c);
-        setActive(1);
-        let checkn = [];
-        readView.slice(0, listMax).forEach(e => {
-            checkn.push(false);
-            setChecked(checkn);
-        });
+        setting(readView);
     };
 
     const nread = () => {
-        setList(nreadView);
-        setViewList(nreadView.slice(0, listMax));
-        let c = parseInt(nreadView.length / listMax);
-        if (nreadView.length % listMax != 0) {
-            c++;
-        }
-        if (c < 5) {
-            setLastCount(c);
-        }
-        setCount(c);
-        setActive(1);
-        let checkn = [];
-        nreadView.slice(0, listMax).forEach(e => {
-            checkn.push(false);
-            setChecked(checkn);
-        });
+        setting(nreadView);
     };
 
     const search = async () => {
         const result = await axios.get(
-            "/note/send/search?value=" + value + "&token="+tmp
+            "/note/send/search?value=" + value + "&token=" + tmp
         );
-        setList(result.data.result);
-        setViewList(result.data.result.slice(0, listMax));
-        let c = parseInt(result.data.result.length / listMax);
-        if (result.data.result.length % listMax != 0) {
+        setSlist(result.data.result);
+        setting(result.data.result);
+        setReadView(result.data.result.filter(e => e.n_done == true));
+        setNreadView(result.data.result.filter(e => e.n_done != true));
+    };
+
+    const deleteNote = async () => {
+        const result = await axios.put("/note/delete", {
+            token: tmp,
+            n_id: deleteList,
+        });
+
+        let le = slist;
+
+        deleteList.forEach(element => {
+            le = le.filter(e => e.n_id != element);
+        });
+        setting(le);
+        setReadView(le.filter(e => e.n_done == true));
+        setNreadView(le.filter(e => e.n_done != true));
+    };
+
+    const setting = result => {
+        setList(result);
+        setViewList(result.slice(0, listMax));
+        let c = parseInt(result.length / listMax);
+        if (result.length % listMax != 0) {
             c++;
         }
         if (c < 5) {
@@ -156,12 +121,10 @@ const SendRoute = ({ match, setId }) => {
         setCount(c);
         setActive(1);
         let checkn = [];
-        result.data.result.slice(0, listMax).forEach(e => {
+        result.slice(0, listMax).forEach(e => {
             checkn.push(false);
             setChecked(checkn);
         });
-        setReadView(result.data.result.filter(e => e.n_done == true));
-        setNreadView(result.data.result.filter(e => e.n_done != true));
     };
 
     let items = [];
@@ -199,36 +162,10 @@ const SendRoute = ({ match, setId }) => {
         );
     };
 
-    const deleteNote = async () => {
-        const result = await axios.put("/note/delete", {
-            token: tmp,
-            n_id: deleteList,
-        });
-        let le = list;
-        deleteList.forEach(element => {
-            le = le.filter(e => e.n_id != element);
-        });
-        setList(le);
-        setViewList(le.slice(0, listMax));
-        let c = parseInt(le.length / listMax);
-        if (le.length % listMax != 0) {
-            c++;
-        }
-        if (c < 5) {
-            setLastCount(c);
-        }
-        setCount(c);
-        let checkn = [];
-        le.slice(0, listMax).forEach(e => {
-            checkn.push(false);
-            setChecked(checkn);
-        });
-    };
-
     return (
         <div className={styles.container}>
             <div className={styles.title}>받은 쪽지</div>
-            <div className={styles.content}>                
+            <div className={styles.content}>
                 <SendNoteBoard
                     viewList={viewList}
                     list={list}
@@ -247,7 +184,6 @@ const SendRoute = ({ match, setId }) => {
                 ></SendNoteBoard>
             </div>
         </div>
-        
     );
 };
 

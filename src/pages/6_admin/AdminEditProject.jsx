@@ -130,23 +130,26 @@ const AdminEditProject = props => {
                     <p className={styles.projectName}>
                         {projectDetail.p_title}
                     </p>
-                    <div className={styles.projectDate}>
-                        
-                        프로젝트 기간 : {projectDetail.p_date_start} ~ {projectDetail.p_date_end}<br/>
-                        Git Reposotiry : {projectDetail.p_giturl} 
+                    <div className={styles.projectDatas}>
+                        <div className={styles.projectDate}>
+                            
+                            - 프로젝트 기간 : {projectDetail.p_date_start} ~ {projectDetail.p_date_end}<br/>
+                            - Git Reposotiry : {projectDetail.p_giturl}                         
+                            {calendarPopup ? (
+                                <CalendarPopUp
+                                    setCpopup={setCalendarPopup}
+                                    editDetail={editDetail}
+                                    p_id={projectDetail.p_id}
+                                    projectDetail={projectDetail}
+                                />
+                            ) : null}
+                        </div>
                         <button
                             className={styles.button1}
                             onClick={onCalendarPopup}
                         >
-                            변경
+                            정보 변경
                         </button>
-                        {calendarPopup ? (
-                            <CalendarPopUp
-                                setCpopup={setCalendarPopup}
-                                editDetail={editDetail}
-                                p_id={projectDetail.p_id}
-                            />
-                        ) : null}
                     </div>
 
                     {/* left_2 - 인원 관리 */}
