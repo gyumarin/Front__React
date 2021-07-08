@@ -1,3 +1,39 @@
 .tr {
   font-size: 0.9em;
 }
+.tr:hover {
+  transform: scale(1.02);
+  background-color: #d8f1fa;
+}
+.td1 {
+  width: 100px;
+  color: #263238;
+}
+
+.td2 {
+  width: 1070px;
+  color: #263238;
+}
+.td3 {
+  width: 120px;
+  color: #263238;
+}
+.td4 {
+  width: 200px;
+  color: #263238;
+}
+.td5 {
+  width: 80px;
+  color: #263238;
+}
+
+.hit {
+  color: rgb(126, 128, 0);
+  margin-right: 0.5em;
+}
+
+.replyArrow {
+  width: 22px;
+  transform: rotate(180deg);
+  color: #007bbc;
+}

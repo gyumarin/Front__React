@@ -31,6 +31,11 @@ const QnaDetail = ({ match }) => {
         event.preventDefault();
         history.push(`/main/admin/board/qna/insert/${id}`);
     }
+
+    const goModify =(event)=>{
+        event.preventDefault();
+        history.push(`/main/admin/board/qna/update/${detail.bq_id}`);
+    }
     
     return (
         <div className={styles.container}>
@@ -38,36 +43,38 @@ const QnaDetail = ({ match }) => {
             
             <div className={styles.contContainer}>
                 <div className={styles.content}>
+
                     <div className={styles.header}>                      
                         <div className={styles.titleContainer}>
                             <div className={styles.signal}>QnA</div>
                             <div className={styles.titleValue}>{detail.bq_title}</div>
+
+                            <div className={styles.date}>
+                                {`작성 : ${detail.d_name}  
+                                |  작성 일자 : ${detail.bq_date}  
+                                |  조회 : ${detail.bq_hits}`}
+                            </div>
                         </div> 
-                        <div className={styles.date}>{`작성 : ${detail.d_name}  |  작성 일자 : ${detail.bq_date}  |  조회 : ${detail.bq_hits}`}</div>
-                    </div>  
-                    <hr className={styles.underLine}/>                    
+
+                        <div className={styles.charges}>                    
+                            <div className={styles.cell1}><span className={styles.label}>게시자 소속부소 :</span> {detail.d_name}</div>
+                            <div className={styles.cell2}><span className={styles.label}>전화번호 :</span> {detail.d_phone}</div>
+                        </div>
+                    </div> 
+
                     <div className={styles.contentBody}>{detail.bq_content}</div>                                    
                 </div>
+
                 {
                     isAdmin 
-                    ? <button className={styles.button} onClick={onReply}>답변하기</button>                     
+                    ? <button className={styles.button1} onClick={onReply}>답변하기</button>                     
                     : null
                 }
                 {
                     isAdmin 
-                    ? <button className={styles.button1}><Link to={`/main/admin/board/qna/update/${detail.bq_id}`}>수정하기</Link></button>
-                    : (empID==detail.e_id&&<button className={styles.button1}><Link to={`/main/board/qna/update/${detail.bq_id}`}>수정하기</Link></button>)
+                    ? <button className={styles.button2}  onClick ={goModify}>수정하기</button>
+                    : (empID==detail.e_id && <button className={styles.button2} onClick ={goModify}>수정하기</button>)
                 }
-                
-
-                <hr className={styles.underLine2}/>
-                <div className={styles.footer}>                    
-                    <div className={styles.cell1}>담당부서</div>
-                    <div className={styles.cell}>{detail.d_name}</div>
-                    <div className={styles.cell1}>전화번호</div>
-                    <div className={styles.cell}>{detail.d_phone}</div>
-                </div>
-                <hr className={styles.underLine2}/>
             </div>
         </div>
     );

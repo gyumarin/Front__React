@@ -52,9 +52,7 @@ const HomePage = ({setProject}) => {
                 </div>
 
                 <div className={styles.dataList}>
-                    <MiniNotice
-                        key = "1"
-                    />
+                    <MiniNotice key = "1"/>
                     <MiniWorkList/>
                 </div>
             </div>

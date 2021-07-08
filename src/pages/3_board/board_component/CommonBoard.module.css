@@ -1,5 +1,5 @@
 .container {
-  height: 550px;
+  height: 640px;
   padding: 1em;
   border-radius: 10px;
   /* -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
@@ -9,13 +9,14 @@
   flex-direction: column;
   align-items: center;
 
-  width: 96.5%;
-  margin: 0px 1.5rem;
+  width: 90%;
+  margin: 0px 5rem;
 }
 
 .table {
   width: 100%;
-  height: 90%;
+  height: 600px;
+  /* border: 1px solid black; */
   border-top: 2px solid #007bbc;
 }
 .pagination {
@@ -26,10 +27,11 @@
 }
 .button {
   position: relative;
-  left: 745px;
-  bottom: 50px;
+  left: 695px;
+  bottom: 95px;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
+  font-size: 0.9em;
 
   background-color: #66dbff;
   border-radius: 5px;
@@ -41,4 +43,10 @@
 .button:hover {
   background-color: #00aaef;
   color: aliceblue;
+}
+
+.tr {
+  height: 0.9em;
+  text-align: center;
+  font-size: 0.8em;
 }

@@ -57,8 +57,12 @@ const NoticeRoute = () => {
 
         setCount(c);
 
-        const find = Object.keys(result.data.result[0]);
-        setKeys(find[0]);
+        if(result.data.result.length != 0){
+            const find = Object.keys(result.data.result[0]);
+            setKeys(find[0]);
+        }
+        
+        
     };
 
 // --------------------------------------------------------------------------------
@@ -123,7 +127,7 @@ const NoticeRoute = () => {
                     setFirstCount={setFirstCount}
                     setLastCount={setLastCount}
                 ></SearchNotice>
-                <p style = {{marginLeft:"2.5em", marginBottom : "-0.5em"}}>총 게시글 <span style ={{color : "#00aaef" }}>{list.length}</span>건</p>
+                <p style = {{marginLeft:"6em", marginBottom : "-0.5em"}}>총 게시글 <span style ={{color : "#00aaef" }}>{list.length}</span>건</p>
                 <CommonBoard
                     viewList={viewList}
                     list={list}

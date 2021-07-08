@@ -56,7 +56,8 @@ const LeftNavBar = ({removeLoginToken,setOnAdmin}) => {
   }  
 
   return(
-    <div className={styles.container}>
+    <div className={styles.container} style ={{display:"grid", gridTemplateRows :"85% 15%"}}>
+      <div>
       <MiniProfile 
         userInfo={userInfo}
         removeLoginToken={()=>removeLoginToken()}
@@ -64,6 +65,7 @@ const LeftNavBar = ({removeLoginToken,setOnAdmin}) => {
       <NavList
         mode ={mode}
       />
+      </div>
       { userInfo.role == "admin"?
       <div className={styles.toggle}>
         <div className={styles.title}>관리자</div>         
@@ -78,8 +80,7 @@ const LeftNavBar = ({removeLoginToken,setOnAdmin}) => {
             <button 
               className={styles.button}     
               onClick={handleClick}     
-            >ON</button>
-          
+            >ON</button>          
         }
 
       </div>

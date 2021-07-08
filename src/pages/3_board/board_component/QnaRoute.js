@@ -59,19 +59,20 @@ const QnaRoute = () => {
     const getList = async () => {
         const result = await axios.get("/board/qna/list");
         await sortList(result.data.result);
-
-        let c = parseInt(result.data.result.length / listMax);
-        if (result.data.result.length % listMax != 0) {
-            c++;
-        }
-        if (c < 5) {
-            setLastCount(c);
-        }
-
-        setCount(c);
-
-        const find = Object.keys(result.data.result[0]);
-        setKeys(find[0]);
+        if(result.data.result.length !=0){
+            let c = parseInt(result.data.result.length / listMax);
+            if (result.data.result.length % listMax != 0) {
+                c++;
+            }
+            if (c < 5) {
+                setLastCount(c);
+            }
+    
+            setCount(c);
+    
+            const find = Object.keys(result.data.result[0]);
+            setKeys(find[0]);
+        }       
     };
 
     const sortList = viewList => {

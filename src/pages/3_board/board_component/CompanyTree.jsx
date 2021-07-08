@@ -9,8 +9,8 @@ import tree from '../../../images/tree.png'
 
 const CompanyTree = (props) => {
     const [nowTeam, setNowTeam] = useState([]);
-    const [teamId, setTeamId] = useState(0);
-    const [team, setTeam] =  useState('더존비즈온');
+    const [teamId, setTeamId] = useState('douzone');
+    const [team, setTeam] =  useState("사내 전체 조직도");
 
     const changeTeamView = (team) =>{
         setTeam(team);
@@ -48,7 +48,7 @@ const CompanyTree = (props) => {
                    <div className ={styles.teamTitle}>{team}</div>
                    <div className={styles.contents}>                   
                     {  
-                    teamId == "douzone" ?
+                        teamId == "douzone" ?
                     <div>
                         <img className ={styles.wholeTree} src={tree} alt="company team tree" />
                     </div>

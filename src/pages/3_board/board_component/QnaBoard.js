@@ -9,11 +9,11 @@ const QnaBoard = ({ viewList, isAdmin }) => {
                 return (
                     <tr key={key} className={styles.tr}>
                         {value.board_qna_bq_id == 0 ? (
-                            <td>{value.bq_id}</td>
+                            <td className={styles.td1}>{value.bq_id}</td>
                         ) : (
-                            <td></td>
+                            <td className={styles.td1}><div className={styles.replyArrow}><i className="fas fa-reply"></i></div></td>
                         )}
-                        <td>
+                        <td className={styles.td2}>
                             {
                                 isAdmin
                                 ? <Link to={`/main/admin/board/qna/detail/${value.bq_id}`}>{value.bq_title}</Link> 
@@ -21,9 +21,12 @@ const QnaBoard = ({ viewList, isAdmin }) => {
                             }
                             
                         </td>
-                        <td>{value.e_name}</td>
-                        <td>{value.bq_date}</td>
-                        <td>{value.bq_hits}</td>
+                        <td className={styles.td3}>{value.e_name}</td>
+                        <td className={styles.td4}>{value.bq_date}</td>
+                        <td className={styles.td5}>
+                            <span className={styles.hit}><i className="fas fa-eye"></i></span>
+                            {value.bq_hits}
+                        </td>
                     </tr>
                 );
             })}

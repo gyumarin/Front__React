@@ -27,35 +27,39 @@ const NoticeDetail = ({ match }) => {
             <div className={styles.title}>공지사항</div>
 
             <div className={styles.contContainer}>
-            <div className={styles.content}>
 
-                <div className={styles.header}>    
-                    <div className={styles.titleContainer}>         
-                        <div className={styles.signal}>공지</div>
-                        <div className={styles.titleValue}>{detail.bn_title}</div>                       
-                    </div> 
-                    <div className={styles.date}>{`작성 : ${detail.d_name}  |  작성 일자 : ${detail.bn_date}  |  조회 : ${detail.bn_hits}`}</div>                                                         
+                <div className={styles.content}>
+
+                    <div className={styles.header}>    
+                        <div className={styles.titleContainer}>         
+                            <div className={styles.signal}>제목 </div>
+                            <div className={styles.titleValue}>{detail.bn_title}</div>        
+
+                            <div className={styles.date}>
+                                {`작성 : ${detail.d_name}  
+                                |  작성 일자 : ${detail.bn_date}  
+                                |  조회 : ${detail.bn_hits}`}
+                            </div>                 
+                        </div> 
+                        
+                        <div className={styles.charges}>
+                            <div className = {styles.cell1}><span className={styles.label}>게시자 소속부서 : </span>{detail.d_name}</div> |
+                            <div className = {styles.cell2}><span className={styles.label}>전화번호 :</span> {detail.d_phone}</div>
+                        </div>                                                                               
+                    </div>
+                    
+                    <div className={styles.contentBody}>{detail.bn_content}</div>                
                 </div>
-                <hr className   ={styles.underLine}/>
-                
-                <div className={styles.contentBody}>{detail.bn_content}</div>                
-            </div>
 
             {
               isAdmin 
               ? <button><Link to={`/main/admin/board/notice/update/` + match.params.id}>수정</Link></button>
               : null
             }
+            {/* <button>목록보기</button> */}
             
 
-            <hr className={styles.underLine2}/>
-            <div className={styles.footer}>
-               <div className = {styles.cell1}>담당부서</div>
-               <div className = {styles.cell}>{detail.d_name}</div>
-               <div className = {styles.cell1}>전화번호</div>
-               <div className = {styles.cell}>{detail.d_phone}</div>                       
-            </div>
-            <hr className={styles.underLine2}/>
+              
             </div>
         </div>
     );

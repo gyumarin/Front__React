@@ -70,13 +70,13 @@
 }
 
 .calender {
-  height: 58vh;
+  height: 54.5vh;
   border-radius: 20px;
   margin: 1.5em 1.5em 0.5em 1.5em;
   background-color: myBlue2;
 }
 .dataList {
-  height: 28vh;
+  height: 35vh;
   display: flex;
   justify-content: center;
 }

@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
     const history = useHistory();
     const isNotice = history.location.pathname.split("/")[3] == "notice" ? true : false;
+    // console.log(history.location.pathname.split("/"))
     const isAdmin =  history.location.pathname.split("/")[2] == "admin" ? true : false; 
 
     const onCreateNotice =(event)=>{
@@ -24,10 +25,11 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
     if (list != null)
         return (
             <div className ={styles.container}>
+
                 <div className={styles.table}>
-                    <Table >
+                    <Table>
                         {/* <thead>
-                            <tr>
+                            <tr className={styles.tr}>
                                 <th>{th.num}</th>
                                 <th>{th.title}</th>
                                 <th>{th.writer}</th>
@@ -50,18 +52,27 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
                         </tbody>
                     </Table>
                 </div>
+
                 
-                <div className  ={styles.pagination}>
-                    <PaginationBasic />                    
-                </div>  
-                {
-                    isAdmin 
-                    ? <button className={styles.button} onClick ={onCreateNotice}>공지 등록</button> 
-                    : 
-                    isNotice 
-                    ? null 
-                    : <button className={styles.button} onClick ={onCreateQna}>QnA 등록</button>
-                }
+                    <div className  ={styles.pagination}>
+                        <PaginationBasic />                    
+                    </div>  
+                    {
+                        isAdmin   
+                        ? 
+                        (
+                        history.location.pathname.split("/")[4] == "notice"
+                        ? <button className={styles.button} onClick ={onCreateNotice}>공지 등록</button> 
+                        : null
+                        )
+                        : 
+                        (
+                        isNotice
+                        ? null
+                        : <button className={styles.button} onClick ={onCreateQna}>QnA 등록</button>
+                        )
+                    }
+                
             </div>
         );
 };

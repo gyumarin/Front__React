@@ -16,7 +16,7 @@ const MiniProfile = ({removeLoginToken, userInfo}) => {
 
   return(
     <div className={styles.container}>
-      
+      ui8op3 /
       <div className={styles.cardContainer}>
          <img className={styles.image} src={userInfo.e_photo} alt="face image" />     
       </div>

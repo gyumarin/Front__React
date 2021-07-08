@@ -1,11 +1,11 @@
 .container {
   width: 40%;
-  height: 17rem;
+  height: 19.5rem;
   border-radius: 40px;
 
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
-  margin: 1em 1.5em;
+  margin: 0.5em 1.5em;
   background-color: #263238;
 }
 .title {
@@ -20,7 +20,7 @@
   line-height: 3rem;
 }
 .notices {
-  height: 190px;
+  height: 225px;
   /* border: 1px solid black; */
 
   overflow-y: scroll;
