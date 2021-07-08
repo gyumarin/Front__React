@@ -28,16 +28,15 @@ const WorkListPage = ({projectID}) => {
         axios.get(`/project/detail/${projectID}`).then(res =>{
             setProjectInfo(res.data.result)
             // console.log(res.data.result.p_title)
-            
         });
 
-        axios.get(`/project/work/list/team/${5}`).then(res =>{
+        axios.get(`/project/work/list/team/${projectID}`).then(res =>{
             setWorkList(res.data.result);
             setWorkView(res.data.result);
             setMaincate('전체')
         })
 
-        axios.get(`/project/work/chart/${5}`).then(res=>{
+        axios.get(`/project/work/chart/${projectID}`).then(res=>{
             setData(res.data.result);
         });
         

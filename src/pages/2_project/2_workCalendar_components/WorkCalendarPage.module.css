@@ -7,6 +7,8 @@
   background-color: aliceblue;
   border-radius: 5px;
 }
+
+/* -------------------------------------------- */
 .title {
   padding: 1.5em;
   font-weight: bold;
@@ -45,6 +47,21 @@
   background-color: yellow;
 }
 
+.teamButton1 {
+  width: 70px;
+  height: 150px;
+  border: none;
+  border-radius: 0px 20px 10px 0px;
+  background-color: yellow;
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+}
+.teamButton1:hover {
+  background-color: yellow;
+}
+
+/* --------------------------------------------------------- */
 .button2 {
   width: 70px;
   height: 150px;
@@ -56,5 +73,19 @@
   font-weight: bold;
 }
 .button2:hover {
+  background-color: greenyellow;
+}
+
+.myButton2 {
+  width: 70px;
+  height: 150px;
+  border: none;
+  border-radius: 0px 20px 10px 0px;
+  background-color: greenyellow;
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+}
+.myButton2:hover {
   background-color: greenyellow;
 }

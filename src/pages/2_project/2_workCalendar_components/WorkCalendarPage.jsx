@@ -26,7 +26,7 @@ const WorkCalendarPage = ({projectID}) => {
 
   return(
     <div className={styles.container}>
-      <h3 className={styles.title}>{projectInfo.p_title}<font style={{marginLeft : '10px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>업무 캘린더</font></h3>
+      <h3 className={styles.title}>{projectInfo.p_title}<font style={{marginLeft : '10px' ,fontSize:'18px', color : 'rgba(1, 1, 1, 0.3)'}}>{isTeam ? "Team 업무 캘린더" : "My 업무 캘린더"}</font></h3>
 
       <div className={styles.calendar}>
         <Calendar
@@ -34,8 +34,8 @@ const WorkCalendarPage = ({projectID}) => {
           projectID = {projectID}
         />
         <div className={styles.buttons}>
-          <button onClick={onTeamCalendar} className={styles.button1}>TEAM</button>
-          <button onClick={onMyCalendar} className={styles.button2}>MY</button>
+          <button onClick={onTeamCalendar} className={isTeam ? styles.teamButton1 : styles.button1}>TEAM</button>
+          <button onClick={onMyCalendar} className={isTeam ? styles.button2 : styles.myButton2}>MY</button>
       </div>
       </div>
       
