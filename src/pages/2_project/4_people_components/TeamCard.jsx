@@ -8,7 +8,7 @@ const TeamCard = ({worker}) => {
             
             <div className={worker.p_manager == worker.e_id ?  styles.bossLeft : styles.left}>
                 <div className={styles.imageContainer}>
-                    <img className ={styles.photo} src="../../images/example.jpg" alt="face" />
+                    <img className ={styles.photo} src={worker.e_photo} alt="face" />
                 </div>
                 <p className={styles.nickName}>{worker.e_nickname}
                     <span className={styles.rank}>({worker.e_rank})</span>
@@ -17,7 +17,7 @@ const TeamCard = ({worker}) => {
             </div>
 
             <div className={ worker.p_manager == worker.e_id ? styles.bossRight : styles.right}>                
-                <div className={styles.oneTalk}>
+                <div className={worker.p_manager == worker.e_id ? styles.bossOneTalk: styles.oneTalk}>
                     {worker.e_comment}
                 </div>
                 <hr />

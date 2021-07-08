@@ -5,11 +5,21 @@ import { Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 import styles from './CommitListPage.module.css';
 
-const CommitTest = () => {
+const CommitTest = ({ projectInfo }) => {
+
+    const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
+
+    const getUser = async () => {
+        const result = await axios.get("/employee/detail?token=" + tmp);
+        setNick(result.data.result.e_nickname);
+    };
+
+
+
     //특정 코드(사용자)가 아니라면.... 수정할수 없도록 해야한다.
-     const projectName = 'gyumarin/Front__React';
-    // const projectName = 'gyumarin/Spring_Shop';
-    const [token, setToken] = useState('')  
+    const projectName = projectInfo.e_nickname+'/'+projectInfo.p_giturl;
+    
+    const [nick, setNick] = useState(""); 
    
     const [masterList, setMasterList] = useState([]);
     const [branchs, setBranchs] = useState([]);
@@ -18,7 +28,6 @@ const CommitTest = () => {
     const [useBranch, setuseBranch] = useState('master');
     const [view, setView] = useState([]);
     const [toggle, setToggle] = useState(true); 
-
 
    
     /*
@@ -39,14 +48,18 @@ const CommitTest = () => {
         });
 
         getMasterList(projectName).then((res) => {
+            
             setMasterList(res);
         });
-    }, []);
 
+        getUser();
+    }, [projectInfo]);
 
+  
     useEffect(() => {
         branchs.map((branch) => {
             getCommit(branch.commit.url).then((res) => {
+                // console.log('committer',res.committer.login)
                 setCommit({ name: branch.name, commits: res, top: true });
             });
         });
@@ -101,7 +114,7 @@ const CommitTest = () => {
     return (
 
         
-        <div style={{  display:'grid' ,gridTemplateColumns:'330px 1235px', gridTemplateRows:' 140px 580px'}}>
+        <div style={{  display:'grid' ,gridTemplateColumns:'330px 1235px', gridTemplateRows:' 140px 440px 140px '}}>
 
              {/* 마스터 버튼*/}
              <Card style={{ margin: '10px', padding: '20px', borderRadius:"10px", backgroundColor:"aliceblue" }}>
@@ -111,7 +124,18 @@ const CommitTest = () => {
                 </Button>
             </Card>
             {/* 브런치 목록 버튼*/}
+            <Card style={{ 
+                gridColumn:'1/2', 
+                gridRow:'3/4',
+                borderRadius:"10px",
+                margin: '10px', padding: '20px',}}>
+                    <font style={{marginLeft : '10px', marginBottom:'' ,fontSize:'18px', fontWeight : 'bold',  color : "#263238"}}>{projectInfo.p_title} 저장소</font>
+                    <font style={{marginLeft : '10px', marginBottom:'10px' ,fontSize:'12px', fontWeight : 'bold',  color : "#263238"}}>https://github.com/{projectInfo.e_nickname+'/'+projectInfo.p_giturl}</font>
+                    <a href={`https://github.com/${projectInfo.e_nickname+'/'+projectInfo.p_giturl}`} target='_blank'><font style={{marginLeft : '130px', fontSize:'18px', fontWeight : 'bold',  color : "#263238"}}>Git 저장소 이동</font></a>
+                    
+            </Card>
 
+                
             <Card style={{ 
                 margin: '10px', 
                 padding: '20px',  
@@ -149,34 +173,21 @@ const CommitTest = () => {
                     }
                 })}
             </Card>
-            <Card style={{ gridColumn:'2/3', gridRow:'1/3', padding : '30px', margin: '10px', borderLeft : '20px solid  #007bbc', borderRadius : "20px"}} >
+            <Card style={{ gridColumn:'2/3', gridRow:'1/4', padding : '30px', margin: '10px', borderLeft : '20px solid  #007bbc', borderRadius : "20px"}} >
                 <h5 style={{fontWeight:"bold"}}>Commit List<font style={{marginLeft : '16px' ,fontSize:'13px', color : 'rgba(1, 1, 1, 0.3)'}}><b>{useBranch}</b></font></h5>
                 
                <div className={styles.workView} style={{marginTop:'20px',paddingTop:"20px"}}>
                 {toggle === true
                     ? masterList.map((commit, key) => {
-                        return <CommitCard  info={commit} token={token} key={key} />;
+                        return <CommitCard info={commit} nick={nick} key={key} projectInfo={projectInfo}/>;
                     })
                     : view.map((commit, key) => {
-                        return <CommitCard info={commit.commits} token={token} useBranch={ useBranch }key={key} />;
+                        return <CommitCard info={commit.commits} nick={nick} useBranch={ useBranch }key={key} projectInfo={projectInfo}/>;
                     })}
                 </div>
                 <hr/>
                 {!toggle&& <Button style={{width:'300px', marginLeft:'400px'}}onClick={onClick}>더 보기</Button>}
-
-                
-
-
-                
-            </Card>
-            
-            
-            {/* {!toggle&&commit.commits!=='못함'&& <button onClick={onClick}>더 보기</button>} */}
-
-
-
-
-           
+            </Card>            
         </div>
     );
 };

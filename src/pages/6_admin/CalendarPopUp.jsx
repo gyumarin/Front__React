@@ -17,14 +17,15 @@ const CalendarPopUp = props => {
         event.preventDefault();
         props.editDetail(startRef.current.value, endRef.current.value, gitUrlRef.current.value);
         props.setCpopup(false);
-        dateUpdate(startRef.current.value, endRef.current.value, props.p_id);
+        dateUpdate(startRef.current.value, endRef.current.value, props.p_id, gitUrlRef.current.value);
     };
 
-    const dateUpdate = (start, end, p_id) => {
+    const dateUpdate = (start, end, p_id, giturl) => {
         const result = axios.put("/project/date", {
             p_date_start: start,
             p_date_end: end,
             p_id: p_id,
+            p_giturl : giturl
         });
     };
 

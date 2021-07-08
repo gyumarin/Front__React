@@ -22,7 +22,7 @@
 .notices {
   height: 225px;
   /* border: 1px solid black; */
-
+  font-size: 0.9em;
   overflow-y: scroll;
 
   -ms-overflow-style: none; /* IE and Edge */

@@ -1,10 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
-import { login } from './employee';
 import axios from 'axios';
 
 
-const CommitCard = ({ info, useBranch }) => {
+const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
     const [inputText, setInputText] = useState({ text: '', state: false });
     const [toggle, setToggle] = useState(false);
     const [comment, setComment] = useState({ sha: '', text: '', state: false });
@@ -21,8 +20,10 @@ const CommitCard = ({ info, useBranch }) => {
 
     //시작을 하면 DB에서 CommitTest.js에서 들고온 sha와 DB의 sha가 동일한지 체크하고 동일하면, db의 cl_comment를 text에 입력.
     useEffect(() => {
+        
         axios.get(`/commit?sha=${info.sha}`).then((res) => {
             try {
+                
                 setComment({ ...comment, sha: info.sha, text: res.data.result.cl_comment, state: true });
                 
             } catch {
@@ -61,7 +62,7 @@ const CommitCard = ({ info, useBranch }) => {
             // axios 등록 로직 처리
             axios.post('/commit/insert', {
                 token: tmp,
-                p_id: 5,
+                p_id: projectInfo.p_id,
                 cl_comment: inputText.text,
                 sha: info.sha,
             });
@@ -96,7 +97,14 @@ const CommitCard = ({ info, useBranch }) => {
                 </div>
                 {/* 글 블록 지정 막기 : userSelect:'none' */}
                 <div onClick={onToggle} variant="outline-primary" style={{ userSelect:'none', margin:'20px ',color:'blue', fontSize:'50px'  }}>
-                    {!toggle ? <p>+</p>: <p style={{marginLeft:'5px'}}>-</p>}
+                {nick == info.commit.committer.name ? (
+                        !toggle ? (
+                            <p>+</p>
+                        ) : (
+                            <p style={{ marginLeft: "5px" }}>-</p>
+                        )
+                    ) : null}
+
                 </div>
                 
                 <div style={{height:'100px', padding:'20px'}}>

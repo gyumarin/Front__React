@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './WorkBigCategory.module.css';
 
 
-const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renewalDetails, bigCategoryId, midCategoryId}) => {   
+const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renewalDetails, bigCategoryId, midCategoryId, setBigCategoryName}) => {   
     // state
     const [onInput, setOnInput] = useState(false);
     const newBigCategory = useRef("");
@@ -14,6 +14,7 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
         const midCategoryId = event.target.id;  
         setBigCategoryId("0");       
         setMidCategoryId(midCategoryId); 
+        setBigCategoryName(event.target.innerText);
         renewalDetails();
     } 
 

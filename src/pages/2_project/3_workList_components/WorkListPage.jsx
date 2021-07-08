@@ -6,6 +6,9 @@ import Work from './Work';
 import { Form, Button, Card  } from 'react-bootstrap';
 
 const WorkListPage = ({projectID}) => {
+    const tmp2 = sessionStorage.getItem("token").slice(0, -1).substr(1);
+    const [check, setCheck] = useState(false);
+
     
     const [data, setData] = useState([])
     const [workList, setWorkList] = useState([])
@@ -28,6 +31,7 @@ const WorkListPage = ({projectID}) => {
         axios.get(`/project/detail/${projectID}`).then(res =>{
             setProjectInfo(res.data.result)
             // console.log(res.data.result.p_title)
+            
         });
 
         axios.get(`/project/work/list/team/${projectID}`).then(res =>{
@@ -145,26 +149,58 @@ const WorkListPage = ({projectID}) => {
     }, [maincate])
 
     const onSearch =  (event) =>{
+
+        event.preventDefault();
         
         if(search.select=="선택"){
             alert('검색하실 분류를 선택해주세요. ')
         }else{
-            axios.get(`/project/work/list/search/${search.select}/${search.keyword}/${5}`).then(async res =>{
+            axios.get(`/project/work/list/search/${search.select}/${search.keyword}/${projectID}`).then(async res =>{
                 
                  setWorkList(res.data.result);
                  setWorkView(res.data.result);
                  await setMaincate('김치b')
                  await setMaincate('전체')
+                //  setSearch({...search, select: '선택', keyword : ''});
             })
         }        
     }
+
+    const getAll = () => {
+        axios.get(`/project/work/list/team/${projectID}`).then(res => {
+            setWorkList(res.data.result);
+            setWorkView(res.data.result);
+            setMaincate("전체");
+        });
+        setCheck(false);
+    };
+
+    const mySearch = () => {
+        axios
+            .get(
+                `/project/work/list/search/my?token=` +
+                    tmp2 +
+                    `&p_id=` +
+                    projectID
+            )
+            .then(async res => {
+                console.log(res.data.result);
+                setWorkList(res.data.result);
+                setWorkView(res.data.result);
+                await setMaincate("김치b");
+                await setMaincate("전체");
+            });
+        setCheck(true);
+    };
+
+
 
     return(        
         <div className={styles.container}>
             
             <div style={{display: 'grid',
-                         gridTemplateColumns:'200px 800px 400px', 
-                         gridTemplateRows: '70px 20px 120px 120px 500px'}
+                        gridTemplateColumns:'400px 800px 400px', 
+                        gridTemplateRows: '70px 20px 80px 120px 500px'}
             }>
                 <div style={{gridRow:'1/2', gridColumn:'1/3'}}>
                     <h3 className={styles.h3}>{projectInfo.p_title}
@@ -221,7 +257,14 @@ const WorkListPage = ({projectID}) => {
                         margin: '5px',
                         padding:'10px 0px 0px 0px'}
                     }>
-                        <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold"}}>검색 조회</p>
+                        <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold"}}>검색 조회
+                        {check ? (
+                                <button onClick={getAll}>전체</button>
+                            ) : (
+                                <button onClick={mySearch}>내꺼</button>
+                            )}
+
+                        </p>
                         <div style={{padding:'30px 5px 0px 0px'}}>
 
                             <select 
@@ -240,7 +283,7 @@ const WorkListPage = ({projectID}) => {
                             </select>  
                         </div>   
                     
-                    <Form style={{gridColumn:'3/4' ,padding:'30px 5px 0px 5px' }}>
+                    <Form style={{gridColumn:'3/4' ,padding:'30px 5px 0px 5px' }} onSubmit={onSearch}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Control style={{ height: '35px'}}type="text" onChange={onKeyword} value={search.keyword} placeholder="검색어"  />
                         </Form.Group>
@@ -256,7 +299,7 @@ const WorkListPage = ({projectID}) => {
 
 
                 
-                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '195px', margin : '45px 5px 5px 35px', padding:'20px'}}>
+                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '150px', margin : '45px 5px 5px 35px', padding:'20px'}}>
                 
                     <Form style={{ }}>    
                         <p>업무 대분류</p>
@@ -290,18 +333,18 @@ const WorkListPage = ({projectID}) => {
 
 
                 <Card style={{gridColumn:'3/4', gridRow:'2/6', padding:'40px 0px 0px 20px', margin : '30px 5px 5px 5px', height :'710px'}}> 
-                    <Pie projectID={5} />
+                    <Pie projectID={projectID} />
                 </Card>
                 
                 
-                <Card style={{ padding : '0px', gridColumn:'2/3', gridRow:'4/6', margin : '4px 10px 10px 10px', height :'610px'}}>
+                <Card style={{ padding : '0px', gridColumn:'2/3', gridRow:'4/6', margin : '30px 10px 10px 10px', height :'610px'}}>
                     <p style={{margin:'13px 0px 10px 20px'}}>업무 리스트</p>
                     <div className={styles.workView} >
                     {
                         workView[0]&&workView.map((item, index) =>{
                             if(workSuccess==0){return <Work data={item} key={index}/>}
-                            else if(workSuccess==1){if(item.wl_done)return <Work data={item} key={index}/>}
-                            else if(workSuccess==2){if(item.wl_done==false)return <Work data={item} key={index}/>}
+                            else if(workSuccess==1){if(item.wl_done==3)return <Work data={item} key={index}/>}
+                            else if(workSuccess==2){if(item.wl_done==1 || item.wl_done==2)return <Work data={item} key={index}/>}
                             
                         })
                     }

@@ -5,7 +5,7 @@ import styles from "./AdminEditProject.module.css";
 import CalendarPopUp from "./CalendarPopUp";
 import AddTeamPopUp from "./AddTeamPopUp";
 
-import projectData from "../../Data/projectData";
+// import projectData from "../../Data/projectData";
 import WorkBigCategory from "./WorkBigCategory";
 import WorkMiddleCategory from "./WorkMiddleCategory";
 import WorkSmallCategory from "./WorkSmallCategory";
@@ -20,6 +20,7 @@ const AdminEditProject = props => {
     const [wlb,setWlb] = useState([]);
     const [wlm,setWlm] = useState([]);
     const [wld,setWld] = useState([]);
+
     useEffect(() => {
         getWL();
     }, []);
@@ -40,7 +41,7 @@ const AdminEditProject = props => {
         setPeopleList(result2.data.result);
 
         const result3 = await axios("/project/detail/" + props.match.params.id);
-        console.log(result3.data.result);
+        // console.log(result3.data.result);
         setProjectDetail(result3.data.result);
     };
 
@@ -53,6 +54,9 @@ const AdminEditProject = props => {
     const [midCategoryId, setMidCategoryId] = useState("0");
     const [smallCategoryId, setSmallCategoryId] = useState("0");
 
+    // 1-2. category name 관리
+    const[bigCategoryName, setBigCategoryName] = useState("");
+    const[midCategoryName, setMidCategoryName] = useState("");
 
     // 2. popup 관리
     const [calendarPopup, setCalendarPopup] = useState(false);
@@ -80,15 +84,6 @@ const AdminEditProject = props => {
     // 3-3. edit Team
     const deleteTeam = event => {
         event.preventDefault();
-        // const id =
-        // event.target.parentNode.parentNode.id == ""
-        //     ? event.target.parentNode.parentNode.parentNode.id
-        //     : event.target.parentNode.parentNode.id;
-        // const copy = [...project.people].filter(person => {
-        //     return person.e_id != id;
-        // });
-        // setProject({ ...project, people: copy });
-
         deletePeople(
             event.target.parentNode.parentNode.id == ""
                 ? event.target.parentNode.parentNode.parentNode.id
@@ -105,11 +100,6 @@ const AdminEditProject = props => {
         setSmallCategoryId("강세훈");
     };
 
-    // 3-4. save all Data
-    const saveData = event => {
-        event.preventDefault();
-    };
-
     // ------------------------------------------------------
     
     return (
@@ -117,9 +107,9 @@ const AdminEditProject = props => {
             {/* Header */}
             <div className={styles.header}>
                 <div className={styles.title}>프로젝트 관리</div>
-                <button className={styles.saveButton} onClick={saveData}>
+                {/* <button className={styles.saveButton} onClick={saveData}>
                     저장
-                </button>
+                </button> */}
             </div>
 
             {/* Body */}
@@ -131,8 +121,7 @@ const AdminEditProject = props => {
                         {projectDetail.p_title}
                     </p>
                     <div className={styles.projectDatas}>
-                        <div className={styles.projectDate}>
-                            
+                        <div className={styles.projectDate}>                            
                             - 프로젝트 기간 : {projectDetail.p_date_start} ~ {projectDetail.p_date_end}<br/>
                             - Git Reposotiry : {projectDetail.p_giturl}                         
                             {calendarPopup ? (
@@ -157,6 +146,7 @@ const AdminEditProject = props => {
                         <div>프로젝트 인원</div>
                         <div className={styles.peopleList}>
                             {peopleList.map(person => {
+                                // console.log(peopleList)
                                 return (
                                     <div
                                         className={styles.card}
@@ -165,7 +155,7 @@ const AdminEditProject = props => {
                                         <div className={styles.cardContainer}>
                                             <img
                                                 className={styles.image}
-                                                src="../../images/example.jpg"
+                                                src={person.e_photo}
                                                 alt="face image"
                                             />
                                         </div>
@@ -217,6 +207,8 @@ const AdminEditProject = props => {
                                 setBigCategoryId={setBigCategoryId}
                                 setMidCategoryId={setMidCategoryId}
                                 
+                                setBigCategoryName ={setBigCategoryName}
+
                                 renewalDetails={renewalDetails}
                             />
 
@@ -228,13 +220,20 @@ const AdminEditProject = props => {
                                 smallCategoryId={smallCategoryId}
                                 setBigCategoryId={setBigCategoryId}
                                 setSmallCategoryId={setSmallCategoryId}
+
+                                // bigCategoryName={bigCategoryName}
+                                setMidCategoryName={setMidCategoryName}
                             />
 
                             <WorkSmallCategory                                
                                 wld={wld}
                                 setWld ={setWld}
-
+                                
+                                bigCategoryName={bigCategoryName}
+                                midCategoryName={midCategoryName}
                                 smallCategoryId={smallCategoryId}
+                                
+                                peopleList={peopleList}
                             />
                         </div>
                     </div>

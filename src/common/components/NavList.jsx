@@ -49,7 +49,7 @@ const NavList = ({mode}) => {
   return(
     <div className={styles.container}>
       {
-        mode ? 
+        mode? 
         <Accordion className={styles.accordion} defaultActiveKey="0">     
           {/* 1. 홈 버튼 */}
           <Card className={styles.card}>          

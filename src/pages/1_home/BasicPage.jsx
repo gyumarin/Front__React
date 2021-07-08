@@ -31,6 +31,7 @@ const BasicPage = ({removeLoginToken}) =>{
         <LeftNavBar 
           removeLoginToken={()=>removeLoginToken()}
           setOnAdmin={setOnAdmin}
+          
         />
         <div className={styles.body}>
           <Switch>

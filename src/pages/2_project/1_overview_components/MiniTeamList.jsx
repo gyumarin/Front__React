@@ -30,7 +30,7 @@ const MiniTeamList = ({projectID}) => {
               return (
                 <div className={styles.teamList}>
                   <div className={styles.photo}>
-                    <img className={styles.image} src="../../images/example.jpg" alt="team" />
+                    <img className={styles.image} src={emp.e_photo} alt="team" />
                   </div>
                   <div className={styles.name}>{emp.e_name}</div>
                   <div className={styles.position}>{emp.ep_position}</div>

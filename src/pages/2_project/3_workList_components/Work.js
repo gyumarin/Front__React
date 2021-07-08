@@ -17,7 +17,7 @@ const Work = ({data}) => {
                         <Card.Text style={{gridColumn :'3/4', gridRow :'2/3'}}> :</Card.Text>
                         <Card.Text style={{gridColumn :'4/5', gridRow :'2/3' }}>{data.wl_work}</Card.Text>
                         <Card.Text style={{marginLeft: '80px',gridColumn :'5/6' , gridRow :'2/3', color : 'rgba(1, 1, 1, 0.5)'}}> 작업자 : {data.e_name}</Card.Text>
-                        <div style={{marginLeft: '25px', gridRow :'3/4', gridColumn :'6/7', borderRadius : '50%', width : '20px', height :'20px', backgroundColor : `${data&&(data.wl_done==true?'blue':'red')}`}}/>
+                        <div style={{marginLeft: '25px', gridRow :'3/4', gridColumn :'6/7', borderRadius : '50%', width : '20px', height :'20px', backgroundColor : `${data&&(data.wl_done==3?'blue':(data.wl_done==1?'red':'orange'))}`}}/>
                         <Card.Text style={{gridColumn :'2/3', }}>세부 업무</Card.Text>
                         <Card.Text >:</Card.Text>
                         <Card.Text style={{gridColumn :'4/6'}}>{data.wl_work_detail}</Card.Text>

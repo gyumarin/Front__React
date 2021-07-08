@@ -1,10 +1,14 @@
+import axios from 'axios';
 import { even } from 'check-types';
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './WorkSmallCategory.module.css';
 
-const WorkSmallCategory = ({wld, setWld, smallCategoryId}) => {
-    
+const WorkSmallCategory = ({wld, setWld,  smallCategoryId, bigCategoryName, midCategoryName, peopleList}) => {
+    console.log(bigCategoryName, midCategoryName);
+    const param = useParams();
+    const projectId = parseInt(param.id);
     // state
     const [onInput, setOnInput] = useState(false);
     const newDetail = useRef("");
@@ -26,34 +30,26 @@ const WorkSmallCategory = ({wld, setWld, smallCategoryId}) => {
         event.preventDefault();
         const copied = [...wld];
         const newDetailData = {
-            "m_id" : smallCategoryId,
-            "d_id" : new Date().getTime(),
-            "d_name" : newDetail.current.value,
-            "d_start" : startTime.current.value,
-            "d_end" : EndTime.current.value,
-            "d_charge"  : charges.current.value
-        }      
-        copied.push(newDetailData);        
-        setWld(copied);
-        event.target.querySelector('input').value = "";
-        setOnInput(false);
-    }
-
-    const detailsSubmit = (event)=>{
-        event.preventDefault();
-        const copied = [...wld];
-        const newDetailData = {
-            "m_id" : smallCategoryId,
-            "d_id" : new Date().getTime(),
+            "m_id" : smallCategoryId,           
             "d_name" : newDetail.current.value == "" ? "세부업무 없음" : newDetail.current.value,
             "d_start" : startTime.current.value == "" ? "시작일 없음" : startTime.current.value,
             "d_end" : EndTime.current.value == "" ? "마감일 없음" : EndTime.current.value,
             "d_charge"  : charges.current.value == "" ? "담당자 없음" : charges.current.value
         }      
+        axios.post("/project/work/insert",{
+            p_id : projectId,
+            wl_work_category : bigCategoryName,
+            wl_work:  midCategoryName,
+            wl_work_detail : newDetail.d_name,
+            wl_date_start : newDetail.d_start,
+            wl_date_end : newDetail.d_end,
+            e_id : 1005
+        })
         copied.push(newDetailData);        
         setWld(copied);
         setOnInput(false);
     }
+
 // ---------------------------------------------------------------------
     return(
         <div className={styles.container}>
@@ -88,9 +84,16 @@ const WorkSmallCategory = ({wld, setWld, smallCategoryId}) => {
 
                         <div className={styles.formCharge}>
                             <label className={styles.label} htmlFor="charge">담당자</label>
-                            <input ref={charges} id="charge" className={styles.inputCharge} type="text" placeholder="담당자" autoFocus />
+                            {/* <input ref={charges} id="charge" className={styles.inputCharge} type="text" placeholder="담당자" autoFocus /> */}
+                            <select name="" id="">
+                                {
+                                    peopleList.map(man=>{
+                                        <option value={man.e_name} id={man.e_id}>man.e_name</option>
+                                    })
+                                }
+                            </select>
                         </div>
-                        <input type="button" onClick={detailsSubmit} value="등록" className={styles.button}/>
+                        <input type="button" onClick={onCreateNewDetails} value="등록" className={styles.button}/>
                     </form>
                 : <div className={styles.addButton} onClick={onChangeInputForm}><i className="fas fa-plus"></i></div>                
             }  

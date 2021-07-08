@@ -58,16 +58,18 @@ const DoughnutChart = ({projectID}) => {
   return (
     <div style={{display:'flex', flexDirection:'column'}}>
       <div style={{ height: '0px' ,width : '125px' }}>
-        <Pie
+        {data.total!=0?<Pie
           data = {data}
           options = {options}
           style={{}} 
-        />
+        />: '등록된 업무가 없습니다.'}
       </div>
 
-      <div >
-      전체 {data.datasets&&(100-(data.datasets&&data.datasets[0].data[data.datasets[0].data.length-1]/data.total*100)).toFixed(2)}%
+      {data.total!=0&&
+      <div>
+        전체 {data.datasets&&(100-(data.datasets&&data.datasets[0].data[data.datasets[0].data.length-1]/data.total*100)).toFixed(2)}%
       </div>
+      }
     </div>
   )
 }

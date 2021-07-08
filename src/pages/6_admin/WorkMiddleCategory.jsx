@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './WorkMiddleCategory.module.css';
 
 
-const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmallCategoryId, smallCategoryId}) => {
+const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmallCategoryId, smallCategoryId, setMidCategoryName}) => {
     // state
     const [onInput, setOnInput] =useState(false);
     const newMiddleCategory=useRef("");
@@ -19,6 +19,8 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
         const smallCategoryId = event.target.id; 
         setSmallCategoryId(smallCategoryId); 
         setBigCategoryId(midCategoryId);
+        // console.log(event.target.innerText);
+        setMidCategoryName(event.target.innerText);
     };
     
     const onChangeInputForm =(event)=>{

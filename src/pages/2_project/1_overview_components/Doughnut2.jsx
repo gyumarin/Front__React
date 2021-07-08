@@ -59,11 +59,11 @@ const Doughnut2= ({projectID}) => {
   
   return (
     <div style={{height: '400px' ,width : '450px'}}>
-      <Pie
-        data = {data}
-        options = {options}
-        style={{}} 
-      />
+      {data.total!=0?<Pie
+          data = {data}
+          options = {options}
+          style={{}} 
+        />: '등록된 업무가 없습니다.'}
     </div>
   )
 }

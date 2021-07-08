@@ -171,7 +171,17 @@
   margin-right: 1em;
   padding-left: 10px;
 }
+.bossOneTalk {
+  /* border: 1px solid black; */
+  height: 40%;
+  border-radius: 10px;
+  background-color: aliceblue;
 
+  font-size: 0.9em;
+  font-family: "Noto Sans", sans-serif;
+  padding: 0.5em;
+  color: #263238;
+}
 .oneTalk {
   /* border: 1px solid black; */
   height: 40%;

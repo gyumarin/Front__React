@@ -1,5 +1,5 @@
 .container {
-  width: 60%;
+  width: 55%;
   height: 19.5rem;
   border-radius: 40px;
 
@@ -31,15 +31,6 @@
   width: 100%;
   height: 225px;
   background-color: aliceblue;
-
-  overflow-y: scroll;
-  border-radius: 5px;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.tableContainer::-webkit-scrollbar {
-  display: none;
 }
 
 .table {
@@ -47,45 +38,173 @@
   height: 200px;
 
   margin: auto;
+  overflow-y: scroll;
+  border-radius: 5px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.table::-webkit-scrollbar {
+  display: none;
+}
+.thead {
+  display: flex;
 }
 
-.tr {
-  width: 100%;
-  color: black;
-  height: 40px;
-  border: 1px solid #cbd4d8;
-}
-.tr:hover {
-  background-color: #adecff;
-}
-
-.th {
-  color: #263238;
-  font-family: "Noto Sans", sans-serif;
-  font-weight: bold;
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  position: sticky;
-}
 .numtd {
   color: #263238;
   font-family: "Noto Sans", sans-serif;
   width: 10px;
   text-align: center;
 }
-.td {
+
+/* thead */
+.thead {
+  background-color: #007bbc;
+  color: aliceblue;
+}
+.th1 {
+  font-family: "Noto Sans", sans-serif;
+  width: 20%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1px;
+  /* border: 1px solid black; */
+  /* padding-left: 0.5em; */
+}
+.th2 {
+  font-family: "Noto Sans", sans-serif;
+  width: 13%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1px;
+  border-left: 1px solid rgb(235, 233, 233);
+}
+.th3 {
+  font-family: "Noto Sans", sans-serif;
+  width: 56.5%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1px;
+  border-left: 1px solid rgb(235, 233, 233);
+}
+
+.th4 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.5em;
+  width: 5%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1px;
+  padding-top: 0.5em;
+  border-left: 1px solid rgb(235, 233, 233);
+}
+.th5 {
+  font-family: "Noto Sans", sans-serif;
+  width: 5%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1px;
+  border-left: 1px solid rgb(235, 233, 233);
+}
+
+/* -------------------------------------------- */
+.tr {
+  width: 100%;
+  color: black;
+  height: 40px;
+  border: 1px solid #cbd4d8;
+  display: flex;
+  font-size: 0.9em;
+}
+.tr:hover {
+  background-color: #adecff;
+}
+
+.td1 {
   color: #263238;
   font-family: "Noto Sans", sans-serif;
-  width: 40px;
-  text-align: center;
+  width: 20%;
+  text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-top: 7px;
   /* border: 1px solid black; */
+  padding-left: 0.5em;
+}
+.td2 {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  width: 13%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 7px;
+  border-left: 1px solid rgb(235, 233, 233);
+}
+.td3 {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  width: 56.5%;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 7px;
+  border-left: 1px solid rgb(235, 233, 233);
+  font-weight: bold;
+  padding-left: 0.5em;
 }
 
+.td4 {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  width: 5%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 7px;
+  border-left: 1px solid rgb(235, 233, 233);
+  font-weight: bold;
+  color: rgb(252, 107, 107);
+}
+.td_4 {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  width: 5%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 7px;
+  border-left: 1px solid rgb(235, 233, 233);
+  color: #263238;
+}
+.td5 {
+  color: #263238;
+  font-family: "Noto Sans", sans-serif;
+  width: 5%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 7px;
+  border-left: 1px solid rgb(235, 233, 233);
+}
+/* -------------------------------------------- */
 .button {
   color: #263238;
   font-family: "Noto Sans", sans-serif;
