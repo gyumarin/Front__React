@@ -344,8 +344,7 @@ const WorkListPage = ({projectID}) => {
                         workView[0]&&workView.map((item, index) =>{
                             if(workSuccess==0){return <Work data={item} key={index}/>}
                             else if(workSuccess==1){if(item.wl_done==3)return <Work data={item} key={index}/>}
-                            else if(workSuccess==2){if(item.wl_done==1 || item.wl_done==2)return <Work data={item} key={index}/>}
-                            
+                            else if(workSuccess==2){if(item.wl_done==1 || item.wl_done==2)return <Work data={item} key={index}/>}                            
                         })
                     }
                     </div>

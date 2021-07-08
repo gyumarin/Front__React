@@ -6,19 +6,20 @@ import axios  from 'axios';
 import { useState } from 'react';
 
 
-const Title = ({onAdmin}) => {
-  const history = useHistory();  
-   
- 
+const Title = (props) => {
+  const history = useHistory();
+  let admin =false;
+
+  // console.log(sessionStorage.getItem('isAdmin'));
+
   const goHome =(event)=>{
     event.preventDefault();
-    if(onAdmin){
+    if(sessionStorage.getItem('isAdmin') == "true"){
       history.push("/main/admin/project");
     }
     else{
       history.push("/main/home");   
-    }
-      
+    }      
   }
 
   return(

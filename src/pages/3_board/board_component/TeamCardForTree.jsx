@@ -13,7 +13,7 @@ const TeamCardForTree = ({team}) => {
                 <span>{team.e_name}</span>
                 <div>{team.d_name}</div>
                 <div>{team.e_e_phone} 
-                    <Link className ={styles.btnMail}to="/main/mail/write"><i className="fas fa-envelope"></i></Link>
+                    <Link className ={styles.btnMail}to={`/main/mail/write/`+team.e_id}><i className="fas fa-envelope"></i></Link>
                 </div>
                 
                 <hr className={styles.hr}/>

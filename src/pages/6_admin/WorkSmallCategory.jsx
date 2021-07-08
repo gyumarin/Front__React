@@ -84,14 +84,7 @@ const WorkSmallCategory = ({wld, setWld,  smallCategoryId, bigCategoryName, midC
 
                         <div className={styles.formCharge}>
                             <label className={styles.label} htmlFor="charge">담당자</label>
-                            {/* <input ref={charges} id="charge" className={styles.inputCharge} type="text" placeholder="담당자" autoFocus /> */}
-                            <select name="" id="">
-                                {
-                                    peopleList.map(man=>{
-                                        <option value={man.e_name} id={man.e_id}>man.e_name</option>
-                                    })
-                                }
-                            </select>
+                            <input ref={charges} id="charge" className={styles.inputCharge} type="text" placeholder="담당자" autoFocus />
                         </div>
                         <input type="button" onClick={onCreateNewDetails} value="등록" className={styles.button}/>
                     </form>

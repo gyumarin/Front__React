@@ -8,7 +8,20 @@
   display: flex;
   flex-direction: column;
 
-  background-color: myBlack;
+  background-color: #263238;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+.bossContainer {
+  width: 13rem;
+  padding: 1rem;
+  height: 875px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: gray;
   border-radius: 5px;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);

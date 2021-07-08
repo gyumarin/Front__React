@@ -129,7 +129,7 @@ const CommitTest = ({ projectInfo }) => {
                 gridRow:'3/4',
                 borderRadius:"10px",
                 margin: '10px', padding: '20px',}}>
-                    <font style={{marginLeft : '10px', marginBottom:'' ,fontSize:'18px', fontWeight : 'bold',  color : "#263238"}}>{projectInfo.p_title} 저장소</font>
+                    <font style={{marginLeft : '10px', marginBottom:'' ,fontSize:'18px', fontWeight : 'bold',  color : "#263238", overflow:'hidden' , width:'100%', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{projectInfo.p_title}</font>
                     <font style={{marginLeft : '10px', marginBottom:'10px' ,fontSize:'12px', fontWeight : 'bold',  color : "#263238"}}>https://github.com/{projectInfo.e_nickname+'/'+projectInfo.p_giturl}</font>
                     <a href={`https://github.com/${projectInfo.e_nickname+'/'+projectInfo.p_giturl}`} target='_blank'><font style={{marginLeft : '130px', fontSize:'18px', fontWeight : 'bold',  color : "#263238"}}>Git 저장소 이동</font></a>
                     

@@ -64,7 +64,7 @@ const PieChart = ({projectID}) => {
                 
                 <p style={{fontSize:'23px'}}>업무 진행률</p>
                 
-                {data.total!=0&&<p>전체 {data.datasets&&(100-(data.datasets&&data.datasets[0].data[data.datasets[0].data.length-1]/data.total*100)).toFixed(2)}%</p>}
+                {/* {data.total!=0&&<p>전체 {data.datasets&&(100-(data.datasets&&data.datasets[0].data[data.datasets[0].data.length-1]/data.total*100)).toFixed(2)}%</p>} */}
                 
                 {data.total!=0?<div style={{ paddingLeft:'50px',width:'280px'}}>
                     <Pie

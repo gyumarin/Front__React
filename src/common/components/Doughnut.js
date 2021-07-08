@@ -67,7 +67,7 @@ const DoughnutChart = ({projectID}) => {
 
       {data.total!=0&&
       <div>
-        전체 {data.datasets&&(100-(data.datasets&&data.datasets[0].data[data.datasets[0].data.length-1]/data.total*100)).toFixed(2)}%
+        {/* 전체 {data.datasets&&(100-(data.datasets&&data.datasets[0].data[data.datasets[0].data.length-1]/data.total*100)).toFixed(2)}% */}
       </div>
       }
     </div>

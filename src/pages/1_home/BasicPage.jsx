@@ -18,20 +18,19 @@ import axios from 'axios';
 
 
 const BasicPage = ({removeLoginToken}) =>{
-  const [onAdmin, setOnAdmin] = useState(false);
-  const [project, setProject] = useState(""); 
+
+  const [project, setProject] = useState("");
+ 
   // "프로젝트 리스트" 페이지에서 crousel의 모양을 잡기 위해서는 프로젝트 갯수가 필요했다. 
   // "HomePage" 컴포넌트에서 받아오는 프로젝트 갯수를 
   // "ProjectList" 컴포넌트로 넘기기 위한 state
   
   return(  
     <div className={styles.wholeContainer}>
-      <Title onAdmin={onAdmin}/>
+      <Title/>
       <div className={styles.contentContainer}>
         <LeftNavBar 
-          removeLoginToken={()=>removeLoginToken()}
-          setOnAdmin={setOnAdmin}
-          
+          removeLoginToken={()=>removeLoginToken()}              
         />
         <div className={styles.body}>
           <Switch>

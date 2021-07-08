@@ -5,7 +5,7 @@ import {Accordion, Card} from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
 
-const NavList = ({mode}) => {  
+const NavList = () => {  
   const history = useHistory();
 
   // for User ---------------------------------------------------------
@@ -49,7 +49,7 @@ const NavList = ({mode}) => {
   return(
     <div className={styles.container}>
       {
-        mode? 
+        sessionStorage.getItem('isAdmin')=="false"? 
         <Accordion className={styles.accordion} defaultActiveKey="0">     
           {/* 1. 홈 버튼 */}
           <Card className={styles.card}>          

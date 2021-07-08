@@ -68,18 +68,35 @@ const AddTeamPopUp = props => {
                 <label className={styles.label} htmlFor="input">
                     인원 검색
                 </label>
-                {/* search 들어올 곳 */}
-                <input
-                    id="search"
-                    type="text"
-                    name="sName"
-                    onChange={onChange}
-                    className={styles.input2}
-                ></input>
-                <button className={styles.button1} onClick={getEmployee}>
-                    검색
-                </button>
-                <div>
+                <div className={styles.search}>
+                    
+                    {/* search 들어올 곳 */}
+                    <input
+                        id="search"
+                        type="text"
+                        name="sName"
+                        onChange={onChange}
+                        className={styles.input2}
+                    ></input>
+                    {/* <select
+                            className={styles.select}
+                            name="fName"
+                            onChange={checkName}
+                        >
+                            <option>선택</option>
+                            {list.map((value, key) => {
+                                return (
+                                    <option value={value.e_id} key={key}>
+                                        {value.e_name}
+                                    </option>
+                                );
+                            })}
+                        </select> */}
+                    <button className={styles.button1} onClick={getEmployee}>
+                        검색
+                    </button>
+                </div>
+                <div className={styles.options}>
                     {search ? (
                         <select
                             className={styles.select}
@@ -97,8 +114,14 @@ const AddTeamPopUp = props => {
                         </select>
                     ) : null}
                 </div>
-                <input type="text" value={id}></input>
-                <input type="text" name="position" onChange={onChange}></input>
+                <div>
+                    <label htmlFor="e_id" className={styles.label}>사원번호</label>
+                    <input type="text" value={id} id="e_id" className={styles.input3}></input>
+                </div>
+                <label htmlFor="e_position" className={styles.label1}>포지션</label>
+                <input type="text" name="position" id="e_position" onChange={onChange} className={styles.input3}></input>
+                
+
                 <input
                     className={styles.button1}
                     type="button"

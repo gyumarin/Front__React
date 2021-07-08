@@ -9,11 +9,14 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-const LeftNavBar = ({removeLoginToken,setOnAdmin}) => {
+const LeftNavBar = ({removeLoginToken}) => {
 
   const [userInfo, setUserInfo] = useState({})
   
   useEffect(() => {
+    if(mode == null){
+      setMode(sessionStorage.getItem("isAdmin"))
+    };
     const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     if(sessionStorage.getItem('token')){
       axios.get(`/employee/detail?token=${tmp}`).then(res=>{
@@ -23,13 +26,13 @@ const LeftNavBar = ({removeLoginToken,setOnAdmin}) => {
   }, [])
 
   const history = useHistory();
-  const [mode, setMode] = useState(true);   
+  const [mode, setMode] = useState(null);   
 
-  const handleClick = (event) =>{
+  const handleClick = async (event) =>{
     event.preventDefault();    
     const modeChangeCheck = mode? window.confirm("관리자 창으로 이동하시겠습니까?") : window.confirm("사용자 창으로 이동하시겠습니까?");
-    changeMode(modeChangeCheck);
-    setOnAdmin(mode);
+    await sessionStorage.setItem("isAdmin", mode);
+    await changeMode(modeChangeCheck);    
   }
 
   const changeMode =(modeChangeCheck)=>{    
@@ -56,15 +59,13 @@ const LeftNavBar = ({removeLoginToken,setOnAdmin}) => {
   }  
 
   return(
-    <div className={styles.container} style ={{display:"grid", gridTemplateRows :"85% 15%"}}>
+    <div className={sessionStorage.getItem('isAdmin') == "false" ? styles.container : styles.bossContainer} style ={{display:"grid", gridTemplateRows :"85% 15%"}}>
       <div>
       <MiniProfile 
         userInfo={userInfo}
         removeLoginToken={()=>removeLoginToken()}
       />
-      <NavList
-        mode ={mode}
-      />
+      <NavList/>
       </div>
       { userInfo.role == "admin"?
       <div className={styles.toggle}>

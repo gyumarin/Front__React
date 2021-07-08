@@ -12,7 +12,7 @@ const TeamCard = ({worker}) => {
                 </div>
                 <p className={styles.nickName}>{worker.e_nickname}
                     <span className={styles.rank}>({worker.e_rank})</span>
-                    <Link to="/main/mail/write"><button className={worker.p_manager == worker.e_id ? styles.buttomBossMail : styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
+                    <Link to={'/main/mail/write/'+worker.e_id}><button className={worker.p_manager == worker.e_id ? styles.buttomBossMail : styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
                 </p>
             </div>
 
