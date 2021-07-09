@@ -12,10 +12,13 @@ import axios from 'axios';
 const LeftNavBar = ({removeLoginToken}) => {
 
   const [userInfo, setUserInfo] = useState({})
+  const history = useHistory();
+  const [mode, setMode] = useState(false);   
   
   useEffect(() => {
+    sessionStorage.setItem("isAdmin", false);
     if(mode == null){
-      setMode(sessionStorage.getItem("isAdmin"))
+      setMode(sessionStorage.getItem("isAdmin") == null ? false : false)
     };
     const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     if(sessionStorage.getItem('token')){
@@ -25,8 +28,7 @@ const LeftNavBar = ({removeLoginToken}) => {
     }
   }, [])
 
-  const history = useHistory();
-  const [mode, setMode] = useState(null);   
+  
 
   const handleClick = async (event) =>{
     event.preventDefault();    
