@@ -143,7 +143,15 @@ const AdminEditProject = props => {
 
                     {/* left_2 - 인원 관리 */}
                     <div className={styles.teamList}>
-                        <div>프로젝트 인원</div>
+                        <div className={styles.peopleListHeader}>
+                            <div className={styles.peopleListTitle}>프로젝트 인원</div>
+                            <button
+                                className={styles.addTeam}
+                                onClick={onTeamPopup}
+                            >
+                                <i className="fas fa-plus"></i>
+                            </button>
+                        </div>
                         <div className={styles.peopleList}>
                             {peopleList.map(person => {
                                 // console.log(peopleList)
@@ -174,13 +182,7 @@ const AdminEditProject = props => {
                                         </button>
                                     </div>
                                 );
-                            })}
-                            <button
-                                className={styles.addTeam}
-                                onClick={onTeamPopup}
-                            >
-                                <i className="fas fa-plus"></i>
-                            </button>
+                            })}                           
                             {teamPopup ? (
                                 <AddTeamPopUp
                                     setTeamPopup={setTeamPopup}
@@ -194,49 +196,17 @@ const AdminEditProject = props => {
 
                 {/* Body - Right */}
                 <div className={styles.right}>
-                    {/* Right_3 - 업무리스트 */}
-                    <div className={styles.workList}>
-                        <div>업무 리스트</div>
-                        <div className={styles.works}>
-                            <WorkBigCategory                                
-                                wlb={wlb}
-                                setWlb={setWlb}
-
-                                bigCategoryId={bigCategoryId}
-                                midCategoryId={midCategoryId}
-                                setBigCategoryId={setBigCategoryId}
-                                setMidCategoryId={setMidCategoryId}
-                                
-                                setBigCategoryName ={setBigCategoryName}
-
-                                renewalDetails={renewalDetails}
-                            />
-
-                            <WorkMiddleCategory                                
-                                wlm={wlm}
-                                setWlm={setWlm}
-
-                                midCategoryId={midCategoryId}
-                                smallCategoryId={smallCategoryId}
-                                setBigCategoryId={setBigCategoryId}
-                                setSmallCategoryId={setSmallCategoryId}
-
-                                // bigCategoryName={bigCategoryName}
-                                setMidCategoryName={setMidCategoryName}
-                            />
-
-                            <WorkSmallCategory                                
-                                wld={wld}
-                                setWld ={setWld}
-                                
-                                bigCategoryName={bigCategoryName}
-                                midCategoryName={midCategoryName}
-                                smallCategoryId={smallCategoryId}
-                                
-                                peopleList={peopleList}
-                            />
+                    <div className={styles.rightContainer}>
+                        <p style={{fontWeight:"bold"}}>업무 승인 처리</p>
+                        <div className={styles.rightContents}>
+                            <div className={styles.numberOfWating}>승인 대기 중인 업무 : <div className={styles.w_number}>10</div>개</div>
+                            {
+                                [1,2,3,4].map(item=>{
+                                    return null;
+                                })
+                            }
                         </div>
-                    </div>
+                    </div>            
                 </div>
             </div>
         </div>

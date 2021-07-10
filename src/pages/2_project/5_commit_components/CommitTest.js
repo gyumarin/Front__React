@@ -123,6 +123,7 @@ const CommitTest = ({ projectInfo }) => {
                     <p style={{marginBottom: '0px'  }}>master</p>
                 </Button>
             </Card>
+            
             {/* 브런치 목록 버튼*/}
             <Card style={{ 
                 gridColumn:'1/2', 
@@ -154,7 +155,7 @@ const CommitTest = ({ projectInfo }) => {
                         height : "50px"
                     }}
                     >
-                        <b>{branchs.length-1}</b>
+                        {branchs.length!=0&&<b>{branchs.length-1}</b>}
                     </font>
                 </font>
                 

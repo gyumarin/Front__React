@@ -184,24 +184,27 @@
   /* border: 1px solid black; */
   font-size: 0.8em;
 }
+.peopleListHeader {
+  display: flex;
+  justify-content: space-between;
+}
 .addTeam {
-  width: 90%;
-  height: 60px;
-  background-color: rgb(124, 124, 124);
+  width: 14%;
+  height: 25px;
+  background-color: #00aaef;
 
   border: none;
   border-radius: 5px;
 
   margin: auto;
-  margin-left: 0.9em;
+  margin-left: 1em;
   text-align: center;
 
-  font-size: 1.5em;
+  font-size: 0.9em;
   color: aliceblue;
 }
 .addTeam:hover {
-  color: #263238;
-  background-color: #00aaef;
+  opacity: 0.8;
 }
 /* -------------------------------------------------- */
 .works {
@@ -224,4 +227,36 @@
 .saveButton:hover {
   color: aliceblue;
   background-color: #00aaef;
+}
+
+/* ----------------------------------------------- */
+.rightContainer {
+  margin: 0 1em;
+  padding: 1em;
+  background-color: white;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 10px;
+}
+.rightContents {
+  width: 100%;
+  height: 95%;
+  background-color: rgb(216, 216, 216);
+
+  border-radius: 10px;
+}
+.numberOfWating {
+  margin-left: 55.5em;
+  padding: 1em;
+  font-family: "Noto Sans", sans-serif;
+  display: -webkit-inline-flex;
+}
+.w_number {
+  width: 30px;
+  font-family: "Noto Sans", sans-serif;
+  /* font-weight: bold; */
+  text-align: right;
+  color: #0391c9;
 }

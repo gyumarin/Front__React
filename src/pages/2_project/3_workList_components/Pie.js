@@ -97,4 +97,4 @@ const PieChart = ({projectID}) => {
     )
 }
 
-export default PieChart
+export default React.memo(PieChart);

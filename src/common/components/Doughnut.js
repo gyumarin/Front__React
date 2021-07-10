@@ -74,4 +74,4 @@ const DoughnutChart = ({projectID}) => {
   )
 }
 
-export default DoughnutChart;
+export default React.memo(DoughnutChart);

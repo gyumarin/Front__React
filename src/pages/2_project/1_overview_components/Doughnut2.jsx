@@ -68,4 +68,4 @@ const Doughnut2= ({projectID}) => {
   )
 }
 
-export default Doughnut2;
+export default React.memo(Doughnut2);

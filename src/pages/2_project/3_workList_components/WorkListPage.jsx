@@ -257,13 +257,7 @@ const WorkListPage = ({projectID}) => {
                         margin: '5px',
                         padding:'10px 0px 0px 0px'}
                     }>
-                        <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold"}}>검색 조회
-                        {check ? (
-                                <button onClick={getAll}>전체</button>
-                            ) : (
-                                <button onClick={mySearch}>내꺼</button>
-                            )}
-
+                        <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold"}}>검색 조회                       
                         </p>
                         <div style={{padding:'30px 5px 0px 0px'}}>
 
@@ -338,13 +332,25 @@ const WorkListPage = ({projectID}) => {
                 
                 
                 <Card style={{ padding : '0px', gridColumn:'2/3', gridRow:'4/6', margin : '30px 10px 10px 10px', height :'610px'}}>
-                    <p style={{margin:'13px 0px 10px 20px'}}>업무 리스트</p>
+                    <div style={{display:'grid', gridTemplateColumns:'600px 300px'}}> 
+                    <p style={{margin:'13px 0px 10px 20px'}}><b>업무 리스트 <font style={{color : 'rgba(1, 1, 1, 0.5)', width:'300px'}}>{check?'my':'team'}</font></b></p>
+                    <div style={{marginTop:'10px', marginBottom:'5px'}}>
+                            {check ? (
+                                <Button onClick={getAll}>전체 업무 리스트</Button>
+                            ) : (
+                                <Button onClick={mySearch}>나의 업무 리스트</Button>
+                            )}
+                    </div>
+                    </div>
+                   
+                   
                     <div className={styles.workView} >
                     {
                         workView[0]&&workView.map((item, index) =>{
                             if(workSuccess==0){return <Work data={item} key={index}/>}
                             else if(workSuccess==1){if(item.wl_done==3)return <Work data={item} key={index}/>}
-                            else if(workSuccess==2){if(item.wl_done==1 || item.wl_done==2)return <Work data={item} key={index}/>}                            
+                            else if(workSuccess==2){if(item.wl_done==1 || item.wl_done==2)return <Work data={item} key={index}/>}
+                            
                         })
                     }
                     </div>
