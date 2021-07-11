@@ -47,6 +47,7 @@
   background-color: #00aaef;
   border-radius: 10px;
   display: flex;
+  cursor: pointer;
 }
 .card:hover {
   opacity: 0.8;

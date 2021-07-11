@@ -164,11 +164,7 @@ const CommitTest = ({ projectInfo }) => {
                         return (
                             <Button style={{ margin: '15px 5px 5px 0px' ,textAlign:'left', backgroundColor : "#00aaef", border : "none", borderRadius : "15px", height  : "50px"}} value={item.name} key={key} onClick={() => chooseBrench(item.name)}>
                                 <p style={{marginBottom: '0px'  }}>{item.name}</p>
-                                { 
-                                    // (item.name.split("/")).map(item =>{
-                                    //     return (<p style={{marginBottom: '-3px'  }}>{item}/</p>)
-                                    // })
-                                }
+                               
                             </Button>
                         );
                     }

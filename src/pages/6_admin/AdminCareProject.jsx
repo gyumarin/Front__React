@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router';
 import styles from './AdminCareProject.module.css';
 
@@ -7,6 +7,7 @@ import WorkMiddleCategory from "./WorkMiddleCategory";
 import WorkSmallCategory from "./WorkSmallCategory";
 
 import AdminTeamList from './AdminTeamList';
+import axios from 'axios';
 
 const AdminCareProject = (props) => {
 
@@ -24,7 +25,7 @@ const AdminCareProject = (props) => {
     }
 
 
-    // 2. state 관리 
+    // 2. state 관리    
     const [wlb,setWlb] = useState([]);
     const [wlm,setWlm] = useState([]);
     const [wld,setWld] = useState([]);
@@ -34,9 +35,33 @@ const AdminCareProject = (props) => {
     const [smallCategoryId, setSmallCategoryId] = useState("0");
 
     const [peopleList, setPeopleList] = useState([]);
+
     // 2-2 category name 관리
     const[bigCategoryName, setBigCategoryName] = useState("");
     const[midCategoryName, setMidCategoryName] = useState("");
+    const[selectedMan, setSelectedMan] =useState(0);
+
+    useEffect(() => {
+        getWL();
+    }, []);    
+    
+
+    const getWL = async () => {
+        const result = await axios(
+            "/project/work/detail/list/" + props.match.params.id
+        );
+        // console.log(" test ",result.data.result.wlb);
+        setWlb(result.data.result.wlb);
+        setWlm(result.data.result.wlm);
+        setWld(result.data.result.wld);        
+
+        const result2 = await axios(
+            "/project/list/emp/" + props.match.params.id
+        );
+        setPeopleList(result2.data.result);   
+    };
+
+
 
     // 3. mothods
     const renewalDetails = () => {
@@ -77,13 +102,16 @@ const AdminCareProject = (props) => {
 
                                 midCategoryId={midCategoryId}
                                 smallCategoryId={smallCategoryId}
+
                                 setBigCategoryId={setBigCategoryId}
                                 setSmallCategoryId={setSmallCategoryId}
 
                                 // bigCategoryName={bigCategoryName}
                                 setMidCategoryName={setMidCategoryName}
                             />
-                            <AdminTeamList/>
+                            <AdminTeamList
+                                setSelectedMan={setSelectedMan}
+                            />
                         </div>
                         <div className={styles.right}>
                             <WorkSmallCategory                                
@@ -94,7 +122,7 @@ const AdminCareProject = (props) => {
                                 midCategoryName={midCategoryName}
                                 smallCategoryId={smallCategoryId}
                                 
-                                peopleList={peopleList}
+                                selectedMan={selectedMan}
                             />
                         </div>
                     </div>

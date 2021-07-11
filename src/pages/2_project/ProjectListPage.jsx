@@ -8,19 +8,38 @@ import BigCard from './1_overview_components/BigCard';
 const ProjectListPage = ({project}) => {
 
     const [projectList, setProjectList] = useState(project);
+    const [allProjectList, setAllProjectList] = useState(project);
 
-    useEffect(() => {
-        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/list?token=${tmp}`).then(res=>{
-            setProjectList(res.data.result)
-        })
+
+    useEffect( async () => {
+        const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
+        const result = await axios.get(`/project/list?token=${tmp}`);
+        setAllProjectList(result.data.result);
+        let copy = result.data.result.filter(e => e.p_complete == false);
+        setProjectList(copy);
+
     }, [])
+
+    const getUndoneProject = async () => {
+        let copy = allProjectList.filter(e => e.p_complete == false);
+        setProjectList(copy);
+    };
+
+    const getDoneProject = async () => {
+        let copy = allProjectList.filter(e => e.p_complete == true);
+        setProjectList(copy);
+    };
+
 
     return(
         <div className={styles.container}>
             <div className={styles.header}>
                <div className={styles.title}>진행중인 프로젝트</div>
                <span className={styles.count}>{projectList.length}개</span>
+
+               <button onClick={getUndoneProject}>진행중</button>
+                <button onClick={getDoneProject}>완료</button>
+
             </div> 
 
 

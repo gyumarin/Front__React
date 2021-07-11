@@ -6,7 +6,6 @@ import styles from './WorkMiddleCategory.module.css';
 const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmallCategoryId, smallCategoryId, setMidCategoryName}) => {
     // state
     const newMiddleCategory=useRef("");
-
     const midCategoryData = wlm.filter(item=>{
             return item.c_id == midCategoryId;
         }            
@@ -54,7 +53,7 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
           {                                    
               midCategoryData.map(item=>{
                   return(
-                      <div
+                      <div                        
                         className={styles.card} 
                         onClick={openDetailCategory}
                       >{item.m_name}

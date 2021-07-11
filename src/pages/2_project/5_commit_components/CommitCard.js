@@ -94,38 +94,46 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
     }
 
     return (
-        <div style={{ margin: '0px 0px 0px 30px'}}>
-            <div style={{ display: 'flex', alignItems: 'center', backgroundColor:"#eef1f5", borderRadius:"20px", marginBottom:"1em", height:'100px'}}>
-                <div style={{ display: 'grid', width: '500px', paddingLeft:'20px'}}>             
-                        <div style={{  color:'rgba(1, 1, 240, 0.5)', fontSize:'12px'}}>{info.commit.author.date}</div>
-                        <div style={{ }}><b>commit 내용</b> :  {info.commit.message}</div>
+        <div style={{ margin: '0px 0px 0px 20px',}} >
+            <div style={{ display: 'flex', alignItems: 'center', backgroundColor:"#eef1f5", borderRadius:"20px", marginBottom:"1em", height:'120px'}}>
+                <div style={{  width: '500px', height:'100px',paddingLeft:'30px'}}>             
+                        <div style={{  paddingBottom:'5px',color:'rgba(1, 1, 240, 0.5)', fontSize:'12px'}}>{info.commit.author.date} <b style={{paddingLeft:'200px'}}>committer :</b> {info.commit.committer.name}</div>
+                        <div style={{display:'grid' , gridTemplateColumns:'110px 360px'}}><b>commit 내용 :</b>   {info.commit.message}</div>
+                        
                 </div>
-                {/* 글 블록 지정 막기 : userSelect:'none' */}
-                <div onClick={onToggle} variant="outline-primary" style={{ userSelect:'none', color:'blue', fontSize:'50px', paddingRight:'30px' }}>
-                {nick == info.commit.committer.name ? (
+                {/* 글 블록 지정 막기 : userSelect:'none'
+                <div  variant="outline-primary" style={{ userSelect:'none', color:'blue', fontSize:'50px', paddingRight:'30px' }}>
+                {nick == info.commit.committer.name && (
                         !toggle ? (
                             <p>+</p>
-                        ) : (
-                            <p style={{ marginLeft: "8px" }}>-</p>
-                        )
-                    ) : null}
+                        ) : null
+                    )}
 
-                </div>
+                </div> */}
                 
                 <div style={{}}>
                     {toggle && (
-                        <div style={{position:'fixed',top:'257px', width:'550px', height:'560px', backgroundColor:'aliceblue', borderRadius:'10px', boxShadow: ' 6px 7px 22px 0px rgba(0, 0, 0, 0.44)',}}>
-                            <p style={{padding:'30px 0px 0px 20px'}}>업무 등록 및 요청 & Commit 코멘트 추가</p>
-                            <div>  
-                                <CommitWorkList onGitWorkList={onGitWorkList} projectID={projectInfo.p_id}/>
+                        <div style={{position:'fixed',top:'250px', left:'1218px',width:'610px', height:'560px', 
+                        backgroundColor:'aliceblue', borderRadius:'10px', boxShadow: ' 6px 7px 22px 0px rgba(0, 0, 0, 0.44)',}}>
+                            <div style={{padding:'20px 10px 10px 30px'}}>
+                            <b style={{fontSize:'18px', width:'500px'}}>{nick == info.commit.committer.name ? '업무 등록 및 요청 & Commit 코멘트 추가':' 업무 처리 및 Commit 코멘트 조회'}</b> 
+                            {nick == info.commit.committer.name ?
+                                <button style={{backgroundColor:'aliceblue', marginLeft:'170px',  color:'black', fontSize:'30px', border:'0'}}onClick={onToggle}> x </button> : 
+                                <button style={{backgroundColor:'aliceblue', marginLeft:'240px',  color:'black', fontSize:'30px', border:'0'}}onClick={onToggle}> x </button>
+                            }
                             </div>
+                            
+                           <div style={{height:'240px', }}>  
+                                <CommitWorkList onGitWorkList={onGitWorkList} projectID={projectInfo.p_id} userBool={nick == info.commit.committer.name}/>
+                            </div>
+                            
 
-                            <div style={{padding: '15px',}}>  
-                                Git에 등록한 업무
-                                <div style={{height:'80px', display:'flex', flexWrap:'wrap', backgroundColor:'white'}}>
+                            <div style={{padding: '0px', paddingLeft:'35px', width:'580px', height:'135px',}}>  
+                                <b>Git에서 처리한 업무</b>
+                                <div style={{height:'80px', display:'flex', flexWrap:'wrap', backgroundColor:'white', margin:'10px 10px 10px 0px'}}>
                                     {gitWorkList.map(item=>{
                                         return (
-                                            <button disabled style={{ display:'flex', borderRadius:'5px', backgroundColor:'gray', height:'30px' ,width:'140px', margin:'10px'}}>
+                                            <button disabled style={{ display:'flex', borderRadius:'5px', backgroundColor:'white', height:'30px' ,width:'140px', margin:'10px'}}>
                                                 <div style={{marginRight:'15px', borderRadius:'10px',backgroundColor:'#007bbc', height:'22px' ,width:'40px', color:'yellow', fontSize:'14px'}}>
                                                     {item.wl_id}
                                                 </div>
@@ -146,33 +154,54 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                                 </div>
                             </div>
 
-                            <div style={{padding:'15px'}}>
-                                Commit 코멘트 등록
+                            <div style={{paddingLeft:'30px'}}>
+                                <b>{nick == info.commit.committer.name ?'Commit 코멘트 등록':'Commit 코멘트 조회'}</b>
                                 <Form style={{ display: 'flex',  alignItems: 'center', margin: '5px 0px 0px 0px', }} onSubmit={onInsert}>
                                     
                                     <Form.Group controlId="formBasicEmail" style={{paddingRight:'10px'}}>
                                         <Form.Control
-                                            style={{ width: '425px', height: '40px' }}
+                                            style={{ width: '460px', height: '40px' }}
                                             type="text"
                                             value={inputText.text}
                                             placeholder="추가적으로 입력하실 업무 사항을 기록해 주세요."
                                             onChange={onChange}
+                                            disabled={nick != info.commit.committer.name}
                                         />
                                     </Form.Group>
-                                    <Button style={{ width: '80px', height: '37px',  padding:'8px 0px 10px 0px', margin: '-16px 0px 0px 0px' }} variant="primary" onClick={onInsert}>
+                                    {nick == info.commit.committer.name &&<Button style={{ width: '80px', height: '37px',  padding:'8px 0px 10px 0px', margin: '-16px 0px 0px 0px' }} variant="primary" onClick={onInsert}>
                                         {comment.state ? '수정' : '등록'}
-                                    </Button>   
+                                    </Button> }    
                                 </Form>
-                            </div>    
+                            </div>  
 
                         </div>
                         
                     )}
                     
                    
+                <div style={{width:'2px', height:'100px' ,backgroundColor:'gray', marginRight:'20px'}}/>  
+                </div>
+                {
+                !toggle &&
+                <div  style={{ margin: '10px 10px 20px 0px', width:'550px',  height: '90px'}} onClick={onToggle}>
+                    <div style={{display:'flex', height: '30px'}}>
+                        <p style={{paddingRight:'15px'}}><b>work performed</b></p>
+                        {gitWorkList.map(item=>{
+                                            return (
+                                                <div style={{marginRight:'20px', borderRadius:'10px',backgroundColor:'#007bbc', 
+                                                            height:'22px' ,width:'40px', color:'yellow', fontSize:'14px', paddingLeft:'12px'}}>
+                                                    <b>{item.wl_id}</b>
+                                                </div>   
+                                            )
+                        })}
+                    </div>
+                    <div style={{ display:'grid', gridTemplateColumns:'125px 440px',  width:'580px',}}>
+                        <p>업무 추가 사항 : </p>
+                        <p style={{ borderRadius:'5px', backgroundColor:'white',height:'65px', padding:'8px'}}>{comment.text}</p>
+                    </div>
                     
                 </div>
-                {!toggle &&<div  style={{ margin: '10px 0px 20px -20px'}}>{ comment.text}</div>}
+                }
             </div>
              
         </div>

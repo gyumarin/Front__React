@@ -28,6 +28,7 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
     
         copied.push(newCategory);        
         setWlb(copied);
+        setMidCategoryId(newCategory.c_id);
         newBigCategory.current.value = "";
     }
 
@@ -48,6 +49,7 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
                         wlb.map(c =>{
                             return(
                                 <div 
+                                    id={c.c_id}
                                     className={styles.card} 
                                     onClick={openMiddleCategory}
                                 >{c.c_name}
