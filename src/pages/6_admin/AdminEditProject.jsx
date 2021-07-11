@@ -1,21 +1,24 @@
 import React from "react";
 import { useState, useRef } from "react";
 import styles from "./AdminEditProject.module.css";
-
+import { NavLink, useHistory } from 'react-router-dom';
 import CalendarPopUp from "./CalendarPopUp";
 import AddTeamPopUp from "./AddTeamPopUp";
 
 // import projectData from "../../Data/projectData";
-import WorkBigCategory from "./WorkBigCategory";
-import WorkMiddleCategory from "./WorkMiddleCategory";
-import WorkSmallCategory from "./WorkSmallCategory";
+
 import { useEffect } from "react";
 import axios from "axios";
+import WaitingConfirmCard from './WaitingConfirmCard';
 
 const AdminEditProject = props => {
+    const history = useHistory();
+
     const [workList, setWorkList] = useState({});
     const [peopleList, setPeopleList] = useState([]);
     const [projectDetail, setProjectDetail] = useState({});
+    const [waitForConfirms, setWatiForConfirms] =useState([]);
+
 
     const [wlb,setWlb] = useState([]);
     const [wlm,setWlm] = useState([]);
@@ -23,7 +26,7 @@ const AdminEditProject = props => {
 
     useEffect(() => {
         getWL();
-    }, []);
+    }, []);    
     
 
     const getWL = async () => {
@@ -33,7 +36,7 @@ const AdminEditProject = props => {
         // console.log(" test ",result.data.result.wlb);
         setWlb(result.data.result.wlb);
         setWlm(result.data.result.wlm);
-        setWld(result.data.result.wld);
+        setWld(result.data.result.wld);        
 
         const result2 = await axios(
             "/project/list/emp/" + props.match.params.id
@@ -43,6 +46,10 @@ const AdminEditProject = props => {
         const result3 = await axios("/project/detail/" + props.match.params.id);
         // console.log(result3.data.result);
         setProjectDetail(result3.data.result);
+
+        const result4 = await axios("/project/work/list/approval/request/"+ props.match.params.id);
+        console.log(result4.data.result);
+        setWatiForConfirms(result4.data.result);
     };
 
    
@@ -100,16 +107,27 @@ const AdminEditProject = props => {
         setSmallCategoryId("강세훈");
     };
 
+    const goProjectHome =(event)=>{
+        event.preventDefault();
+        history.push(`/main/admin/editProject/${props.match.params.id}`);
+    }
+
+    const goProjectDetails =(event)=>{
+        event.preventDefault();
+        history.push(`/main/admin/editProjectDetails/${props.match.params.id}`);
+    }
     // ------------------------------------------------------
     
     return (
+        <div>
+            <ul className={styles.navContainer}> 
+                <li className={styles.button} onClick={goProjectHome}>프로젝트 관리</li>
+                <li className={styles.button} onClick={goProjectDetails}>업무 관리</li>          
+            </ul>
         <div className={styles.container}>
             {/* Header */}
             <div className={styles.header}>
-                <div className={styles.title}>프로젝트 관리</div>
-                {/* <button className={styles.saveButton} onClick={saveData}>
-                    저장
-                </button> */}
+                <div className={styles.title}>프로젝트 관리</div>               
             </div>
 
             {/* Body */}
@@ -199,17 +217,22 @@ const AdminEditProject = props => {
                     <div className={styles.rightContainer}>
                         <p style={{fontWeight:"bold"}}>업무 승인 처리</p>
                         <div className={styles.rightContents}>
-                            <div className={styles.numberOfWating}>승인 대기 중인 업무 : <div className={styles.w_number}>10</div>개</div>
+                            <div className={styles.numberOfWating}>승인 대기 중인 업무 : <div className={styles.w_number}>{waitForConfirms.length}</div>개</div>
+                            <div className={styles.confirms}>
                             {
-                                [1,2,3,4].map(item=>{
-                                    return null;
+                                waitForConfirms.map(confirm=>{
+                                    return <WaitingConfirmCard 
+                                        confirm = {confirm}
+                                    />;
                                 })
                             }
+                            </div>
                         </div>
                     </div>            
                 </div>
             </div>
         </div>
+    </div>
     );
 };
 

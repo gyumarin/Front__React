@@ -252,6 +252,7 @@
   padding: 1em;
   font-family: "Noto Sans", sans-serif;
   display: -webkit-inline-flex;
+  margin-bottom: -0.5em;
 }
 .w_number {
   width: 30px;
@@ -259,4 +260,43 @@
   /* font-weight: bold; */
   text-align: right;
   color: #0391c9;
+}
+.confirms {
+  border-radius: 1px soild black;
+  height: 610px;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.confirms::-webkit-scrollbar {
+  display: none;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: center;
+  background-color: #263238;
+  margin-top: -50px;
+  margin-bottom: 10px;
+  width: 22%;
+  height: 40px;
+  border-radius: 40px 0px 0px 40px;
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+
+  position: relative;
+  left: 1334px;
+}
+
+.button {
+  /* background-color: yellow; */
+  padding: 0.3em 1em;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.button:hover {
+  color: #00aaef;
 }

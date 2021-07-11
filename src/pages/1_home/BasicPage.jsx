@@ -15,6 +15,7 @@ import MailPage from '../5_mail/MailPage';
 import AdminBoardPage from '../6_admin/admin_board/AdminBoardPage';
 import { useEffect } from 'react';
 import axios from 'axios';
+import AdminCareProject from '../6_admin/AdminCareProject';
 
 
 const BasicPage = ({removeLoginToken}) =>{
@@ -48,6 +49,16 @@ const BasicPage = ({removeLoginToken}) =>{
                         <AdminEditProject
                             {...props}
                         ></AdminEditProject>
+                    );
+                }}
+            ></Route>
+            <Route
+                path="/main/admin/editProjectDetails/:id"
+                render={props => {
+                    return (
+                        <AdminCareProject
+                            {...props}
+                        ></AdminCareProject>
                     );
                 }}
             ></Route>

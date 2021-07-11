@@ -1,0 +1,101 @@
+.container {
+  width: 95%;
+  height: 45%;
+  border-radius: 5px;
+  margin: 0.5em auto;
+  text-align: center;
+  padding-top: 6px;
+  background-color: white;
+}
+
+.title {
+  width: 25%;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+
+  color: #263238;
+  font-weight: bold;
+  text-align: center;
+
+  margin-left: 0.5em;
+}
+
+.content {
+  background-color: #b3ecff;
+  width: 95%;
+  height: 285px;
+  margin: auto;
+  border-radius: 5px;
+  padding: 1em 0em;
+
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  display: flex;
+  flex-wrap: wrap;
+}
+.content::-webkit-scrollbar {
+  display: none;
+}
+/* --------------------------------- */
+
+.card {
+  width: 45%;
+  height: 60px;
+  line-height: 50px;
+  opacity: 1;
+  background-color: #00aaef;
+
+  border-radius: 20px;
+  margin: 0.5em;
+  margin-bottom: -5em;
+  display: flex;
+  cursor: pointer;
+}
+.card:hover {
+  opacity: 0.8;
+}
+
+.cardContainer {
+  width: 3rem;
+  height: 3rem;
+  line-height: 2.9rem;
+  margin-left: 0.5em;
+  margin-top: 0.3em;
+  cursor: pointer;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: white;
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5em;
+  margin-top: 0.2em;
+}
+.card1 {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-top: -0.5em;
+  text-align: left;
+  /* border: 1px solid black; */
+  height: 20px;
+  width: 100%;
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Noto Sans", sans-serif;
+}
+.card2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.8em;
+}

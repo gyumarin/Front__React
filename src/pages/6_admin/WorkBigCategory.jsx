@@ -4,8 +4,8 @@ import styles from './WorkBigCategory.module.css';
 
 
 const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renewalDetails, bigCategoryId, midCategoryId, setBigCategoryName}) => {   
+       
     // state
-    const [onInput, setOnInput] = useState(false);
     const newBigCategory = useRef("");
 
     // Method
@@ -18,10 +18,6 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
         renewalDetails();
     } 
 
-    const onChangeInputForm = (event)=>{
-        event.preventDefault();
-        setOnInput(true);
-    }
     const onCreateNewBigCategory=(event)=>{
         event.preventDefault();
         const copied = [...wlb];
@@ -32,35 +28,34 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
     
         copied.push(newCategory);        
         setWlb(copied);
-        event.target.querySelector('input').value = "";
-        setOnInput(false);
+        newBigCategory.current.value = "";
     }
 
     // ------------------------------------------------------------------------------------ 
     
     return(
         <div className={styles.container}>
-            <div className={styles.title}>Category</div>
+            <div className={styles.title}>카테고리</div>
             <div className={styles.content}>
-                {
-                    wlb.map(c =>{
-                        return(
-                            <div 
-                                className={midCategoryId == c.m_id? bigCategoryId == c.c_id ? styles.doubleSelectdCard : styles.selectedCard : styles.card} 
-                                id ={c.c_id} 
-                                onClick={openMiddleCategory}
-                            >{c.c_name}
-                            </div>
-                        );
-                    })
-                }
-                {   
-                    onInput ? 
+                <div className={styles.inputs}>
                     <form action="get" onSubmit={onCreateNewBigCategory}>
                         <input ref={newBigCategory} className={styles.input} type="text" placeholder="대분류" autoFocus />
                     </form>
-                    : <div className={styles.addButton} onClick={onChangeInputForm}><i className="fas fa-plus"></i></div>
-                }                                    
+                    <div className={styles.addButton} onClick={onCreateNewBigCategory}><i className="fas fa-plus"></i></div>
+                </div>
+                <div className={styles.categoryBox}>
+                    {
+                        wlb.map(c =>{
+                            return(
+                                <div 
+                                    className={styles.card} 
+                                    onClick={openMiddleCategory}
+                                >{c.c_name}
+                                </div>
+                            );
+                        })
+                    }         
+                </div>                                       
             </div>                                
         </div>
     );

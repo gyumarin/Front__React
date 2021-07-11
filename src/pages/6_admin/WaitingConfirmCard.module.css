@@ -1,0 +1,101 @@
+.container {
+  background-color: #6f777a;
+  color: #263238;
+  width: 95%;
+  height: 6em;
+  margin: 0.5em auto;
+  border-radius: 5px;
+
+  display: flex;
+  font-size: 0.9em;
+}
+
+/* left ----------------------------------------------- */
+.left {
+  width: 85%;
+  height: 100%;
+  border-radius: 5px 0px 0px 5px;
+  background-color: rgb(165, 165, 165);
+  padding: 0.5em;
+}
+
+/* ----------------------------- */
+.top {
+  display: flex;
+  /* border: 1px solid black; */
+  height: 30%;
+}
+
+.number {
+  font-weight: bold;
+  width: 60%;
+  padding-left: 0.5em;
+}
+.date {
+  width: 30%;
+  text-align: right;
+}
+.dday {
+  font-weight: bold;
+  color: rgb(179, 1, 1);
+  width: 10%;
+  text-align: center;
+}
+/* ---------------------------- */
+.middle {
+  color: aliceblue;
+  display: flex;
+  /* border: 1px solid black; */
+  height: 40%;
+  font-size: 1.1em;
+  padding: 0.1em 0em;
+}
+
+.work {
+  padding-left: 0.5em;
+}
+.detail {
+  padding-left: 0.5em;
+  font-weight: bold;
+}
+
+.bottom {
+  display: flex;
+  height: 30%;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+}
+.manager {
+  margin-right: 2em;
+}
+/* right -------------------------------------------------- */
+.right {
+  width: 15%;
+  height: 100%;
+  /* background-color: blue; */
+  padding: 1.8em 0.95em;
+}
+.btnConfirm {
+  width: 4.5em;
+  height: 2.5em;
+  border-radius: 5px;
+  border: none;
+  background-color: #25a6ec;
+  font-weight: 500;
+  margin-right: 0.2em;
+}
+.btnConfirm:hover {
+  background-color: #5cc1e9;
+}
+.btnReject {
+  width: 4.5em;
+  height: 2.5em;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(223, 43, 43);
+  color: white;
+  font-weight: 500;
+}
+.btnReject:hover {
+  background-color: rgb(252, 110, 110);
+}

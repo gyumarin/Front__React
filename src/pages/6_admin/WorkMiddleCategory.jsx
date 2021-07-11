@@ -5,7 +5,6 @@ import styles from './WorkMiddleCategory.module.css';
 
 const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmallCategoryId, smallCategoryId, setMidCategoryName}) => {
     // state
-    const [onInput, setOnInput] =useState(false);
     const newMiddleCategory=useRef("");
 
     const midCategoryData = wlm.filter(item=>{
@@ -23,11 +22,7 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
         setMidCategoryName(event.target.innerText);
     };
     
-    const onChangeInputForm =(event)=>{
-        event.preventDefault();
-        setOnInput(true);
-    };
-
+  
     const onCreateNewMiddleCategory =(event)=>{
         event.preventDefault();
         const copied = [...wlm];
@@ -39,8 +34,7 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
 
         copied.push(newCategory);        
         setWlm(copied);
-        event.target.querySelector('input').value = "";
-        setOnInput(false);
+        newMiddleCategory.current.value = "";
     }
 
     // ---------------------------------------------------------------------------
@@ -48,23 +42,27 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
     return( 
     
     <div className={styles.container}>
-        <div className={styles.title}>Work</div>   
+        <div className={styles.title}>업무</div>   
         <div className={styles.content}>
+        <div className={styles.inputs}>    
+            <form action="get" onSubmit={onCreateNewMiddleCategory}>
+                <input ref={newMiddleCategory} className={styles.input} type="text" placeholder="중분류" autoFocus />
+            </form>
+            <div className={styles.addButton} onClick={onCreateNewMiddleCategory}><i className="fas fa-plus"></i></div>          
+          </div>
+          <div className={styles.categoryBox}>
           {                                    
               midCategoryData.map(item=>{
                   return(
-                      <div className={smallCategoryId == item.s_id? styles.selectedList : styles.list} 
-                      id ={item.m_id} onClick={openDetailCategory}>{item.m_name}</div>
+                      <div
+                        className={styles.card} 
+                        onClick={openDetailCategory}
+                      >{item.m_name}
+                      </div>
                   );
               })
           }
-          {   
-              onInput ? 
-              <form action="get" onSubmit={onCreateNewMiddleCategory}>
-                  <input ref={newMiddleCategory} className={styles.input} type="text" placeholder="중분류" autoFocus />
-              </form>
-              : <div className={styles.addButton} onClick={onChangeInputForm}><i className="fas fa-plus"></i></div>
-          }  
+          </div>
         </div>
       </div>
 );
