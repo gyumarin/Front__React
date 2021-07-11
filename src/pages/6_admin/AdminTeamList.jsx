@@ -17,28 +17,22 @@ const AdminTeamList = (props) => {
         <div className={styles.container}>
         <div className={styles.title}>팀원 리스트</div>   
         <div className={styles.content}>
-          <div style={{width : '100%', display: 'flex', flexWrap : "wrap"}}>
+          <div style={{width : '100%', height : '255px', display: 'flex', flexWrap : "wrap"}}>
           {
             team.map((man)=>{
               return (
-                  <div
-                    className={styles.card}
-                    id={man.ep_id}
-                  >
-                  <div className={styles.cardContainer}>
-                      <img
-                          className={styles.image}
-                          src={man.e_photo}
-                          alt="face image"
-                      />
+                 <div className={styles.card} id={man.ep_id}>
+                  <img
+                    className={styles.image}
+                    src={man.e_photo}
+                    alt="face image"
+                  />
+                  <div className={styles.cardContents}>
+                    <div className={styles.text1}>{man.ep_position}</div>
+                    <div className={styles.text2}>{man.e_name}({man.e_rank})</div>
                   </div>
-                  <div className={styles.contents}>
-                    <div className={styles.card1}>{man.ep_position}</div>
-                    <div className={styles.card2}>{man.e_name}({man.e_rank})</div>
-                  </div>                  
-              </div>
-              )
-              
+                 </div>
+              )              
             })
           }
           </div>
@@ -47,3 +41,4 @@ const AdminTeamList = (props) => {
     );
 }
 export default AdminTeamList;
+

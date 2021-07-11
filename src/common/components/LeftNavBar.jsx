@@ -1,6 +1,7 @@
 import React from 'react';
 import MiniProfile from './MiniProfile';
 import NavList from './NavList';
+import NavListAdmin from './NavListAdmin'
 
 import { useState, useEffect } from 'react';
 import styles from './LeftNavBar.module.css';
@@ -12,69 +13,66 @@ import axios from 'axios';
 const LeftNavBar = ({removeLoginToken}) => {
 
   const [userInfo, setUserInfo] = useState({})
+  const [test, setTest] = useState(false)
   const history = useHistory();
-  const [mode, setMode] = useState(false);   
+
   
   useEffect(() => {
-    sessionStorage.setItem("isAdmin", false);
-    if(mode == null){
-      setMode(sessionStorage.getItem("isAdmin") == null ? false : false)
-    };
+
+    //로그인 상태면 로그인 유저 정보를 가져온다.
     const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     if(sessionStorage.getItem('token')){
       axios.get(`/employee/detail?token=${tmp}`).then(res=>{
         setUserInfo(res.data.result);
       })      
     }
+    
   }, [])
-
   
 
+  //모드 변경 버튼을 클릭했을 때
   const handleClick = async (event) =>{
     event.preventDefault();    
-    const modeChangeCheck = mode? window.confirm("관리자 창으로 이동하시겠습니까?") : window.confirm("사용자 창으로 이동하시겠습니까?");
-    await sessionStorage.setItem("isAdmin", mode);
-    await changeMode(modeChangeCheck);    
+    const modeChangeCheck = sessionStorage.getItem("isAdmin")=="false"? window.confirm("관리자 창으로 이동하시겠습니까?") : window.confirm("사용자 창으로 이동하시겠습니까?");
+    
+    
+    //해당창으로 이동하겠다로 처리했다면
+    if(modeChangeCheck==true){
+      //현재 사용자 창이면,
+      if(sessionStorage.getItem('isAdmin') == "false"){
+         await sessionStorage.setItem("isAdmin", true);
+         await setTest(true);
+         await history.push("/main/admin/project");
+      }else{
+        await sessionStorage.setItem("isAdmin", false);
+        await setTest(false);
+        await history.push("/main/home");
+      } 
+    }
+    
   }
 
-  const changeMode =(modeChangeCheck)=>{    
-    
-    if(mode){// mode : 사용자
-      if(modeChangeCheck){ // 관리자
-        history.push("/main/admin/project");
-        setMode(!mode);
-      }
-      else{               // 사용자
-        setMode(mode);
-      }
-    }
-
-    else{ // mode : 관리자
-      if(modeChangeCheck){ // 사용자
-        history.push("/main/home");
-        setMode(!mode)
-      }
-      else{
-        setMode(mode)
-      }
-    }
-  }  
+  
 
   return(
     <div className={sessionStorage.getItem('isAdmin') == "false" ? styles.container : styles.bossContainer} style ={{display:"grid", gridTemplateRows :"85% 15%"}}>
       <div>
-      <MiniProfile 
-        userInfo={userInfo}
-        removeLoginToken={()=>removeLoginToken()}
-      />
-      <NavList/>
+        <MiniProfile 
+          userInfo={userInfo}
+          removeLoginToken={()=>removeLoginToken()}
+        />
+        {sessionStorage.getItem('isAdmin') == "false" ? 
+        <NavList /> 
+        : 
+        <NavListAdmin/>
+        }
       </div>
       { userInfo.role == "admin"?
       <div className={styles.toggle}>
-        <div className={styles.title}>관리자</div>         
+        <div className={styles.title} >관리자</div>         
         
         { 
-          mode ? 
+          sessionStorage.getItem("isAdmin")=="false" ? 
             <button 
               className={styles.button}     
               onClick={handleClick}     

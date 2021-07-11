@@ -1,12 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
+import CommitWorkList from './CommitWorkList';
 
 
 const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
     const [inputText, setInputText] = useState({ text: '', state: false });
     const [toggle, setToggle] = useState(false);
     const [comment, setComment] = useState({ sha: '', text: '', state: false });
+    const [gitWorkList, setGitWorkList] = useState([])
     //DB에 등록이 되어 있는지?
 
     // chooseBrench()
@@ -35,6 +37,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
         
     }, [useBranch]);
 
+    
     // input box 값.
     const onChange = useCallback((e) => {
         setInputText({ ...inputText, text: e.target.value });
@@ -84,54 +87,92 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
         setToggle(false);
     };
 
+    const onGitWorkList =(work) =>{
+        if(gitWorkList.filter(item=> item==work ).length == 0){
+            setGitWorkList(gitWorkList.concat(work))
+        }
+    }
+
     return (
         <div style={{ margin: '0px 0px 0px 30px'}}>
-            <div style={{ display: 'flex', alignItems: 'center', backgroundColor:"#eef1f5", borderRadius:"20px", marginBottom:"1em"}}>
-                <div style={{ display: 'grid', width: '500px', }}>
-                    <Card.Body>
-                        
+            <div style={{ display: 'flex', alignItems: 'center', backgroundColor:"#eef1f5", borderRadius:"20px", marginBottom:"1em", height:'100px'}}>
+                <div style={{ display: 'grid', width: '500px', paddingLeft:'20px'}}>             
                         <div style={{  color:'rgba(1, 1, 240, 0.5)', fontSize:'12px'}}>{info.commit.author.date}</div>
                         <div style={{ }}><b>commit 내용</b> :  {info.commit.message}</div>
-                        
-                    </Card.Body>
                 </div>
                 {/* 글 블록 지정 막기 : userSelect:'none' */}
-                <div onClick={onToggle} variant="outline-primary" style={{ userSelect:'none', margin:'20px ',color:'blue', fontSize:'50px'  }}>
+                <div onClick={onToggle} variant="outline-primary" style={{ userSelect:'none', color:'blue', fontSize:'50px', paddingRight:'30px' }}>
                 {nick == info.commit.committer.name ? (
                         !toggle ? (
                             <p>+</p>
                         ) : (
-                            <p style={{ marginLeft: "5px" }}>-</p>
+                            <p style={{ marginLeft: "8px" }}>-</p>
                         )
                     ) : null}
 
                 </div>
                 
-                <div style={{height:'100px', padding:'20px'}}>
-                    
+                <div style={{}}>
                     {toggle && (
-                        
-                        <Form style={{ display: 'flex', alignItems: 'center', margin: '5px 0px 0px 0px', }} onSubmit={onInsert}>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Control
-                                    style={{ width: '400px', height: '40px' }}
-                                    type="text"
-                                    value={inputText.text}
-                                    placeholder="추가적으로 입력하실 업무 사항을 기록해 주세요."
-                                    onChange={onChange}
-                                />
-                            </Form.Group>
-                            <Button style={{ width: '80px', height: '37px',  padding:'8px 0px 10px 0px', margin: '-16px 0px 0px 0px' }} variant="primary" onClick={onInsert}>
-                                {comment.state ? '수정' : '등록'}
-                            </Button>   
-                        </Form>
+                        <div style={{position:'fixed',top:'257px', width:'550px', height:'560px', backgroundColor:'aliceblue', borderRadius:'10px', boxShadow: ' 6px 7px 22px 0px rgba(0, 0, 0, 0.44)',}}>
+                            <p style={{padding:'30px 0px 0px 20px'}}>업무 등록 및 요청 & Commit 코멘트 추가</p>
+                            <div>  
+                                <CommitWorkList onGitWorkList={onGitWorkList} projectID={projectInfo.p_id}/>
+                            </div>
+
+                            <div style={{padding: '15px',}}>  
+                                Git에 등록한 업무
+                                <div style={{height:'80px', display:'flex', flexWrap:'wrap', backgroundColor:'white'}}>
+                                    {gitWorkList.map(item=>{
+                                        return (
+                                            <button disabled style={{ display:'flex', borderRadius:'5px', backgroundColor:'gray', height:'30px' ,width:'140px', margin:'10px'}}>
+                                                <div style={{marginRight:'15px', borderRadius:'10px',backgroundColor:'#007bbc', height:'22px' ,width:'40px', color:'yellow', fontSize:'14px'}}>
+                                                    {item.wl_id}
+                                                </div>
+                                                {
+                                                item.wl_done==2?
+                                                    <b><p style={{color:'yellow', fontSize:'14px', }}>승인 중</p></b>
+                                                    :
+                                                    <button style={{ width: '100px', height:'24px', color:'black', fontSize:'13px',paddingTop:'-30px' }}>
+                                                       완료 요청
+                                                    </button>
+                                                }
+                                            </button> 
+                                            
+                                            
+                                        )
+                                    })}
+
+                                </div>
+                            </div>
+
+                            <div style={{padding:'15px'}}>
+                                Commit 코멘트 등록
+                                <Form style={{ display: 'flex',  alignItems: 'center', margin: '5px 0px 0px 0px', }} onSubmit={onInsert}>
+                                    
+                                    <Form.Group controlId="formBasicEmail" style={{paddingRight:'10px'}}>
+                                        <Form.Control
+                                            style={{ width: '425px', height: '40px' }}
+                                            type="text"
+                                            value={inputText.text}
+                                            placeholder="추가적으로 입력하실 업무 사항을 기록해 주세요."
+                                            onChange={onChange}
+                                        />
+                                    </Form.Group>
+                                    <Button style={{ width: '80px', height: '37px',  padding:'8px 0px 10px 0px', margin: '-16px 0px 0px 0px' }} variant="primary" onClick={onInsert}>
+                                        {comment.state ? '수정' : '등록'}
+                                    </Button>   
+                                </Form>
+                            </div>    
+
+                        </div>
                         
                     )}
                     
                    
                     
                 </div>
-                {!toggle &&<div  style={{ margin: '10px 0px 20px -20px' }}>{ comment.text}</div>}
+                {!toggle &&<div  style={{ margin: '10px 0px 20px -20px'}}>{ comment.text}</div>}
             </div>
              
         </div>
