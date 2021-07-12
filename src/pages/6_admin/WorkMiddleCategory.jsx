@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import styles from './WorkMiddleCategory.module.css';
 
@@ -6,7 +6,9 @@ import styles from './WorkMiddleCategory.module.css';
 const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmallCategoryId, smallCategoryId, setMidCategoryName}) => {
     // state
     const newMiddleCategory=useRef("");
+
     const midCategoryData = wlm.filter(item=>{
+            // console.log(item);
             return item.c_id == midCategoryId;
         }            
     );
@@ -15,6 +17,7 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
     const openDetailCategory =(event)=>{
         event.preventDefault();
         const smallCategoryId = event.target.id; 
+        // console.log(smallCategoryId);
         setSmallCategoryId(smallCategoryId); 
         setBigCategoryId(midCategoryId);
         // console.log(event.target.innerText);
@@ -53,7 +56,8 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
           {                                    
               midCategoryData.map(item=>{
                   return(
-                      <div                        
+                      <div
+                        id = {item.m_id}                        
                         className={styles.card} 
                         onClick={openDetailCategory}
                       >{item.m_name}

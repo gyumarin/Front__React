@@ -44,6 +44,7 @@ const CommitTest = ({ projectInfo }) => {
 
     useEffect(() => {
         getBranchName(projectName).then((res) => {
+            console.log('getBranchName',res)
             setBranchs(res);
         });
 

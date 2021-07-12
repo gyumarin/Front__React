@@ -15,8 +15,9 @@
   text-align: left;
 }
 .content {
-  height: 630px;
+  height: 640px;
 }
+
 .list {
   margin-top: 0.2em;
   padding-top: 0.4em;
@@ -56,73 +57,105 @@
   border-radius: 5px;
   border: 1px solid #263238;
 }
+.upper {
+  display: flex;
+  margin-left: 0em;
+}
 
 /* ---------------------------------------- */
 .formContainer {
   margin-top: 0.5em;
   border-radius: 10px;
-  height: 210px;
+  height: 140px;
   background-color: rgb(219, 218, 218);
   padding: 1em;
-}
 
-/* ---------------------------------------------- */
-.upper {
-  display: flex;
-  margin-left: 1em;
+  font-size: 0.9em;
 }
+.updateFormContainer {
+  margin-top: 0.5em;
+  border-radius: 10px;
+  height: 140px;
+  padding: 1em;
+  background-color: rgb(219, 218, 218);
+  font-size: 0.9em;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+/* ---------------------------------------------- */
+
 .formCategory {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  margin-right: 2em;
-  margin-left: 1em;
-  background-color: white;
-  border-radius: 5px;
-  padding: 0.5em;
-}
-.lableCharge {
-  width: 20%;
-  font-weight: bold;
-}
-.selectedCharge {
-  margin-left: 0.5em;
-  width: 75%;
-  height: 100%;
-  background-color: #00aaef;
-  border-radius: 5px;
-}
-.formCharge {
-  width: 30%;
-  padding: 0.5em 0.5em 0.3em 0.5em;
-  display: flex;
-  margin-right: 2em;
+  width: 37%;
+  height: 70px;
+  /* margin-right: 2em;
+  margin-left: 1em; */
   background-color: white;
   border-radius: 5px;
   padding: 0.5em;
 }
 .formDate {
-  width: 30%;
+  width: 20%;
+  height: 70px;
   display: flex;
   flex-direction: column;
   background-color: white;
   border-radius: 5px;
   padding: 0.5em;
-  padding-left: 1.2em;
+  /* padding-left: 1.2em; */
+  margin-left: 1em;
 }
+.formCharge {
+  width: 20%;
+  height: 70px;
+  /* padding: 0.5em 0.5em 0.3em 0.5em; */
+  display: flex;
+  margin-left: 1em;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+.image {
+  width: 3.2em;
+  height: 3.2em;
+  border-radius: 50%;
+  margin-left: 0.2em;
+}
+.lableCharge {
+  width: 25%;
+  font-weight: bold;
+}
+.selectedCharge {
+  margin-left: 0.5em;
+  width: 70%;
+  height: 100%;
+  background-color: #00aaef;
+  border-radius: 5px;
+
+  display: flex;
+  padding: 0.3em;
+}
+
 .label {
   width: 20%;
   font-weight: bold;
   margin-right: 0.5em;
   margin-top: 0.3em;
 }
+
+.dlabel {
+  width: 30%;
+  font-weight: bold;
+  margin-right: 0.5em;
+  /* margin-top: 0.3em; */
+}
 .dateContainer {
   display: flex;
-  width: 100%;
 }
 .dateContainer1 {
   display: flex;
-  width: 100%;
+
   margin-top: 0.5em;
 }
 .formDetails {
@@ -130,35 +163,53 @@
   margin-top: 1em;
 }
 .labelDetail {
-  width: 12%;
-  margin-top: 0.37em;
+  width: 7%;
+  height: 30px;
   font-weight: bold;
+  text-align: left;
+  padding-left: 0.1em;
+  padding-top: 0.2em;
+}
+.updateLabelDetail {
+  width: 7%;
+  height: 30px;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 0.1em;
+  padding-top: 0.2em;
+  color: aliceblue;
 }
 .inputTitle {
   padding-left: 1em;
   text-align: left;
-  width: 75%;
-  height: 60px;
+  width: 72.5%;
+  height: 30px;
   border-radius: 5px;
-  border: 1px solid #15303d;
-  margin-top: 0.5em;
+  border: 2px solid #15303d;
+  /* margin-top: 0.5em; */
   margin-right: 1em;
 }
 
 .button {
-  width: 8%;
-  height: 40px;
+  position: relative;
+  left: 480px;
+  bottom: 115px;
+
+  width: 210px;
+  height: 115px;
   font-family: "Noto Sans", sans-serif;
   color: #263238;
   font-weight: bold;
   border-radius: 5px;
-  background-color: #66dbff;
+  background-color: #91e5ff;
   border: none;
-  margin-top: 1.7em;
+  font-size: 1.3em;
+  border: #15303d 2px solid;
 }
 .button:hover {
   background-color: #00aaef;
   color: aliceblue;
+  border: aliceblue 2px solid;
 }
 
 .inputDate {
@@ -166,8 +217,8 @@
   /* padding-top: 0.2em; */
   /* font-size: 1.2em; */
   text-align: center;
-  width: 74%;
-  height: 35px;
+  width: 75%;
+  height: 25px;
   border-radius: 5px;
   border: 1px solid #15303d;
 }
@@ -186,7 +237,7 @@
 .workList {
   background-color: white;
   margin-top: 1em;
-  height: 420px;
+  height: 480px;
   border-radius: 5px;
   padding: 1em;
 
@@ -200,6 +251,9 @@
 }
 .card {
   display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+  padding: 0.2em 1em;
 }
 
 .workListTitle {
@@ -207,4 +261,9 @@
   font-weight: bold;
   margin-top: 1em;
   margin-bottom: -0.5em;
+}
+.text1 {
+  font-weight: bold;
+  overflow: hidden;
+  font-size: 1em;
 }

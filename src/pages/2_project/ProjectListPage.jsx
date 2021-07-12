@@ -37,11 +37,11 @@ const ProjectListPage = ({project}) => {
                <div className={styles.title}>진행중인 프로젝트</div>
                <span className={styles.count}>{projectList.length}개</span>
 
-               <button onClick={getUndoneProject}>진행중</button>
-                <button onClick={getDoneProject}>완료</button>
-
-            </div> 
-
+               <div className={styles.buttons}>
+                    <button className={styles.buttonPlaying} onClick={getUndoneProject}>진행 중 프로젝트</button>
+                    <button className={styles.buttonComplete} onClick={getDoneProject}>완료한 프로젝트</button>
+                </div>
+            </div>
 
             <div className={styles.carousel}>
             {

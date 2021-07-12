@@ -40,6 +40,7 @@ const Login = ({getLoginToken}) => {
                 alert('ID 또는 비밀번호를 다시 확인해 주세요.');
             } else {
                 sessionStorage.setItem('token', JSON.stringify(res.data.result));
+                sessionStorage.setItem('isAdmin', false);
                 getLoginToken(sessionStorage.getItem('token'))
                 history.push('/main/home');
                 alert('로그인 되었습니다.')

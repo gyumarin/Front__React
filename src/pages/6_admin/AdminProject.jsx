@@ -85,9 +85,11 @@ const AdminProject = props => {
             <Card.Body className={styles.chart}>
                 <DoughnutChart  projectID = {props.id}/>
             </Card.Body>
-            <button onClick={complete}>완료</button>
-                <button onClick={incomplete}>미완료</button>
-                <button onClick={projectDeletePopUp}>삭제</button>
+            <div className={styles.buttons}  >
+                <button className={styles.complete} onClick={complete}>완료</button>
+                {/* <button onClick={incomplete}>미완료</button> */}
+                <button className={styles.delete} onClick={projectDeletePopUp}>삭제</button>
+            </div>
             <Link
                 className={styles.detailButton}
                 to={`/main/admin/editProject/${props.id}`}
@@ -95,7 +97,7 @@ const AdminProject = props => {
                 <Button className={styles.detailButton} variant="primary">
                     프로젝트 관리
                 </Button>
-            </Link>
+            </Link>            
         </Card>
         {delSet ? (
             <DeleteTeamPopUp
@@ -105,6 +107,7 @@ const AdminProject = props => {
                 projectDelete={projectDelete}
             ></DeleteTeamPopUp>
         ) : null}
+        
         </>
     );
 };

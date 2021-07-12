@@ -32,7 +32,7 @@ const AdminCareProject = (props) => {
 
     const [bigCategoryId, setBigCategoryId] = useState("0");
     const [midCategoryId, setMidCategoryId] = useState("0");
-    const [smallCategoryId, setSmallCategoryId] = useState("0");
+    const [smallCategoryId, setSmallCategoryId] = useState(100000000);
 
     const [peopleList, setPeopleList] = useState([]);
 
@@ -53,7 +53,6 @@ const AdminCareProject = (props) => {
         // console.log(" test ",result.data.result.wlb);
         setWlb(result.data.result.wlb);
         setWlm(result.data.result.wlm);
-        setWld(result.data.result.wld);        
 
         const result2 = await axios(
             "/project/list/emp/" + props.match.params.id
@@ -114,15 +113,13 @@ const AdminCareProject = (props) => {
                             />
                         </div>
                         <div className={styles.right}>
-                            <WorkSmallCategory                                
-                                wld={wld}
-                                setWld ={setWld}
-                                
+                            <WorkSmallCategory       
                                 bigCategoryName={bigCategoryName}
                                 midCategoryName={midCategoryName}
                                 smallCategoryId={smallCategoryId}
                                 
                                 selectedMan={selectedMan}
+                                setSelectedMan={setSelectedMan}
                             />
                         </div>
                     </div>

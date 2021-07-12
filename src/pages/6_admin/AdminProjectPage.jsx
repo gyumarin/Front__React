@@ -51,9 +51,13 @@ const AdminProjectPage = props => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.title}>프로젝트 관리</div>
+            
+                <div className={styles.buttons}>
+                    <button className={styles.buttonPlaying} onClick={getUndoneProject}>진행 중 프로젝트</button>
+                    <button className={styles.buttonComplete} onClick={getDoneProject}>완료한 프로젝트</button>
+                </div>
             </div>
-            <button onClick={getUndoneProject}>진행중</button>
-            <button onClick={getDoneProject}>완료</button>
+
             <div className={styles.contents}>
                 <AdminAddProject
                     projects={projects}
