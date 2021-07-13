@@ -14,7 +14,7 @@ const WorkSmallCategory = ({ smallCategoryId, bigCategoryName, midCategoryName, 
 
     const [teamList, setTeamList] = useState([]); 
     const [charge, setCharge] = useState({});
-    const [updateDetails, setUpdateDetails] = useState({});
+    const [updateDetails, setUpdateDetails] = useState({});    
     const [isUpdate, setIsUpdate] = useState(false);
 
     const param = useParams();
@@ -64,6 +64,7 @@ const WorkSmallCategory = ({ smallCategoryId, bigCategoryName, midCategoryName, 
 
     // for update Image
     useEffect(()=>{
+        console.log(updateDetails.e_id);
         const selected = teamList.find(man =>{
             return man.e_id == updateDetails.e_id;
         })
@@ -71,6 +72,8 @@ const WorkSmallCategory = ({ smallCategoryId, bigCategoryName, midCategoryName, 
         setCharge(selected);
     },[updateDetails]);
 
+
+    
     const onCreateNewDetails=(event)=>{
         event.preventDefault();
         
