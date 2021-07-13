@@ -2,15 +2,15 @@ import axios from 'axios';
 import React, {useState , useEffect} from 'react';
 import {Pie} from 'react-chartjs-2';
 
-const Doughnut2= ({projectID}) => {
+const Doughnut2= ({projectID, getPer}) => {
  
 
   const [data, setData] = useState({})   
-
+  const [workPercent, setWorkPercent] = useState(0);
   useEffect(() => {
         
     //차트에 들어갈 데이터 호출
-   axios.get(`/project/work/chart/${projectID}`).then(res =>{
+   axios.get(`/project/work/chart/${projectID}`).then( res =>{
     
         var sum = 0;
         res.data.result.map(item =>{
@@ -41,24 +41,36 @@ const Doughnut2= ({projectID}) => {
               total : sum,
 
           }
-        setData(tempData)   
+        setData(tempData)
+       
+        
    })
 }, [])
+
+useEffect(() => {
+    const per = data.datasets&&(100-(data.datasets&&data.datasets[0].data[data.datasets[0].data.length-1]/data.total*100)).toFixed(2);
+     setWorkPercent(per);
+}, [data])
+
+useEffect(() => {
+  getPer(workPercent) 
+}, [workPercent])
+
+
 
   const options = {    
     responsive: true,
     plugins: {
-      legend: true,
-      title: {
-        display: false,
-        text: "프로젝트 진행",
-        position : 'bottom'
+      legend: {
+        display: true,
+        position:'bottom',
       }
+      
     }
   };      
   
   return (
-    <div style={{height: '400px' ,width : '450px'}}>
+    <div style={{height: '360px' ,width : '320px', marginTop:'-30px', marginLeft:'60px'}}>
       {data.total!=0?<Pie
           data = {data}
           options = {options}

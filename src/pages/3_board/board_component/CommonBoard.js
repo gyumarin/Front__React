@@ -27,16 +27,7 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
             <div className ={styles.container}>
 
                 <div className={styles.table}>
-                    <Table>
-                        {/* <thead>
-                            <tr className={styles.tr}>
-                                <th>{th.num}</th>
-                                <th>{th.title}</th>
-                                <th>{th.writer}</th>
-                                <th>{th.date}</th>
-                                <th>{th.hits}</th>
-                            </tr>
-                        </thead> */}
+                    <Table>                      
                         <tbody>
                             {keys == "bn_id" ? (
                                 <NoticeBoard 
@@ -62,14 +53,14 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
                         ? 
                         (
                         history.location.pathname.split("/")[4] == "notice"
-                        ? <button className={styles.button} onClick ={onCreateNotice}>공지 등록</button> 
+                        ? <button className={styles.buttonn} onClick ={onCreateNotice}>공지 등록</button> 
                         : null
                         )
                         : 
                         (
                         isNotice
                         ? null
-                        : <button className={styles.button} onClick ={onCreateQna}>QnA 등록</button>
+                        : <button className={styles.buttonq} onClick ={onCreateQna}>QnA 등록</button>
                         )
                     }
                 

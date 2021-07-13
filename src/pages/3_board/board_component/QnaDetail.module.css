@@ -27,6 +27,21 @@
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
 
+.adminTitle {
+  width: 15rem;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  font-size: 1.3rem;
+  color: aliceblue;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  background-color: #343d83;
+
+  margin: 1em 1.5em;
+  border-radius: 10px;
+  box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+}
+
 /* ------------------------------------------------------------- */
 
 .contContainer {
@@ -64,6 +79,16 @@
   line-height: 2em;
   width: 5em;
   background-color: #007bbc;
+  color: aliceblue;
+  margin-right: 1em;
+  border-radius: 5px;
+  font-family: "Noto Sans", sans-serif;
+}
+.adminSignal {
+  height: 2em;
+  line-height: 2em;
+  width: 5em;
+  background-color: #5e6cdb;
   color: aliceblue;
   margin-right: 1em;
   border-radius: 5px;
@@ -136,17 +161,17 @@
   font-weight: bold;
   font-size: 1em;
 
-  background-color: #00aaef;
+  background-color: #5e6cdb;
   border-radius: 5px;
   border: none;
   width: 150px;
   height: 3em;
   padding: 0.4em;
-  color: #263238;
+  color: aliceblue;
   margin-top: 2em;
 }
 .button1:hover {
-  background-color: #025a7c;
+  background-color: #343d83;
   color: aliceblue;
 }
 
@@ -168,5 +193,26 @@
 }
 .button2:hover {
   background-color: #00aaef;
+  color: aliceblue;
+}
+
+.button3 {
+  position: relative;
+  left: 1270px;
+  bottom: 50px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 0.9em;
+
+  background-color: #5e6cdb;
+  border-radius: 5px;
+  border: none;
+  width: 120px;
+  padding: 0.4em;
+  color: aliceblue;
+  margin-top: 2em;
+}
+.button3:hover {
+  background-color: #343d83;
   color: aliceblue;
 }

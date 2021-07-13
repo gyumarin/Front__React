@@ -25,7 +25,27 @@
   position: sticky;
   bottom: 0.5em;
 }
-.button {
+.buttonn {
+  position: relative;
+  left: 695px;
+  bottom: 95px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 0.9em;
+
+  background-color: #5e6cdb;
+  border-radius: 5px;
+  border: none;
+  width: 120px;
+  padding: 0.4em;
+  color: aliceblue;
+}
+.buttonn:hover {
+  background-color: #343d83;
+  color: aliceblue;
+}
+
+.buttonq {
   position: relative;
   left: 695px;
   bottom: 95px;
@@ -40,7 +60,7 @@
   padding: 0.4em;
   color: #263238;
 }
-.button:hover {
+.buttonq:hover {
   background-color: #00aaef;
   color: aliceblue;
 }

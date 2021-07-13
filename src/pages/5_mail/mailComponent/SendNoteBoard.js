@@ -42,7 +42,7 @@ const SendNoteBoard = ({
                 
                 <div className={styles.table}>
                     <div className={styles.header}>                        
-                        <div className={styles.category1}>번호</div>
+                        <div className={styles.category1}>-</div>
                         <div className={styles.category2}>읽음</div>
                         <div className={styles.category3}>제목</div>
                         <div className={styles.category4}>보낸 사람</div>

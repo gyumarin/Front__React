@@ -116,7 +116,7 @@ const NoticeRoute = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.title}>{isAdmin ? "공지사항 관리" : "공지사항"}</div>
+            <div className={isAdmin ? styles.adminTitle :styles.title}>{isAdmin ? "공지사항 관리" : "공지사항"}</div>
             <div className={styles.content}>
                 <SearchNotice
                     setList={setList}

@@ -15,8 +15,8 @@ const NoticeBoard = ({ isAdmin , viewList }) => {
                         <td className={styles.td2}>
                             {
                                 isAdmin 
-                                ? <Link to={`/main/admin/board/notice/detail/${value.bn_id}`}>{value.bn_title}</Link>
-                                : <Link to={`/main/board/notice/detail/${value.bn_id}`}>{value.bn_title}</Link>
+                                ? <Link to={`/main/admin/board/notice/detail/${value.bn_id}`} style={{ textDecoration: 'none', color: '#007bbc' }}>{value.bn_title}</Link>
+                                : <Link to={`/main/board/notice/detail/${value.bn_id}`} style={{ textDecoration: 'none', color: '#007bbc' }}>{value.bn_title}</Link>
                             }                            
                         </td>
                         <td className={styles.td3}>{value.e_name}</td>

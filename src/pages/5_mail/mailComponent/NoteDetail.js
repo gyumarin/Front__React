@@ -32,41 +32,36 @@ const NoteDetail = ({ match }) => {
     return (
         <div className={styles.container}>
             <div className={styles.title}>상세 내용</div>
-            <div className={styles.content}>
-                <div className={styles.header}>
-                    <div className={styles.who}>
-                        <p>보낸 사람 : </p>
-                        <p>
-                            {post.e_name} {post.e_id}
-                        </p>
-                    </div>
-                    <div>{detail.n_date}</div>
-                    {/* <tr>
-                            <td>받는 사람</td>
-                            <td>
-                                {send.e_name} {send.e_id}
-                            </td>
-                        </tr>                   */}
-                </div>
+            
+            <div className={styles.contContainer}>
 
-                <div className={styles.mailTitle}>
-                    <div>제목 : </div>
-                    <div>{detail.n_title}</div>
-                </div>
+                <div className={styles.content}>
+                
+                    <div className={styles.header}>
+                        <div className={styles.titleContainer}> 
+                            <div className={styles.signal}>제목 </div>
+                            <div className={styles.titleValue}>{detail.n_title}</div>        
 
-                <div className={styles.contents}>
-                    <td>{detail.n_content}</td>
+                            <div className={styles.date}>
+                                {`보낸이 : ${post.e_name}  
+                                |  작성일 : ${detail.n_date}  
+                                |  받는이 : ${send.e_name}`}
+                            </div>   
+                        </div>                                  
+                    </div>                
+
+                <div className={styles.contentBody}>
+                    {detail.n_content}
                 </div>
             </div>
 
-            {send.e_id == user.e_id ? (
-                <button className={styles.sendButton}>
-                    <Link to={`/main/mail/write/` + post.e_id}>
-                        답장 보내기
-                    </Link>
-                </button>
-            ) : null}
+            {
+                send.e_id == user.e_id 
+                ? <Link to={`/main/mail/write/` + post.e_id}><button className={styles.sendButton}> 답장 보내기</button></Link>
+                : null
+            }
         </div>
+    </div>
     );
 };
 

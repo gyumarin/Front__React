@@ -34,10 +34,10 @@ const PostBoard = ({
             {viewList.map((value, key) => {
                 return (
                     <div className={styles.container} key={key}>
-                        <div className={styles.content1}>{value.n_id}</div>
+                        <div className={styles.content1}>-</div>
                         {value.n_done ? <div className={styles.content2}>읽음</div> :<div className={styles.content2}>안읽음</div>}
                         <div className={styles.content3}>
-                            <Link to={`/main/mail/detail/` + value.n_id}>
+                            <Link to={`/main/mail/detail/` + value.n_id} style={{ textDecoration: 'none', color: '#007bbc' }}>
                                 {value.n_title}
                             </Link>
                         </div>

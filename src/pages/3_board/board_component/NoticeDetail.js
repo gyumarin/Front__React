@@ -21,10 +21,13 @@ const NoticeDetail = ({ match }) => {
         );
         await setDetail(result.data.result);        
     };
-
+    const goWrite =(e)=>{
+        e.preventDefault();
+        history.push(`/main/admin/board/notice/update/` + match.params.id);
+    }
     return (
         <div className={styles.container}>
-            <div className={styles.title}>공지사항</div>
+            <div className={isAdmin ? styles.adminTitle : styles.title }>공지사항</div>
 
             <div className={styles.contContainer}>
 
@@ -32,7 +35,7 @@ const NoticeDetail = ({ match }) => {
 
                     <div className={styles.header}>    
                         <div className={styles.titleContainer}>         
-                            <div className={styles.signal}>제목 </div>
+                            <div className={isAdmin ? styles.adminSignal : styles.signal}>제목 </div>
                             <div className={styles.titleValue}>{detail.bn_title}</div>        
 
                             <div className={styles.date}>
@@ -53,7 +56,7 @@ const NoticeDetail = ({ match }) => {
 
             {
               isAdmin 
-              ? <button><Link to={`/main/admin/board/notice/update/` + match.params.id}>수정</Link></button>
+              ? <button className={styles.buttonMod} onClick={goWrite}>수정</button>
               : null
             }
             {/* <button>목록보기</button> */}

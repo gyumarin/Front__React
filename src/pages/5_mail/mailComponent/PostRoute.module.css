@@ -2,28 +2,35 @@
   color: #263238;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
-  border-radius: 5px;
+
+  background-color: aliceblue;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
-  height: 875px;
+  border-radius: 5px;
+
   padding-top: 1em;
+  height: 875px;
+  width: 107rem;
+  min-width: 107rem;
+
   margin-top: 0.7em;
-  z-index: 100;
+  margin-right: 0.5em;
 }
 .title {
   width: 15rem;
   text-align: center;
   padding: 0.5em 1.5em;
-  font-size: 1.5em;
+  font-size: 1.3rem;
   color: aliceblue;
   font-family: "Noto Sans", sans-serif;
-  font-weight: bold;
+  /* font-weight: bold; */
   background-color: #00aaef;
-  margin-left: 0.5em;
 
-  border-radius: 20px;
+  margin: 1em 1.5em;
+  border-radius: 10px;
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
 .content {
+  margin-top: -1em;
   width: 1700px;
 }

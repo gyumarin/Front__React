@@ -6,6 +6,7 @@ import TeamCardForTree from './TeamCardForTree';
 import { useEffect } from 'react';
 import axios from 'axios';
 import tree from '../../../images/tree.png'
+import { Spinner } from 'react-bootstrap';
 
 const CompanyTree = (props) => {
     const [nowTeam, setNowTeam] = useState([]);
@@ -35,7 +36,7 @@ const CompanyTree = (props) => {
     return(
         <div className={styles.container}>
             <div className={styles.title}>조직도</div>
-
+           
             <div className={styles.content}>
                 <div className={styles.tree}>
                     <Tree

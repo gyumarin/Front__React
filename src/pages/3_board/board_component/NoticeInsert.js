@@ -2,8 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styles from './NoticeInsert.module.css';
 import axios from "axios";
+import { useHistory } from 'react-router';
 
 const NoticeInsert = ({ history }) => {
+
+    const nowHistory = useHistory();
+    const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
+
     const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     const [inputs, setInputs] = useState({
         title: "",
@@ -35,7 +40,7 @@ const NoticeInsert = ({ history }) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.title}>공지사항 등록</div>
+            <div className={nowHistory ? styles.adminTitle : styles.title}>공지사항 등록</div>
             <div className={styles.warning}> <i className="fas fa-exclamation-triangle"></i> 해당 공지사항 등록 전, 선임 확인 및 내용, 오탈자 등 꼭 확인부탁드립니다. </div>
             {/* <div className={styles.warning}> <i className="fas fa-exclamation-triangle"></i> 개인 용무에 대한 질문은 사내 복지 지원팀에 연락바랍니다.</div> */}
             <div className={styles.content}> 
@@ -71,7 +76,7 @@ const NoticeInsert = ({ history }) => {
                         ></textarea>                        
                     </div>                   
                 </div>                
-                    <button  className = {styles.sendButton} onClick={() => {ntInsert();}}>공지 등록</button>                        
+                    <button  className = {nowHistory ? styles.adminButton : styles.sendButton} onClick={() => {ntInsert();}}>공지 등록</button>                        
             </div>
         </div>
     );

@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './AdminBoardTopNavBar.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 const AdminBoardTopNavBar = (props) => {
+    const history = useHistory();
+
+    const goCareNotice =(event)=>{
+        event.preventDefault();
+        history.push("/main/admin/board/notice");
+    }
+    const goCareQna =(event)=>{
+        event.preventDefault();
+        history.push("/main/admin/board/qna");
+    }
+
     return(
         <ul className={styles.container}> 
-            <NavLink to="/main/admin/board/notice"> <li className={styles.button}>공지사항 관리</li></NavLink>
-            <NavLink to="/main/admin/board/qna"> <li className={styles.button}>QnA 관리</li></NavLink>            
+            <li className={styles.button} onClick={goCareNotice}>공지사항 관리</li>
+           <li className={styles.button} onClick={goCareQna}>QnA 관리</li>         
         </ul>
     );
 };

@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
 
-  background-color: gray;
+  background-color: #343d83;
   border-radius: 5px;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
@@ -54,7 +54,7 @@
   width: 8.5rem;
   height: 3rem;
 
-  background-color: #66dbff;
+  background-color: rgb(201, 199, 199);
   padding: 0.5em 1em;
   border-radius: 40px;
 }

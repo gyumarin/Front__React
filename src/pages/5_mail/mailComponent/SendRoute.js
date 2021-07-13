@@ -32,7 +32,7 @@ const SendRoute = ({ match, setId }) => {
 
     const [slist, setSlist] = useState([]);
 
-    const listMax = 3;
+    const listMax = 12;
     const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
 
     useEffect(() => {

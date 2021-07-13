@@ -16,8 +16,8 @@ const QnaBoard = ({ viewList, isAdmin }) => {
                         <td className={styles.td2}>
                             {
                                 isAdmin
-                                ? <Link to={`/main/admin/board/qna/detail/${value.bq_id}`}>{value.bq_title}</Link> 
-                                : <Link to={`/main/board/qna/detail/${value.bq_id}`}>{value.bq_title}</Link>
+                                ? <Link to={`/main/admin/board/qna/detail/${value.bq_id}`} style={{ textDecoration: 'none', color: '#007bbc' }}>{value.bq_title}</Link> 
+                                : <Link to={`/main/board/qna/detail/${value.bq_id}`} style={{ textDecoration: 'none', color: '#007bbc' }}>{value.bq_title}</Link>
                             }
                             
                         </td>

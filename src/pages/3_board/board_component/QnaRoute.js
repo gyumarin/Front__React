@@ -128,7 +128,7 @@ const QnaRoute = () => {
     };
     return (
         <div className={styles.container}>
-            <div className={styles.title}>{isAdmin? "QnA 관리" : "QnA"}</div>
+            <div className={isAdmin? styles.adminTitle : styles.title}>{isAdmin? "QnA 관리" : "QnA"}</div>
             <div className={styles.content}>
                 <SearchQna
                     setList={setList}

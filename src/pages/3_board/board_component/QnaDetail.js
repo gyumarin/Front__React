@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom';
 
 const QnaDetail = ({ match }) => {
     const history = useHistory();
-    const id = useParams().id;
-    
     const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
+    console.log(isAdmin);
+    
+    const id = useParams().id;    
     const [empID, setEmpID] = useState('')
     const [detail, setDetail] = useState({});
 
@@ -39,14 +40,14 @@ const QnaDetail = ({ match }) => {
     
     return (
         <div className={styles.container}>
-            <div className={styles.title}>QnA</div>
+            <div className={isAdmin ? styles.adminTitle : styles.title}>QnA</div>
             
             <div className={styles.contContainer}>
                 <div className={styles.content}>
 
                     <div className={styles.header}>                      
                         <div className={styles.titleContainer}>
-                            <div className={styles.signal}>QnA</div>
+                            <div className={isAdmin ? styles.adminSignal: styles.signal}>QnA</div>
                             <div className={styles.titleValue}>{detail.bq_title}</div>
 
                             <div className={styles.date}>
@@ -72,7 +73,7 @@ const QnaDetail = ({ match }) => {
                 }
                 {
                     isAdmin 
-                    ? <button className={styles.button2}  onClick ={goModify}>수정하기</button>
+                    ? <button className={styles.button3}  onClick ={goModify}>수정하기</button>
                     : (empID==detail.e_id && <button className={styles.button2} onClick ={goModify}>수정하기</button>)
                 }
             </div>

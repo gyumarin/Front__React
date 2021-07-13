@@ -22,7 +22,7 @@
 }
 
 .content {
-  background-color: #b3ecff;
+  background-color: #d9ddff;
   width: 95%;
   height: 285px;
   margin: auto;
@@ -44,7 +44,7 @@
   width: 166px;
   margin: 5px 10px;
   height: 100px;
-  background-color: #00aaef;
+  background-color: #5e6cdb;
   border-radius: 10px;
   display: flex;
   cursor: pointer;

@@ -1,7 +1,8 @@
 .container {
   width: 93.5%;
-  height: 15rem;
-  border-radius: 10px;
+  height: 15.55rem;
+  border-radius: 10px 10px 5px 5px;
+  border-bottom: 2px solid rgb(216, 216, 216);
 
   /* -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44); */

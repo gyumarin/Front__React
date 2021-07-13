@@ -130,7 +130,8 @@
   margin-left: 0.5em;
   width: 70%;
   height: 100%;
-  background-color: #00aaef;
+  background-color: #5e6cdb;
+  color: aliceblue;
   border-radius: 5px;
 
   display: flex;
@@ -201,13 +202,13 @@
   color: #263238;
   font-weight: bold;
   border-radius: 5px;
-  background-color: #91e5ff;
+  background-color: #bfc4f8;
   border: none;
   font-size: 1.3em;
   border: #15303d 2px solid;
 }
 .button:hover {
-  background-color: #00aaef;
+  background-color: #5e6cdb;
   color: aliceblue;
   border: aliceblue 2px solid;
 }

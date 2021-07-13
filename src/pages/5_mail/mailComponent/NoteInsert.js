@@ -64,12 +64,11 @@ const NoteInsert = ({ history, match }) => {
     return (
         <div className={styles.container}>
             <div className={styles.title}>쪽지 쓰기</div>
+            <div className={styles.warning}> <i className="fas fa-exclamation-triangle"></i> 개인 용무에 대한 질문은 사내 복지 지원팀에 연락바랍니다.</div>
             <div className={styles.content}>
+
                 <div className={styles.header}>
-                    <div className={styles.who}>
-                        <label className={styles.label} htmlFor="who">
-                            받는자
-                        </label>
+                    <div>받는자
                         <input
                             id="who"
                             type="text"
@@ -77,62 +76,60 @@ const NoteInsert = ({ history, match }) => {
                             onChange={onChange}
                             value={send}
                             className={styles.input1}
+                            placeholder="사원번호 기입바랍니다 (사원 번호 모를 시, 이름 검색 바랍니다)"
                         ></input>
-                    </div>
+                    </div>  
+                        <div className={styles.search}>
+                            <label className={styles.searchLabel} htmlFor="search">
+                                검색
+                            </label>
 
-                    <div className={styles.search}>
-                        <label className={styles.label} htmlFor="search">
-                            검색
-                        </label>
-
-                        <input
-                            id="search"
-                            type="text"
-                            name="sName"
-                            onChange={onChange}
-                            className={styles.input2}
-                        ></input>
-                        <button
-                            className={styles.button1}
-                            onClick={getEmployee}
-                        >
-                            검색
-                        </button>
-                        <div>
-                            {search ? (
-                                <select
-                                    className={styles.select}
-                                    name="fName"
-                                    onChange={checkName}
-                                >
-                                    <option>선택</option>
-                                    {list.map((value, key) => {
-                                        return (
-                                            <option
-                                                value={value.e_id}
-                                                key={key}
-                                            >
-                                                {value.e_name}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
-                            ) : null}
-                        </div>
-                    </div>
-                </div>
+                            <input
+                                id="search"
+                                type="text"
+                                name="sName"
+                                onChange={onChange}
+                                className={styles.input2}
+                            ></input>
+                            <button
+                                className={styles.button1}
+                                onClick={getEmployee}
+                            >
+                                검색
+                            </button>
+                            <div>
+                                {search ? (
+                                    <select
+                                        className={styles.select}
+                                        name="fName"
+                                        onChange={checkName}
+                                    >
+                                        <option>선택</option>
+                                        {list.map((value, key) => {
+                                            return (
+                                                <option
+                                                    value={value.e_id}
+                                                    key={key}
+                                                >
+                                                    {value.e_name}
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
+                                ) : null}
+                            </div>
+                        </div>                    
+                    </div>                    
 
                 <div className={styles.body}>
                     <div>
-                        <label className={styles.labelTitle} htmlFor="title">
-                            제목
-                        </label>
+                        <label className={styles.labelTitle} htmlFor="title">제목</label>
                         <input
                             className={styles.inputTitle}
                             id="title"
                             type="text"
                             name="title"
-                            onChange={onChange}
+                            onChange={onChange}                            
                         ></input>
                     </div>
 
@@ -140,7 +137,7 @@ const NoteInsert = ({ history, match }) => {
                         <textarea
                             className={styles.textarea}
                             type="text"
-                            name="content"
+                            name="content"                            
                             onChange={onChange}
                         ></textarea>
                     </div>

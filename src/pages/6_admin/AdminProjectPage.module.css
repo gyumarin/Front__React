@@ -19,7 +19,7 @@
   margin-right: 2em;
 }
 .title {
-  background-color: #263238;
+  background-color: #343d83;
   color: aliceblue;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
@@ -61,7 +61,7 @@
   margin-right: 0.5em;
   border-radius: 10px;
   border: none;
-  background-color: #00aaef;
+  background-color: #5e6cdb;
   color: aliceblue;
 }
 .buttonPlaying:hover {

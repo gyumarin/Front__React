@@ -9,7 +9,7 @@ import MiniCalendar from '../2_workCalendar_components/MiniCalendar';
 
 const RightOverView = ({projectID}) => {
     const [userInfo, setUserInfo] = useState({})
-
+    const [workPercent, setWorkPercent] = useState(0);
     useEffect(() => {
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         if(sessionStorage.getItem('token')){
@@ -20,6 +20,10 @@ const RightOverView = ({projectID}) => {
         }
       }, [])
 
+      const getPer =(data) =>{
+        console.log('동작')
+        setWorkPercent(data);
+      }
     return(
         <div className={styles.container}>
             <div className={styles.up}>
@@ -29,8 +33,9 @@ const RightOverView = ({projectID}) => {
                         <ProjectWorkList projectID={projectID}/>
                     </div>
                 </div>
+                <div className={styles.title}>업무 진행률 <font style={{fontSize:'15px'}}>({workPercent} %)</font></div>
                 <div className={styles.pieChart}>
-                    <Doughnut2 projectID={projectID}/>
+                    <Doughnut2 getPer={getPer} projectID={projectID}/>
                 </div>
             </div>
 
@@ -41,8 +46,8 @@ const RightOverView = ({projectID}) => {
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>  
     );
 };
 
-export default RightOverView;
+export default React.memo(RightOverView);

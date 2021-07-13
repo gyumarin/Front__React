@@ -1,8 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styles from './QnaUpdate.module.css';
+import { useHistory } from 'react-router';
 
 const QnaUpdate = ({ match, history }) => {
+    const nowhistory = useHistory();
+    const isAdmin = nowhistory.location.pathname.split("/")[2] == "admin" ? true : false;
+
+
     const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     const [empName, setEmpName] = useState('');
     const [inputs, setInputs] = useState({
@@ -48,7 +53,7 @@ const QnaUpdate = ({ match, history }) => {
 
     return (
         <div className={styles.container}>
-                <div className={styles.title}>질문 수정</div>
+                <div className={isAdmin ? styles.adminTitle:styles.title}>질문 수정</div>
                     {/* <div className={styles.warning}> <i className="fas fa-exclamation-triangle"></i> 해당 QNA은 사내 시설, 공지, 이벤트 등 공적 업무 수행에 대한 질문에 한합니다.</div> */}
                     <div className={styles.warning}> <i className="fas fa-exclamation-triangle"></i> 개인 용무에 대한 질문은 사내 복지 지원팀에 연락바랍니다.</div>
                     <div className={styles.content}> 
@@ -84,7 +89,7 @@ const QnaUpdate = ({ match, history }) => {
                                 onChange={onChange}
                             ></textarea>                        
                         </div>     
-                        <button className={styles.sendButton} onClick={() => {ntUpdate();}}>저장</button>
+                        <button className={isAdmin ? styles.adminButton : styles.sendButton} onClick={() => {ntUpdate();}}>저장</button>
                       </div>                      
                 </div>                
             </div>

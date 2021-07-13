@@ -62,30 +62,39 @@ const Profile = (props) => {
 
                     onToggle={(value) => {
                         setSelf(!value)
+                        setPopup(popup ? !popup : popup)
                     }} 
                 />                
             </div>
             <form className ={styles.table} onSubmit={onUpdateInfo}>
+
+                <div className={styles.fixed}>고정 정보</div>
+                <hr className={styles.line}/>
                 <table>
-                    <tr>
-                        <td>사원명</td>
-                        <td>{userInfo.e_name}</td>
-                    </tr>
-                    <tr>
-                        <td>사원번호</td>
-                        <td>{userInfo.e_id}</td>
-                    </tr>
-                    <tr>
-                        <td>부서</td>
-                        <td>{userInfo.d_name}</td>
-                    </tr>
-                    <tr >
-                        <td>직책</td>
-                        <td>{userInfo.e_rank} </td>
-                    </tr>
                     
-                    <tr>
-                        <td>비밀번호</td>
+                        
+                        <tr className={styles.tr1}>
+                            <td className={styles.td}>사원명</td>
+                            <td className={styles.td2}>{userInfo.e_name}</td>
+                        </tr>
+                        <tr className={styles.tr1}>
+                            <td className={styles.td}>사원번호</td>
+                            <td className={styles.td2}>{userInfo.e_id}</td>
+                        </tr>
+                        <tr className={styles.tr1}>
+                            <td className={styles.td}>부서</td>
+                            <td className={styles.td2}>{userInfo.d_name}</td>
+                        </tr>
+                        <tr className={styles.tr1} >
+                            <td className={styles.td}>직책</td>
+                            <td className={styles.td2}>{userInfo.e_rank} </td>
+                        </tr>
+                </table> 
+                <div className={styles.flexible}>가변 정보</div>
+                <hr className={styles.line}/>
+                <table>
+                        <tr>
+                        <td className={styles.td}>비밀번호</td>
                         <td >
                             <button 
                                 className={self ? styles.pwdButton : styles.pwdButton2} 
@@ -97,19 +106,19 @@ const Profile = (props) => {
                     </tr>
 
                     <tr>
-                        <td >Git 계정명</td>
+                        <td className={styles.td} >Git 계정명</td>
                         <td><input className={styles.form}  type="text" value={userInfo.e_nickname}
                         name="e_nickname" 
                         disabled={!self} onChange={onChange}/></td>
                     </tr>
                     <tr>
-                        <td>이메일</td>
+                        <td className={styles.td}>이메일</td>
                         <td><input className={styles.form}  type="email" value={userInfo.e_email}
                         name="e_email" 
                         disabled={!self} onChange={onChange}/></td>
                     </tr>
                     <tr>
-                        <td>주소</td>
+                        <td className={styles.td}>주소</td>
                         <td>                            
                             <input className={styles.form}  type="text" value={userInfo.e_address}
                             name="e_address" 
@@ -117,21 +126,22 @@ const Profile = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>휴대전화</td>
+                        <td className={styles.td}>휴대전화</td>
                         <td><input  className={styles.form} type="text" value={userInfo.e_p_phone}
                         name="e_p_phone" 
                         disabled={!self} onChange={onChange}/></td>
                     </tr>
                     <tr>
-                        <td>내선전화</td>
+                        <td className={styles.td}>내선전화</td>
                         <td><input  className={styles.form} type="text" value={userInfo.e_e_phone}
                         name="e_e_phone" 
                         disabled={!self} onChange={onChange}/></td>
-                    </tr>
+                    </tr>                    
+                    <div className={styles.td5} >하고 싶은 말  </div>                               
                     <tr>
-                        <td >하고 싶은 말(선택)</td>
+                        <td></td>
                         <td>
-                            <textarea className={styles.form}  value={userInfo.e_comment} name="e_comment" 
+                            <textarea className={styles.form5}  value={userInfo.e_comment} name="e_comment" 
                              cols="50" rows="5"disabled={!self} onChange={onChange}></textarea>
                         </td>    
                     </tr>

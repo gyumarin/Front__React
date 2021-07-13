@@ -43,7 +43,7 @@ const WorkListPage = ({projectID}) => {
         axios.get(`/project/work/chart/${projectID}`).then(res=>{
             setData(res.data.result);
         });
-        
+        mySearch();
     }, [])
 
 
@@ -68,7 +68,7 @@ const WorkListPage = ({projectID}) => {
         }
          
         setMidCateList(tempWorkList.map(item=>({mid : item, toggle : true})));        
-    }, [ maincate, search])
+    }, [ maincate, search, workList])
 
 
     useEffect(() => {

@@ -8,7 +8,7 @@
 
   /* box-sizing: border-box; */
   border: none;
-  background-color: #00aaef;
+  background-color: #5e6cdb;
 }
 .body {
   width: 60%;
@@ -19,7 +19,7 @@
   height: 150px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: #00aaef;
+  background-color: #5e6cdb;
   border: none;
 
   font-size: 4em;

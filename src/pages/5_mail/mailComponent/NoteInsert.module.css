@@ -2,84 +2,127 @@
   color: #263238;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
-  border-radius: 5px;
+
+  background-color: aliceblue;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
-  height: 875px;
+  border-radius: 5px;
+
   padding-top: 1em;
   margin-top: 0.7em;
-  z-index: 100;
+  height: 875px;
+  min-width: 107rem;
+  margin-right: 0.5em;
 }
 .title {
   width: 15rem;
   text-align: center;
   padding: 0.5em 1.5em;
-  font-size: 1.5em;
+  font-size: 1.3rem;
   color: aliceblue;
   font-family: "Noto Sans", sans-serif;
-  font-weight: bold;
+  /* font-weight: bold; */
   background-color: #00aaef;
-  margin-left: 0.5em;
 
-  border-radius: 20px;
+  margin: 1em 1.5em;
+  border-radius: 10px;
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
 }
+.warning {
+  font-size: 0.9em;
+  color: #cf3405;
+  margin-left: 6.5em;
+}
+/* ---------------------------------------------------------------- */
+
 .content {
-  margin-top: 1em;
-  margin-left: 1em;
-  width: 1650px;
-  height: 730px;
-  border: 1px solid black;
+  margin: 1em auto;
+  width: 90%;
+  height: 630px;
   border-radius: 10px;
+  background-color: #d8e0e7;
+  padding: 0.5em 2em;
 }
 
+/* ------------------------------------------------------------------- */
 .header {
   display: flex;
   margin-top: 1em;
   padding: 1em;
-  height: 80px;
+  height: 40px;
+  color: #263238;
+  font-size: 1.1em;
 }
-.who {
-  width: 80%;
+.input1{
+  width: 700px;
+  margin-left: 1em;
+  padding-left: 1em;
 }
-.search {
-  width: 20%;
+.sendMan {
+  margin-left: 1em;
+  width: 1300px;
+  padding-left: 1em;
 }
-.label {
-  margin-right: 1em;
+.searchLabel{
+  margin-left: 16em;
+  margin-right: 0.8em;
 }
-.input1 {
-  width: 1200px;
+.button1{
+  background-color: #00aaef;
+  border-radius: 5px;
+  border: none;
+  width: 3em;
+  padding: 0.25em;
+  margin-left: 0.2em;
+  color: aliceblue;
 }
-
-.select {
+.select{
   position: relative;
-  height: 1.85em;
-  top: -0px;
-  left: 48px;
-  width: 239px;
+  left: 330px;
+  bottom: 35px;
+  width: 270px;
+  height: 35px;
 }
 /* ------------------------------------------------------------- */
+
 .body {
-  padding: 1em;
+  padding: 0.5em 1em;
+  font-size: 1.1em;
+  margin-top: 0.5em;
 }
 .labelTitle {
   margin-right: 2em;
 }
 .inputTitle {
-  width: 93.4%;
+  width: 1300px;
+  padding-left: 1em;
 }
 
+/* --------------------------------------------------------------- */
 .textarea {
   margin-left: 4em;
-  width: 93.5%;
-  height: 500px;
+  width: 90.3%;
+  height: 450px;
   margin-top: 1em;
+  padding: 3em;
 }
 
 .sendButton {
-  width: 100px;
-  margin-left: 46.5%;
-  height: 40px;
-  border-radius: 10px;
+  position: relative;
+  left: 1385px;
+  bottom: 640px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 0.9em;
+
+  background-color: #66dbff;
+  border-radius: 5px;
+  border: none;
+  width: 120px;
+  padding: 0.4em;
+  color: #263238;
+}
+.sendButton:hover {
+  background-color: #00aaef;
+  color: aliceblue;
 }
