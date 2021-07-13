@@ -1,8 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styles from './WaitingConfirmCard.module.css';
 
-const WaitingConfirmCard = ({confirm}) => {
-    console.log(confirm);
+const WaitingConfirmCard = ({confirm, onApply, onIgnore}) => {
+    // console.log(confirm);
     return(
         <div className={styles.container}>
             {/* contents */}
@@ -24,8 +24,8 @@ const WaitingConfirmCard = ({confirm}) => {
             </div>
             {/* buttons */}
             <div className={styles.right}>
-                <button className={styles.btnConfirm}>승인</button>            
-                <button className={styles.btnReject}>반려</button>            
+                <button className={styles.btnConfirm} onClick={()=>onApply(confirm.wl_id)}>승인</button>            
+                <button className={styles.btnReject} onClick={()=>onIgnore(confirm.wl_id)}>반려</button>            
             </div>
         </div>
     );

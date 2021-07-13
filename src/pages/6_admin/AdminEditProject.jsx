@@ -98,6 +98,25 @@ const AdminEditProject = props => {
         );
     };
 
+    const onApply = (wlID) =>{
+        var bool = window.confirm(wlID+'번 업무를 승인하시겠습니까?')
+        if(bool){
+            axios.put(`/project/done/${wlID}`);
+            setWatiForConfirms(waitForConfirms.filter(item=>item.wl_id !== wlID))
+            alert(wlID+'번 업무가 승인 되었습니다.')
+        }
+        
+    }
+
+    const onIgnore = (wlID) => {
+        var bool = window.confirm(wlID+'번 업무를 반려하시겠습니까?')
+       if(bool){
+            axios.put(`/project/undone/${wlID}`);
+            setWatiForConfirms(waitForConfirms.filter(item=>item.wl_id !== wlID))
+            alert(wlID+'번 업무가 반려 되었습니다.')
+       }
+    }
+
     const deletePeople = ep_id => {
         const result = axios.delete("/project/employee/delete/" + ep_id);
         getWL();
@@ -220,9 +239,11 @@ const AdminEditProject = props => {
                             <div className={styles.numberOfWating}>승인 대기 중인 업무 : <div className={styles.w_number}>{waitForConfirms.length}</div>개</div>
                             <div className={styles.confirms}>
                             {
-                                waitForConfirms.map(confirm=>{
+                               waitForConfirms.map(confirm=>{
                                     return <WaitingConfirmCard 
                                         confirm = {confirm}
+                                        onApply = {onApply}
+                                        onIgnore = {onIgnore}
                                     />;
                                 })
                             }
