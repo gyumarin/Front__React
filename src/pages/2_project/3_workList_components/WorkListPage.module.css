@@ -22,7 +22,11 @@
 }
 
 .workView {
-  height: 620px;
+  margin-top: 1em;
+  padding: 0em;
+
+  border-radius: 10px;
+  height: 525px;
   overflow-y: scroll;
 
   -ms-overflow-style: none; /* IE and Edge */
@@ -35,7 +39,31 @@
 
 /* ------------------------------------------------- */
 .card1 {
-  border-radius: 10px;
+  border-radius: 5px;
   /* -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44); */
+}
+.cardForm {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.cardForm::-webkit-scrollbar {
+  display: none;
+}
+
+.form {
+  height: 150px;
+  /* border: 1px solid black; */
+  overflow-y: scroll;
+  /* border: 1px solid black; */
+  font-size: 0.9em;
+  padding-bottom: -50px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.form::-webkit-scrollbar {
+  display: none;
 }

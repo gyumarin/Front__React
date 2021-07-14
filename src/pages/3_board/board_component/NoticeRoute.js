@@ -48,6 +48,7 @@ const NoticeRoute = () => {
 
         const result = await axios.get("/board/notice/list");
         await setList(result.data.result);
+        await console.log(result.data.result)
 
         setViewList(result.data.result.slice(0, listMax));
         let c = parseInt(result.data.result.length / listMax);
@@ -128,16 +129,23 @@ const NoticeRoute = () => {
                     setLastCount={setLastCount}
                 ></SearchNotice>
                 <p style = {{marginLeft:"6em", marginBottom : "-0.5em"}}>총 게시글 <span style ={{color : "#00aaef" }}>{list.length}</span>건</p>
-                <CommonBoard
+                {list.length!=0?<CommonBoard
                     viewList={viewList}
                     list={list}
                     PaginationBasic={PaginationBasic}
                     th={noticeTh}
                     keys={keys}
-                ></CommonBoard>
+                />:
+                <div style={{}}>
+                    <h3 style={{margin:'250px 0px 0px 650px'}}> 검색된 결과가 없습니다. </h3>
+                    <button onClick={()=>getList()} className={isAdmin ? styles.adminTitle :styles.title} style={{margin:'250px 0px 0px 690px'}}><b> 뒤로 가기</b> </button>
+                </div>}
+
             </div> 
         </div>
     );
 };
+
+
 
 export default NoticeRoute;

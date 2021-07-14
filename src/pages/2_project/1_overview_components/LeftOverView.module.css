@@ -10,7 +10,7 @@
 }
 
 .projectInfo {
-  margin: 2em 2em 1em 2em;
+  margin: 2em 0em 0em 2em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

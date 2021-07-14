@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const QnaDetail = ({ match }) => {
     const history = useHistory();
     const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
-    console.log(isAdmin);
+    
     
     const id = useParams().id;    
     const [empID, setEmpID] = useState('')
@@ -26,6 +26,7 @@ const QnaDetail = ({ match }) => {
     const getDetail = async () => {
         const result = await axios.get("/board/qna/detail/" + match.params.id);
         await setDetail(result.data.result);
+        await console.log("result.data.result", result.data.result);
     };
 
     const onReply =(event)=>{
@@ -51,14 +52,14 @@ const QnaDetail = ({ match }) => {
                             <div className={styles.titleValue}>{detail.bq_title}</div>
 
                             <div className={styles.date}>
-                                {`작성 : ${detail.d_name}  
+                                {`작성자 : ${detail.e_name}  
                                 |  작성 일자 : ${detail.bq_date}  
                                 |  조회 : ${detail.bq_hits}`}
                             </div>
                         </div> 
 
                         <div className={styles.charges}>                    
-                            <div className={styles.cell1}><span className={styles.label}>게시자 소속부소 :</span> {detail.d_name}</div>
+                            <div className={styles.cell1}><span className={styles.label}>소속 부서 :</span> {detail.d_name}</div>
                             <div className={styles.cell2}><span className={styles.label}>전화번호 :</span> {detail.d_phone}</div>
                         </div>
                     </div> 

@@ -9,6 +9,7 @@ const NoticeBoard = ({ isAdmin , viewList }) => {
     return (
         <>
             {viewList.map((value, key) => {
+                console.log('NoticeBoard',value)
                 return (
                     <tr key={key} className={styles.tr}>
                         <td className={styles.td1}>{value.bn_id}</td>
@@ -19,7 +20,7 @@ const NoticeBoard = ({ isAdmin , viewList }) => {
                                 : <Link to={`/main/board/notice/detail/${value.bn_id}`} style={{ textDecoration: 'none', color: '#007bbc' }}>{value.bn_title}</Link>
                             }                            
                         </td>
-                        <td className={styles.td3}>{value.e_name}</td>
+                        <td className={styles.td3}>{value.d_name}</td>
                         <td className={styles.td4}>{value.bn_date}</td>
                         <td className={styles.td5}>
                             <span className={styles.hit}><i className="fas fa-eye"></i></span>

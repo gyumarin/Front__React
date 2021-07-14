@@ -45,7 +45,13 @@ const MailPage = props => {
                         }}
                     ></Route>
                     <Route
-                        path="/main/mail/detail/:id"
+                        path="/main/mail/detail/post/:id"
+                        render={props => {
+                            return <NoteDetail {...props}></NoteDetail>;
+                        }}
+                    ></Route>
+                    <Route
+                        path="/main/mail/detail/send/:id"
                         render={props => {
                             return <NoteDetail {...props}></NoteDetail>;
                         }}

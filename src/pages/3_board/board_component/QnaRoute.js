@@ -140,13 +140,17 @@ const QnaRoute = () => {
                     setLastCount={setLastCount}
                 ></SearchQna>
                  <div style = {{marginLeft:"2.5em", marginBottom : "-0.5em", width:"5px", height:"25px"    }}></div>
-                <CommonBoard
+                {list.length!=0?<CommonBoard
                     viewList={viewList}
                     list={list}
                     PaginationBasic={PaginationBasic}
                     th={qnaTh}
                     keys={keys}
-                ></CommonBoard>
+                />:
+                <div style={{}}>
+                    <h3 style={{margin:'250px 0px 0px 650px'}}> 검색된 결과가 없습니다. </h3>
+                    <button onClick={()=>getList()} className={isAdmin ? styles.adminTitle :styles.title} style={{margin:'250px 0px 0px 690px', border:'0px'}}><b> 뒤로 가기</b> </button>
+                </div>}
             </div>
         </div>
     );

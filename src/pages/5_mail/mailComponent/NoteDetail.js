@@ -3,9 +3,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import styles from "./NoteDetail.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const NoteDetail = ({ match }) => {
+    const history = useHistory();
+    const where = history.location.pathname.split("/")[4];
+
+
     const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
 
     const [detail, setDetail] = useState({});
@@ -27,7 +31,7 @@ const NoteDetail = ({ match }) => {
         const result2 = await axios.get("/employee/detail?token=" + tmp);
         setUser(result2.data.result);
 
-        console.log(result2.data.result);
+        // console.log(result2.data.result);
     };
     return (
         <div className={styles.container}>
@@ -50,12 +54,12 @@ const NoteDetail = ({ match }) => {
                         </div>                                  
                     </div>                
 
-                <div className={styles.contentBody}>
-                    {detail.n_content}
-                </div>
+                    <pre  className={styles.contentBody} style={{fontFamily:'Noto Sans, sans-serif'}}>{detail.n_content}</pre>
             </div>
 
             {
+                where == "post" ? 
+                null :
                 send.e_id == user.e_id 
                 ? <Link to={`/main/mail/write/` + post.e_id}><button className={styles.sendButton}> 답장 보내기</button></Link>
                 : null

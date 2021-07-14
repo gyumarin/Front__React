@@ -31,12 +31,12 @@ const SendNoteBoard = ({
                     <div>
                         <button onClick={all} className={styles.filter}>전체</button>
                         <button onClick={read} className={styles.filter}>읽음</button>
-                        <button onClick={nread} className={styles.filter}>안읽음</button>|
-                        <button className={styles.button}><Link to="/main/mail/write">답장 보내기</Link></button>
+                        <button onClick={nread} className={styles.filter}>안읽음</button>
+                        {/* <button className={styles.button}><Link to="/main/mail/write">답장 보내기</Link></button> */}
                     </div>
                     <div>
-                        <input type="text" value={value} onChange={onChange}></input>
-                        <button onClick={() => {search();}}>검색</button>
+                        <input className={styles.input} type="text" value={value} onChange={onChange} placeholder="검색" autoFocus></input>
+                        <button className={styles.buttonSearch} onClick={() => {search();}}>검색</button>
                     </div>
                 </div>
                 

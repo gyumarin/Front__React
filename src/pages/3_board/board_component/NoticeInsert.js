@@ -26,12 +26,18 @@ const NoticeInsert = ({ history }) => {
     };
 
     const ntInsert = async () => {
-        const result = await axios.post("/board/notice/insert", {
-            bn_title: inputs.title,
-            bn_content: inputs.content,
-            token: tmp,
-        });
-        history.push("/main/admin/board/notice");
+        if(inputs.title==""){
+            alert("제목을 작성해 주세요.")
+        }else{
+            const result = await axios.post("/board/notice/insert", {
+                bn_title: inputs.title,
+                bn_content: inputs.content,
+                token: tmp,
+            });
+            history.push("/main/admin/board/notice");
+           
+        }
+        
     };
 
     useEffect(() => {

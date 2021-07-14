@@ -43,7 +43,7 @@ const Calendar  = ({projectID, isTeam}) => {
           const scheduleData = data.map(item=>{
             return({
               calendarId: item.wl_id,
-              category: "time",
+              category: "allday",
               isVisible: true,
               isPending: false,
               title: item.wl_work_detail,
@@ -83,10 +83,11 @@ const Calendar  = ({projectID, isTeam}) => {
       axios.get(`/project/work/list/team/${projectID}`)
       .then(res => res.data.result)
       .then(data =>{
+          console.log(data);
           const teamScheduleData = data.map(item=>{
             return({
               calendarId: item.e_id,
-              category: "time",
+              category: "allday",
               isVisible: true,
               isPending: false,
               title: item.wl_work_detail,
@@ -123,7 +124,6 @@ const Calendar  = ({projectID, isTeam}) => {
 
     const [selectedDay, setSelectedDay] = useState();
     useEffect(() => {
-      console.log(selectedDay);
     }, [selectedDay]);
 
     // ----------------------------------------------------------------
@@ -200,7 +200,7 @@ const Calendar  = ({projectID, isTeam}) => {
           onBeforeCreateSchedule={e => {setSelectedDay(e);}}
           useDetailPopup
           isReadOnly  = "true"
-         
+                   
         />
       </div>
     );  

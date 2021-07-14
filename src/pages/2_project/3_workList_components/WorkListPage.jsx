@@ -199,7 +199,7 @@ const WorkListPage = ({projectID}) => {
         <div className={styles.container}>
             
             <div style={{display: 'grid',
-                        gridTemplateColumns:'400px 800px 400px', 
+                        gridTemplateColumns:'320px 960px 400px', 
                         gridTemplateRows: '70px 20px 80px 120px 500px'}
             }>
                 <div style={{gridRow:'1/2', gridColumn:'1/3'}}>
@@ -210,10 +210,10 @@ const WorkListPage = ({projectID}) => {
                 <div></div>
                     
                 <div style={{ gridColumn:'2/3', gridRow:'1/4' , height: '100px', 
-                    display:'flex', margin:'11px 7px 0px 7px', padding:'85px 0px 0px 0px'}}>
+                    display:'flex', margin:'11px 7px -10px 7px', padding:'85px 0px 0px 0px'}}>
                 
                     {/* 1. 수행 여부 */}
-                    <Card style={{height: '90px', margin: '5px'}} className={styles.card1}>
+                    <Card style={{height: '90px', marginLeft: '205px', backgroundColor:"rgb(250, 250, 250)", width:"250px"}} className={styles.card1}>
                         <Form style={{margin: '3px',padding:'10px 0px 0px 10px', width: '280px'}}>
                             <p style={{fontWeight :"bold"}}>수행 여부</p>
                             <Form.Check 
@@ -249,15 +249,15 @@ const WorkListPage = ({projectID}) => {
 
                     {/* 검색 조회 */}
                     <Card style={{ 
-                        backgroundColor: 'white', 
-                        width:'500px',
+                        backgroundColor:"rgb(250, 250, 250)",
+                        width:'480px',
                         height: '90px',
                         display: 'grid',
                         gridTemplateColumns:'90px 100px 200px 70px', 
-                        margin: '5px',
+                        marginLeft: '5px',
                         padding:'10px 0px 0px 0px'}
                     }>
-                        <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold"}}>검색 조회                       
+                        <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold", }}>검색 조회                       
                         </p>
                         <div style={{padding:'30px 5px 0px 0px'}}>
 
@@ -293,10 +293,10 @@ const WorkListPage = ({projectID}) => {
 
 
                 
-                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '150px', margin : '45px 5px 5px 35px', padding:'20px'}}>
-                
-                    <Form style={{ }}>    
-                        <p>업무 대분류</p>
+                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '130px', margin : '10px 5px 5px 35px', padding:'20px', borderRadius : "5px", width:"280px", backgroundColor:"rgb(250, 250, 250)", borderLeft:"5px solid #00aaef",  }}>
+                    <p style={{fontWeight:"bold"}}>업무 대분류</p>
+                    <Form  className={styles.form}>    
+                        
                         <Form.Check
                                 inline
                                 checked={maincate=="전체"}
@@ -304,7 +304,7 @@ const WorkListPage = ({projectID}) => {
                                 type="radio"
                                 onChange={()=> onRadioBox("전체")}
                                 name="big"
-                                style={{paddingBottom:'10px'}}
+                                style={{paddingBottom:'10px',}}
                                 
                             />
                         {data.map((item, index)=>{
@@ -326,15 +326,15 @@ const WorkListPage = ({projectID}) => {
                 <div></div>
 
 
-                <Card style={{gridColumn:'3/4', gridRow:'2/6', padding:'40px 0px 0px 20px', margin : '30px 5px 5px 5px', height :'710px'}}> 
+                <Card style={{gridColumn:'3/4', gridRow:'2/6', padding:'30px 0px 0px 20px', margin : '25px 5px 5px 5px', height :'750px', borderRadius:"10px", boxSizing : "border-box", border:"5px solid #00aaef", backgroundColor:"rgb(250, 250, 250)"}}>
                     <Pie projectID={projectID} />
                 </Card>
                 
                 
-                <Card style={{ padding : '0px', gridColumn:'2/3', gridRow:'4/6', margin : '30px 10px 10px 10px', height :'610px'}}>
-                    <div style={{display:'grid', gridTemplateColumns:'600px 300px'}}> 
-                    <p style={{margin:'13px 0px 10px 20px'}}><b>업무 리스트 <font style={{color : 'rgba(1, 1, 1, 0.5)', width:'300px'}}>{check?'my':'team'}</font></b></p>
-                    <div style={{marginTop:'10px', marginBottom:'5px'}}>
+                <Card style={{boxShadow: "6px 7px 22px 0px rgba(0, 0, 0, 0.44)", padding : '1em 2em', gridColumn:'2/3', gridRow:'4/6', margin : '30px 10px 10px 10px', height :'645px', borderRadius:"10px", }}>
+                    <div style={{display:'grid', gridTemplateColumns:'600px 350px'}}> 
+                    <p style={{margin:'13px 0px 10px 20px', fontSize : "1.2em", }}><b>업무 리스트 <font style={{color : 'rgba(1, 1, 1, 0.5)', width:'300px'}}>{check?'my':'team'}</font></b></p>
+                    <div style={{margin : "10px -5px 5px 117px"}}>
                             {check ? (
                                 <Button onClick={getAll}>전체 업무 리스트</Button>
                             ) : (
@@ -358,9 +358,9 @@ const WorkListPage = ({projectID}) => {
                 </Card>
                 
                 {/* 업무목록 */}
-                <Card style={{margin : '10px 5px 5px 35px', height: '510px'}}>
-                    <Form style={{ margin: '10px',padding:'10px',  }}>
-                        <p>업무 목록</p>
+                <Card style={{margin : '-45px 5px 5px 35px', height: '600px', width:"280px", backgroundColor:"rgb(250, 250, 250)", borderLeft:"5px solid #00aaef"}} >
+                    <Form  className={styles.cardForm} style={{ margin: '10px',padding:'10px',  height : "580px", overflowY:"scroll", scrollbarWidth:"none",}}>
+                        <p style={{fontWeight:"bold"}}>업무 목록</p>
                         <div><Form.Check
                             inline
                             onChange={()=>onCheckBox("전체")}

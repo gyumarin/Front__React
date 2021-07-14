@@ -39,18 +39,23 @@ const NoticeUpdate = ({ match, history }) => {
 
 
     const onClick = async () => {
-        const result = await axios.put("/board/notice/update", {
-            bn_id: match.params.id,
-            bn_title: inputs.title,
-            bn_content: inputs.content,
-            token: tmp,
-        });
-        history.push(`/main/board/notice/detail/${match.params.id}`);
+        if(inputs.title==""){
+            alert("제목을 작성해 주세요.")
+        }else{
+            const result = await axios.put("/board/notice/update", {
+                bn_id: match.params.id,
+                bn_title: inputs.title,
+                bn_content: inputs.content,
+                token: tmp,
+            });
+            history.push(`/main/board/notice/detail/${match.params.id}`);
+        }
+        
     };
 
     return (
         <div className={styles.container}>
-            <div className={styles.title}>공지 수정</div>
+            <div className={styles.title}>공지사항 수정</div>
             <div className={styles.warning}> <i className="fas fa-exclamation-triangle"></i> 개인 용무에 대한 질문은 사내 복지 지원팀에 연락바랍니다.</div>
             <div className={styles.content}> 
 

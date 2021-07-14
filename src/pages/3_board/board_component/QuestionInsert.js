@@ -21,12 +21,17 @@ const QuestionInsert = ({ history }) => {
     };
 
     const ntInsert = async () => {
-        const result = await axios.post("/board/qna/qinsert", {
-            bq_title: inputs.title,
-            bq_content: inputs.content,
-            token: tmp,
-        });
-        history.push("/main/board/qna");
+        if(inputs.title==""){
+            alert("제목을 작성해 주세요.")
+        }else{
+            const result = await axios.post("/board/qna/qinsert", {
+                bq_title: inputs.title,
+                bq_content: inputs.content,
+                token: tmp,
+            });
+            history.push("/main/board/qna");
+        }
+        
     };
 
     useEffect(() => {

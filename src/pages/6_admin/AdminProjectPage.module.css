@@ -5,6 +5,7 @@
   border-radius: 5px;
   -webkit-box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.44);
+  width: 107rem;
   min-width: 107rem;
   margin-right: 0.5em;
 }

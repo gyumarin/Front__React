@@ -67,7 +67,12 @@ const Doughnut3= ({projectID}) => {
           data = {data}
           options = {options}
           style={{}} 
-        />: '등록된 업무가 없습니다.'}
+        />: <div style={{textAlign:'center',marginLeft:'-60px',paddingLeft:'10px',
+        width : '190px',fontSize:'15px', paddingTop:'20px',
+        paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
+          <span ><i style={{fontSize:'90px',color :'#5e6cdb',}} class="fas fa-chart-pie" ></i> </span>
+          <p style={{marginTop:'10px'}}>등록된 업무가 없습니다.</p>
+          </div>}
     </div>
   )
 }

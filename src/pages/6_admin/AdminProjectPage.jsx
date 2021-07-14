@@ -1,7 +1,6 @@
 import React from "react";
 import AdminProject from "./AdminProject";
 import styles from "./AdminProjectPage.module.css";
-import mockData from "../../Data/data";
 import AdminAddProject from "./AdminAddProject";
 
 import { useState } from "react";
@@ -59,10 +58,10 @@ const AdminProjectPage = props => {
             </div>
 
             <div className={styles.contents}>
-                <AdminAddProject
+                {!com&&<AdminAddProject
                     projects={projects}
                     createProject={createProject}
-                />
+                />}
                 {projects.map(proj => {
                     return (
                         <AdminProject

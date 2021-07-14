@@ -68,7 +68,7 @@ const Profile = (props) => {
             </div>
             <form className ={styles.table} onSubmit={onUpdateInfo}>
 
-                <div className={styles.fixed}>고정 정보</div>
+                <div className={styles.fixed}>나의 정보</div>
                 <hr className={styles.line}/>
                 <table>
                     
@@ -90,7 +90,7 @@ const Profile = (props) => {
                             <td className={styles.td2}>{userInfo.e_rank} </td>
                         </tr>
                 </table> 
-                <div className={styles.flexible}>가변 정보</div>
+                <div className={styles.flexible}>개인정보 수정</div>
                 <hr className={styles.line}/>
                 <table>
                         <tr>
@@ -142,7 +142,7 @@ const Profile = (props) => {
                         <td></td>
                         <td>
                             <textarea className={styles.form5}  value={userInfo.e_comment} name="e_comment" 
-                             cols="50" rows="5"disabled={!self} onChange={onChange}></textarea>
+                             cols="50" rows="8"disabled={!self} onChange={onChange}></textarea>
                         </td>    
                     </tr>
                 </table>

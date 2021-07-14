@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./SendBoard.module.css";
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router';
 
 const SendBoard = ({
     viewList,
@@ -12,6 +13,10 @@ const SendBoard = ({
     checked,
     setChecked,
 }) => {
+    const history = useHistory();
+    const where = history.location.pathname.split("/")[3];
+
+
     const checkDeleteList = (value, checked) => {
         if (checked) {
             deleteList.push(value);
@@ -37,9 +42,11 @@ const SendBoard = ({
                         <div className={styles.content1}>-</div>
                         {value.n_done ? <div className={styles.content2}>읽음</div> : <div className={styles.content2}>안읽음</div>}
                         <div className={styles.content3}>
-                            <Link to={`/main/mail/detail/` + value.n_id} style={{ textDecoration: 'none', color: '#007bbc' }}>
-                                {value.n_title}
-                            </Link>
+                        {
+                                where == "post"
+                                ?<Link to={`/main/mail/detail/post/` + value.n_id} style={{ textDecoration: 'none', color: '#007bbc' }}>{value.n_title}</Link>   
+                                :<Link to={`/main/mail/detail/send/` + value.n_id} style={{ textDecoration: 'none', color: '#007bbc' }}>{value.n_title}</Link>   
+                            }
                         </div>
                         <div className={styles.content4}>{value.e_name}</div>
                         <div className={styles.content5}>{value.n_date}</div>

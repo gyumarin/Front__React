@@ -177,19 +177,20 @@
 
 .button2 {
   position: relative;
-  left: 1270px;
-  bottom: 50px;
+  left: 1400px;
+  bottom: 35px;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 1em;
 
   background-color: #66dbff;
   border-radius: 5px;
   border: none;
-  width: 120px;
+  width: 140px;
   padding: 0.4em;
   color: #263238;
   margin-top: 2em;
+  height: 40px;
 }
 .button2:hover {
   background-color: #00aaef;
@@ -198,19 +199,20 @@
 
 .button3 {
   position: relative;
-  left: 1270px;
-  bottom: 50px;
+  left: 1250px;
+  bottom: 40px;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 1em;
 
   background-color: #5e6cdb;
   border-radius: 5px;
   border: none;
-  width: 120px;
+  width: 140px;
   padding: 0.4em;
   color: aliceblue;
   margin-top: 2em;
+  height: 40px;
 }
 .button3:hover {
   background-color: #343d83;

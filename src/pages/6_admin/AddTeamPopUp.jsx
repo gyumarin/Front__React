@@ -38,7 +38,8 @@ const AddTeamPopUp = props => {
         props.setTeamPopup(false);
     };
 
-    const getEmployee = async () => {
+    const getEmployee = async (event) => {
+        event.preventDefault();
         const result = await axios.get("/note/search?e_name=" + sName);
         console.log(result.data.result);
         setSearch(true);
@@ -68,8 +69,8 @@ const AddTeamPopUp = props => {
                 <label className={styles.label} htmlFor="input">
                     인원 검색
                 </label>
-                <div className={styles.search}>
-                    
+
+                <form className={styles.search} onSubmit={getEmployee}>
                     {/* search 들어올 곳 */}
                     <input
                         id="search"
@@ -95,7 +96,9 @@ const AddTeamPopUp = props => {
                     <button className={styles.button1} onClick={getEmployee}>
                         검색
                     </button>
-                </div>
+                </form>
+
+
                 <div className={styles.options}>
                     {search ? (
                         <select

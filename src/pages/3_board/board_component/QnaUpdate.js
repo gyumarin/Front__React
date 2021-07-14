@@ -26,12 +26,17 @@ const QnaUpdate = ({ match, history }) => {
     };
 
     const ntUpdate = async () => {
-        const result = await axios.put("/board/qna/update", {
-            bq_id: match.params.id,
-            bq_title: inputs.title,
-            bq_content: inputs.content,
-        });
-        history.push(`/main/board/qna/detail/${match.params.id}`);
+        if(inputs.title==""){
+            alert("제목을 작성해 주세요.")
+        }else{
+            const result = await axios.put("/board/qna/update", {
+                bq_id: match.params.id,
+                bq_title: inputs.title,
+                bq_content: inputs.content,
+            });
+            history.push(`/main/board/qna/detail/${match.params.id}`);
+        }
+        
     };
 
     useEffect(() => {
@@ -39,6 +44,7 @@ const QnaUpdate = ({ match, history }) => {
     }, []);
 
     const getDetail = async () => {
+
         const result = await axios.get("/board/qna/detail/" + match.params.id);
         setInputs({
             ...inputs,

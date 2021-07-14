@@ -52,8 +52,8 @@
 .toggleContainer {
   width: 200px;
   position: relative;
-  left: 150px;
-  top: 227px;
+  left: 490px;
+  top: 243px;
   display: flex;
 }
 .text {
@@ -83,10 +83,11 @@
 /* -------------------------------------------------- */
 .buttons {
   position: relative;
-  bottom: 388px;
-  left: 330px;
+  bottom: 449px;
+  left: 125px;
   z-index: 100;
 }
+
 .pwdButton2 {
   color: #263238;
   font-family: "Noto Sans", sans-serif;
@@ -98,7 +99,7 @@
   margin: 0.5em 0em;
   width: 190px;
   height: 30px;
-  font-size:0.9em  ;
+  font-size: 0.9em;
 }
 .pwdButton {
   color: #263238;
@@ -111,7 +112,7 @@
   margin: 0.5em 0em;
   width: 190px;
   height: 30px;
-  font-size:0.9em  ;
+  font-size: 0.9em;
 }
 
 .submit {
@@ -151,32 +152,32 @@
   color: aliceblue;
 }
 
-.tr1{
+.tr1 {
   height: 35px;
 }
-.td{
+.td {
   width: 120px;
   font-size: 0.9em;
   color: #02678f;
 }
-.td2{
+.td2 {
   font-size: 0.9em;
 }
-.td5{
+.td5 {
   width: 120px;
-  height:0px;
+  height: 0px;
   font-size: 0.9em;
   color: #02678f;
-  
 }
-.form5{
+.form5 {
   margin: 0.2em;
   font-size: 0.9em;
+  resize: none;
 }
 
 /* ------------------------ */
-.fixed{
-  font-size:1.1em ;
+.fixed {
+  font-size: 1.1em;
   /* background-color: rgb(218, 218, 218); */
   padding: 0.2em 0em;
   width: 120px;
@@ -184,17 +185,18 @@
   border-radius: 10px;
   margin-bottom: 0.5em;
 }
-.line{
+.line {
   width: 99%;
   margin-top: -0.1em;
 }
 
-.flexible{
-  font-size:1.1em ;
+.flexible {
+  font-size: 1.1em;
   /* background-color: rgb(218, 218, 218); */
   padding: 0.8em 0em 0.2em 0em;
   width: 120px;
   text-align: left;
   border-radius: 10px;
   margin-bottom: 0.5em;
+  margin-top: 1em;
 }

@@ -38,13 +38,14 @@
   height: 150px;
   border: none;
   border-radius: 0px 20px 10px 0px;
-  background-color: rgb(247, 247, 141);
+  background-color: #9be8ff;
   color: #263238;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
 }
 .button1:hover {
-  background-color: yellow;
+  color: aliceblue;
+  background-color: #00aaef;
 }
 
 .teamButton1 {
@@ -52,13 +53,14 @@
   height: 150px;
   border: none;
   border-radius: 0px 20px 10px 0px;
-  background-color: yellow;
-  color: #263238;
+  background-color: #00aaef;
+  color: aliceblue;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
 }
 .teamButton1:hover {
-  background-color: yellow;
+  color: aliceblue;
+  background-color: #00aaef;
 }
 
 /* --------------------------------------------------------- */
@@ -67,13 +69,14 @@
   height: 150px;
   border: none;
   border-radius: 0px 20px 10px 0px;
-  background-color: rgb(200, 252, 122);
+  background-color: #9be8ff;
   color: #263238;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
 }
 .button2:hover {
-  background-color: greenyellow;
+  color: aliceblue;
+  background-color: #00aaef;
 }
 
 .myButton2 {
@@ -81,11 +84,11 @@
   height: 150px;
   border: none;
   border-radius: 0px 20px 10px 0px;
-  background-color: greenyellow;
-  color: #263238;
+  background-color: #00aaef;
+  color: aliceblue;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
 }
 .myButton2:hover {
-  background-color: greenyellow;
+  background-color: #00aaef;
 }

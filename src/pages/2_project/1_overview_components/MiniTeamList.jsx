@@ -35,7 +35,7 @@ const MiniTeamList = ({projectID}) => {
                   <div className={styles.name}>{emp.e_name}</div>
                   <div className={styles.position}>{emp.ep_position}</div>
                   <div className={emp.commuteCheck?styles.yes:styles.no}> </div>
-                  <Link to="/main/mail/write"><button className={styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
+                  <Link to={`/main/mail/write/${emp.e_id}`}><button className={styles.buttomMail}><i className="far fa-envelope"></i></button></Link>
                 </div>
               );
             })

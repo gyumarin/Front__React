@@ -33,9 +33,13 @@ const RightOverView = ({projectID}) => {
                         <ProjectWorkList projectID={projectID}/>
                     </div>
                 </div>
-                <div className={styles.title}>업무 진행률 <font style={{fontSize:'15px'}}>({workPercent} %)</font></div>
-                <div className={styles.pieChart}>
-                    <Doughnut2 getPer={getPer} projectID={projectID}/>
+                <div className={styles.pieContainer}>
+                    <div className={styles.title2}>업무 진행률 
+                        {workPercent!="NaN"&&<font style={{fontSize:'15px'}}> ( {workPercent} % )</font>}
+                    </div>
+                    <div className={styles.pieChart}>
+                        <Doughnut2 getPer={getPer} projectID={projectID}/>
+                    </div>
                 </div>
             </div>
 

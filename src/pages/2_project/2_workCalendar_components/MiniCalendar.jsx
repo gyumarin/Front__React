@@ -42,7 +42,7 @@ const MiniCalendar = ({projectID, isTeam}) => {
          const scheduleData = data.map(item=>{
            return({
              calendarId: item.wl_id,
-             category: "time",
+             category: "allday",
              isVisible: true,
              isPending: false,
              title: item.wl_work_detail,

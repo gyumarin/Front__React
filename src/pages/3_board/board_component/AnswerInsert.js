@@ -26,13 +26,18 @@ const AnswerInsert = ({ history, match }) => {
     };
 
     const ntInsert = async () => {
-        const result = await axios.post("/board/qna/ainsert", {
-            bq_title: inputs.title,
-            bq_content: inputs.content,
-            token: tmp,
-            board_qna_bq_id: match.params.id,
-        });
-        history.push("/main/admin/board/qna");
+        if(inputs.title==""){
+            alert("제목을 작성해 주세요.")
+        }else{
+            const result = await axios.post("/board/qna/ainsert", {
+                bq_title: inputs.title,
+                bq_content: inputs.content,
+                token: tmp,
+                board_qna_bq_id: match.params.id,
+            });
+            history.push("/main/admin/board/qna");
+        }
+        
     };
     useEffect(() => {
         axios.get(`/employee/detail?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`).then((res) => {setEmpName(res.data.result.e_name)} )

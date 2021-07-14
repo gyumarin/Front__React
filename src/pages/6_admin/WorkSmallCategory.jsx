@@ -52,24 +52,25 @@ const WorkSmallCategory = ({
 
     const onCreateNewDetails = async event => {
         event.preventDefault();
+        if (
+            bigCategoryName == "" ||
+            midCategoryName == "" ||
+            updateDetails.wl_work_detail == "" ||
+            updateDetails.wl_date_start == "" ||
+            updateDetails.wl_date_end == "" ||
+            updateDetails.e_id == 0
+        ) {
+            alert("세부 업무 등록에서 누락된 정보가 있는 지 확인부탁드립니다.");
+        } else {
 
-        alert("프로젝트가 등록되었습니다.");
+        alert("업무가 등록되었습니다.");
         const result = await axios.post("/project/work/insert", {
             p_id: projectId,
             wl_work_category: bigCategoryName,
             wl_work: midCategoryName,
-            wl_work_detail:
-                newDetail.current.value == ""
-                    ? "세부업무 내용 없음"
-                    : updateDetails.wl_work_detail,
-            wl_date_start:
-                startTime.current.value == ""
-                    ? "시작일 없음"
-                    : updateDetails.wl_date_start,
-            wl_date_end:
-                EndTime.current.value == ""
-                    ? "마감일 없음"
-                    : updateDetails.wl_date_end,
+            wl_work_detail: updateDetails.wl_work_detail,
+            wl_date_start:updateDetails.wl_date_start,
+            wl_date_end:updateDetails.wl_date_end,
             e_id: updateDetails.e_id,
         });
         const copy = {
@@ -99,10 +100,21 @@ const WorkSmallCategory = ({
             wl_date_end: "",
             e_id: 0,
         });
+    }
     };
 
     const onUpdateDetails = event => {
         event.preventDefault();
+        if (
+            bigCategoryName == "" ||
+            midCategoryName == "" ||
+            updateDetails.wl_work_detail == "" ||
+            updateDetails.wl_date_start == "" ||
+            updateDetails.wl_date_end == "" ||
+            updateDetails.e_id == 0
+        ) {
+            alert("@@");
+        } else {
         alert("프로젝트가 수정되었습니다.");
         axios.put("/project/work/update", {
             p_id: projectId,
@@ -140,6 +152,7 @@ const WorkSmallCategory = ({
             e_id: 0,
         });
         setIsUpdate(false);
+    }
     };
 
     const onChange = e => {
@@ -314,14 +327,14 @@ const WorkSmallCategory = ({
                         <input
                             type="button"
                             onClick={onUpdateDetails}
-                            value="프로젝트 수정"
+                            value="업무 수정"
                             className={styles.button}
                         />
                     ) : (
                         <input
                             type="button"
                             onClick={onCreateNewDetails}
-                            value="프로젝트 등록"
+                            value="업무 등록"
                             className={styles.button}
                         />
                     )}

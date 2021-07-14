@@ -16,7 +16,8 @@ const SearchQna = ({
     const [keys, setKeys] = useState("title");
     const [values, setValues] = useState("");
 
-    const getList = async () => {
+    const getList = async (event) => {
+        event.preventDefault();
         const result = await axios.get(
             "/board/qna/search?key=" + keys + "&value=" + values
         );
@@ -34,6 +35,7 @@ const SearchQna = ({
         }
         setActive(1);
         setCount(c);
+        setValues('');
     };
 
     const sortList = viewList => {
@@ -62,7 +64,7 @@ const SearchQna = ({
     };
 
     return (
-        <div className={styles.container}>
+        <form className={styles.container} onSubmit={getList}>
             <select 
                 className={styles.select}
                 value={keys} 
@@ -83,7 +85,7 @@ const SearchQna = ({
                 onClick={getList}> 
                  <i className="fas fa-search"></i>
             </button>
-        </div>
+        </form>
     );
 };
 

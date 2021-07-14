@@ -16,7 +16,8 @@ const  SearchNotice = ({
     const [keys, setKeys] = useState("title");
     const [values, setValues] = useState("");
 
-    const getList = async () => {
+    const getList = async (event) => {
+        event.preventDefault();
         const result = await axios.get(
             "/board/notice/search?key=" + keys + "&value=" + values
         );
@@ -35,6 +36,7 @@ const  SearchNotice = ({
         }
         setActive(1);
         setCount(c);
+        setValues('');
     };
 
     const onChange = e => {
@@ -47,13 +49,13 @@ const  SearchNotice = ({
     };
 
     return (
-        <div className={styles.container}>
+        <form className={styles.container} onSubmit={getList}>
             <select 
                 className={styles.select}
                 value={keys} 
                 onChange={onChange2}>
                 <option value="title">제목</option>
-                <option value="writer">작성자</option>
+                <option value="writer">부서명</option>
             </select>
             
             <input 
@@ -69,7 +71,7 @@ const  SearchNotice = ({
                 onClick={getList}>
                     <i className="fas fa-search"></i>
             </button>
-        </div>
+        </form>
     );
 };
 

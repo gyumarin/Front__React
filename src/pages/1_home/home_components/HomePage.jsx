@@ -10,7 +10,7 @@ import styles from './HomePage.module.css';
 
 const HomePage = ({setProject}) => {
 
-    const [projectList, setProjectList] = useState([])
+    const [projectList, setProjectList] = useState([]);
 
     useEffect(() => {
         const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
@@ -43,7 +43,6 @@ const HomePage = ({setProject}) => {
                     }
                 </div>
             </div>
-
             <div className={styles.rightBody}>
                 <div className={styles.calender}>
                     <div>

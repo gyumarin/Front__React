@@ -39,8 +39,8 @@ const NoticeDetail = ({ match }) => {
                             <div className={styles.titleValue}>{detail.bn_title}</div>        
 
                             <div className={styles.date}>
-                                {`작성 : ${detail.d_name}  
-                                |  작성 일자 : ${detail.bn_date}  
+                                {
+                                `  작성 일자 : ${detail.bn_date}  
                                 |  조회 : ${detail.bn_hits}`}
                             </div>                 
                         </div> 

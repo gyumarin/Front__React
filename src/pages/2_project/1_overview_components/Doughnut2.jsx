@@ -75,7 +75,12 @@ useEffect(() => {
           data = {data}
           options = {options}
           style={{}} 
-        />: '등록된 업무가 없습니다.'}
+        />: <div style={{textAlign:'center',marginLeft:'30px',paddingLeft:'10px',
+        width : '230px',fontSize:'15px', paddingTop:'40px',
+        paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
+          <span ><i style={{fontSize:'180px',color :'#5e6cdb',}} class="fas fa-chart-pie" ></i> </span>
+          <p style={{marginLeft:'20px',marginTop:'40px'}}>등록된 업무가 없습니다.</p>
+          </div>}
     </div>
   )
 }

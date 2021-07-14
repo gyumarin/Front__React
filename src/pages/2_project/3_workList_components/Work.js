@@ -6,7 +6,7 @@ const Work = ({data}) => {
     return (
         <div>
             <Card style={{margin : '8px', paddingLeft : '5px' ,height : '90px', fontSize : "0.9em"}}>
-                    <Card.Body style={{ padding : '10px', display: 'grid', gridTemplateRows: '20px 25px 20px',gridTemplateColumns:'15px 100px 10px 350px 215px 50px',marginBottom:'0px', height: '80px'}}>
+                    <Card.Body style={{ padding : '10px', display: 'grid', gridTemplateRows: '20px 25px 20px',gridTemplateColumns:'15px 100px 10px 430px 215px 50px',marginBottom:'0px', height: '80px'}}>
                         <Card.Text  style={{ fontSize:'11px', color : 'rgba(183, 183, 183, 0.8)'}}>{data.wl_id}</Card.Text>
                         <Card.Text style={{gridColumn :'2/4', gridRow :'1/2', fontSize:'11px', color : 'rgba(255, 183, 183, 0.8)'}}>{data.wl_work_category}</Card.Text>
                         
