@@ -344,7 +344,15 @@ const WorkListPage = ({projectID}) => {
                     </div>
                    
                    
-                    <div className={styles.workView} >
+                   {workView.length==0?
+                   <div style={{textAlign:'center',marginLeft:'350px',paddingLeft:'10px',
+                   width : '190px',fontSize:'15px', paddingTop:'200px',
+                   paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
+                     <span ><i style={{fontSize:'70px',color :'#5e6cdb',}} class="fas fa-clipboard" ></i> </span>
+                     <p style={{marginTop:'10px'}}>등록된 업무가 없습니다.</p>
+                     </div>
+                   :
+                   <div className={styles.workView} >
                     {
                         workView[0]&&workView.map((item, index) =>{
                             if(workSuccess==0){return <Work data={item} key={index}/>}
@@ -354,6 +362,8 @@ const WorkListPage = ({projectID}) => {
                         })
                     }
                     </div>
+                   }
+                    
                                         
                 </Card>
                 

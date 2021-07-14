@@ -1,0 +1,18 @@
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 라인수 */
+  -webkit-box-orient: vertical;
+  width: 200px;
+  white-space: normal;
+  line-height: 1.2em;
+  height: 3.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  border-radius: 5px;
+  width: 480px;
+  background-color: white;
+  height: 70px;
+  padding: 8px 8px 8px 16px;
+  padding: 0.5em;
+}

@@ -1,11 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./AddTeamPopUp.module.css";
 
 const AddTeamPopUp = props => {
-    const [search, setSearch] = useState(false);
 
+    useEffect(() => {
+        
+        console.log('AddTeamPopUp',props.peopleList.find(item => item.e_id == id))
+    }, [])
+
+    const [search, setSearch] = useState(false);
+    
     const [list, setList] = useState([]);
 
     const [inputs, setInputs] = useState({
@@ -47,13 +53,18 @@ const AddTeamPopUp = props => {
     };
 
     const insertProjectEmployee = () => {
-        const result = axios.post("/project/employee/insert", {
-            e_id: id,
-            p_id: props.match.params.id,
-            ep_position: position,
-        });
-        props.setTeamPopup(false);
-        props.getWL();
+        if(props.peopleList.find(item => item.e_id == id)==null){
+            const result = axios.post("/project/employee/insert", {
+                e_id: id,
+                p_id: props.match.params.id,
+                ep_position: position,
+            });
+            props.setTeamPopup(false);
+            props.getWL();
+        }else{
+            alert('이미 등록된 팀원입니다. 다시 확인해 주세요.');
+        }
+        
     };
 
     return (

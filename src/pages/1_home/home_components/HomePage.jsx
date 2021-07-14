@@ -28,20 +28,31 @@ const HomePage = ({setProject}) => {
                     <span className={styles.title}>진행중인 프로젝트</span>    
                     <span className={styles.projectNumber}>{projectList.length}</span>  
                 </div>
-                
-                <div className={styles.projectContainer}>
-                    {                
-                        projectList.map((project)=>{
-                        return <Project
-                            id ={project.p_id}
-                            key = {project.p_id}
-                            title = {project.p_title}
-                            start = {project.p_date_start}
-                            end = {project.p_date_end}                        
-                        />
-                    })
-                    }
+                {/*  */}
+                {projectList.length==0?
+                <div style={{textAlign:'center',marginLeft:'120px',paddingLeft:'10px',
+                    width : '240px',fontSize:'15px', paddingTop:'260px',
+                    paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
+                    <span ><i style={{fontSize:'100px',color :'#0d6efd',}} class="fas fa-tasks" ></i> </span>
+                    <p style={{marginTop:'30px'}}>진행중인 프로젝트가 없습니다.</p>
                 </div>
+                :
+                <>
+                    <div className={styles.projectContainer}>
+                        {                
+                            projectList.map((project)=>{
+                            return <Project
+                                id ={project.p_id}
+                                key = {project.p_id}
+                                title = {project.p_title}
+                                start = {project.p_date_start}
+                                end = {project.p_date_end}                        
+                            />
+                        })
+                        }
+                    </div>
+                </>
+                }
             </div>
             <div className={styles.rightBody}>
                 <div className={styles.calender}>

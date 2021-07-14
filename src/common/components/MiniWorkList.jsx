@@ -31,7 +31,7 @@ const MiniWorkList = (props) => {
           </div>
           <div className={styles.table}>
             
-              {
+              {workList.length!=0?
                 workList.map((work)=>{
                   return (<div className={styles.tr}>
                     <div className={styles.td1}>{work.p_title}</div>
@@ -51,6 +51,13 @@ const MiniWorkList = (props) => {
                     </div>  
                   </div>);  
                 })
+              :
+              <div style={{textAlign:'center',marginLeft:'0px',paddingLeft:'60px',
+                height:'250px',width : '600px',fontSize:'15px', paddingTop:'30px',
+                paddingBottom:'40px',fontWeight:'bold', fontFamily:"Noto Sans", borderRadius:'10px'}} >
+                  <span><i style={{fontSize:'90px',color :'#0d6efd',marginBottom:'10px'}} className="far fa-clipboard" ></i></span>
+                  <p>이번 주 진행 하실 업무가 없습니다.</p>
+              </div>
               }
                          
            
@@ -61,5 +68,4 @@ const MiniWorkList = (props) => {
 };
 
 export default MiniWorkList;
-
 

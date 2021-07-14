@@ -222,6 +222,7 @@ const AdminEditProject = props => {
                             })}                           
                             {teamPopup ? (
                                 <AddTeamPopUp
+                                    peopleList = {peopleList}
                                     setTeamPopup={setTeamPopup}
                                     match={props.match}
                                     getWL={getWL}

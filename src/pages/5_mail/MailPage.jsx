@@ -19,7 +19,7 @@ const MailPage = props => {
             <div className={styles.content}>
                 <Switch>
                     <Route
-                        path="/main/mail/post"
+                        exact path="/main/mail/post"
                         render={props => {
                             return <PostRoute {...props}></PostRoute>;
                         }}

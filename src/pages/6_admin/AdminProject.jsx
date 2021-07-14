@@ -57,6 +57,7 @@ const AdminProject = props => {
                     } else {
                         let copy2 = copy.filter(e => e.p_complete == false);
                         props.setProjects(copy2);
+                        alert("프로젝트가 삭제되었습니다.");
                     }
                 } else {
                     alert("비밀번호가 틀렸습니다.");
@@ -64,7 +65,7 @@ const AdminProject = props => {
             });
     };
 
-    const projectDeletePopUp = () => {
+    const projectDeletePopUp = (event) => {  
         setDelSet(true);
     };
 

@@ -2,7 +2,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import CommitWorkList from './CommitWorkList';
-import styles from './CommitListPage.module.css';
+// import styles from './CommitListPage.module.css';
+import styles from './CommitCard.module.css';
 
 const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
 
@@ -236,12 +237,12 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                     <div style={{display:'flex', height: '30px'}}>
                         <p style={{paddingRight:'15px'}}><b>work comment</b></p>
                         {gitWorkList.map((item, index)=>{
-                                            return (
-                                                <div key={index} style={{marginRight:'20px', borderRadius:'10px',backgroundColor:'#007bbc', 
-                                                            height:'22px' ,width:'40px', color:'yellow', fontSize:'14px', paddingLeft:'12px'}}>
-                                                    <b>{item.wl_id}</b>
-                                                </div>   
-                                            )
+                            return (
+                                <div key={index} style={{marginRight:'20px', borderRadius:'10px',backgroundColor:'#007bbc', 
+                                            height:'22px' ,width:'40px', color:'yellow', fontSize:'14px', paddingLeft:'12px'}}>
+                                    <b>{item.wl_id}</b>
+                                </div>   
+                            )
                         })}
                     </div>
                     {/* <div style={{ display:'grid', gridTemplateColumns:'125px 440px',  width:'580px',}}>
@@ -249,7 +250,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                         <p style={{ borderRadius:'5px', backgroundColor:'white',height:'65px', padding:'8px'}}>{comment.text}</p>
                     </div> */}
                     <div style={{  width:'580px', display:'flex'}}>
-                        <p style={{ borderRadius:'5px',  width:'480px',backgroundColor:'white',height:'65px', padding:'8px 8px 8px 16px'}}>{comment.text}</p>
+                        <p className={styles.ellipsis}>{comment.text}</p>
                         <div style={{paddingLeft:"10px", }} onClick={onToggle}>
                             <button style={{ width:'80px', height:'40px', borderRadius:'5px', border:'0px', backgroundColor:'#007bbc', color:'white'}}>Detail</button>
                         </div>

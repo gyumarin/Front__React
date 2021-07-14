@@ -21,6 +21,13 @@ const SendNoteBoard = ({
     read,
     nread,
 }) => {
+
+    const enterEvent =(event)=>{
+        event.preventDefault();
+        search();
+     }
+ 
+
     if (list != null) {
         const onChange = e => {
             setValue(e.target.value);
@@ -35,8 +42,10 @@ const SendNoteBoard = ({
                         {/* <button className={styles.button}><Link to="/main/mail/write">답장 보내기</Link></button> */}
                     </div>
                     <div>
-                        <input className={styles.input} type="text" value={value} onChange={onChange} placeholder="검색" autoFocus></input>
-                        <button className={styles.buttonSearch} onClick={() => {search();}}>검색</button>
+                        <form onSubmit={enterEvent}>
+                            <input className={styles.input} type="text" value={value} onChange={onChange} placeholder="검색" autoFocus></input>
+                            <button className={styles.buttonSearch} onClick={() => {search();}}>검색</button>
+                        </form>
                     </div>
                 </div>
                 

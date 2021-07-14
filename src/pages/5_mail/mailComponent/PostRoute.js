@@ -75,7 +75,8 @@ const PostRoute = ({ match }) => {
         setting(nreadView);
     };
 
-    const search = async () => {
+    const search = async (event) => {
+        // event.preventDefault();
         const result = await axios.get(
             "/note/post/search?value=" + value + "&token=" + tmp
         );
