@@ -20,16 +20,20 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
 
     const onCreateNewBigCategory=(event)=>{
         event.preventDefault();
-        const copied = [...wlb];
-        const newCategory = {
-            "c_id" : new Date().getTime(),
-            "c_name" : newBigCategory.current.value     
-        }        
-    
-        copied.push(newCategory);        
-        setWlb(copied);
-        setMidCategoryId(newCategory.c_id);
-        newBigCategory.current.value = "";
+        if(newBigCategory.current.value ==""){ 
+            alert("카테고리의 이름을 지정해 주세요.")
+        }else{
+            const copied = [...wlb];
+            const newCategory = {
+                "c_id" : new Date().getTime(),
+                "c_name" : newBigCategory.current.value     
+            }        
+        
+            copied.push(newCategory);        
+            setWlb(copied);
+            setMidCategoryId(newCategory.c_id);
+            newBigCategory.current.value = "";
+        }
     }
 
     // ------------------------------------------------------------------------------------ 

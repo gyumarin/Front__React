@@ -72,6 +72,8 @@ const AdminCareProject = props => {
             wl_date_end: "",
             e_id: 0,
         });
+        setSmallCategoryId(100000000);
+        setMidCategoryName("");
     }, [midCategoryId]);
 
     useEffect(() => {

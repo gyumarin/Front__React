@@ -15,8 +15,7 @@ const HomePage = ({setProject}) => {
     useEffect(() => {
         const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
          axios.get(`/project/list?token=${tmp}`).then(res=>{
-            console.log(res.data.result)
-            setProjectList(res.data.result)
+            setProjectList(res.data.result.filter(item=>item.p_complete==false))
             setProject(res.data.result)  
         }) ;           
     }, []);
@@ -33,7 +32,7 @@ const HomePage = ({setProject}) => {
                 <div style={{textAlign:'center',marginLeft:'120px',paddingLeft:'10px',
                     width : '240px',fontSize:'15px', paddingTop:'260px',
                     paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
-                    <span ><i style={{fontSize:'100px',color :'#0d6efd',}} class="fas fa-tasks" ></i> </span>
+                    <span ><i style={{fontSize:'100px',color :'#0d6efd',}} className="fas fa-tasks" ></i> </span>
                     <p style={{marginTop:'30px'}}>진행중인 프로젝트가 없습니다.</p>
                 </div>
                 :

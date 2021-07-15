@@ -14,7 +14,6 @@ const DoughnutChart = ({projectID}) => {
         res.data.result.map(item =>{
             sum = sum + item.count
         });
-        // console.log(sum);
         const tempData = {
             //데이터 이름
             labels: res.data.result.map(item =>item.wl_work_category),
@@ -61,10 +60,10 @@ const DoughnutChart = ({projectID}) => {
         {data.total!=0?<Pie
           data = {data}
           options = {options}
-        />: <div style={{textAlign:'center',marginLeft:'-60px',paddingLeft:'10px',
-                        width : '190px',fontSize:'15px', paddingTop:'20px',
+        />: <div style={{textAlign:'center',marginLeft:'-40px',paddingLeft:'10px',
+                        width : '190px',fontSize:'15px', paddingTop:'10px',
                         paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
-                          <span ><i style={{fontSize:'70px',color :'#5e6cdb',}} class="fas fa-chart-pie" ></i> </span>
+                          <span ><i style={{fontSize:'70px',color :'gray',}} className="fas fa-chart-circle" ></i> </span>
                           <p style={{marginTop:'10px'}}>등록된 업무가 없습니다.</p>
                           </div>}
       </div>

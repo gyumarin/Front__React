@@ -17,7 +17,6 @@ export const workingOn = (token) => {
         .post('employee/start', {
             token: token,
         })
-        .then((response) => console.log('success', response.data.code));
 };
 // 	1.3. 출근부 퇴근
 export const workingOff = (token) => {

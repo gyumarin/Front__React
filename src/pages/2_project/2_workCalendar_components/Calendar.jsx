@@ -56,7 +56,6 @@ const Calendar  = ({projectID, isTeam}) => {
           
           const labelColorData = data.map((item,index)=>{
             const per = 255/(data.length);
-            // console.log(item)             
             return({
               id: item.wl_id,
               name:item.e_name,
@@ -83,7 +82,6 @@ const Calendar  = ({projectID, isTeam}) => {
       axios.get(`/project/work/list/team/${projectID}`)
       .then(res => res.data.result)
       .then(data =>{
-          console.log(data);
           const teamScheduleData = data.map(item=>{
             return({
               calendarId: item.e_id,

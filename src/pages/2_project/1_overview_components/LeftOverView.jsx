@@ -9,9 +9,7 @@ const LeftOverView = ({projectID}) => {
     
     useEffect(() => {
         axios.get(`/project/detail/${projectID}`).then(res =>{
-            setProjectInfo(res.data.result)
-            // console.log(res.data.result)
-            
+            setProjectInfo(res.data.result)   
         })
     }, [])
 

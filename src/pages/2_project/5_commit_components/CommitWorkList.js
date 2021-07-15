@@ -11,7 +11,6 @@ const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         axios.get(`/project/work/list/person?p_id=${projectID}&token=${tmp}`).then(async res=>{
             await setWorkList(res.data.result.filter(item=>item.wl_done != 3))
-            await console.log('workList', workList);
         })
     }, [])
 

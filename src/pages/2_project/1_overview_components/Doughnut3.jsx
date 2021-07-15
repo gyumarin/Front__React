@@ -3,11 +3,6 @@ import React, {useState , useEffect} from 'react';
 import {Pie} from 'react-chartjs-2';
 
 const Doughnut3= ({projectID}) => {
-  // useEffect(() => {
-  //     axios.get('/employee/dept').then(res =>{
-  //         console.log(res.data.result);
-  //     })
-  // }, [])
 
   const [data, setData] = useState({})
  
@@ -20,7 +15,6 @@ const Doughnut3= ({projectID}) => {
         res.data.result.map(item =>{
             sum = sum + item.count
         });
-        // console.log(sum);
         const tempData = {
             //데이터 이름
             labels: res.data.result.map(item =>item.wl_work_category),
@@ -62,15 +56,15 @@ const Doughnut3= ({projectID}) => {
   };      
   
   return (
-    <div style={{height: '400px' ,width : '160px'}}>
+    <div style={{paddingTop:'20px',height: '400px' ,width : '160px'}}>
       {data.total!=0?<Pie
           data = {data}
           options = {options}
           style={{}} 
         />: <div style={{textAlign:'center',marginLeft:'-60px',paddingLeft:'10px',
-        width : '190px',fontSize:'15px', paddingTop:'20px',
+        width : '220px',fontSize:'15px', paddingTop:'20px',
         paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
-          <span ><i style={{fontSize:'90px',color :'#5e6cdb',}} class="fas fa-chart-pie" ></i> </span>
+          <span ><i style={{fontSize:'90px',color :'#5e6cdb',}} class="fas fa-chart-circle" ></i> </span>
           <p style={{marginTop:'10px'}}>등록된 업무가 없습니다.</p>
           </div>}
     </div>

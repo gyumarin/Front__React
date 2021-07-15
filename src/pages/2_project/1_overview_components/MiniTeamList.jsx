@@ -10,10 +10,8 @@ const MiniTeamList = ({projectID}) => {
   const [empList, setEmpList] = useState([])
 
     useEffect(() => {
-        console.log('projectID', projectID)
         axios.get(`/project/list/emp/${projectID}`).then(res =>{
           setEmpList(res.data.result)
-          // console.log(res.data.result)
             
         })
     }, [])
@@ -28,7 +26,7 @@ const MiniTeamList = ({projectID}) => {
           {
             empList.map((emp)=>{
               return (
-                <div className={styles.teamList}>
+                <div key = {emp.e_id} className={styles.teamList}>
                   <div className={styles.photo}>
                     <img className={styles.image} src={emp.e_photo} alt="team" />
                   </div>

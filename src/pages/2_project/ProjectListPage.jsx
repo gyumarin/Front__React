@@ -9,32 +9,36 @@ const ProjectListPage = ({project}) => {
 
     const [projectList, setProjectList] = useState(project);
     const [allProjectList, setAllProjectList] = useState(project);
+    const [toggle, setToggle] = useState(false);
 
 
     useEffect( async () => {
         const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
         const result = await axios.get(`/project/list?token=${tmp}`);
-        setAllProjectList(result.data.result);
-        let copy = result.data.result.filter(e => e.p_complete == false);
-        setProjectList(copy);
-
+        await setAllProjectList(result.data.result);
+        
+        let copy = allProjectList.filter(e => e.p_complete == false);
+        await setProjectList(copy);
+        await setToggle(true);
     }, [])
 
     const getUndoneProject = async () => {
         let copy = allProjectList.filter(e => e.p_complete == false);
-        setProjectList(copy);
+        await setProjectList(copy);
+        await setToggle(true);
     };
 
     const getDoneProject = async () => {
         let copy = allProjectList.filter(e => e.p_complete == true);
-        setProjectList(copy);
+        await setProjectList(copy);
+        await setToggle(true);
     };
 
 
     return(
         <div className={styles.container}>
             <div className={styles.header}>
-               <div className={styles.title}>진행중인 프로젝트</div>
+               <div className={styles.title}>프로젝트 목록</div>
                <span className={styles.count}>{projectList.length}개</span>
 
                <div className={styles.buttons}>
@@ -45,7 +49,7 @@ const ProjectListPage = ({project}) => {
 
             <div className={styles.carousel}>
             {
-                projectList[0]&&                
+                toggle&&projectList.length!=0&&                
                 <StyleRoot>
                     <Coverflow                        
                         displayQuantityOfSide={1}
@@ -74,6 +78,7 @@ const ProjectListPage = ({project}) => {
                                     end = {project.p_date_end}
                                     total = {project.p_Totalpersent}
                                     success = {project.p_success}
+                                    count = {project.user_count}
                                     
                                     // data-action="https://doce.cc/"                                
                                 />      
@@ -89,5 +94,4 @@ const ProjectListPage = ({project}) => {
 };
 
 export default ProjectListPage;
-
 

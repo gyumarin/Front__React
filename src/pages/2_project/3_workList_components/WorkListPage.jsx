@@ -24,14 +24,12 @@ const WorkListPage = ({projectID}) => {
     const [projectInfo, setProjectInfo] = useState([])
 
     useEffect(() => {
-        console.log(workList);
     }, [workList])
 
     useEffect(() => {
         axios.get(`/project/detail/${projectID}`).then(res =>{
             setProjectInfo(res.data.result)
-            // console.log(res.data.result.p_title)
-            
+
         });
 
         axios.get(`/project/work/list/team/${projectID}`).then(res =>{
@@ -143,11 +141,7 @@ const WorkListPage = ({projectID}) => {
     const onKeyword = useCallback((e) => {
         setSearch({...search, select: search.select, keyword : e.target.value});
     },[search])
-
-    useEffect(() => {
-        console.log(maincate)
-    }, [maincate])
-
+ 
     const onSearch =  (event) =>{
 
         event.preventDefault();
@@ -184,7 +178,6 @@ const WorkListPage = ({projectID}) => {
                     projectID
             )
             .then(async res => {
-                console.log(res.data.result);
                 setWorkList(res.data.result);
                 setWorkView(res.data.result);
                 await setMaincate("김치b");
@@ -211,9 +204,20 @@ const WorkListPage = ({projectID}) => {
                     
                 <div style={{ gridColumn:'2/3', gridRow:'1/4' , height: '100px', 
                     display:'flex', margin:'11px 7px -10px 7px', padding:'85px 0px 0px 0px'}}>
-                
+                    <Card style={{height: '90px', marginLeft: 'px', backgroundColor:"rgb(250, 250, 250)", width:"200px", marginRight:'5px'}} className={styles.card1}>
+                        <Form style={{margin: '3px',padding:'10px 0px 0px 10px', width: '180px',}}>
+                            <p style={{fontWeight :"bold"}}>뷰 변경</p>
+                            <div style={{marginTop:"-10px",display:'flex', justifyContent:'flex-end'}}>
+                                {check ? (
+                                    <div><Button onClick={getAll}>전체</Button></div>
+                                ) : (
+                                    <div><Button onClick={mySearch}>개인 업무</Button></div>
+                                )}
+                        </div>
+                        </Form>
+                    </Card>
                     {/* 1. 수행 여부 */}
-                    <Card style={{height: '90px', marginLeft: '205px', backgroundColor:"rgb(250, 250, 250)", width:"250px"}} className={styles.card1}>
+                    <Card style={{height: '90px', marginLeft: 'px', backgroundColor:"rgb(250, 250, 250)", width:"250px"}} className={styles.card1}>
                         <Form style={{margin: '3px',padding:'10px 0px 0px 10px', width: '280px'}}>
                             <p style={{fontWeight :"bold"}}>수행 여부</p>
                             <Form.Check 
@@ -255,7 +259,8 @@ const WorkListPage = ({projectID}) => {
                         display: 'grid',
                         gridTemplateColumns:'90px 100px 200px 70px', 
                         marginLeft: '5px',
-                        padding:'10px 0px 0px 0px'}
+                        padding:'10px 0px 0px 0px'
+                        }
                     }>
                         <p style={{padding:'0px 5px 0px 15px', fontWeight:"bold", }}>검색 조회                       
                         </p>
@@ -293,7 +298,12 @@ const WorkListPage = ({projectID}) => {
 
 
                 
-                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '130px', margin : '10px 5px 5px 35px', padding:'20px', borderRadius : "5px", width:"280px", backgroundColor:"rgb(250, 250, 250)", borderLeft:"5px solid #00aaef",  }}>
+                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '130px', 
+                margin : '5px 5px 5px 35px', padding:'20px', 
+                borderRadius : "5px", width:"280px", 
+                backgroundColor:"rgb(250, 250, 250)", 
+                borderLeft:"5px solid #00aaef",
+                 borderTop:"5px solid #00aaef", }}>
                     <p style={{fontWeight:"bold"}}>업무 대분류</p>
                     <Form  className={styles.form}>    
                         
@@ -326,21 +336,15 @@ const WorkListPage = ({projectID}) => {
                 <div></div>
 
 
-                <Card style={{gridColumn:'3/4', gridRow:'2/6', padding:'30px 0px 0px 20px', margin : '25px 5px 5px 5px', height :'750px', borderRadius:"10px", boxSizing : "border-box", border:"5px solid #00aaef", backgroundColor:"rgb(250, 250, 250)"}}>
+                <Card style={{gridColumn:'3/4', gridRow:'2/6', padding:'30px 0px 0px 20px', margin : '25px 5px 5px 5px', height :'750px', borderRadius:"10px", boxSizing : "border-box", borderTop:"5px solid #00aaef",borderRight:"5px solid #00aaef", backgroundColor:"rgb(250, 250, 250)"}}>
                     <Pie projectID={projectID} />
                 </Card>
                 
                 
-                <Card style={{boxShadow: "6px 7px 22px 0px rgba(0, 0, 0, 0.44)", padding : '1em 2em', gridColumn:'2/3', gridRow:'4/6', margin : '30px 10px 10px 10px', height :'645px', borderRadius:"10px", }}>
+                <Card style={{boxShadow: "6px 7px 22px 0px rgba(0, 0, 0, 0.2)", padding : '1em 2em', gridColumn:'2/3', gridRow:'4/6', margin : '30px 10px 10px 10px', height :'645px', borderRadius:"10px", }}>
                     <div style={{display:'grid', gridTemplateColumns:'600px 350px'}}> 
                     <p style={{margin:'13px 0px 10px 20px', fontSize : "1.2em", }}><b>업무 리스트 <font style={{color : 'rgba(1, 1, 1, 0.5)', width:'300px'}}>{check?'my':'team'}</font></b></p>
-                    <div style={{margin : "10px -5px 5px 117px"}}>
-                            {check ? (
-                                <Button onClick={getAll}>전체 업무 리스트</Button>
-                            ) : (
-                                <Button onClick={mySearch}>나의 업무 리스트</Button>
-                            )}
-                    </div>
+                    
                     </div>
                    
                    

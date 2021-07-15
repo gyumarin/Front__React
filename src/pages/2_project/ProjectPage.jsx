@@ -24,9 +24,7 @@ const ProjectPage = () => {
             // await history.push(`/main/project/${param}`);
         }
         await axios.get(`/project/detail/${param}`).then(res =>{
-            setProjectInfo(res.data.result)
-            // console.log(res.data.result.p_title)
-            
+            setProjectInfo(res.data.result)            
         })
     }, [param])
 

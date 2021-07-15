@@ -55,7 +55,6 @@ const MiniCalendar = ({projectID, isTeam}) => {
          
          const labelColorData = data.map((item,index)=>{
            const per = 255/(data.length);
-           // console.log(item)             
            return({
              id: item.wl_id,
              name:item.e_name,
@@ -122,7 +121,6 @@ const MiniCalendar = ({projectID, isTeam}) => {
 
    const [selectedDay, setSelectedDay] = useState();
    useEffect(() => {
-     console.log(selectedDay);
    }, [selectedDay]);
 
    // ----------------------------------------------------------------

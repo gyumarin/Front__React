@@ -9,7 +9,6 @@ const MiniWorkList = (props) => {
     useEffect(() => {
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         axios.get(`/project/work/list/person/all?token=${tmp}`).then(res=>{   
-          console.log('MiniWorkList',res.data.result);                 
           setWorkList(res.data.result)          
         })
     }, [])
@@ -33,7 +32,7 @@ const MiniWorkList = (props) => {
             
               {workList.length!=0?
                 workList.map((work)=>{
-                  return (<div className={styles.tr}>
+                  return (<div key ={work.wl_id} className={styles.tr}>
                     <div className={styles.td1}>{work.p_title}</div>
                     {/* <td className={styles.numtd}>{work.wl_id}</td> */}
                     {/* <td className={styles.td}>{work.wl_work_category}</td> */}

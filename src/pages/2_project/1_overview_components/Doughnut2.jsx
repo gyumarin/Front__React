@@ -16,7 +16,6 @@ const Doughnut2= ({projectID, getPer}) => {
         res.data.result.map(item =>{
             sum = sum + item.count
         });
-        // console.log(sum);
         const tempData = {
             //데이터 이름
             labels: res.data.result.map(item =>item.wl_work_category),
@@ -76,10 +75,10 @@ useEffect(() => {
           options = {options}
           style={{}} 
         />: <div style={{textAlign:'center',marginLeft:'30px',paddingLeft:'10px',
-        width : '230px',fontSize:'15px', paddingTop:'40px',
+        width : '260px',fontSize:'15px', paddingTop:'40px',
         paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
           <span ><i style={{fontSize:'180px',color :'#5e6cdb',}} class="fas fa-chart-pie" ></i> </span>
-          <p style={{marginLeft:'20px',marginTop:'40px'}}>등록된 업무가 없습니다.</p>
+          <p style={{marginTop:'40px'}}>등록된 업무가 없습니다.</p>
           </div>}
     </div>
   )

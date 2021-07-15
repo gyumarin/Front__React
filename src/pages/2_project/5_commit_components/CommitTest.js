@@ -44,7 +44,6 @@ const CommitTest = ({ projectInfo }) => {
 
     useEffect(() => {
         getBranchName(projectName).then((res) => {
-            console.log('getBranchName',res)
             setBranchs(res);
         });
 
@@ -60,7 +59,6 @@ const CommitTest = ({ projectInfo }) => {
     useEffect(() => {
         branchs.map((branch) => {
             getCommit(branch.commit.url).then((res) => {
-                // console.log('committer',res.committer.login)
                 setCommit({ name: branch.name, commits: res, top: true });
             });
         });
@@ -175,13 +173,32 @@ const CommitTest = ({ projectInfo }) => {
                 <h5 style={{fontWeight:"bold"}}>Commit List<font style={{marginLeft : '16px' ,fontSize:'13px', color : 'rgba(1, 1, 1, 0.3)'}}><b>{useBranch}</b></font></h5>
                 
                <div className={styles.workView} style={{marginTop:'20px',paddingTop:"20px"}}>
-                {toggle === true
-                    ? masterList.map((commit, key) => {
-                        return <CommitCard info={commit} nick={nick} key={key} projectInfo={projectInfo}/>;
-                    })
-                    : view.map((commit, key) => {
-                        return <CommitCard info={commit.commits} nick={nick} useBranch={ useBranch }key={key} projectInfo={projectInfo}/>;
-                    })}
+                    {toggle === true
+                        ? (masterList.length!=0?masterList.map((commit, key) => {
+                            return <CommitCard info={commit} nick={nick} key={key} projectInfo={projectInfo}/>;
+                        }):
+                            <div style={{textAlign:'center',paddingLeft:'10px',
+                                height:'250px',width : '1100px',fontSize:'18px', paddingTop:'150px',
+                                paddingBottom:'40px',fontWeight:'bold', fontFamily:"Noto Sans", borderRadius:'10px'}} >
+                                <span><i style={{fontSize:'120px',color :'#0d6efd',marginBottom:'10px'}} className="fab fa-github" ></i></span>
+                                <span><i style={{fontSize:'80px',color :'#0d6efd',marginBottom:'50px'}} className="far fa-comment-dots" ></i></span>
+                                <p style={{marginTop:"30px"}}>저장소 명이 등록 되었는지 확인해 주세요.</p>
+                            </div>
+                        )
+                        :   
+                        (view.length!=0?view.map((commit, key) => {
+                            return <CommitCard info={commit.commits} nick={nick} useBranch={ useBranch }key={key} projectInfo={projectInfo}/>;
+                        }):
+                            <div style={{textAlign:'center',paddingLeft:'10px',
+                                height:'250px',width : '1100px',fontSize:'18px', paddingTop:'150px',
+                                paddingBottom:'40px',fontWeight:'bold', fontFamily:"Noto Sans", borderRadius:'10px'}} >
+                                <span><i style={{fontSize:'120px',color :'#0d6efd',marginBottom:'10px'}} className="fab fa-github" ></i></span>
+                                <span><i style={{fontSize:'80px',color :'#0d6efd',marginBottom:'50px'}} className="far fa-comment-dots" ></i></span>
+                                <p style={{marginTop:"30px"}}>브런치에 커밋 내용이 없습니다.</p>
+                            </div>
+                        )
+                    }
+                        
                 </div>
                 <hr/>
                 {!toggle&& <Button style={{width:'300px', marginLeft:'400px'}}onClick={onClick}>더 보기</Button>}

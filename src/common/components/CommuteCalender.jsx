@@ -27,18 +27,15 @@ const CommuteCalender = (props) => {
   },[commute])  
 
   useEffect(()=>{
-    console.log("commuteData",commuteData)
   },[commuteData]) 
 
   const load = async()=>{
     const result = await axios.get(`/employee/commute/list?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`);
-    console.log(result.data.result);
     if(result.data.result.length!=0){
     setCommute(result.data.result[result.data.result.length-1].c_end == null ? (result.data.result[result.data.result.length-1].c_day == datee ? true : false) : false);
 
     var test = result.data.result.filter(item =>item.c_year==year&&item.c_month==month+1&&datee==item.c_day)
     if(test.length>=2){
-      console.log("test 2개이상 있어요!",test)
       setnoButton(false);
     }
     
@@ -93,6 +90,7 @@ const CommuteCalender = (props) => {
           views={['month']}
           popup={true}
           defaultDate={new Date(year, month, datee)}
+          onView
         />
       </div>
     </div>

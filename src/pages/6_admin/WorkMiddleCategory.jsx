@@ -27,16 +27,21 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
   
     const onCreateNewMiddleCategory =(event)=>{
         event.preventDefault();
-        const copied = [...wlm];
-        const newCategory = {
-            "c_id" : midCategoryId,
-            "m_id" : new Date().getTime(),
-            "m_name" : newMiddleCategory.current.value               
-        }      
+        if(newMiddleCategory.current.value ==""){ 
+            alert("업무를 작성해 주세요.")
+        }else{
+            const copied = [...wlm];
+            const newCategory = {
+                "c_id" : midCategoryId,
+                "m_id" : new Date().getTime(),
+                "m_name" : newMiddleCategory.current.value               
+            }      
 
-        copied.push(newCategory);        
-        setWlm(copied);
-        newMiddleCategory.current.value = "";
+            copied.push(newCategory);        
+            setWlm(copied);
+            newMiddleCategory.current.value = "";
+        }
+        
     }
 
     // ---------------------------------------------------------------------------

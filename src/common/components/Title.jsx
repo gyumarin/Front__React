@@ -10,8 +10,6 @@ const Title = (props) => {
   const history = useHistory();
   let admin =false;
 
-  // console.log(sessionStorage.getItem('isAdmin'));
-
   const goHome =(event)=>{
     event.preventDefault();
     if(sessionStorage.getItem('isAdmin') == "true"){

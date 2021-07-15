@@ -21,7 +21,6 @@ const RightOverView = ({projectID}) => {
       }, [])
 
       const getPer =(data) =>{
-        console.log('동작')
         setWorkPercent(data);
       }
     return(

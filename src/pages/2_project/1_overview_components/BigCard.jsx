@@ -5,15 +5,14 @@ import Doughnut3 from './Doughnut3';
 import {Link} from  'react-router-dom';
 
 const BigCard = (props) => {    
-    console.log(props);
     return(
     <Card className = {styles.card}>      
         <Card.Body className = {styles.body}>
             <Card.Title className = {styles.title}>{`Project ${props.id}`}</Card.Title>
             <Card.Text className = {styles.text}>{props.title}</Card.Text>
             <Card.Text className = {styles.date}>{`${props.start} ~ ${props.end}`}</Card.Text>     
-            <Card.Text className={styles.cardContent}>인원 : 백에서 인원 넘겨주소 </Card.Text>  
-            <Card.Text className={styles.cardContent}>프로젝트 내용 : 이거 우째 할거요?</Card.Text>       
+            <Card.Text className={styles.cardContent}>프로젝트 참여 인원 : {props.count} 명</Card.Text>  
+            {/* <Card.Text className={styles.cardContent}>프로젝트 내용 : 이거 우째 할거요?</Card.Text>        */}
             <div className={styles.chart}>
                 <Doughnut3 projectID = {props.id} />
             </div> 
