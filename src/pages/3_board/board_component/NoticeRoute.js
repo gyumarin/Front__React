@@ -48,7 +48,6 @@ const NoticeRoute = () => {
 
         const result = await axios.get("/board/notice/list");
         await setList(result.data.result);
-        await console.log(result.data.result)
 
         setViewList(result.data.result.slice(0, listMax));
         let c = parseInt(result.data.result.length / listMax);

@@ -108,17 +108,22 @@ const AdminEditProject = props => {
         
     }
 
-    const onIgnore = (wlID) => {
+    const onIgnore = (wlID, message) => {
         var bool = window.confirm(wlID+'번 업무를 반려하시겠습니까?')
        if(bool){
-            axios.put(`/project/undone/${wlID}`);
+            axios.put(`/project/undone`,{
+                wl_id : wlID,
+                message: message,
+                
+            });
             setWatiForConfirms(waitForConfirms.filter(item=>item.wl_id !== wlID))
             alert(wlID+'번 업무가 반려 되었습니다.')
+            
        }
     }
 
     const deletePeople = ep_id => {
-        const result = axios.delete("/project/employee/delete/" + ep_id);
+        axios.delete("/project/employee/delete/" + ep_id);
         getWL();
     };
 
@@ -222,7 +227,7 @@ const AdminEditProject = props => {
                             })}                           
                             {teamPopup ? (
                                 <AddTeamPopUp
-                                    peopleList = {peopleList}
+                                    peopleList={peopleList}
                                     setTeamPopup={setTeamPopup}
                                     match={props.match}
                                     getWL={getWL}

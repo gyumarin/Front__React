@@ -27,7 +27,7 @@ const MiniNotice = (props) => {
       <ListGroup className={styles.notices}>{
           noticeList.map(notice =>{
             return (
-              <ListGroup.Item className={styles.notice} variant="info" onClick ={()=>{goNotice(notice.bn_id)}} >
+              <ListGroup.Item key={notice.bn_id} className={styles.notice} variant="info" onClick ={()=>{goNotice(notice.bn_id)}} >
                 <span className={styles.noticeContent}>[공지] {notice.bn_title}</span>                
               </ListGroup.Item>);
           })}                

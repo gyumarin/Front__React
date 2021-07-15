@@ -1,5 +1,5 @@
 .container {
-  background-color: #6f777a;
+  background-color: #8b9699;
   color: #263238;
   width: 100%;
   height: 6em;
@@ -15,7 +15,7 @@
   width: 85%;
   height: 100%;
   border-radius: 5px 0px 0px 5px;
-  background-color: rgb(165, 165, 165);
+  background-color: white;
   padding: 0.5em;
 }
 
@@ -27,7 +27,6 @@
 }
 
 .number {
-  font-weight: bold;
   width: 60%;
   padding-left: 0.5em;
   text-align: left;
@@ -37,14 +36,14 @@
   text-align: right;
 }
 .dday {
-  font-weight: bold;
   color: rgb(179, 1, 1);
   width: 10%;
   text-align: center;
 }
 /* ---------------------------- */
 .middle {
-  color: aliceblue;
+  color: #263238;
+  font-weight: bold;
   display: flex;
   /* border: 1px solid black; */
   height: 40%;
@@ -57,7 +56,6 @@
 }
 .detail {
   padding-left: 0.5em;
-  font-weight: bold;
 }
 
 .bottom {

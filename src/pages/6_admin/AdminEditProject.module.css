@@ -159,9 +159,10 @@
   margin: auto;
   margin-bottom: 5px;
   display: flex;
+  cursor: pointer;
 }
 .card:hover {
-  opacity: 0.8;
+  background-color: #7582e0;
 }
 
 .cardContainer {

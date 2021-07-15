@@ -77,7 +77,7 @@ useEffect(() => {
         />: <div style={{textAlign:'center',marginLeft:'30px',paddingLeft:'10px',
         width : '260px',fontSize:'15px', paddingTop:'40px',
         paddingBottom:'20px',fontWeight:'bold', fontFamily:"Noto Sans"}} >
-          <span ><i style={{fontSize:'180px',color :'#5e6cdb',}} class="fas fa-chart-pie" ></i> </span>
+          <span ><i style={{fontSize:'180px',color :'#5e6cdb',}} className="fas fa-chart-pie" ></i> </span>
           <p style={{marginTop:'40px'}}>등록된 업무가 없습니다.</p>
           </div>}
     </div>

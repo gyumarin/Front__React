@@ -28,14 +28,9 @@ const MyCommuteCalendar = (props) =>{
     load();
   },[commute])  
 
-  useEffect(()=>{
-    console.log("commuteData",commuteData)
-  },[commuteData]) 
-
-  
+   
   const load = async()=>{
     const result = await axios.get(`/employee/commute/list?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`);
-    console.log(result.data.result);
     if(result.data.result.length!=0){
     setCommute(result.data.result[result.data.result.length-1].c_end == null ? (result.data.result[result.data.result.length-1].c_day == datee ? true : false) : false);
 

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./AdminWorkListCard.module.css";
-import { useEffect } from "react";
 import axios from "axios";
 
 const AdminWorkListCard = ({

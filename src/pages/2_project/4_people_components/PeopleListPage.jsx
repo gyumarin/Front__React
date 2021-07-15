@@ -22,7 +22,9 @@ const PeopleListPage = ({projectID}) => {
         <div className={styles.content}>
           {
             empList.map((worker)=>{
+              
               return <TeamCard
+              key = {worker.e_id}
                 worker = {worker}
               />
             })

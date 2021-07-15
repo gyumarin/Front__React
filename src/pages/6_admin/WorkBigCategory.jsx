@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import styles from './WorkBigCategory.module.css';
 
@@ -7,6 +7,11 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
        
     // state
     const newBigCategory = useRef("");
+    const [idCheck, setIdCheck] = useState(10000000)
+
+    useEffect(() => {
+        console.log(idCheck);
+    }, [idCheck])
 
     // Method
     const openMiddleCategory =(event)=>{
@@ -16,6 +21,7 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
         setMidCategoryId(midCategoryId); 
         setBigCategoryName(event.target.innerText);
         renewalDetails();
+        setIdCheck(event.target.id);
     } 
 
     const onCreateNewBigCategory=(event)=>{
@@ -51,6 +57,14 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
                 <div className={styles.categoryBox}>
                     {
                         wlb.map(c =>{
+                            if(idCheck==c.c_id){
+                                <div 
+                                    id={c.c_id}
+                                    className={styles.cardbig} 
+                                    onClick={openMiddleCategory}
+                                >{c.c_name}
+                                </div>
+                            }
                             return(
                                 <div 
                                     id={c.c_id}

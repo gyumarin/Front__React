@@ -9,7 +9,6 @@ const NoticeBoard = ({ isAdmin , viewList }) => {
     return (
         <>
             {viewList.map((value, key) => {
-                console.log('NoticeBoard',value)
                 return (
                     <tr key={key} className={styles.tr}>
                         <td className={styles.td1}>{value.bn_id}</td>

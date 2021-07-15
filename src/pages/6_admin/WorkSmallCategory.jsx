@@ -50,6 +50,8 @@ const WorkSmallCategory = ({
         });
     }, []);
 
+    
+
     const onCreateNewDetails = async event => {
         event.preventDefault();
         if (
@@ -190,6 +192,7 @@ const WorkSmallCategory = ({
                                 >
                                     카테고리 :{" "}
                                 </div>{" "}
+                                {bigCategoryName == ""?
                                 <div
                                     style={{
                                         width: "100%",
@@ -202,7 +205,22 @@ const WorkSmallCategory = ({
                                     {bigCategoryName == ""
                                         ? "카테고리를 선택해주세요"
                                         : bigCategoryName}
+                                </div>:
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        textAlign: "left",
+                                        // border: "1px solid gray",
+                                        borderRadius: "5px",
+                                        paddingLeft: "0.5em",
+                                        fontWeight:'bold',
+                                    }}
+                                >
+                                    {bigCategoryName == ""
+                                        ? "카테고리를 선택해주세요"
+                                        : bigCategoryName}
                                 </div>
+                                }
                             </div>
                             <div
                                 style={{
@@ -220,7 +238,22 @@ const WorkSmallCategory = ({
                                 >
                                     업무 :{" "}
                                 </div>{" "}
-                                <div
+                                {midCategoryName !==""?
+                                    <div
+                                        style={{
+                                            width: "100%",
+                                            textAlign: "left",
+                                            // border: "1px solid gray",
+                                            borderRadius: "5px",
+                                            paddingLeft: "0.5em",
+                                            fontWeight:'bold',
+                                        }}
+                                    >
+                                        {midCategoryName == ""
+                                            ? "업무를 선택해주세요"
+                                            : midCategoryName}
+                                    </div> : 
+                                    <div
                                     style={{
                                         width: "100%",
                                         textAlign: "left",
@@ -233,6 +266,7 @@ const WorkSmallCategory = ({
                                         ? "업무를 선택해주세요"
                                         : midCategoryName}
                                 </div>
+                                    }
                             </div>
                         </div>
 

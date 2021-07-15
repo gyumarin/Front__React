@@ -56,6 +56,7 @@ const CompanyTree = (props) => {
                     : nowTeam.map((team)=>{
                         return(
                         <TeamCardForTree
+                            key = {team.e_id}
                             team = {team}
                         />
                         )

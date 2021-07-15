@@ -16,21 +16,21 @@ const ProjectListPage = ({project}) => {
         const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
         const result = await axios.get(`/project/list?token=${tmp}`);
         await setAllProjectList(result.data.result);
-        
-        let copy = allProjectList.filter(e => e.p_complete == false);
-        await setProjectList(copy);
+        await setProjectList(result.data.result.filter(e => e.p_complete == false));
         await setToggle(true);
     }, [])
 
     const getUndoneProject = async () => {
         let copy = allProjectList.filter(e => e.p_complete == false);
         await setProjectList(copy);
+        await setToggle(false);
         await setToggle(true);
     };
 
     const getDoneProject = async () => {
         let copy = allProjectList.filter(e => e.p_complete == true);
-        await setProjectList(copy);
+        await setProjectList(copy); 
+        await setToggle(false);
         await setToggle(true);
     };
 
@@ -78,9 +78,7 @@ const ProjectListPage = ({project}) => {
                                     end = {project.p_date_end}
                                     total = {project.p_Totalpersent}
                                     success = {project.p_success}
-                                    count = {project.user_count}
-                                    
-                                    // data-action="https://doce.cc/"                                
+                                    count = {project.user_count}                                    
                                 />      
                             )                        
                         })
