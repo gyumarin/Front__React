@@ -54,10 +54,9 @@
 }
 
 .form {
-  height: 150px;
-  /* border: 1px solid black; */
+  height: 180px;
+  padding: 0.1em;
   overflow-y: scroll;
-  /* border: 1px solid black; */
   font-size: 0.9em;
   padding-bottom: -50px;
   -ms-overflow-style: none; /* IE and Edge */

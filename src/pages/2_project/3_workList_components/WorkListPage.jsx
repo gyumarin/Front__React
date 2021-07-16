@@ -298,13 +298,14 @@ const WorkListPage = ({projectID}) => {
 
 
                 
-                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '130px', 
+                <Card style={{ gridColumn:'1/2', gridRow:'3/5',height: '183px', 
                 margin : '5px 5px 5px 35px', padding:'20px', 
                 borderRadius : "5px", width:"280px", 
                 backgroundColor:"rgb(250, 250, 250)", 
                 borderLeft:"5px solid #00aaef",
                  borderTop:"5px solid #00aaef", }}>
                     <p style={{fontWeight:"bold"}}>업무 대분류</p>
+                    <hr style={{marginTop:"-0.5em", marginBottom:"0.4em"}}/>
                     <Form  className={styles.form}>    
                         
                         <Form.Check
@@ -313,8 +314,7 @@ const WorkListPage = ({projectID}) => {
                                 label= "전체"
                                 type="radio"
                                 onChange={()=> onRadioBox("전체")}
-                                name="big"
-                                style={{paddingBottom:'10px',}}
+                                name="big"                                
                                 
                             />
                         {data.map((item, index)=>{
@@ -325,8 +325,7 @@ const WorkListPage = ({projectID}) => {
                                     label= {item.wl_work_category}
                                     type="radio"
                                     onChange={()=>onRadioBox(item.wl_work_category)}
-                                    name="big"
-                                
+                                    name="big"                                
                                 />)
                             }
                         })}
@@ -372,9 +371,10 @@ const WorkListPage = ({projectID}) => {
                 </Card>
                 
                 {/* 업무목록 */}
-                <Card style={{margin : '-45px 5px 5px 35px', height: '600px', width:"280px", backgroundColor:"rgb(250, 250, 250)", borderLeft:"5px solid #00aaef"}} >
-                    <Form  className={styles.cardForm} style={{ margin: '10px',padding:'10px',  height : "580px", overflowY:"scroll", scrollbarWidth:"none",}}>
+                <Card style={{margin : '0px 5px 5px 35px', height: '555px', width:"280px", backgroundColor:"rgb(250, 250, 250)", borderLeft:"5px solid #00aaef"}} >
+                    <Form  className={styles.cardForm} style={{ margin: '10px',padding:'10px',  height : "530px", overflowY:"scroll", scrollbarWidth:"none"}}>
                         <p style={{fontWeight:"bold"}}>업무 목록</p>
+                        <hr style={{marginTop:"-0.5em"}} />
                         <div><Form.Check
                             inline
                             onChange={()=>onCheckBox("전체")}
