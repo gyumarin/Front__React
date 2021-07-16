@@ -8,6 +8,7 @@ const TeamHistoryPopUp = ({peopleList, setTheirHistory, teamId}) => {
     const [dProjects, setDProjects] =useState([]);
     const [uProjects, setUProjects] =useState([]);
     const[isDone, setIsDone ] =useState(false);
+    
     useEffect(()=>{
         setThisMan(thisMan => peopleList.find(team =>{
             return  team.ep_id == teamId
@@ -15,8 +16,7 @@ const TeamHistoryPopUp = ({peopleList, setTheirHistory, teamId}) => {
     },[])
 
     useEffect(()=>{
-        axios.get(`/project/emp/list/${thisMan.e_id}`).then(res=>{
-            console.log(res.data.result)
+        axios.get(`/project/emp/list/${thisMan.e_id}`).then(res=>{            
             setDProjects(res.data.result.projectDone);
             setUProjects(res.data.result.projectUndone);            
         })
@@ -37,7 +37,7 @@ const switchMode = (event)=>{
         <div className={styles.container}></div>
         <div className={styles.card}>
             <div className={styles.header}>
-                <div className={styles.title}><span className={styles.name}>{thisMan.e_name}</span> 사원정보</div>
+               {thisMan&& <div className={styles.title}><span className={styles.name}>{thisMan.e_name}</span>사원정보</div>}
                 <button className={styles.exit} onClick={onExit}><i className="fas fa-times-circle"></i></button>
             </div>   
             <div className={styles.contents}>

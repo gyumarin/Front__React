@@ -4,7 +4,8 @@
   width: 95%;
   height: 6em;
   margin: 0.5em auto;
-  border-radius: 5px;
+  border-radius: 0px;
+  border-radius: 5px 5px 0px 0px;
 
   display: flex;
   font-size: 0.9em;
@@ -14,7 +15,7 @@
 .left {
   width: 85%;
   height: 100%;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 5px 0px 0px 0px;
   background-color: white;
   padding: 0.5em;
 }
@@ -101,32 +102,43 @@
 
 .ignore {
   margin: auto 2.5% auto 2.5%;
-  padding: 0.5% 0.5% 0% 2.5%;
-  margin-top: -8.5px;
+  margin-top: -7px;
   border-radius: 0 0 5px 5px;
   background-color: #8b9699;
   display: flex;
   height: 5%;
+  border-top: 2px solid #263238;
+  box-sizing: content-box;
 }
-
+.signal {
+  font-size: 1.8em;
+  margin-top: 0.13em;
+  margin-left: 0.4em;
+  color: #263238;
+}
 .ignoreInput {
-  width: 76.4%;
-  margin-top: 0rem;
-  height: 20%;
-  padding-left: 0.7rem;
+  width: 81%;
+  margin: 0.5em;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #263238;
+
+  font-size: 0.8em;
 }
 
 .ignoreButton {
-  margin-left: 1rem;
-  margin-top: 0rem;
-  margin-bottom: 0.7rem;
-  width: 20.5%;
-  height: 3rem;
+  margin-left: 0.07rem;
+  margin-top: 0.45rem;
+
+  width: 13.4%;
+  height: 2.4rem;
   border-radius: 5px;
   border: none;
   background-color: rgb(36, 30, 30);
   color: white;
   font-weight: 500;
+
+  font-size: 0.8em;
 }
 .ignoreButton:hover {
   background-color: rgb(80, 75, 75);

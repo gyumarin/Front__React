@@ -40,6 +40,7 @@ const WaitingConfirmCard = ({confirm, onApply, onIgnore}) => {
             </div>
             {toggle&&
                 <div className={styles.ignore}>
+                    <div className={styles.signal}><i className="fab fa-replyd"></i></div>
                     <textarea onChange ={onChange} className={styles.ignoreInput}></textarea>      
                     <button className={styles.ignoreButton} onClick={()=>{onIgnore(confirm.wl_id, inputText); setToggle(!toggle)}}>반려 사유 보내기</button>      
                 </div>

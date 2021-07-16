@@ -10,6 +10,7 @@ import AddTeamPopUp from "./AddTeamPopUp";
 import { useEffect } from "react";
 import axios from "axios";
 import WaitingConfirmCard from './WaitingConfirmCard';
+import TeamHistoryPopUp from './TeamHistoryPopUp';
 
 const AdminEditProject = props => {
     const history = useHistory();
@@ -18,11 +19,14 @@ const AdminEditProject = props => {
     const [peopleList, setPeopleList] = useState([]);
     const [projectDetail, setProjectDetail] = useState({});
     const [waitForConfirms, setWatiForConfirms] =useState([]);
+    const [theirHistory, setTheirHistory] = useState(false);
+    const [teamId, setTeamId] = useState(1000000000);
 
 
     const [wlb,setWlb] = useState([]);
     const [wlm,setWlm] = useState([]);
     const [wld,setWld] = useState([]);
+
 
     useEffect(() => {
         getWL();
@@ -44,11 +48,9 @@ const AdminEditProject = props => {
         setPeopleList(result2.data.result);
 
         const result3 = await axios("/project/detail/" + props.match.params.id);
-        // console.log(result3.data.result);
         setProjectDetail(result3.data.result);
 
         const result4 = await axios("/project/work/list/approval/request/"+ props.match.params.id);
-        console.log(result4.data.result);
         setWatiForConfirms(result4.data.result);
     };
 
@@ -140,6 +142,12 @@ const AdminEditProject = props => {
         event.preventDefault();
         history.push(`/main/admin/editProjectDetails/${props.match.params.id}`);
     }
+
+    const onHistory =(event)=>{
+        event.preventDefault();
+        setTeamId(event.target.parentNode.id);
+        setTheirHistory(!theirHistory);
+    }
     // ------------------------------------------------------
     
     return (
@@ -196,11 +204,11 @@ const AdminEditProject = props => {
                         </div>
                         <div className={styles.peopleList}>
                             {peopleList.map(person => {
-                                // console.log(peopleList)
                                 return (
                                     <div
                                         className={styles.card}
                                         id={person.ep_id}
+                                       
                                     >
                                         <div className={styles.cardContainer}>
                                             <img
@@ -209,8 +217,8 @@ const AdminEditProject = props => {
                                                 alt="face image"
                                             />
                                         </div>
-                                        <div className={styles.contents}>
-                                            <p>
+                                        <div id={person.ep_id} className={styles.contents}  onClick={onHistory}>
+                                            <p id={person.ep_id}>
                                                 {person.e_name} |{" "}
                                                 {person.e_rank} |{" "}
                                                 {person.ep_position}
@@ -225,14 +233,26 @@ const AdminEditProject = props => {
                                     </div>
                                 );
                             })}                           
-                            {teamPopup ? (
-                                <AddTeamPopUp
+                            {
+                                teamPopup ? (
+                                    <AddTeamPopUp
+                                        peopleList={peopleList}
+                                        setTeamPopup={setTeamPopup}
+                                        match={props.match}
+                                        getWL={getWL}
+                                    />
+                                ) : null
+                            }
+                            {
+                                theirHistory 
+                                ?
+                                <TeamHistoryPopUp
+                                    teamId = {teamId}
                                     peopleList={peopleList}
-                                    setTeamPopup={setTeamPopup}
-                                    match={props.match}
-                                    getWL={getWL}
+                                    setTheirHistory={setTheirHistory}
                                 />
-                            ) : null}
+                                : null
+                            }
                         </div>
                     </div>
                 </div>
