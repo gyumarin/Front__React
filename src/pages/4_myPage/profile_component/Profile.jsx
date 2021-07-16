@@ -26,7 +26,6 @@ const Profile = (props) => {
 
     const onUpdateInfo=(event)=>{
         event.preventDefault();
-        console.log("이제 바꿉니다",userInfo);
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         axios.put('/employee/detail', {
             token: tmp,

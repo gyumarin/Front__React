@@ -33,7 +33,7 @@ const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
                                     <Card.Text style={{ gridRow:'2/3', gridColumn:'3/5'}}> {data.wl_work_detail}</Card.Text>
                                     
                                     <div style={{ borderRadius:'10px',backgroundColor:'#007bbc', height:'22px' ,width:'40px', gridRow:'2/3', gridColumn:'1/2', marginTop:'-4px'}}>
-                                            <b><p style={{color:'yellow', fontSize:'14px',paddingLeft: "11px"}}>{data.wl_id}</p></b>
+                                            <b><p style={{color:'yellow', fontSize:'14px',textAlign:"center"}}>{data.wl_id}</p></b>
                                     </div> 
                                 </Card>
                         )

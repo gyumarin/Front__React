@@ -239,7 +239,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                         {gitWorkList.map((item, index)=>{
                             return (
                                 <div key={index} style={{marginRight:'20px', borderRadius:'10px',backgroundColor:'#007bbc', 
-                                            height:'22px' ,width:'40px', color:'yellow', fontSize:'14px', paddingLeft:'12px'}}>
+                                            height:'22px' ,width:'40px', color:'yellow', fontSize:'14px', textAlign:"center"}}>
                                     <b>{item.wl_id}</b>
                                 </div>   
                             )
@@ -250,7 +250,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                         <p style={{ borderRadius:'5px', backgroundColor:'white',height:'65px', padding:'8px'}}>{comment.text}</p>
                     </div> */}
                     <div style={{  width:'580px', display:'flex'}}>
-                        <p className={styles.ellipsis}>{comment.text}</p>
+                        <div className={styles.ellipsis}>{comment.text}</div>
                         <div style={{paddingLeft:"10px", }} onClick={onToggle}>
                             <button style={{ width:'80px', height:'40px', borderRadius:'5px', border:'0px', backgroundColor:'#007bbc', color:'white'}}>Detail</button>
                         </div>
