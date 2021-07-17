@@ -9,7 +9,6 @@ import { useHistory } from 'react-router';
 const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
     const history = useHistory();
     const isNotice = history.location.pathname.split("/")[3] == "notice" ? true : false;
-    // console.log(history.location.pathname.split("/"))
     const isAdmin =  history.location.pathname.split("/")[2] == "admin" ? true : false; 
 
     const onCreateNotice =(event)=>{

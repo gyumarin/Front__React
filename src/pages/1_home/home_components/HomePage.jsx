@@ -12,12 +12,16 @@ const HomePage = ({setProject}) => {
 
     const [projectList, setProjectList] = useState([]);
 
-    useEffect(() => {
+    useEffect( async () => {
         const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-         axios.get(`/project/list?token=${tmp}`).then(res=>{
-            setProjectList(res.data.result.filter(item=>item.p_complete==false))
-            setProject(res.data.result)  
-        }) ;           
+        await axios.get(`/project/list`,
+            {headers: {
+                'token': tmp
+            }}
+            ).then(res=>{
+                setProjectList(res.data.result.filter(item=>item.p_complete==false))
+                setProject(res.data.result)  
+            }) ;    
     }, []);
     
     return(

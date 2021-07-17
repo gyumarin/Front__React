@@ -10,7 +10,9 @@ const CommitTest = ({ projectInfo }) => {
     const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
 
     const getUser = async () => {
-        const result = await axios.get("/employee/detail?token=" + tmp);
+        const result = await axios.get("/employee/detail",{headers: {
+            'token': tmp
+          }});
         setNick(result.data.result.e_nickname);
     };
 

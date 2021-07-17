@@ -29,7 +29,9 @@ export const workingOff = (token) => {
 
 //  1.8 출근부 리스트 조회
 export const commuteView = (token) => {
-    return axios.get(`employee/commute/list?token=${token}`).then((response) => response.data.result);
+    return axios.get(`employee/commute/list`,{headers: {
+        'token': tmp
+      }}).then((response) => response.data.result);
 };
 
 // 	1.4. 사원 전체 리스트
@@ -39,7 +41,9 @@ export const empAllListView = () => {
 
 // 	1.5. 사원 정보 상세 조회
 export const empDetail = (token) => {
-    return axios.get(`employee/detail?token=${token}`).then((response) => response.data.result);
+    return axios.get(`employee/detail`,{headers: {
+        'token': tmp
+      }}).then((response) => response.data.result);
 };
 // 	1.6. 사원 상세 비밀번호 수정
 export const empPwdChange = (token, pwd) => {
@@ -65,76 +69,3 @@ export const empInfoChange = (token, user) => {
         .then((response) => response.data.result);
 };
 
-
-// {
-//     회사명 : "더존 비즈온",
-//     부서리스트 : [
-//     {
-//         부서명 : "영업부", 
-//         팀리스트 : 
-//         [
-//             {
-//                 팀명 : "A팀",
-//                 
-//             },
-//             {
-//                 팀명 : "B팀",
-//                
-//             },
-//         ]
-//     },
-//     {
-//         부서명 : "기술부", 
-//         팀리스트 : 
-//         [
-//             {
-//                 팀명 : "A팀",
-//                 팀원 정보 : 
-//                 [
-//                     {
-//                         이름 : "김봉팔",
-//                         번호 : "010-2400-5999",
-//                     },
-//                     {
-//                         이름 : "김봉순",
-//                         번호 : "010-2400-5999",
-//                     },
-//                     {
-//                         이름 : "김봉영",
-//                         번호 : "010-2400-5999",
-//                     },
-//                     {
-//                         이름 : "김봉송",
-//                         번호 : "010-2400-5999",
-//                     },
-//                 ]
-//             },
-//             {
-//                 팀명 : "B팀",
-//                 팀원 정보 : 
-//                 [
-//                     {
-//                         이름 : "김봉팔",
-//                         번호 : "010-2400-5999",
-//                     },
-//                     {
-//                         이름 : "김봉순",
-//                         번호 : "010-2400-5999",
-//                     },
-//                     {
-//                         이름 : "김봉영",
-//                         번호 : "010-2400-5999",
-//                     },
-//                     {
-//                         이름 : "김봉송",
-//                         번호 : "010-2400-5999",
-//                     },
-//                 ]
-//             },
-//         ]
-//     },
-
-        
-//     ]
-
-// }

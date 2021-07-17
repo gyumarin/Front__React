@@ -29,7 +29,16 @@ const WorkMiddleCategory = ({wlm, midCategoryId,setWlm,setBigCategoryId,setSmall
         event.preventDefault();
         if(newMiddleCategory.current.value ==""){ 
             alert("업무를 작성해 주세요.")
-        }else{
+        }else if (
+            wlm.filter(
+                value =>
+                    newMiddleCategory.current.value == value.m_name &&
+                    midCategoryId == value.c_id
+            ).length !== 0
+        ) {
+            alert("이미 등록된 업무 입니다.");
+        }
+        else{
             const copied = [...wlm];
             const newCategory = {
                 "c_id" : midCategoryId,

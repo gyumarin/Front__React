@@ -55,7 +55,9 @@ const PostRoute = ({ match }) => {
     };
 
     const getList = async () => {
-        const result = await axios.get("/note/post?token=" + tmp);
+        const result = await axios.get("/note/post",{headers: {
+            'token': tmp
+          }});
         setSlist(result.data.result);
         setting(result.data.result);
         setReadView(result.data.result.filter(e => e.n_done == true));
@@ -78,7 +80,9 @@ const PostRoute = ({ match }) => {
     const search = async (event) => {
         // event.preventDefault();
         const result = await axios.get(
-            "/note/post/search?value=" + value + "&token=" + tmp
+            "/note/post/search?value=" + value, {headers: {
+                'token': tmp
+              }}
         );
         setSlist(result.data.result);
         setting(result.data.result);

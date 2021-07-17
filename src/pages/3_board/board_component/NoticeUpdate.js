@@ -33,7 +33,9 @@ const NoticeUpdate = ({ match, history }) => {
             content: result.data.result.bn_content,
         });
 
-        axios.get(`/employee/detail?token=${tmp}`).then((res) => {setEmpName(res.data.result.e_name)} )
+        axios.get(`/employee/detail`,{headers: {
+            'token': tmp
+          }}).then((res) => {setEmpName(res.data.result.e_name)} )
     };
 
 

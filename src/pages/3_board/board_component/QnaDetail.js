@@ -8,14 +8,16 @@ import { Link } from 'react-router-dom';
 const QnaDetail = ({ match }) => {
     const history = useHistory();
     const isAdmin = history.location.pathname.split("/")[2] == "admin" ? true : false;
-    
+    const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     
     const id = useParams().id;    
     const [empID, setEmpID] = useState('')
     const [detail, setDetail] = useState({});
 
     useEffect(() => {
-        axios.get(`/employee/detail?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`)
+        axios.get(`/employee/detail`,{headers: {
+            'token': tmp
+          }})
         .then((res) => 
          {setEmpID(res.data.result.e_id)
         } )

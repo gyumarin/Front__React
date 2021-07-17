@@ -14,7 +14,9 @@ const ProjectListPage = ({project}) => {
 
     useEffect( async () => {
         const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
-        const result = await axios.get(`/project/list?token=${tmp}`);
+        const result = await axios.get(`/project/list`,{headers: {
+            'token': tmp
+          }});
         await setAllProjectList(result.data.result);
         await setProjectList(result.data.result.filter(e => e.p_complete == false));
         await setToggle(true);

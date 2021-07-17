@@ -63,7 +63,9 @@ const SendRoute = ({ match, setId }) => {
     };
 
     const getList = async () => {
-        const result = await axios.get("/note/send?token=" + tmp);
+        const result = await axios.get("/note/send",{headers: {
+            'token': tmp
+          }});
         setSlist(result.data.result);
         setting(result.data.result);
         setReadView(result.data.result.filter(e => e.n_done == true));
@@ -84,7 +86,9 @@ const SendRoute = ({ match, setId }) => {
 
     const search = async () => {
         const result = await axios.get(
-            "/note/send/search?value=" + value + "&token=" + tmp
+            "/note/send/search?value=" + value, {headers: {
+                'token': tmp
+              }}
         );
         setSlist(result.data.result);
         setting(result.data.result);

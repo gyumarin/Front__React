@@ -21,15 +21,11 @@ const ProjectPage = () => {
     useEffect(async () => {
         await setParam(p.id);
         if(param!=null){
-            // await history.push(`/main/project/${param}`);
         }
         await axios.get(`/project/detail/${param}`).then(res =>{
             setProjectInfo(res.data.result)            
         })
     }, [param])
-
-   
-
     
     return (
         <div className={styles.container}>

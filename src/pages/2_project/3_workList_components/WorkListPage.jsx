@@ -172,10 +172,12 @@ const WorkListPage = ({projectID}) => {
     const mySearch = () => {
         axios
             .get(
-                `/project/work/list/search/my?token=` +
-                    tmp2 +
+                `/project/work/list/search/my` +
                     `&p_id=` +
-                    projectID
+                    projectID,
+                    {headers: {
+                        'token': tmp2
+                      }}
             )
             .then(async res => {
                 setWorkList(res.data.result);

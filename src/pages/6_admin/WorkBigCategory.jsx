@@ -28,7 +28,13 @@ const WorkBigCategory = ({wlb, setWlb, setBigCategoryId, setMidCategoryId, renew
         event.preventDefault();
         if(newBigCategory.current.value ==""){ 
             alert("카테고리의 이름을 지정해 주세요.")
-        }else{
+        }else if (
+            wlb.filter(value => newBigCategory.current.value == value.c_name)
+                .length !== 0
+        ) {
+            alert("이미 등록된 카테고리 입니다.");
+        }
+        else{
             const copied = [...wlb];
             const newCategory = {
                 "c_id" : new Date().getTime(),

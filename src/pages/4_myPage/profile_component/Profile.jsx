@@ -11,7 +11,9 @@ const Profile = (props) => {
   useEffect(() => {
     var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
     if(sessionStorage.getItem('token')){
-      axios.get(`/employee/detail?token=${tmp}`).then(res=>{
+      axios.get(`/employee/detail`,{headers: {
+        'token': tmp
+      }}).then(res=>{
         setUserInfo(res.data.result);
         console.log(res.data.result);
       })      

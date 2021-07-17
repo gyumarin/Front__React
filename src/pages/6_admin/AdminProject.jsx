@@ -38,12 +38,12 @@ const AdminProject = props => {
     const projectDelete = pwd => {
         const result = axios
             .delete(
-                "/project/delete?token=" +
-                    tmp +
-                    "&p_id=" +
+                "/project/delete&p_id=" +
                     props.id +
                     "&pwd=" +
-                    pwd
+                    pwd, {headers: {
+                        'token': tmp
+                      }}
             )
             .then(res => {
                 if (res.data.code == 200) {

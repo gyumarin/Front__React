@@ -8,7 +8,9 @@ const MiniWorkList = (props) => {
   const [workList, setWorkList] = useState([])
     useEffect(() => {
         var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/work/list/person/all?token=${tmp}`).then(res=>{   
+        axios.get(`/project/work/list/person/all`,{headers: {
+          'token': tmp
+        }}).then(res=>{   
           setWorkList(res.data.result)          
         })
     }, [])

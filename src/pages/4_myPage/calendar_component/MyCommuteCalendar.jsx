@@ -28,9 +28,11 @@ const MyCommuteCalendar = (props) =>{
     load();
   },[commute])  
 
-   
+   const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
   const load = async()=>{
-    const result = await axios.get(`/employee/commute/list?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`);
+    const result = await axios.get(`/employee/commute/list`,{headers: {
+      'token': tmp
+    }});
     if(result.data.result.length!=0){
     setCommute(result.data.result[result.data.result.length-1].c_end == null ? (result.data.result[result.data.result.length-1].c_day == datee ? true : false) : false);
 

@@ -41,7 +41,9 @@ const NoticeInsert = ({ history }) => {
     };
 
     useEffect(() => {
-        axios.get(`/employee/detail?token=${tmp}`).then((res) => {setEmpName(res.data.result.e_name)} )
+        axios.get(`/employee/detail`,{headers: {
+            'token': tmp
+          }}).then((res) => {setEmpName(res.data.result.e_name)} )
     }, [])
 
     return (

@@ -6,8 +6,10 @@ const ProjectWorkList = ({projectID}) => {
 
   const [workList, setWorkList] = useState([])
     useEffect(() => {
-        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/work/list/person/week?p_id=${projectID}&token=${tmp}`).then(res=>{
+        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        axios.get(`/project/work/list/person/week?p_id=${projectID}`,{headers: {
+          'token': tmp
+        }}).then(res=>{
           setWorkList(res.data.result)
           
         })

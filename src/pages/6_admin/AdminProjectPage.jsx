@@ -17,7 +17,9 @@ const AdminProjectPage = props => {
     }, []);
 
     const getProject = async () => {
-        const result = await axios.get("/project/list?token=" + tmp);
+        const result = await axios.get("/project/list",{headers: {
+            'token': tmp
+          }});
         setAllProjects(result.data.result);
         let copy = result.data.result.filter(e => e.p_complete == false);
         setProjects(copy);

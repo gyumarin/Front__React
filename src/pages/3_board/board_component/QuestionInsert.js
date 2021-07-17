@@ -35,7 +35,9 @@ const QuestionInsert = ({ history }) => {
     };
 
     useEffect(() => {
-        axios.get(`/employee/detail?token=${sessionStorage.getItem('token').slice(0, -1).substr(1)}`).then((res) => {setEmpName(res.data.result.e_name)} )
+        axios.get(`/employee/detail`, {headers: {
+            'token': tmp
+          }}).then((res) => {setEmpName(res.data.result.e_name)} )
     }, [])
 
     

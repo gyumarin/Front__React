@@ -8,8 +8,10 @@ const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
 
     const [workList, setWorkList] = useState([])
     useEffect(() => {
-        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/work/list/person?p_id=${projectID}&token=${tmp}`).then(async res=>{
+        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        axios.get(`/project/work/list/person?p_id=${projectID}`,{headers: {
+            'token': tmp
+          }}).then(async res=>{
             await setWorkList(res.data.result.filter(item=>item.wl_done != 3))
         })
     }, [])

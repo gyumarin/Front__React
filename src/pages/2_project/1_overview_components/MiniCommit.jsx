@@ -10,7 +10,7 @@ const MiniCommit = ({projectID}) => {
     const [commitList, setCommitList] = useState([])
     
     useEffect(() => {
-        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        // var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         axios.get(`/commit/team?p_id=${projectID}`).then(res =>{
             setCommitList(res.data.result)
         })

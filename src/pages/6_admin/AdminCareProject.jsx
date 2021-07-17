@@ -29,7 +29,7 @@ const AdminCareProject = props => {
     const [wld, setWld] = useState([]);
 
     const [bigCategoryId, setBigCategoryId] = useState(0);
-    const [midCategoryId, setMidCategoryId] = useState(0);
+    const [midCategoryId, setMidCategoryId] = useState(-1);
     const [smallCategoryId, setSmallCategoryId] = useState(100000000);
 
     const [peopleList, setPeopleList] = useState([]);

@@ -23,12 +23,16 @@ const NoteDetail = ({ match }) => {
 
     const getDetail = async () => {
         const result = await axios.get(
-            "/note/detail?n_id=" + match.params.id + "&token=" + tmp
+            "/note/detail?n_id=" + match.params.id,{headers: {
+                'token': tmp
+              }}
         );
         setDetail(result.data.result);
         setSend(result.data.result.send_p);
         setPost(result.data.result.post_p);
-        const result2 = await axios.get("/employee/detail?token=" + tmp);
+        const result2 = await axios.get("/employee/detail", {headers: {
+            'token': tmp
+          }});
         setUser(result2.data.result);
 
         // console.log(result2.data.result);
