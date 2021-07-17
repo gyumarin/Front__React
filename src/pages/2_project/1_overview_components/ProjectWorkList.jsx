@@ -3,7 +3,7 @@ import styles from  './ProjectWorkList.module.css';
 import axios from 'axios';
 
 const ProjectWorkList = ({projectID}) => {
-
+  const date = new Date();
   const [workList, setWorkList] = useState([])
     useEffect(() => {
         const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
@@ -38,8 +38,12 @@ const ProjectWorkList = ({projectID}) => {
                 <div style={{display:'grid', gridTemplateColumns:'20% 72% 40px'}}>
                       <div>{work.wl_work}</div>
                       <div style={{marginRight:'1em', width : "90%", }}> {work.wl_work_detail}</div>
-                      <div style={{marginRight : '2em', width : "100%" ,marginBottom:'auto',widheight:'20px',textAlign:'center',backgroundColor:'#0d6efd', color:'white', borderRadius:'5px'}}> D-{(new Date(work.wl_date_end).getTime() - new Date(work.wl_date_start).getTime())/ (1000*60*60*24)} </div>
+                      <div style={{marginRight : '2em', width : "100%" ,marginBottom:'auto',widheight:'20px',textAlign:'center',backgroundColor:'#0d6efd', color:'white', borderRadius:'5px'}}> {Math.floor((new Date(work.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24)) < 0 
+                      ? "만료"
+                      : "D-" + Math.floor((new Date(work.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24))
+                     } </div>
                     </div>
+
               </li>
               );  
             })

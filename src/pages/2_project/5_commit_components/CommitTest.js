@@ -29,7 +29,8 @@ const CommitTest = ({ projectInfo }) => {
     const [commit, setCommit] = useState({ name: '', commits: null });
     const [useBranch, setuseBranch] = useState('master');
     const [view, setView] = useState([]);
-    const [toggle, setToggle] = useState(true); 
+    const [toggle, setToggle] = useState(true);
+    const [noMore, setNoMore] = useState(true) 
 
    
     /*
@@ -68,12 +69,21 @@ const CommitTest = ({ projectInfo }) => {
 
 
 
-    useEffect(() => {
+    useEffect( () => {
         if (commit.commits != null) {
-            setArray(array.concat(commit));
+             setArray(array.concat(commit));
         }
-        setView(array.filter((item) => useBranch === item.name));
+        const a=array.concat(commit);
+        setView(a.filter((item) => useBranch === item.name));
     }, [commit]);
+
+    useEffect(() => {
+        if(view.length!==0&&(view[view.length-1].top==false)){
+            setNoMore(false);
+        }else{
+            setNoMore(true);
+        }
+    }, [view])
 
     
     //브랜치 별 버튼 생성
@@ -81,22 +91,24 @@ const CommitTest = ({ projectInfo }) => {
         array.map((branch) => {
             //이름이 현재 브랜치이고  부모 commit을 가져오지 않았을 때 수행
             if (branch.name === useBranch && branch.top === true) {
+                // if (commit.commits != null) {
+                //     setArray(array.concat(commit));
+                // }
+
                 try {
                     getCommit(branch.commits.parents[0].url).then((res) => {
                         setCommit({ name: branch.name, commits: res, top: true });
                     });
                 } catch {
-                    setCommit({ name: '더는 추가할 수 없습니다.', commits: '못함', top: false });
+                    alert("더 이상 추가 할 수 없습니다.")
+                    setCommit({ name: '못함', commits: '못함', top: false, end : branch.name });
                 }
-
-                if (commit.commits != null) {
-                    setArray(array.concat(commit));
-                }
-                setView(array.filter((item) => useBranch === item.name));
-
+                
+                
                 //조회하여 부모 commit을 가져왔기 때문에 top은 false로 변경
-                setArray(array.map((item) => (branch.name === item.name ? { ...item, top: false } : item)));
-            }
+                 setArray(array.map((item) => (branch.name === item.name ? { ...item, top: false } : item)));
+                // await setView(tmpArr.filter((item) => useBranch === item.name));
+            } 
         });
     };
 
@@ -115,7 +127,7 @@ const CommitTest = ({ projectInfo }) => {
     return (
 
         
-        <div style={{  display:'grid' ,gridTemplateColumns:'330px 1235px', gridTemplateRows:' 140px 440px 140px '}}>
+        <div className={styles.Commitcontainer}style={{  display:'grid' ,gridTemplateColumns:'330px 1235px', gridTemplateRows:' 140px 440px 140px '}}>
 
              {/* 마스터 버튼*/}
              <Card style={{ margin: '10px', padding: '20px', borderRadius:"10px", backgroundColor:"aliceblue" }}>
@@ -203,7 +215,7 @@ const CommitTest = ({ projectInfo }) => {
                         
                 </div>
                 <hr/>
-                {!toggle&& <Button style={{width:'300px', marginLeft:'400px'}}onClick={onClick}>더 보기</Button>}
+                {noMore&&!toggle&& <Button style={{width:'300px', marginLeft:'400px'}}onClick={onClick}>더 보기</Button>}
             </Card>            
         </div>
     );

@@ -111,7 +111,7 @@ const NoteInsert = ({ history, match }) => {
                                                     value={value.e_id}
                                                     key={key}
                                                 >
-                                                    {value.e_name}
+                                                    {value.e_name}({value.e_id}) - {value.d_name}  
                                                 </option>
                                             );
                                         })}

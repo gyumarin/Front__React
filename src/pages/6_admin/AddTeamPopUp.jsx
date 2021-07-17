@@ -7,7 +7,7 @@ const AddTeamPopUp = props => {
 
     useEffect(() => {
         
-        console.log('AddTeamPopUp',props.peopleList.find(item => item.e_id == id))
+        // console.log('AddTeamPopUp',props.peopleList.find(item => item.e_id == id))
     }, [])
 
     const [search, setSearch] = useState(false);
@@ -121,7 +121,7 @@ const AddTeamPopUp = props => {
                             {list.map((value, key) => {
                                 return (
                                     <option value={value.e_id} key={key}>
-                                        {value.e_name}
+                                        {value.e_name}({value.e_id}) - {value.d_name}  
                                     </option>
                                 );
                             })}

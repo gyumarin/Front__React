@@ -7,9 +7,11 @@ import styles from './CommitWorkList.module.css';
 const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
 
     const [workList, setWorkList] = useState([])
+    const date = new Date();
+
     useEffect(() => {
-        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/work/list/person?p_id=${projectID}`,{headers: {
+        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        axios.get(`/project/work/list/person/week?p_id=${projectID}`,{headers: {
             'token': tmp
           }}).then(async res=>{
             await setWorkList(res.data.result.filter(item=>item.wl_done != 3))
@@ -17,7 +19,7 @@ const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
     }, [])
 
     return (
-        <div>
+        <div >
             {userBool?<div style={{padding: '5px 0px 0px 40px',}}>
                 <b>미완료 업무 {workList.length!=0 ? workList.length : 0} 개</b>
 
@@ -30,7 +32,10 @@ const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
                                                 gridTemplateColumns : '50px 70px 250px 90px 50px', fontSize:'12px'}}>
                                     <Card.Text style={{ gridColumn:'2/4'}}> {data.p_title} {' > '} {data.wl_work_category} {' > '} {data.wl_work}</Card.Text> 
                                     <Card.Text > 작업자 : {data.e_name}</Card.Text>
-                                    <Card.Text > D-{(new Date(data.wl_date_end).getTime() - new Date(data.wl_date_start).getTime())/ (1000*60*60*24)}</Card.Text>
+                                    <Card.Text style={{marginLeft:"1.5em", fontWeight:"bold"}}> {Math.floor((new Date(data.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24)) < 0 
+                        ? "만료"
+                        : "D-" + Math.floor((new Date(data.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24))
+                     }</Card.Text>
                                     <Card.Text style={{gridRow:'2/3', gridColumn:'2/6'}}>세부 업무 :  </Card.Text>
                                     <Card.Text style={{ gridRow:'2/3', gridColumn:'3/5'}}> {data.wl_work_detail}</Card.Text>
                                     

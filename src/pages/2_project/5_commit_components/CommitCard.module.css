@@ -19,6 +19,15 @@
   padding: 0.5em;
   font-size: 0.9em;
 }
+.Tcontainer {
+  position: absolute;
+  top: -174px;
+  left: -660px;
+  width: 162.2%;
+  height:  133.8%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .ellipsis::-webkit-scrollbar {
   display: none;

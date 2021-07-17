@@ -20,6 +20,7 @@ const ProjectPage = () => {
     
     useEffect(async () => {
         await setParam(p.id);
+        
         if(param!=null){
         }
         await axios.get(`/project/detail/${param}`).then(res =>{

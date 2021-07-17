@@ -5,9 +5,13 @@ import {Link} from  'react-router-dom';
 
 
 const MiniWorkList = (props) => {
+
+  // console.log(new Date().getTime()/ (1000*60*60*24));
+  const date = new Date();
+  console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
   const [workList, setWorkList] = useState([])
     useEffect(() => {
-        var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+       const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         axios.get(`/project/work/list/person/all`,{headers: {
           'token': tmp
         }}).then(res=>{   
@@ -40,8 +44,9 @@ const MiniWorkList = (props) => {
                     {/* <td className={styles.td}>{work.wl_work_category}</td> */}
                     <div className={styles.td2}>{work.wl_work}</div>
                     <div className={styles.td3}>{work.wl_work_detail}</div>
-                    <div className={(new Date(work.wl_date_end).getTime() - new Date(work.wl_date_start).getTime())/ (1000*60*60*24) <= 5 ? styles.td4 : styles.td_4}> 
-                      {(new Date(work.wl_date_end).getTime() - new Date(work.wl_date_start).getTime())/ (1000*60*60*24)}
+                    <div className={Math.floor((new Date(work.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24)) <= 5 ? styles.td4 : styles.td_4}> 
+                       {Math.floor((new Date(work.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24)) < 0 ? "만료" 
+                       :Math.floor((new Date(work.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24)) }
                     </div>                    
                     <div className={styles.td5}>
                                               {/* 여기 wl_id날린 이유는 나중에 해당 id를 검색한 곳으로 날리기 위해서. */}

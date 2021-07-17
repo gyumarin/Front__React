@@ -38,7 +38,7 @@ const AdminProject = props => {
     const projectDelete = pwd => {
         const result = axios
             .delete(
-                "/project/delete&p_id=" +
+                "/project/delete?p_id=" +
                     props.id +
                     "&pwd=" +
                     pwd, {headers: {

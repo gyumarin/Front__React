@@ -28,7 +28,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
     //시작을 하면 DB에서 CommitTest.js에서 들고온 sha와 DB의 sha가 동일한지 체크하고 동일하면, db의 cl_comment를 text에 입력.
     useEffect(() => {
         
-        axios.get(`/commit?sha=${info.sha}`).then((res) => {
+        axios.get(`/commit?sha=${info.sha}&p_id=${projectInfo.p_id}`).then((res) => {
             try {
                 
                 setComment({ ...comment, sha: info.sha, text: res.data.result.cl_comment, state: true });
@@ -53,7 +53,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
     }, [useBranch]);
 
     const getGitWorkList = async () => {
-        const result = await axios.get("/commit/work/list?sha=" + info.sha);
+        const result = await axios.get("/commit/work/list?sha=" + info.sha + "&p_id=" + projectInfo.p_id);
         setGitWorkList(result.data.result);
     };
 
@@ -102,6 +102,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                 const result = axios.post("/commit/work/list", {
                     sha: info.sha,
                     wl_id: work.wl_id,
+                    p_id : projectInfo.p_id
                 });
             }else{
                 alert('이미 등록 되어 있습니다.')
@@ -127,7 +128,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
     const onDeleteWorkList = (work) =>{
         var check = window.confirm("업무 제외 하시겠습니까? ")
         if(check){
-            const result = axios.delete(`/commit/work/list?sha=${info.sha}&wl_id=${work.wl_id}`);
+            const result = axios.delete(`/commit/work/list?sha=${info.sha}&wl_id=${work.wl_id}&p_id=${projectInfo.p_id}`);
             setGitWorkList(gitWorkList.filter(item=>item.wl_id!=work.wl_id))
         }
     }
@@ -151,14 +152,16 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
 
                 </div> */}
                 
-                <div style={{}}>
+                <div>
                     {toggle && (
-                        <div style={{position:'fixed',top:'230px', left:'1200px',width:'610px', height:'585px', 
-                        backgroundColor:'aliceblue', borderRadius:'10px', boxShadow: ' 6px 7px 22px 0px rgba(0, 0, 0, 0.44)',}}>
+                        <div className={styles.Tcontainer}>
+                            <div className={styles.container} style={{position:'fixed',top:'200px', left:'1200px',width:'610px', height:'585px', 
+                                            backgroundColor:'aliceblue', borderRadius:'10px', 
+                                            boxShadow: ' 6px 7px 22px 0px rgba(0, 0, 0, 0.44)'}}>
                             <div style={{ padding:'10px', display:'flex', alignItems:'center'}}>
                             <b style={{ marginTop:'15px', marginLeft:'10px',padding:'10px',fontSize:'20px', width:'480px',
                                         borderRadius:'5px', backgroundColor:'#88e3ff',height:"50px", paddingLeft:'30px',color:'white' }}>
-                                 {nick == info.commit.committer.name ? '업무 등록 및 요청 / Commit 코멘트 등록':' 업무 처리 및 Commit 코멘트 조회'}
+                                {nick == info.commit.committer.name ? '업무 등록 및 요청 / Commit 코멘트 등록':' 업무 처리 및 Commit 코멘트 조회'}
                             </b> 
                             {nick == info.commit.committer.name ?
                                 <button style={{backgroundColor:'rgba(0,0,0,0)', marginLeft:'60px',marginTop:'-15px', color:'black', fontSize:'30px', border:'0', height:"30px"}}onClick={onToggle}> x </button> : 
@@ -166,66 +169,68 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                             }
                             </div>
                             
-                           <div>  
-                                <CommitWorkList comment={comment.text} onGitWorkList={onGitWorkList} projectID={projectInfo.p_id} userBool={nick == info.commit.committer.name}/>
-                           </div>
-                            
-
-                            <div style={{padding: '10px', paddingLeft:'35px', width:'590px', height:'135px'}}>  
-                                <b>Git에서 처리한 업무</b>
-                                <div style={{height:'85px', display:'flex', flexWrap:'wrap', backgroundColor:'white', borderRadius:'5px', margin:'10px 10px 10px 0px'}}>
-                                    {gitWorkList.map((item, index)=>{
-                                        return (
-                                            <button key={index} disabled style={{ display:'flex', borderRadius:'5px', backgroundColor:'white', height:'30px' ,width:'150px', margin:'5px 5px 5px 20px'}}>
-                                                <div style={{textAlign:'center', marginRight:'15px', borderRadius:'10px',backgroundColor:'#007bbc', height:'22px' ,width:'30px', color:'yellow', fontSize:'14px'}}>
-                                                    {item.wl_id}
-                                                </div>
-                                                {
-                                                item.wl_done==2?
-                                                    <>
-                                                    <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>승인 중</p></b>
-                                                    <button onClick={()=>onDeleteWorkList(item)}style={{ border:'0px',backgroundColor:'rgba(0,0,0,0)',fontSize:'14px',paddingLeft:'20px', width:"1px"}}>x</button>
-                                                    </>
-                                                    :
-                                                    <>
-                                                    <button onClick={()=>onRequestWorkList(item.wl_id)} style={{ border:'0px',borderRadius:'3px', backgroundColor:'#00aaef', width: '70px', height:'24px', color:'white', fontSize:'13px',paddingTop:'-40px' }}>
-                                                       <b>승인 요청</b>
-                                                    </button>
-                                                    <button onClick={()=>onDeleteWorkList(item)} style={{border:'0px', backgroundColor:'rgba(0,0,0,0)', fontSize:'14px',paddingLeft:'8px'}}>x</button>
-                                                    </>
-                                                }
-                                               
-                                            </button> 
-                                            
-                                            
-                                        )
-                                    })}
-
-                                </div>
+                            <div >  
+                                    <CommitWorkList comment={comment.text} onGitWorkList={onGitWorkList} projectID={projectInfo.p_id} userBool={nick == info.commit.committer.name}/>
                             </div>
+                            
+                                
 
-                            {nick == info.commit.committer.name &&<div style={{paddingLeft:'30px'}}>
-                                <b>{nick == info.commit.committer.name ?'Commit 코멘트 등록':'Commit 코멘트 조회'}</b>
-                                <Form style={{ display: 'flex',  alignItems: 'center', margin: '5px 0px 0px 0px', }} onSubmit={onInsert}>
-                                    
-                                    <Form.Group controlId="formBasicEmail" style={{paddingRight:'10px'}}>
-                                        <Form.Control
-                                            style={{ width: '460px', height: '40px' }}
-                                            type="text"
-                                            value={inputText.text}
-                                            placeholder="추가적으로 입력하실 업무 사항을 기록해 주세요."
-                                            onChange={onChange}
-                                            disabled={nick != info.commit.committer.name}
-                                        />
-                                    </Form.Group>
-                                   <Button style={{ width: '80px', height: '37px',  padding:'8px 0px 10px 0px', margin: '-16px 0px 0px 0px',backgroundColor:'#007bbc',border:'0px' }} variant="primary" onClick={onInsert}>
-                                         등록
-                                    </Button>   
-                                </Form>
-                            </div> }  
+                                <div style={{padding: '10px', paddingLeft:'35px', width:'590px', height:'135px'}}>  
+                                    <b>Git에서 처리한 업무</b>
+                                    <div style={{height:'85px', display:'flex', flexWrap:'wrap', backgroundColor:'white', borderRadius:'5px', margin:'10px 10px 10px 0px'}}>
+                                        {gitWorkList.map((item, index)=>{
+                                            return (
+                                                <button key={index} disabled style={{ display:'flex', borderRadius:'5px', backgroundColor:'white', height:'30px' ,width:'150px', margin:'5px 5px 5px 20px'}}>
+                                                    <div style={{textAlign:'center', marginRight:'15px', borderRadius:'10px',backgroundColor:'#007bbc', height:'22px' ,width:'30px', color:'yellow', fontSize:'14px'}}>
+                                                        {item.wl_id}
+                                                    </div>
+                                                    {
+                                                    item.wl_done==2?
+                                                        <>
+                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>승인 중</p></b>
+                                                        <button onClick={()=>onDeleteWorkList(item)}style={{ border:'0px',backgroundColor:'rgba(0,0,0,0)',fontSize:'14px',paddingLeft:'20px', width:"1px"}}>x</button>
+                                                        </>
+                                                        :
+                                                        <>
+                                                        <button onClick={()=>onRequestWorkList(item.wl_id)} style={{ border:'0px',borderRadius:'3px', backgroundColor:'#00aaef', width: '70px', height:'24px', color:'white', fontSize:'13px',paddingTop:'-40px' }}>
+                                                        <b>승인 요청</b>
+                                                        </button>
+                                                        <button onClick={()=>onDeleteWorkList(item)} style={{border:'0px', backgroundColor:'rgba(0,0,0,0)', fontSize:'14px',paddingLeft:'8px'}}>x</button>
+                                                        </>
+                                                    }
+                                                
+                                                </button> 
+                                                
+                                                
+                                            )
+                                        })}
 
-                        </div>
+                                    </div>
+                                </div>
+
+                                {nick == info.commit.committer.name &&<div style={{paddingLeft:'30px'}}>
+                                    <b>{nick == info.commit.committer.name ?'Commit 코멘트 등록':'Commit 코멘트 조회'}</b>
+                                    <Form style={{ display: 'flex',  alignItems: 'center', margin: '5px 0px 0px 0px', }} onSubmit={onInsert}>
+                                        
+                                        <Form.Group controlId="formBasicEmail" style={{paddingRight:'10px'}}>
+                                            <Form.Control
+                                                style={{ width: '460px', height: '40px' }}
+                                                type="text"
+                                                value={inputText.text}
+                                                placeholder="추가적으로 입력하실 업무 사항을 기록해 주세요."
+                                                onChange={onChange}
+                                                disabled={nick != info.commit.committer.name}
+                                            />
+                                        </Form.Group>
+                                    <Button style={{ width: '80px', height: '37px',  padding:'8px 0px 10px 0px', margin: '-16px 0px 0px 0px',backgroundColor:'#007bbc',border:'0px' }} variant="primary" onClick={onInsert}>
+                                            등록
+                                        </Button>   
+                                    </Form>
+                                </div> }  
+
+                            </div>  
                         
+                        </div>    
                     )}
                     
                    

@@ -12,7 +12,7 @@ const MiniCommit = ({projectID}) => {
     useEffect(() => {
         // var tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
         axios.get(`/commit/team?p_id=${projectID}`).then(res =>{
-            setCommitList(res.data.result)
+            setCommitList(res.data.result.filter(item=>item.cl_comment!=""))
         })
     }, [])
 

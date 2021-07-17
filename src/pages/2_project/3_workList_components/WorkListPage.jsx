@@ -173,7 +173,7 @@ const WorkListPage = ({projectID}) => {
         axios
             .get(
                 `/project/work/list/search/my` +
-                    `&p_id=` +
+                    `?p_id=` +
                     projectID,
                     {headers: {
                         'token': tmp2
