@@ -87,9 +87,11 @@ const AdminProject = props => {
                 <DoughnutChart  projectID = {props.id}/>
             </Card.Body>
             <div className={styles.buttons}  >
-                <button className={styles.complete} onClick={complete}>완료</button>
-                {/* <button onClick={incomplete}>미완료</button> */}
-                <button className={styles.delete} onClick={projectDeletePopUp}>삭제</button>
+                {
+                    props.com ? 
+                    <button className={styles.delete} onClick={projectDeletePopUp}>삭제</button>
+                    :<button className={styles.complete} onClick={complete}>완료</button>
+                }
             </div>
             <Link
                 className={styles.detailButton}

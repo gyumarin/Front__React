@@ -25,6 +25,14 @@ const NoticeDetail = ({ match }) => {
         e.preventDefault();
         history.push(`/main/admin/board/notice/update/` + match.params.id);
     }
+
+    const goList=async (e)=>{
+        e.preventDefault();
+        axios.delete(`/board/notice/delete/${match.params.id}`);
+        history.push(`/main/admin/board/notice/`);
+    }
+    
+    
     return (
         <div className={styles.container}>
             <div className={isAdmin ? styles.adminTitle : styles.title }>공지사항</div>
@@ -56,7 +64,11 @@ const NoticeDetail = ({ match }) => {
 
             {
               isAdmin 
-              ? <button className={styles.buttonMod} onClick={goWrite}>수정</button>
+              ?
+              <>
+              <button className={styles.buttonMod} onClick={goWrite}>수정</button> 
+              <button className={styles.buttonDel} onClick={goList}>삭제</button>
+              </>
               : null
             }
             {/* <button>목록보기</button> */}

@@ -151,7 +151,18 @@
 }
 .buttonMod {
   position: relative;
-  left: 1440px;
+  left: 1330px;
+  width: 100px;
+  height: 40px;
+
+  border-radius: 10px;
+  background-color: #5e6cdb;
+  color: aliceblue;
+  border: none;
+}
+.buttonDel {
+  position: relative;
+  left: 1340px;
   width: 100px;
   height: 40px;
 

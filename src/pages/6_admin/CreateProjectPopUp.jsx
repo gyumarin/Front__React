@@ -35,6 +35,7 @@ const CreateProjectPopUp = props => {
             p_date_start: startRef.current.value,
             p_date_end: endRef.current.value,
             p_giturl : gitRepoRef.current.value,
+            p_complete:false,
         };
         // console.log(project);
         props.createProject(project);

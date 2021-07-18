@@ -11,6 +11,7 @@ const NoticeUpdate = ({ match, history }) => {
 
     const { title, content } = inputs;
     const [empName, setEmpName] = useState('');
+    
     const onChange = e => {
         const { name, value } = e.target;
         setInputs({
