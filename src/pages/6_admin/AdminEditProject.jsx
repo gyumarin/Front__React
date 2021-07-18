@@ -224,12 +224,13 @@ const AdminEditProject = props => {
                                                 {person.ep_position}
                                             </p>
                                         </div>
-                                        <button
+                                        {/* 3. 팀장 delete 버튼 삭제 */}
+                                        {projectDetail.e_id !== person.e_id&&<button
                                             className={styles.button2}
                                             onClick={deleteTeam}
                                         >
                                             <i className="fas fa-minus-circle"></i>
-                                        </button>
+                                        </button>}
                                     </div>
                                 );
                             })}                           

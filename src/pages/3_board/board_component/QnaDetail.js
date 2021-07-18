@@ -70,14 +70,12 @@ const QnaDetail = ({ match }) => {
                 </div>
 
                 {
-                    isAdmin 
-                    ? <button className={styles.button1} onClick={onReply}>답변하기</button>                     
-                    : null
+                    (isAdmin && detail.board_qna_bq_id ==0)&&
+                    <button className={styles.button1} onClick={onReply}>답변하기</button>                     
                 }
                 {
-                    isAdmin 
-                    ? <button className={styles.button3}  onClick ={goModify}>수정하기</button>
-                    : (empID==detail.e_id && <button className={styles.button2} onClick ={goModify}>수정하기</button>)
+                (empID==detail.e_id &&isAdmin  && detail.board_qna_bq_id !=0)&&
+                    <button className={styles.button2}  onClick ={goModify}>수정하기</button>
                 }
             </div>
         </div>

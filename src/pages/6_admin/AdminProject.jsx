@@ -12,8 +12,11 @@ const AdminProject = props => {
     const [delSet, setDelSet] = useState(false);
 
     const complete = () => {
-        const result = axios.put("/project/complete/" + props.id);
-        const copy = props.allProjects.map(value =>
+        //7. 관리자 프로젝트 완료 누르면 팝업
+        const check = window.confirm("프로젝트를 완료 처리 하시겠습니까?")
+        if(check){
+            const result = axios.put("/project/complete/" + props.id);
+            const copy = props.allProjects.map(value =>
             value.p_id === props.id
                 ? { ...value, p_complete: !value.p_complete }
                 : value
@@ -21,19 +24,8 @@ const AdminProject = props => {
         props.setAllProjects(copy);
         let copy2 = copy.filter(e => e.p_complete == false);
         props.setProjects(copy2);
-    };
-
-    const incomplete = () => {
-        const result = axios.put("/project/incomplete/" + props.id);
-        const copy = props.allProjects.map(value =>
-            value.p_id === props.id
-                ? { ...value, p_complete: !value.p_complete }
-                : value
-        );
-        props.setAllProjects(copy);
-        let copy2 = copy.filter(e => e.p_complete == true);
-        props.setProjects(copy2);
-    };
+        }
+    };  
 
     const projectDelete = pwd => {
         const result = axios

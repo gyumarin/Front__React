@@ -59,6 +59,7 @@ const CalendarPopUp = props => {
                         type="date"
                         id="input"
                         placeholder="마감일"
+                        defaultValue={props.projectDetail.p_date_end} 
                         autoFocus
                     />
                 </div>
@@ -72,6 +73,7 @@ const CalendarPopUp = props => {
                     ref={gitUrlRef}
                     className={styles.input}
                     type="text" 
+                    defaultValue={props.projectDetail.p_giturl} 
                     placeholder="Git Repository" 
                     id ="gitUrl"
                 />

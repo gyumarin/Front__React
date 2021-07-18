@@ -37,7 +37,6 @@ const CreateProjectPopUp = props => {
             p_giturl : gitRepoRef.current.value,
             p_complete:false,
         };
-        // console.log(project);
         props.createProject(project);
         props.setPopup(false);
     };
@@ -98,7 +97,7 @@ const CreateProjectPopUp = props => {
                 <input
                     className={styles.button1}
                     type="button"
-                    value="저장"
+                    value="등록"
                     onClick={createProject}
                 />
             </form>

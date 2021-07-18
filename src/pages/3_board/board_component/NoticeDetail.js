@@ -7,20 +7,40 @@ import { Link, useHistory } from 'react-router-dom';
 
 const NoticeDetail = ({ match }) => {
     const history = useHistory();
-    const isAdmin = history.location.pathname.split("/")[2] == "admin"? true : false;
-
+    const isAdmin = history.location.pathname.split("/")[2] == "admin"? true : false;    
     const [detail, setDetail] = useState({});
 
+    const[loginID, setLoginID] = useState(0);
+    const[noticeID, setNoticeID]=useState(0);
+
     useEffect(() => {
-        getDetail();
+        getDetail();        
+    }, []);
+
+    useEffect( async () => {
+        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+        await axios.get(`/project/list`,
+            {headers: {
+                'token': tmp
+            }}
+            ).then(res=>{
+               console.log(res.data.result[0].e_id);
+               setNoticeID(res.data.result[0].e_id);
+            }) ;    
     }, []);
 
     const getDetail = async () => {
         const result = await axios.get(
             "/board/notice/detail/" + match.params.id
-        );
+        )
+        console.log(result.data.result);
+        setLoginID(result.data.result.e_id)
+
         await setDetail(result.data.result);        
     };
+
+
+
     const goWrite =(e)=>{
         e.preventDefault();
         history.push(`/main/admin/board/notice/update/` + match.params.id);
@@ -28,10 +48,14 @@ const NoticeDetail = ({ match }) => {
 
     const goList=async (e)=>{
         e.preventDefault();
-        axios.delete(`/board/notice/delete/${match.params.id}`);
-        history.push(`/main/admin/board/notice/`);
-    }
-    
+        //15. 공지 사항 삭제 시 팝업
+        const check = window.confirm(match.params.id+"번 공지 사항을 삭제 하시겠습니까?")
+        if(check){
+            axios.delete(`/board/notice/delete/${match.params.id}`);
+            history.push(`/main/admin/board/notice/`);
+        }
+       
+    }  
     
     return (
         <div className={styles.container}>
@@ -64,17 +88,18 @@ const NoticeDetail = ({ match }) => {
 
             {
               isAdmin 
-              ?
+              ? 
+              loginID != noticeID ? 
+              <>               
+                <button className={styles.buttonDel1} onClick={goList}>삭제</button>
+              </>
+              :
               <>
-              <button className={styles.buttonMod} onClick={goWrite}>수정</button> 
-              <button className={styles.buttonDel} onClick={goList}>삭제</button>
+                <button className={styles.buttonMod} onClick={goWrite}>수정</button> 
+                <button className={styles.buttonDel} onClick={goList}>삭제</button>
               </>
               : null
-            }
-            {/* <button>목록보기</button> */}
-            
-
-              
+            }             
             </div>
         </div>
     );

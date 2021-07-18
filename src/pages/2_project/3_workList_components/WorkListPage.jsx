@@ -206,16 +206,18 @@ const WorkListPage = ({projectID}) => {
                     
                 <div style={{ gridColumn:'2/3', gridRow:'1/4' , height: '100px', 
                     display:'flex', margin:'11px 7px -10px 7px', padding:'85px 0px 0px 0px'}}>
+                        
                     <Card style={{height: '90px', marginLeft: 'px', backgroundColor:"rgb(250, 250, 250)", width:"200px", marginRight:'5px'}} className={styles.card1}>
                         <Form style={{margin: '3px',padding:'10px 0px 0px 10px', width: '180px',}}>
-                            <p style={{fontWeight :"bold"}}>뷰 변경</p>
+                            {/* 4. worklist 뷰 변경 글자 필요? */}
+                            <p style={{fontWeight :"bold"}}>뷰 변경(team or my)</p>
                             <div style={{marginTop:"-10px",display:'flex', justifyContent:'flex-end'}}>
                                 {check ? (
-                                    <div><Button onClick={getAll}>전체</Button></div>
+                                    <div><Button onClick={getAll}>변경</Button></div>
                                 ) : (
-                                    <div><Button onClick={mySearch}>개인 업무</Button></div>
+                                    <div><Button onClick={mySearch}>변경</Button></div>
                                 )}
-                        </div>
+                            </div>
                         </Form>
                     </Card>
                     {/* 1. 수행 여부 */}
@@ -306,7 +308,7 @@ const WorkListPage = ({projectID}) => {
                 backgroundColor:"rgb(250, 250, 250)", 
                 borderLeft:"5px solid #00aaef",
                  borderTop:"5px solid #00aaef", }}>
-                    <p style={{fontWeight:"bold"}}>업무 대분류</p>
+                    <p style={{fontWeight:"bold"}}>카테고리 목록</p>
                     <hr style={{marginTop:"-0.5em", marginBottom:"0.4em"}}/>
                     <Form  className={styles.form}>    
                         

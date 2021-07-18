@@ -42,7 +42,6 @@ const CommonBoard = ({ viewList, list, PaginationBasic, th, keys }) => {
                         </tbody>
                     </Table>
                 </div>
-
                 
                     <div className  ={styles.pagination}>
                         <PaginationBasic />                    

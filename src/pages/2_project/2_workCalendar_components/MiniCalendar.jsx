@@ -36,7 +36,7 @@ const MiniCalendar = ({projectID, isTeam}) => {
    ]
    // Get 개인 프로젝트 업무 데이터  --------------------------------
    useEffect(()=>{      
-     axios.get(`/project/work/list/person?p_id=${projectID},`,{headers: {
+     axios.get(`/project/work/list/person?p_id=${projectID}`,{headers: {
       'token': tmp
     }})
      .then(res => res.data.result)

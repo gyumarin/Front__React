@@ -14,6 +14,7 @@ const NoticeInsert = ({ history }) => {
         title: "",
         content: "",
     });
+    const[dname, setDname] =useState("");
     const [empName, setEmpName] = useState('');
     const { title, content } = inputs;
 
@@ -34,8 +35,7 @@ const NoticeInsert = ({ history }) => {
                 bn_content: inputs.content,
                 token: tmp,
             });
-            history.push("/main/admin/board/notice");
-           
+            history.push("/main/admin/board/notice");           
         }
         
     };
@@ -43,7 +43,11 @@ const NoticeInsert = ({ history }) => {
     useEffect(() => {
         axios.get(`/employee/detail`,{headers: {
             'token': tmp
-          }}).then((res) => {setEmpName(res.data.result.e_name)} )
+          }}).then((res) => {
+              console.log(res.data.result);
+              setEmpName(res.data.result.e_name)
+              setDname(res.data.result.d_name);
+        })
     }, [])
 
     return (
@@ -55,7 +59,7 @@ const NoticeInsert = ({ history }) => {
             
                 <div className={styles.header}> 
                     <div>작성자
-                        <input className={styles.sendMan} type="text" defaultValue={empName} readOnly/>
+                        <input className={styles.sendMan} type="text" defaultValue={dname} readOnly/>
                     </div>
                 </div> 
                

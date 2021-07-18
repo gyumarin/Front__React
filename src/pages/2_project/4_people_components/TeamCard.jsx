@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const TeamCard = ({worker}) => {
     return(
-        <div className={worker.p_manager == worker.e_id ? (!worker.e_commute? styles.noBossContainer : styles.Bosscontainer) : (!worker.e_commute? styles.noContainer : styles.container) }>
+        <div className={worker.p_manager == worker.e_id ? (!worker.commuteCheck? styles.noBossContainer : styles.Bosscontainer) : (!worker.commuteCheck? styles.noContainer : styles.container) }>
             
             <div className={worker.p_manager == worker.e_id ?  styles.bossLeft : styles.left}>
                 <div className={styles.imageContainer}>

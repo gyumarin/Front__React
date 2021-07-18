@@ -11,6 +11,7 @@ const NoticeUpdate = ({ match, history }) => {
 
     const { title, content } = inputs;
     const [empName, setEmpName] = useState('');
+    const [dname, setDname] = useState('');
     
     const onChange = e => {
         const { name, value } = e.target;
@@ -36,7 +37,11 @@ const NoticeUpdate = ({ match, history }) => {
 
         axios.get(`/employee/detail`,{headers: {
             'token': tmp
-          }}).then((res) => {setEmpName(res.data.result.e_name)} )
+          }}).then((res) => {
+              console.log(res.data.result);
+              setEmpName(res.data.result.e_name);
+              setDname(res.data.result.d_name);
+            } )
     };
 
 
@@ -51,7 +56,7 @@ const NoticeUpdate = ({ match, history }) => {
                 bn_content: inputs.content,
                 token: tmp,
             });
-            history.push(`/main/board/notice/detail/${match.params.id}`);
+            history.push(`/main/admin/board/notice/detail/${match.params.id}`);
         }
         
     };
@@ -64,7 +69,7 @@ const NoticeUpdate = ({ match, history }) => {
 
             <div className={styles.header}> 
                 <div>작성자 
-                    <input className={styles.sendMan} type="text" value={empName} readOnly/>
+                    <input className={styles.sendMan} type="text" value={dname} readOnly/>
                 </div>
             </div> 
 

@@ -173,7 +173,9 @@ const CommitTest = ({ projectInfo }) => {
                 </font>
                 
                 {branchs.map((item, key) => {
-                    if (item.name !== 'master') {
+                    //6. 깃 브런치 옆에 숫자(지윤 팀의 master가 main 임)
+                    if (item.name == 'master' || item.name == 'main') {}
+                    else{
                         return (
                             <Button style={{ margin: '15px 5px 5px 0px' ,textAlign:'left', backgroundColor : "#00aaef", border : "none", borderRadius : "15px", height  : "50px"}} value={item.name} key={key} onClick={() => chooseBrench(item.name)}>
                                 <p style={{marginBottom: '0px'  }}>{item.name}</p>

@@ -6,13 +6,12 @@ import {Link} from  'react-router-dom';
 
 const MiniWorkList = (props) => {
 
-  // console.log(new Date().getTime()/ (1000*60*60*24));
   const date = new Date();
   console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
   const [workList, setWorkList] = useState([])
     useEffect(() => {
        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
-        axios.get(`/project/work/list/person/all`,{headers: {
+        axios.get(`/project/work/list/person/all/week`,{headers: {
           'token': tmp
         }}).then(res=>{   
           setWorkList(res.data.result)          

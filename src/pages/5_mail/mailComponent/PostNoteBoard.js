@@ -41,7 +41,7 @@ const PostNoteBoard = ({
                     </div>
                     <div>
                         <form onSubmit={enterEvent}>
-                            <input  className={styles.input} type="text" value={value} onChange={onChange} placeholder="검색" autoFocus></input>
+                            <input  className={styles.input} type="text" value={value} onChange={onChange} placeholder="제목으로 검색" autoFocus></input>
                             <button className={styles.buttonSearch} onClick={enterEvent}>검색</button>                            
                         </form>
                     </div>

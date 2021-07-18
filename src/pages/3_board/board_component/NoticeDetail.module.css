@@ -171,3 +171,14 @@
   color: aliceblue;
   border: none;
 }
+.buttonDel1 {
+  position: relative;
+  left: 1440px;
+  width: 100px;
+  height: 40px;
+
+  border-radius: 10px;
+  background-color: #5e6cdb;
+  color: aliceblue;
+  border: none;
+}
