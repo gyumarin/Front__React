@@ -4,6 +4,7 @@ import CommitCard from './CommitCard';
 import { Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 import styles from './CommitListPage.module.css';
+// import styles from './CommitTest.module.css';
 
 const CommitTest = ({ projectInfo }) => {
 
@@ -131,7 +132,7 @@ const CommitTest = ({ projectInfo }) => {
 
              {/* 마스터 버튼*/}
              <Card style={{ margin: '10px', padding: '20px', borderRadius:"10px", backgroundColor:"aliceblue" }}>
-                <font style={{marginLeft : '80px', marginBottom:'-5px' ,fontSize:'18px', fontWeight : 'bold',  color : "#263238"}}>마스터 브런치</font>
+                <font style={{marginLeft : '80px', marginBottom:'-5px' ,fontSize:'18px', fontWeight : 'bold',  color : "#263238"}}>마스터 브랜치</font>
                 <Button  style={{ margin: '15px 5px 5px 35px', width:'200px', backgroundColor:"#00aaef", border :'none',fontWeight:'bold', fontSize:'1.2em', borderRadius:"10px" }} onClick={() => masterBrench()}>
                     <p style={{marginBottom: '0px'  }}>master</p>
                 </Button>
@@ -156,9 +157,10 @@ const CommitTest = ({ projectInfo }) => {
                 gridColumn:'1/2', 
                 gridRow:'2/3',
                 borderRadius:"10px", 
-                backgroundColor:"aliceblue"  
+                backgroundColor:"aliceblue"
+                
             }}>
-                <font style={{ marginBottom:'-5px' ,fontSize:'18px',  fontWeight : 'bold',  color : "#263238", marginBottom:"1em"}}>브런치 목록 
+                <font style={{ marginBottom:'-5px' ,fontSize:'18px',  fontWeight : 'bold',  color : "#263238", marginBottom:"1em"}}>브랜치 목록 
                     <font style={{
                         marginLeft : '150px', 
                         marginBottom:'-5px' ,
@@ -171,19 +173,19 @@ const CommitTest = ({ projectInfo }) => {
                         {branchs.length!=0&&<b>{branchs.length-1}</b>}
                     </font>
                 </font>
-                
+                <div style={{display:'flex', flexDirection:"column", overflowY:"scroll", scrollbarWidth:"none", }} className={styles.div}>
                 {branchs.map((item, key) => {
                     //6. 깃 브런치 옆에 숫자(지윤 팀의 master가 main 임)
                     if (item.name == 'master' || item.name == 'main') {}
                     else{
                         return (
                             <Button style={{ margin: '15px 5px 5px 0px' ,textAlign:'left', backgroundColor : "#00aaef", border : "none", borderRadius : "15px", height  : "50px"}} value={item.name} key={key} onClick={() => chooseBrench(item.name)}>
-                                <p style={{marginBottom: '0px'  }}>{item.name}</p>
-                               
+                                <p style={{marginBottom: '0px'  }}>{item.name}</p>                               
                             </Button>
                         );
                     }
                 })}
+                </div>
             </Card>
             <Card style={{ gridColumn:'2/3', gridRow:'1/4', padding : '30px', margin: '10px', borderLeft : '20px solid  #007bbc', borderRadius : "20px"}} >
                 <h5 style={{fontWeight:"bold"}}>Commit List<font style={{marginLeft : '16px' ,fontSize:'13px', color : 'rgba(1, 1, 1, 0.3)'}}><b>{useBranch}</b></font></h5>
