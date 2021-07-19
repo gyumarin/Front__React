@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import AdminWorkListCard from "./AdminWorkListCard";
 import styles from "./WorkSmallCategory.module.css";
+import ExcelDownload from "../../Data/ExcelDownload";
 
 const WorkSmallCategory = ({
     smallCategoryId,
@@ -374,8 +375,13 @@ const WorkSmallCategory = ({
                     )}
                 </form>
 
-                <div className={styles.workListTitle} htmlFor="title">
-                    업무 리스트 관리
+                <div style={{display:'flex',justifyContent:'space-between'}}>
+                    <div className={styles.workListTitle} htmlFor="title">
+                        업무 리스트 관리
+                    </div>
+                    <div  className={styles.excelButton}>
+                        <ExcelDownload projectID={projectId}/>
+                    </div>
                 </div>
                 <div className={styles.workList}>
                     {smallCategoryData.map(details => {

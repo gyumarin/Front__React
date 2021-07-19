@@ -268,3 +268,8 @@
   overflow: hidden;
   font-size: 1em;
 }
+.excelButton {
+  font-weight: bold;
+  position: relative;
+  bottom: -2px;
+}
