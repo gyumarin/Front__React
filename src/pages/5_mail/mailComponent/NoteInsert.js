@@ -52,6 +52,10 @@ const NoteInsert = ({ history, match }) => {
     };
 
     const nInsert = async () => {
+        if(title == "" || content =="" || send == "") {
+            alert("필수 기입 사항이 비었습니다.");
+            return;
+        }
         const result = await axios.post("/note/send", {
             e_send: send,
             n_title: title,
