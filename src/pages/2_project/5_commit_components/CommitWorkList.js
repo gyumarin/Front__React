@@ -14,7 +14,7 @@ const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
         axios.get(`/project/work/list/person/week?p_id=${projectID}`,{headers: {
             'token': tmp
           }}).then(async res=>{
-            await setWorkList(res.data.result.filter(item=>item.wl_done != 3))
+            await setWorkList(res.data.result.filter(item=>item.wl_done == 1))
         })
     }, [])
 
@@ -44,7 +44,9 @@ const CommitWorkList = ({comment, userBool, onGitWorkList, projectID}) => {
                                     </div> 
                                 </Card>
                         )
+                    
                     })
+                
                     :
                     <p style={{textAlign:'center', paddingTop:"100px"}}> 등록할 수 있는 업무가 없습니다. </p>}
 

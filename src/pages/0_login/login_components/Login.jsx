@@ -17,7 +17,8 @@ const Login = ({getLoginToken}) => {
     const history = useHistory();
     const [empID, setEmpID] = useState('');
     const [empPWD, setEmpPWD] = useState('');    
-
+      
+    //////////////////////////////////////////////////////////////////
     const onChangeID = useCallback((e) => {
         switch (e.target.id) {
             case 'formBasicEmail':
@@ -28,7 +29,8 @@ const Login = ({getLoginToken}) => {
                 break;
         }
     }, []); 
-
+    
+    //////////////////////////////////////////////////////////////////
     const onLogin = (event) => {
         event.preventDefault();
         axios.post('/employee/signin', {

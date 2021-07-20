@@ -2,9 +2,7 @@ import './App.css';
 import LoginPage from './pages/0_login/LoginPage';
 import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
 import BasicPage from './pages/1_home/BasicPage';
-import ProjectListPage from './pages/2_project/ProjectListPage';
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 function App() {
 
@@ -22,9 +20,11 @@ function App() {
             <LoginPage 
               getLoginToken = {()=>getLoginToken()}
             />
-          </Route>          
+          </Route>      
+
           {/* 1. 홈페이지 창 */}
-          <Route path="/main"><BasicPage
+          <Route path="/main">
+            <BasicPage
             removeLoginToken = {()=>removeLoginToken()}
           /></Route>         
         </Switch>

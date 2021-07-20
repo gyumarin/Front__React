@@ -6,16 +6,13 @@ import NavListAdmin from './NavListAdmin'
 import { useState, useEffect } from 'react';
 import styles from './LeftNavBar.module.css';
 import { useHistory } from 'react-router-dom';
-
 import axios from 'axios';
-
 
 const LeftNavBar = ({removeLoginToken}) => {
 
   const [userInfo, setUserInfo] = useState({})
   const [test, setTest] = useState(false)
   const history = useHistory();
-
   
   useEffect(() => {
 
@@ -27,10 +24,8 @@ const LeftNavBar = ({removeLoginToken}) => {
       }}).then(res=>{
         setUserInfo(res.data.result);
       })      
-    }
-    
-  }, [])
-  
+    }    
+  }, [])  
 
   //모드 변경 버튼을 클릭했을 때
   const handleClick = async (event) =>{
@@ -50,11 +45,8 @@ const LeftNavBar = ({removeLoginToken}) => {
         await setTest(false);
         await history.push("/main/home");
       } 
-    }
-    
-  }
-
-  
+    }    
+  } 
 
   return(
     <div className={sessionStorage.getItem('isAdmin') == "false" ? styles.container : styles.bossContainer} style ={{display:"grid", gridTemplateRows :"85% 15%"}}>
@@ -63,7 +55,7 @@ const LeftNavBar = ({removeLoginToken}) => {
           userInfo={userInfo}
           removeLoginToken={()=>removeLoginToken()}
         />
-        {sessionStorage.getItem('isAdmin') == "false" ? 
+          {sessionStorage.getItem('isAdmin') == "false" ? 
         <NavList /> 
         : 
         <NavListAdmin/>
@@ -85,7 +77,6 @@ const LeftNavBar = ({removeLoginToken}) => {
               onClick={handleClick}     
             >ON</button>          
         }
-
       </div>
       : null
       }

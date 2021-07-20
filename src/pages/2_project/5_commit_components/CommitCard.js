@@ -184,20 +184,20 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                                                     <div style={{textAlign:'center', marginRight:'15px', borderRadius:'10px',backgroundColor:'#007bbc', height:'22px' ,width:'30px', color:'yellow', fontSize:'14px'}}>
                                                         {item.wl_id}
                                                     </div>
-                                                    {
-                                                    item.wl_done==2?
-                                                        <>
-                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>승인 중</p></b>
-                                                        <button onClick={()=>onDeleteWorkList(item)}style={{ border:'0px',backgroundColor:'rgba(0,0,0,0)',fontSize:'14px',paddingLeft:'20px', width:"1px"}}>x</button>
-                                                        </>
-                                                        :
-                                                        <>
+                                                    {item.wl_done==1&&<>
                                                         <button onClick={()=>onRequestWorkList(item.wl_id)} style={{ border:'0px',borderRadius:'3px', backgroundColor:'#00aaef', width: '70px', height:'24px', color:'white', fontSize:'13px',paddingTop:'-40px' }}>
                                                         <b>승인 요청</b>
                                                         </button>
                                                         <button onClick={()=>onDeleteWorkList(item)} style={{border:'0px', backgroundColor:'rgba(0,0,0,0)', fontSize:'14px',paddingLeft:'8px'}}>x</button>
-                                                        </>
-                                                    }
+                                                        </>}
+                                                    {item.wl_done==2&&
+                                                        <>
+                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>승인 중</p></b>
+                                                        </>}
+                                                        {item.wl_done==3&&
+                                                        <>
+                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>승인 완료</p></b>
+                                                        </>}    
                                                 
                                                 </button> 
                                                 

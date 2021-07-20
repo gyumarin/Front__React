@@ -9,8 +9,7 @@ import { useHistory } from 'react-router-dom';
 const MiniNotice = (props) => {
   const history = useHistory(); 
   const [noticeList, setNoticeList] = useState([])
-  useEffect(() => {
-      // const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
+  useEffect(() => {     
       axios.get('/board/notice/limit').then(res=>{
         setNoticeList(res.data.result);        
       })

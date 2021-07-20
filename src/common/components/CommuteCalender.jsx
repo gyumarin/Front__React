@@ -14,6 +14,7 @@ const CommuteCalender = (props) => {
   const [commute, setCommute] = useState(false);
   const [commuteData, setCommuteData] =useState([]);  
   const [noButton, setnoButton] = useState(true);
+
   const date = new Date();
   const year = date.getFullYear(); // 년 
   const month = date.getMonth();   // 월 * ++1
@@ -24,13 +25,15 @@ const CommuteCalender = (props) => {
   
   const tmp =sessionStorage.getItem('token').slice(0, -1).substr(1);
   
+  // //////////////////////////////////////////////////////////////////////////
   useEffect(()=>{
     load();
   },[commute])  
 
-  useEffect(()=>{
-  },[commuteData]) 
+  // useEffect(()=>{
+  // },[commuteData]) 
 
+  // /////////////////////////////////////////////////////////////////////////
   const load = async()=>{
     const result = await axios.get(`/employee/commute/list`, 
     {headers: {
@@ -44,7 +47,7 @@ const CommuteCalender = (props) => {
     if(test.length>=2){
       setnoButton(false);
     }
-    
+  // /////////////////////////////////////////////////////////////////////////
     const dataForCalendar = result.data.result.map(data=>{      
       return {
         'title': data.c_end == null ? `출근 ${data.c_start}`: `퇴근 ${data.c_end}`,
@@ -57,7 +60,7 @@ const CommuteCalender = (props) => {
     }
   }
  
-  // 출퇴근 버튼
+  // 출퇴근 버튼 /////////////////////////////////////////////////////////////////////////
   const onCommute = async (event)=>{
     event.preventDefault();
     const commuteCheck = commute ? window.confirm("퇴근하시겠습니까?") : window.confirm("출근하시겠습니까?");
@@ -78,9 +81,8 @@ const CommuteCalender = (props) => {
       }
     }
     else{return;}
-  }
-  
-
+  }  
+// ///////////////////////////////////////////////////////////////////////////////////////
   return(
     <div className={styles.container}>
      <div className={styles.calendar} style={{ height: 480 }} >

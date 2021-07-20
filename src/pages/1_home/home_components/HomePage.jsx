@@ -21,7 +21,7 @@ const HomePage = ({setProject}) => {
             ).then(res=>{
                 setProjectList(res.data.result.filter(item=>item.p_complete==false))
                 setProject(res.data.result)  
-            }) ;    
+            });    
     }, []);
     
     return(

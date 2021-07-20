@@ -42,6 +42,7 @@ const BasicPage = ({removeLoginToken}) =>{
             <Route path="/main/board"><BoardPage/></Route>
             <Route path="/main/mail"> <MailPage/></Route>
             <Route path="/main/admin/project"><AdminProjectPage/></Route>
+            
             <Route
                 path="/main/admin/editProject/:id"
                 render={props => {
@@ -52,6 +53,7 @@ const BasicPage = ({removeLoginToken}) =>{
                     );
                 }}
             ></Route>
+
             <Route
                 path="/main/admin/editProjectDetails/:id"
                 render={props => {

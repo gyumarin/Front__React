@@ -11,7 +11,6 @@ const ProjectListPage = ({project}) => {
     const [allProjectList, setAllProjectList] = useState(project);
     const [toggle, setToggle] = useState(false);
 
-
     useEffect( async () => {
         const tmp = sessionStorage.getItem("token").slice(0, -1).substr(1);
         const result = await axios.get(`/project/list`,{headers: {
@@ -36,6 +35,7 @@ const ProjectListPage = ({project}) => {
         await setToggle(true);
     };
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     return(
         <div className={styles.container}>

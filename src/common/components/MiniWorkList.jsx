@@ -7,7 +7,8 @@ import {Link} from  'react-router-dom';
 const MiniWorkList = (props) => {
 
   const date = new Date();
-  console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
+  // console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
+
   const [workList, setWorkList] = useState([])
     useEffect(() => {
        const tmp = sessionStorage.getItem('token').slice(0, -1).substr(1);
@@ -38,9 +39,7 @@ const MiniWorkList = (props) => {
               {workList.length!=0?
                 workList.map((work)=>{
                   return (<div key ={work.wl_id} className={styles.tr}>
-                    <div className={styles.td1}>{work.p_title}</div>
-                    {/* <td className={styles.numtd}>{work.wl_id}</td> */}
-                    {/* <td className={styles.td}>{work.wl_work_category}</td> */}
+                    <div className={styles.td1}>{work.p_title}</div>                   
                     <div className={styles.td2}>{work.wl_work}</div>
                     <div className={styles.td3}>{work.wl_work_detail}</div>
                     <div className={Math.floor((new Date(work.wl_date_end).getTime() - new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`).getTime())/ (1000*60*60*24)) <= 5 ? styles.td4 : styles.td_4}> 
@@ -63,9 +62,7 @@ const MiniWorkList = (props) => {
                   <span><i style={{fontSize:'90px',color :'#0d6efd',marginBottom:'10px'}} className="far fa-clipboard" ></i></span>
                   <p>이번 주 진행 하실 업무가 없습니다.</p>
               </div>
-              }
-                         
-           
+              }          
           </div>
         </div> 
       </div>
