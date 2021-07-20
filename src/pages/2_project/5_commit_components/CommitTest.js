@@ -55,7 +55,6 @@ const CommitTest = ({ projectInfo }) => {
             
             setMasterList(res);
         });
-
         getUser();
     }, [projectInfo]);
 
@@ -123,11 +122,8 @@ const CommitTest = ({ projectInfo }) => {
         setuseBranch('master');
         setToggle(true);
     };
-
     
-    return (
-
-        
+    return (        
         <div className={styles.Commitcontainer}style={{  display:'grid' ,gridTemplateColumns:'330px 1235px', gridTemplateRows:' 140px 440px 140px '}}>
 
              {/* 마스터 버튼*/}
@@ -212,14 +208,14 @@ const CommitTest = ({ projectInfo }) => {
                                 paddingBottom:'40px',fontWeight:'bold', fontFamily:"Noto Sans", borderRadius:'10px'}} >
                                 <span><i style={{fontSize:'120px',color :'#0d6efd',marginBottom:'10px'}} className="fab fa-github" ></i></span>
                                 <span><i style={{fontSize:'80px',color :'#0d6efd',marginBottom:'50px'}} className="far fa-comment-dots" ></i></span>
-                                <p style={{marginTop:"30px"}}>브런치에 커밋 내용이 없습니다.</p>
+                                <p style={{marginTop:"30px"}}>브랜치에 커밋 내용이 없습니다.</p>
                             </div>
                         )
                     }
                         
                 </div>
                 <hr/>
-                {noMore&&!toggle&& <Button style={{width:'300px', marginLeft:'400px'}}onClick={onClick}>더 보기</Button>}
+                {noMore&&!toggle&& <Button style={{width:'300px', marginLeft:'400px'}}onClick={onClick}>더보기</Button>}
             </Card>            
         </div>
     );

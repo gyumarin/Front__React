@@ -63,14 +63,16 @@
   text-overflow: ellipsis;
 }
 .detail2 {
+  /* border: 1px solid black; */
   margin-top: 5px;
-  margin-left: 250px;
+  margin-left: 220px;
   font-size: 0.7em;
   color: #475861;
-  width: 175px;
+  width: 200px;
 
   padding: 0.1em;
   padding-left: 1em;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  text-align: right;
 }

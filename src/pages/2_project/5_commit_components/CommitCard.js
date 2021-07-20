@@ -52,6 +52,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
 
     }, [useBranch]);
 
+
     const getGitWorkList = async () => {
         const result = await axios.get("/commit/work/list?sha=" + info.sha + "&p_id=" + projectInfo.p_id);
         setGitWorkList(result.data.result);
@@ -142,16 +143,7 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                         <div style={{display:'grid' , gridTemplateColumns:'110px 360px'}}><b>commit 내용 :</b>   {info.commit.message}</div>
                         
                 </div>
-                {/* 글 블록 지정 막기 : userSelect:'none'
-                <div  variant="outline-primary" style={{ userSelect:'none', color:'blue', fontSize:'50px', paddingRight:'30px' }}>
-                {nick == info.commit.committer.name && (
-                        !toggle ? (
-                            <p>+</p>
-                        ) : null
-                    )}
-
-                </div> */}
-                
+                                
                 <div>
                     {toggle && (
                         <div className={styles.Tcontainer}>
@@ -170,7 +162,12 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                             </div>
                             
                             <div >  
-                                    <CommitWorkList comment={comment.text} onGitWorkList={onGitWorkList} projectID={projectInfo.p_id} userBool={nick == info.commit.committer.name}/>
+                                <CommitWorkList 
+                                    comment={comment.text} 
+                                    onGitWorkList={onGitWorkList} 
+                                    projectID={projectInfo.p_id} 
+                                    userBool={nick == info.commit.committer.name}
+                                />
                             </div>
                             
                                 
@@ -185,20 +182,29 @@ const CommitCard = ({ info, useBranch, projectInfo ,nick}) => {
                                                         {item.wl_id}
                                                     </div>
                                                     {item.wl_done==1&&<>
+                                                        {nick == info.commit.committer.name 
+                                                        ?
+                                                        <>
                                                         <button onClick={()=>onRequestWorkList(item.wl_id)} style={{ border:'0px',borderRadius:'3px', backgroundColor:'#00aaef', width: '70px', height:'24px', color:'white', fontSize:'13px',paddingTop:'-40px' }}>
-                                                        <b>승인 요청</b>
+                                                        <b>확인 요청</b>
                                                         </button>
                                                         <button onClick={()=>onDeleteWorkList(item)} style={{border:'0px', backgroundColor:'rgba(0,0,0,0)', fontSize:'14px',paddingLeft:'8px'}}>x</button>
+                                                        </>
+                                                        :
+                                                        <>
+                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>진행 중...</p></b>
+                                                        </>
+                                                        }
+                                                        
                                                         </>}
                                                     {item.wl_done==2&&
                                                         <>
-                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>승인 중</p></b>
+                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>확인 중</p></b>
                                                         </>}
                                                         {item.wl_done==3&&
                                                         <>
-                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>승인 완료</p></b>
-                                                        </>}    
-                                                
+                                                        <b><p style={{ marginLeft:'10px', color:'black', fontSize:'14px', }}>확인 완료</p></b>
+                                                        </>}                                                    
                                                 </button> 
                                                 
                                                 

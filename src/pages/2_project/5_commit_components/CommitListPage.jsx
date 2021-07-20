@@ -22,7 +22,7 @@ const CommitListPage = ({projectID}) => {
             </div>
 
             <div className={styles.listContainer} style={{paddingLeft: '40px'}}>
-                <CommitTest                    
+                <CommitTest
                     projectInfo={projectInfo}
                 />
             </div>

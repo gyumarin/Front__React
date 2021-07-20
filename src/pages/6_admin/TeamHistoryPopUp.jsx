@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import BarChart from './BarChart';
+
 import styles from './TeamHistoryPopUp.module.css';
 
 const TeamHistoryPopUp = ({peopleList, setTheirHistory, teamId}) => {
@@ -10,7 +12,7 @@ const TeamHistoryPopUp = ({peopleList, setTheirHistory, teamId}) => {
     const[isDone, setIsDone ] =useState(false);
     
     useEffect(()=>{
-        setThisMan(thisMan => peopleList.find(team =>{
+        setThisMan(thisMan => peopleList.find(team =>{            
             return  team.ep_id == teamId
           }))
     },[])
@@ -31,7 +33,6 @@ const switchMode = (event)=>{
     setIsDone(!isDone);
 }
 
-
     return(
         <>
         <div className={styles.container}></div>
@@ -47,16 +48,22 @@ const switchMode = (event)=>{
                         (<div>{thisMan.e_rank}</div>)                        
                     </div>
                     <div className={styles.tel}>Tel. {thisMan.e_e_phone}</div>
-                    <div className={styles.text2}> {thisMan.e_comment} </div>
+                    <div className={styles.text2}> </div>
                 </div>
                 <img className = {styles.photo} src={thisMan.e_photo} alt="사원 사진" />
             </div> 
+            
+            <BarChart 
+            key= "1"
+             uProjects={uProjects}
+             thisMan={thisMan}
+            />
             {!isDone 
             ? <button className={styles.toggle} onClick ={switchMode}>진행 중인 프로젝트</button>
             :<button className={styles.toggle} onClick ={switchMode}>완료 프로젝트</button>}
-            <div style={{width:'40px', backgroundColor:"aliceblue", textAlign:'center', color:"#263238", position:"relative", left:"195px", bottom:"50px", marginBottom:"-2.5em"}}>{uProjects.length}건</div>
-            <div className={styles.list}>
-                
+
+            <div style={{width:'40px', backgroundColor:"aliceblue", textAlign:'center', color:"#263238", position:"relative", left:"195px", bottom:"50px", marginBottom:"-2.5em"}}>{!isDone ? uProjects.length: dProjects.length}건</div>
+            <div className={styles.list}>                
                 {     
                 !isDone?           
                     uProjects.map(p =>{

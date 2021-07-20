@@ -33,8 +33,8 @@ const ProjectTopNavBar = ({projectID}) => {
         <ul className={styles.container}> 
             <li onClick={goOverview} className={styles.button}>현황</li>
             <li onClick={goCalendar} className={styles.button}>캘린더</li>
-            <li onClick={goWorkList} className={styles.button}>업무</li>
             <li onClick={goTeamList} className={styles.button}>인원</li>
+            <li onClick={goWorkList} className={styles.button}>업무</li>            
             <li onClick={goCommitList} className={styles.button}>커밋</li>
         </ul>
     );

@@ -16,6 +16,7 @@ const ProjectListPage = ({project}) => {
         const result = await axios.get(`/project/list`,{headers: {
             'token': tmp
           }});
+          
         await setAllProjectList(result.data.result);
         await setProjectList(result.data.result.filter(e => e.p_complete == false));
         await setToggle(true);
