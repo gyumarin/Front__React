@@ -34,7 +34,7 @@ const WaitingConfirmCard = ({confirm, onApply, onIgnore}) => {
                 </div>
                 {/* buttons */}
                 <div className={styles.right}>
-                    <button className={styles.btnConfirm} onClick={()=>onApply(confirm.wl_id)}>승인</button>            
+                    <button className={styles.btnConfirm} onClick={()=>onApply(confirm.wl_id)}>확인</button>            
                     <button className={styles.btnReject} onClick={()=>setToggle(!toggle)}>반려</button>            
                 </div>
             </div>

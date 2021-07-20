@@ -35,7 +35,12 @@ const AnswerInsert = ({ history, match }) => {
                 token: tmp,
                 board_qna_bq_id: match.params.id,
             });
+            if(result.data.code==200){
             history.push("/main/admin/board/qna");
+            }else{
+                alert("이미 등록된 답변입니다.")
+                history.push("/main/admin/board/qna");
+            }
         }
         
     };

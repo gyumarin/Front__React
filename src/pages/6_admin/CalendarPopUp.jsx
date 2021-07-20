@@ -55,7 +55,7 @@ const CalendarPopUp = props => {
                     />
                     <input
                         ref={endRef}
-                        className={styles.date}
+                        className={styles.date1}
                         type="date"
                         id="input"
                         placeholder="마감일"

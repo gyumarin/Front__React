@@ -52,9 +52,7 @@ const AdminEditProject = props => {
 
         const result4 = await axios("/project/work/list/approval/request/"+ props.match.params.id);
         setWatiForConfirms(result4.data.result);
-    };
-
-   
+    };   
 
     // 1. state 관리
 
@@ -93,6 +91,7 @@ const AdminEditProject = props => {
     // 3-3. edit Team
     const deleteTeam = event => {
         event.preventDefault();
+        if(!window.confirm("삭제하시겠습니까?"))return;
         deletePeople(
             event.target.parentNode.parentNode.id == ""
                 ? event.target.parentNode.parentNode.parentNode.id
@@ -261,9 +260,9 @@ const AdminEditProject = props => {
                 {/* Body - Right */}
                 <div className={styles.right}>
                     <div className={styles.rightContainer}>
-                        <p style={{fontWeight:"bold"}}>업무 승인 처리</p>
+                        <p style={{fontWeight:"bold"}}>업무 확인 처리</p>
                         <div className={styles.rightContents}>
-                            <div className={styles.numberOfWating}>승인 대기 중인 업무 : <div className={styles.w_number}>{waitForConfirms.length}</div>개</div>
+                            <div className={styles.numberOfWating}>확인 중인 업무 : <div className={styles.w_number}>{waitForConfirms.length}</div>개</div>
                             <div className={styles.confirms}>
                             {
                                waitForConfirms.map(confirm=>{

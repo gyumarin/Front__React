@@ -49,10 +49,8 @@ const PwdPopup = ( {setSelf, setPopup} ) => {
                 newPwd : '',
                 newPwdCheck : '',
             })
-        }
-        
+        }        
     }
-
 
     return(
         <div className={styles.container} >

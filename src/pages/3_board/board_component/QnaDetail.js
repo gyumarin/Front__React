@@ -19,16 +19,17 @@ const QnaDetail = ({ match }) => {
             'token': tmp
           }})
         .then((res) => 
-         {setEmpID(res.data.result.e_id)
+         {
+            console.log(res.data.result)
+            setEmpID(res.data.result.e_id)
         } )
-
         getDetail();
     }, []);
 
     const getDetail = async () => {
         const result = await axios.get("/board/qna/detail/" + match.params.id);
         await setDetail(result.data.result);
-        await console.log("result.data.result", result.data.result);
+        await console.log("result.data.result", result.data.result.e_id);
     };
 
     const onReply =(event)=>{
@@ -39,6 +40,16 @@ const QnaDetail = ({ match }) => {
     const goModify =(event)=>{
         event.preventDefault();
         history.push(`/main/admin/board/qna/update/${detail.bq_id}`);
+    }
+
+    const goDelete =async (event)=>{
+        event.preventDefault();
+        await axios.delete(`/board/qna/delete/${id}`);
+        if(isAdmin){
+            await history.push("/main/admin/board/qna");
+        }else{
+            await history.push("/main/board/qna");
+        }        
     }
     
     return (
@@ -67,16 +78,19 @@ const QnaDetail = ({ match }) => {
                     </div> 
 
                     <div className={styles.contentBody}>{detail.bq_content}</div>                                    
-                </div>
-
-                {
-                    (isAdmin && detail.board_qna_bq_id ==0)&&
+                </div>               
+                {                                        
+                    (empID==detail.e_id) &&                   
+                    <div style={{ height:"50px"}}>
+                        <button className={!isAdmin ? styles.button2 : styles.button3}  onClick ={goModify}>수정하기</button>
+                        <button className={!isAdmin ? styles.button4 : styles.button5}  onClick ={goDelete}>삭제하기</button>
+                    </div>                   
+                }
+                 {
+                    (isAdmin && detail.board_qna_bq_id ==0)&&                    
                     <button className={styles.button1} onClick={onReply}>답변하기</button>                     
                 }
-                {
-                (empID==detail.e_id &&isAdmin  && detail.board_qna_bq_id !=0)&&
-                    <button className={styles.button2}  onClick ={goModify}>수정하기</button>
-                }
+                               
             </div>
         </div>
     );

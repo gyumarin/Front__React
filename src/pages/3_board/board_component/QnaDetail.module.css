@@ -156,7 +156,7 @@
 .button1 {
   position: relative;
   left: 687px;
-  bottom: 10px;
+  bottom: 25px;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
   font-size: 1em;
@@ -177,8 +177,8 @@
 
 .button2 {
   position: relative;
-  left: 1400px;
-  bottom: 35px;
+  left: 1250px;
+  bottom: 30px;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
   font-size: 1em;
@@ -200,7 +200,7 @@
 .button3 {
   position: relative;
   left: 1250px;
-  bottom: 40px;
+  bottom: 30px;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
   font-size: 1em;
@@ -215,6 +215,50 @@
   height: 40px;
 }
 .button3:hover {
+  background-color: #343d83;
+  color: aliceblue;
+}
+
+.button4 {
+  position: relative;
+  left: 1265px;
+  bottom: 30px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+
+  background-color: #66dbff;
+  border-radius: 5px;
+  border: none;
+  width: 140px;
+  padding: 0.4em;
+  color: #263238;
+  margin-top: 2em;
+  height: 40px;
+}
+.button4:hover {
+  background-color: #00aaef;
+  color: aliceblue;
+}
+
+.button5 {
+  position: relative;
+  left: 1265px;
+  bottom: 30px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+
+  background-color: #5e6cdb;
+  border-radius: 5px;
+  border: none;
+  width: 140px;
+  padding: 0.4em;
+  color: aliceblue;
+  margin-top: 2em;
+  height: 40px;
+}
+.button5:hover {
   background-color: #343d83;
   color: aliceblue;
 }

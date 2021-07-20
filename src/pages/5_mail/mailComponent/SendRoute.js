@@ -97,6 +97,7 @@ const SendRoute = ({ match, setId }) => {
     };
 
     const deleteNote = async () => {
+        if(!window.confirm("삭제하시겠습니까?"))return;
         const result = await axios.put("/note/delete", {
             token: tmp,
             n_id: deleteList,
