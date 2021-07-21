@@ -41,6 +41,8 @@ const AdminCareProject = props => {
 
     const [team, setTeam] = useState([]);
 
+    const [isUpdate, setIsUpdate] = useState(false);
+
     const [updateDetails, setUpdateDetails] = useState({
         wl_id: "",
         wl_work_detail: "",
@@ -74,6 +76,7 @@ const AdminCareProject = props => {
         });
         setSmallCategoryId(100000000);
         setMidCategoryName("");
+        setIsUpdate(false);
     }, [midCategoryId]);
 
     useEffect(() => {
@@ -91,6 +94,7 @@ const AdminCareProject = props => {
             wl_date_end: "",
             e_id: 0,
         });
+        setIsUpdate(false);
     }, [smallCategoryId]);
 
     useEffect(() => {
@@ -181,6 +185,8 @@ const AdminCareProject = props => {
                                 setUpdateDetails={setUpdateDetails}
                                 wld={wld}
                                 setWld={setWld}
+                                isUpdate={isUpdate}
+                                setIsUpdate={setIsUpdate}
                             />
                         </div>
                     </div>

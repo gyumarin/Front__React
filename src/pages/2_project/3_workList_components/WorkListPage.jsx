@@ -8,7 +8,6 @@ import { Form, Button, Card  } from 'react-bootstrap';
 const WorkListPage = ({projectID}) => {
     const tmp2 = sessionStorage.getItem("token").slice(0, -1).substr(1);
     const [check, setCheck] = useState(false);
-
     
     const [data, setData] = useState([])
     const [workList, setWorkList] = useState([])
@@ -45,8 +44,7 @@ const WorkListPage = ({projectID}) => {
     }, [])
 
 
-    useEffect(() => {
-        
+    useEffect(() => {        
         let tempWorkList = null;
         if(maincate=='전체'){
             setWorkView(workList);

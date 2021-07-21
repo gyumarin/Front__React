@@ -12,7 +12,6 @@ import CommitListPage from './5_commit_components/CommitListPage';
 import { Route, Switch, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 const ProjectPage = () => {
-
     const [projectInfo, setProjectInfo] = useState([])
     const [param, setParam] = useState(0)
     const history = useHistory();

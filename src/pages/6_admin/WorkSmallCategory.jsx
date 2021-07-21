@@ -18,6 +18,8 @@ const WorkSmallCategory = ({
     setUpdateDetails,
     wld,
     setWld,
+    isUpdate,
+    setIsUpdate
 }) => {
     // state
     const newDetail = useRef("");
@@ -27,7 +29,7 @@ const WorkSmallCategory = ({
     const [teamList, setTeamList] = useState([]);
     const [charge, setCharge] = useState({});
 
-    const [isUpdate, setIsUpdate] = useState(false);
+    
 
     const param = useParams();
     const projectId = parseInt(param.id);
@@ -66,7 +68,7 @@ const WorkSmallCategory = ({
             alert("세부 업무 등록에서 누락된 정보가 있는 지 확인부탁드립니다.");
         } else {
 
-        alert("업무가 등록되었습니다.");
+        // alert("업무가 등록되었습니다.");
         const result = await axios.post("/project/work/insert", {
             p_id: projectId,
             wl_work_category: bigCategoryName,
@@ -116,9 +118,9 @@ const WorkSmallCategory = ({
             updateDetails.wl_date_end == "" ||
             updateDetails.e_id == 0
         ) {
-            alert("@@");
+            alert("세부 업무 등록에서 누락된 정보가 있는 지 확인부탁드립니다.");
         } else {
-        alert("프로젝트가 수정되었습니다.");
+        // alert("프로젝트가 수정되었습니다.");
         axios.put("/project/work/update", {
             p_id: projectId,
             wl_work_category: bigCategoryName,
