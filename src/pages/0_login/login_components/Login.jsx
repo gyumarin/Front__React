@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
-import logo from '../../../images/douzone_logo.png';
+import logo from '../../../images/douzone_logo_1.png';
 
 const Login = ({getLoginToken}) => {
 
